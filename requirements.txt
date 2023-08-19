@@ -1,0 +1,7 @@
+build>=0.10.0
+twine>=4.0.2
+setuptools>=65.5.1
+
+
+
+websockets>=11.0.3
