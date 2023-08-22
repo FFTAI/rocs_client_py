@@ -1,9 +1,11 @@
-
+import asyncio
 import json
-import socket
-from typing import Any, Dict
+import queue
+from concurrent.futures import ThreadPoolExecutor
+from typing import Any, Dict, Callable
 
 import requests
+import websockets
 
 
 class Mod:
@@ -23,26 +25,63 @@ class RobotType:
     DOG = 'dog'
 
 
+executor = ThreadPoolExecutor()
+
+
 class Robot:
 
-    def __init__(self, ssl: bool = False, host: str = '127.0.0.1'):
-        self.retry_count = 0
+    def __init__(self, ssl: bool = False, host: str = '127.0.0.1',
+                 on_open: Callable = None, on_message: Callable = None,
+                 on_close: Callable = None, on_error: Callable = None):
+        self.on_open = on_open
+        self.on_message = on_message
+        self.on_close = on_close
+        self.on_error = on_error
+
         self.mod = Mod.MOD_ORIGINAL
-        self.type = None
+        self.type: str = ''
+
         if ssl:
             self.baseurl = f'https://{host}:8001'
+            self.ws_url = f'wss://{host}:8001/ws'
         else:
             self.baseurl = f'http://{host}:8001'
+            self.ws_url = f'ws://{host}:8001/ws'
 
-        self.host = host
-        self.socket_port = 8002
-        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.message: queue = None
+        self.websocket: websockets = None
+        # asyncio.get_event_loop().run_until_complete(self._connect())
+        asyncio.get_event_loop().run_until_complete(self.connect_to_server())
 
-    async def get_type(self) -> Dict[str, Any]:
+    async def connect_to_server(self):
+        async with websockets.connect('ws://localhost:8001/ws') as websocket:
+            self.websocket = await websockets.connect(self.ws_url)
+            if self.on_open:
+                await self.on_open(self.websocket)
+            while True:
+                message = await websocket.recv()
+                print(message)
+    #
+    # async def _connedted(self):
+    #     while True:
+    #         try:
+    #             message = await self.websocket.recv()
+    #             if self.on_message:
+    #                 await self.on_message(self.websocket, message)
+    #         except websockets.ConnectionClosed:
+    #             if self.on_close:
+    #                 await self.on_close(self.websocket)
+    #             break
+    #         except Exception as e:
+    #             if self.on_error:
+    #                 await self.on_error(self.websocket, e)
+    #             break
+
+    def get_type(self) -> Dict[str, Any]:
         response = requests.get(f'{self.baseurl}/robot/type')
         return response.json()
 
-    async def set_mode(self, mod: Mod) -> Dict[str, Any]:
+    def set_mode(self, mod: Mod) -> Dict[str, Any]:
         if self.type == RobotType.CAR:
             self.mod = mod
             data = {'mod_val': mod}
@@ -50,13 +89,13 @@ class Robot:
             return response.json()
         print('robot type not allow this command! The current function is only applicable to car')
 
-    async def get_joint_limit(self) -> Dict[str, Any]:
+    def get_joint_limit(self) -> Dict[str, Any]:
         if self.type == RobotType.HUMAN:
             response = requests.get(f'{self.baseurl}/robot/jointLimit')
             return response.json()
         print('robot type not allow this command! The current function is only applicable to humans')
 
-    async def get_joint_states(self) -> Dict[str, Any]:
+    def get_joint_states(self) -> Dict[str, Any]:
         if self.type == RobotType.HUMAN:
             response = requests.get(f'{self.baseurl}/robot/jointStates')
             return response.json()
@@ -64,7 +103,7 @@ class Robot:
 
     def enable_debug_state(self, frequence: int = 1):
         if self.type == RobotType.HUMAN:
-            self._send_socket_msg({
+            self._send_websocket_msg({
                 'command': 'states',
                 'data': {
                     'frequence': frequence
@@ -81,10 +120,10 @@ class Robot:
             return response.json()
         print('robot type not allow this command! The current function is only applicable to human')
 
-    def move(self, angle: float, speed: float):
+    async def move(self, angle: float, speed: float):
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -0.8, 0.8)
-        self._send_socket_msg({
+        await self._send_websocket_msg({
             'command': 'move',
             'data': {
                 'angle': angle,
@@ -92,9 +131,9 @@ class Robot:
             }
         })
 
-    def head(self, roll: float, pitch: float, yaw: float):
+    async def head(self, roll: float, pitch: float, yaw: float):
         if self.type == RobotType.HUMAN:
-            self._send_socket_msg({
+            await self._send_websocket_msg({
                 'command': 'head',
                 'data': {
                     'roll': roll,
@@ -104,7 +143,8 @@ class Robot:
             })
         print('robot type not allow this command! The current function is only applicable to human')
 
-    def _cover_param(self, param: float, value: str, min_threshold: float, max_threshold: float) -> float:
+    @staticmethod
+    def _cover_param(param: float, value: str, min_threshold: float, max_threshold: float) -> float:
         if param is None:
             print(f"Illegal parameter: {value} = {param}")
             param = 0
@@ -120,12 +160,6 @@ class Robot:
             param = min_threshold
         return param
 
-    def _send_socket_msg(self, message: json):
-        self.client_socket.sendto(json.dumps(message).encode(), (self.host, self.socket_port))
-
-    def _receive_response(self):
-        response, server_address = self.client_socket.recvfrom(1024)
-        return response.decode()
-
-    def _close(self):
-        self.client_socket.close()
+    async def _send_websocket_msg(self, message: json):
+        if self.websocket:
+            await self.websocket.send(json.dumps(message))
