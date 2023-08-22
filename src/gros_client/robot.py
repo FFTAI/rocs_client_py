@@ -1,9 +1,18 @@
+# todo : import 的 约定是这样： 
+#
+# import系统库
+# 然后空一行
+# import 第三方
+# 然后空一行
+# import 自己的库
+
+from typing import Callable
 import asyncio
 
-
 import websockets
-from typing import Callable
 
+# todo : 文件名 和 类名 不匹配。
+# todo : 需要 pydantic 吗？
 
 class WebSocketClient:
     def __init__(self, ssl: bool = False, host: str = '192.168.12.1', port: int = 8001, on_open: Callable = None,
