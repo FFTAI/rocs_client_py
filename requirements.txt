@@ -6,3 +6,4 @@ setuptools>=65.5.1
 
 websockets>=11.0.3
 requests>=2.31.0
+websocket-client>=1.6.2

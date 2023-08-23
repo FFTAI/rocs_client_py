@@ -1,11 +1,14 @@
 import asyncio
 import json
 import queue
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict, Callable
 
 import requests
 import websockets
+
+from websocket import *
 
 
 class Mod:
@@ -30,17 +33,12 @@ executor = ThreadPoolExecutor()
 
 class Robot:
 
-    def __init__(self, ssl: bool = False, host: str = '127.0.0.1',
-                 on_open: Callable = None, on_message: Callable = None,
-                 on_close: Callable = None, on_error: Callable = None):
-        self.on_open = on_open
-        self.on_message = on_message
-        self.on_close = on_close
-        self.on_error = on_error
+    def __init__(self, ssl: bool = False, host: str = '127.0.0.1'):
 
         self.mod = Mod.MOD_ORIGINAL
-        self.type: str = ''
-
+        self.type: str = 'human'
+        self.states_queue = queue.Queue()
+        self.error_queue = queue.Queue()
         if ssl:
             self.baseurl = f'https://{host}:8001'
             self.ws_url = f'wss://{host}:8001/ws'
@@ -51,7 +49,33 @@ class Robot:
         self.message: queue = None
         self.websocket: websockets = None
         # asyncio.get_event_loop().run_until_complete(self._connect())
-        asyncio.get_event_loop().run_until_complete(self.connect_to_server())
+        self.ws: WebSocket = create_connection(self.ws_url)
+        print(self.ws_url)
+        self.receive_thread = threading.Thread(target=self.receive_loop)
+        self.receive_thread.start()
+
+    def receive_loop(self):
+        while True:
+            result = self.ws.recv()
+            result_json = json.loads(result)
+            if "function" in result_json:
+                print("生产：length", self.states_queue.qsize())
+                if (self.states_queue.qsize() > 0):
+                    print("生产:先移除，后添加")
+                    self.states_queue.get()
+                    self.states_queue.put(result)
+                else:
+                    print("生产:直接添加")
+                    self.states_queue.put(result)
+            else:
+                self.error_queue.put(result)
+            print(result)
+
+    def get_states(self):
+        if self.states_queue.qsize() > 0:
+            return self.states_queue.get()
+        else:
+            return None
 
     async def connect_to_server(self):
         async with websockets.connect('ws://localhost:8001/ws') as websocket:
@@ -61,21 +85,6 @@ class Robot:
             while True:
                 message = await websocket.recv()
                 print(message)
-    #
-    # async def _connedted(self):
-    #     while True:
-    #         try:
-    #             message = await self.websocket.recv()
-    #             if self.on_message:
-    #                 await self.on_message(self.websocket, message)
-    #         except websockets.ConnectionClosed:
-    #             if self.on_close:
-    #                 await self.on_close(self.websocket)
-    #             break
-    #         except Exception as e:
-    #             if self.on_error:
-    #                 await self.on_error(self.websocket, e)
-    #             break
 
     def get_type(self) -> Dict[str, Any]:
         response = requests.get(f'{self.baseurl}/robot/type')
@@ -123,7 +132,7 @@ class Robot:
     async def move(self, angle: float, speed: float):
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -0.8, 0.8)
-        await self._send_websocket_msg({
+        self._send_websocket_msg({
             'command': 'move',
             'data': {
                 'angle': angle,
@@ -160,6 +169,8 @@ class Robot:
             param = min_threshold
         return param
 
-    async def _send_websocket_msg(self, message: json):
-        if self.websocket:
-            await self.websocket.send(json.dumps(message))
+    def _send_websocket_msg(self, message: json):
+        self.ws.send(json.dumps(message))
+
+    def close_websocket(self):
+        self.ws.close()
