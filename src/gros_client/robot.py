@@ -1,7 +1,6 @@
 import json
 import queue
 import threading
-from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Dict
 
 import requests
@@ -9,8 +8,6 @@ from websocket import *
 
 from .mod import Mod
 from .robot_type import RobotType
-
-executor = ThreadPoolExecutor()
 
 
 class Robot:
@@ -29,10 +26,10 @@ class Robot:
             self.ws_url = f'ws://{host}:8001/ws'
 
         self.ws: WebSocket = create_connection(self.ws_url)
-        self.receive_thread = threading.Thread(target=self.receive_loop)
+        self.receive_thread = threading.Thread(target=self._receive_loop)
         self.receive_thread.start()
 
-    def receive_loop(self):
+    def _receive_loop(self):
         while True:
             result = self.ws.recv()
             result_json = json.loads(result)
@@ -47,7 +44,6 @@ class Robot:
                     self.states_queue.put(result)
             else:
                 self.error_queue.put(result)
-            print(result)
 
     def get_states(self):
         if self.states_queue.qsize() > 0:

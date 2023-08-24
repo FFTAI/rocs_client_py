@@ -1,27 +1,67 @@
-import websockets
-import json
-import asyncio
-import time
+import pytest
 
 from src.gros_client.robot import Robot
 
-# 使用示例
-if __name__ == "__main__":
 
+class TestYourClass:
+    @pytest.fixture
+    def robot_instance(self):
+        return Robot()
 
+    def test_get_states(self, robot_instance):
+        ...
+        # Test the get_states method
+        # ...
 
-    print("************")
-    # 创建WebSocketClient并指定WebSocket服务器的URL和回调函数
-    robot = Robot(host='127.0.0.1')
-    print("************")
-    robot.enable_debug_state(2)
-    print("~~~~~~~~~~~~~~")
-    result = robot.get_joint_limit()
-    asyncio.run(robot.move(10,10))
-    while True:
-        print("消费者")
-        print("length:", robot.states_queue.qsize(), robot.get_states())
-        time.sleep(1)
-    print(result)
-    # print(robot.get_type())
-    # print(robot.enable_debug_state())
+    def test_get_type(self, robot_instance):
+        ...
+        # Test the get_type method
+        # ...
+
+    def test_get_video_status(self, robot_instance):
+        ...
+        # Test the get_video_status method
+        # ...
+
+    def test_get_video_stream_url(self, robot_instance):
+        ...
+        # Test the get_video_stream_url method
+        # ...
+
+    def test_set_mode(self, robot_instance):
+        ...
+        # Test the set_mode method
+        # ...
+
+    def test_get_joint_limit(self, robot_instance):
+        ...
+        # Test the get_joint_limit method
+        # ...
+
+    def test_get_joint_states(self, robot_instance):
+        ...
+        # Test the get_joint_states method
+        # ...
+
+    def test_enable_debug_state(self, robot_instance):
+        ...
+        # Test the enable_debug_state method
+        # ...
+
+    def test_stand(self, robot_instance):
+        ...
+        # Test the stand method
+        # ...
+
+    def test_move(self, robot_instance):
+        ...
+        # Test the move method
+        # ...
+
+    def test_head(self, robot_instance):
+        ...
+        # Test the head method
+        # ...
+
+    def test_close_websocket(self, robot_instance):
+        ...

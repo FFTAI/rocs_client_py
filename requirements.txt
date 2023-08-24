@@ -4,3 +4,4 @@ setuptools>=65.5.1
 
 requests>=2.31.0
 websocket-client>=1.6.2
+pytest>=7.4.0

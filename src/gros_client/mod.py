@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class Mod(Enum):
-
     MOD_ORIGINAL = "ORIGINAL",
     MOD_ACTION = 'ACTION',
     MOD_HOME = 'HOME',
