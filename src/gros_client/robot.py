@@ -10,6 +10,34 @@ from websocket import *
 from .mod import Mod
 from .robot_type import RobotType
 
+'''
+# todo: 前端实际上需要大致还原出后端的类结构：
+
+FFTAI
+    L robotics
+        L Robot
+            L Human
+            L Car
+            L Dog
+        L Common
+            L Cammera
+            L Slam
+            L Speaker
+    L system
+        L 
+
+        
+在使用的时候：
+
+
+import * from FFTAI
+robot = robotics.Robot.Human()
+robot.start()
+
+
+前端的SDK结构，OpenAI做的不错，可以作为我们的示例。
+
+'''
 
 class Robot:
 
