@@ -39,6 +39,7 @@ robot.start()
 
 '''
 
+
 class Robot:
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1',
@@ -100,13 +101,13 @@ class Robot:
 
     def get_joint_limit(self) -> Dict[str, Any]:
         if self.type == RobotType.HUMAN:
-            response = requests.get(f'{self.baseurl}/robot/jointLimit')
+            response = requests.get(f'{self.baseurl}/robot/joint_limit')
             return response.json()
         print('robot type not allow this command! The current function is only applicable to humans')
 
     def get_joint_states(self) -> Dict[str, Any]:
         if self.type == RobotType.HUMAN:
-            response = requests.get(f'{self.baseurl}/robot/jointStates')
+            response = requests.get(f'{self.baseurl}/robot/joint_states')
             return response.json()
         print('robot type not allow this command! The current function is only applicable to humans')
 
