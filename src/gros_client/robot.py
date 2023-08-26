@@ -92,7 +92,7 @@ class Robot:
         return f'{self.baseurl}/control/camera'
 
     def set_mode(self, mod: Mod) -> Dict[str, Any]:
-        if self.type == RobotType.CAR:
+        if self.type == RobotType.CAR.value:
             self.mod = mod
             data = {'mod_val': mod}
             response = requests.post(f'{self.baseurl}/robot/mode', data)
@@ -100,13 +100,13 @@ class Robot:
         print('robot type not allow this command! The current function is only applicable to car')
 
     def get_joint_limit(self) -> Dict[str, Any]:
-        if self.type == RobotType.HUMAN:
+        if self.type == RobotType.HUMAN.value:
             response = requests.get(f'{self.baseurl}/robot/joint_limit')
             return response.json()
         print('robot type not allow this command! The current function is only applicable to humans')
 
     def get_joint_states(self) -> Dict[str, Any]:
-        if self.type == RobotType.HUMAN:
+        if self.type == RobotType.HUMAN.value:
             response = requests.get(f'{self.baseurl}/robot/joint_states')
             return response.json()
         print('robot type not allow this command! The current function is only applicable to humans')
