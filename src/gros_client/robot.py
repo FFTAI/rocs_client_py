@@ -85,7 +85,7 @@ class Robot:
         return response.json()
 
     def get_video_status(self) -> Dict[str, Any]:
-        response = requests.get(f'{self.baseurl}/control/camera')
+        response = requests.get(f'{self.baseurl}/control/camera_status')
         return response.json()
 
     def get_video_stream_url(self) -> str:
@@ -93,7 +93,7 @@ class Robot:
 
     def set_mode(self, mod: Mod) -> Dict[str, Any]:
         if self.type == RobotType.CAR.value:
-            self.mod = mod
+            self.mod = mod.value
             data = {'mod_val': mod}
             response = requests.post(f'{self.baseurl}/robot/mode', data)
             return response.json()
@@ -117,6 +117,19 @@ class Robot:
                 'command': 'states',
                 'data': {
                     'frequence': frequence
+                }
+            })
+            print('The debug state is enabled successfully! '
+                  'please listen to the data with the on_message function processing function as "SonnieGetStates"')
+        else:
+            print('robot type not allow this command! The current function is only applicable to humans')
+
+    def disable_debug_state(self):
+        if self.type == RobotType.HUMAN.value:
+            self._send_websocket_msg({
+                'command': 'states',
+                'data': {
+                    'switch': False
                 }
             })
             print('The debug state is enabled successfully! '

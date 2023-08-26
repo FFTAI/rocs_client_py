@@ -2,6 +2,7 @@ import unittest
 
 import websocket
 
+from src.gros_client.mod import Mod
 from src.gros_client.robot import Robot
 from src.gros_client.robot_type import RobotType
 
@@ -39,45 +40,44 @@ class TestRobot(unittest.TestCase):
     def test_enable_debug_state(self):
         robot.enable_debug_state(1)
 
+    def test_disable_debug_state(self):
+        robot.disable_debug_state()
+
     def test_get_video_status(self):
-        ...
+        res = robot.get_video_status()
+        print(f'video_status {res["data"]}')
+        assert res.get('data')
 
     def test_get_video_stream_url(self):
-        ...
-        # Test the get_video_stream_url method
-        # ...
+        res = robot.get_video_stream_url()
+        print(f'video stream url = {res}')
 
     def test_set_mode(self):
-        ...
-        # Test the set_mode method
-        # ...
+        res = robot.set_mode(Mod.MOD_4_WHEEL)
+        print(f'test_set_mode {res["data"]}')
+        assert res.get('code') == 0
 
     def test_get_joint_limit(self):
-        print(f'robot.test_get_joint_limit: {robot.get_joint_limit()}')
-        ...
-        # Test the get_joint_limit method
-        # ...
+        res = robot.get_joint_limit()
+        print(f'robot.test_get_joint_limit: {res}')
+        assert res.get('code') == 0
 
     def test_get_joint_states(self):
-        print(f'robot.test_get_joint_states: {robot.get_joint_states()}')
-        ...
-        # Test the get_joint_states method
-        # ...
+        res = robot.get_joint_states()
+        print(f'robot.test_get_joint_states: {res}')
+        assert res.get('code') == 0
 
     def test_stand(self):
-        ...
-        # Test the stand method
-        # ...
+        res = robot.stand()
+        print(f'robot.test_stand: {res}')
+        assert res.get('code') == 0
 
     def test_move(self):
-        ...
-        # Test the move method
-        # ...
+        res = robot.move(1, 0.8)
+        print(f'robot.test_move: {res}')
+        assert res.get('code') == 0
 
     def test_head(self):
-        ...
-        # Test the head method
-        # ...
-
-    def test_close_websocket(self):
-        ...
+        res = robot.head(1,1, 0.8)
+        print(f'robot.test_head: {res}')
+        assert res.get('code') == 0
