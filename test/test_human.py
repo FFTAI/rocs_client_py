@@ -1,3 +1,5 @@
+import unittest
+
 import websocket
 
 from src.gros_client import robot
@@ -19,28 +21,26 @@ async def on_error(ws: websocket.WebSocketException, error: Exception):
     print("WebSocket error:", error)
 
 
-human = robot.Human(host='192.168.10.207',
-                    on_open=on_open,
-                    on_message=on_message,
-                    on_close=on_close,
-                    on_error=on_error)
+human = robot.Human(on_open=on_open, on_message=on_message, on_close=on_close, on_error=on_error)
 
 
-class TestHuman:
+class TestHuman(unittest.TestCase):
 
     def test_enable_debug_state(self):
-        human.enable_debug_state(1)
+        res = human.enable_debug_state(1)
+        assert res.get('code') == 0
 
     def test_disable_debug_state(self):
-        human.disable_debug_state()
+        res = human.disable_debug_state()
+        assert res.get('code') == 0
 
     def test_get_video_status(self):
-        res = human.camera.video_stream_status
+        res: bool = human.camera.video_stream_status
         print(f'test_get_video_status: {res}')
-        assert res
+        assert res is True
 
     def test_get_video_stream_url(self):
-        res = human.camera.video_stream_url
+        res: str = human.camera.video_stream_url
         print(f'video stream url:  {res}')
 
     def test_get_joint_limit(self):

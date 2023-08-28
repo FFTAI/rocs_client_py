@@ -1,9 +1,11 @@
+import unittest
+
 from src.gros_client import robot
 
-car = robot.Car(host='127.0.0.1')
+car = robot.Car()
 
 
-class TestCar:
+class TestCar(unittest.TestCase):
 
     def test_start(self):
         res = car.start()

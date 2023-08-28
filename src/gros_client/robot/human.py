@@ -12,6 +12,13 @@ class Human(RobotBase):
         super().__init__(ssl, host, port, on_open, on_message, on_close, on_error)
 
     def stand(self) -> Dict[str, Any]:
+        """
+        robot will stand up
+
+        Returns:
+             result(Dict): {code: 0, msg: 'ok'}  or  {code: -1, msg: $ERR_MSG}
+
+        """
         response = requests.post(f'{self._baseurl}/robot/stand')
         return response.json()
 
