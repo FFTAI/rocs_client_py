@@ -50,3 +50,5 @@ Thumbs.db
 
 /venv/
 /.pytest_cache/
+/doc/build/
+/doc/source
