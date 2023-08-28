@@ -1,6 +1,6 @@
 [project]
-name = "demo_robot"
-version = "1.0.1"
+name = "gros_client"
+version = "1.0.6"
 authors = [
     { name = "jax", email = "ming.li@fftai.com" },
 ]
