@@ -91,6 +91,20 @@ class Robot:
     def get_video_stream_url(self) -> str:
         return f'{self.baseurl}/control/camera'
 
+    def start(self):
+        response = requests.post(f'{self.baseurl}/robot/start')
+        return response.json()
+
+    def stop(self):
+        response = requests.post(f'{self.baseurl}/robot/stop')
+        return response.json()
+
+    def stand(self) -> Dict[str, Any]:
+        if self.type == RobotType.HUMAN.value:
+            response = requests.post(f'{self.baseurl}/robot/stand')
+            return response.json()
+        print('robot type not allow this command! The current function is only applicable to human')
+
     def set_mode(self, mod: Mod) -> Dict[str, Any]:
         if self.type == RobotType.CAR.value:
             self.mod = mod.value
@@ -113,35 +127,15 @@ class Robot:
 
     def enable_debug_state(self, frequence: int = 1):
         if self.type == RobotType.HUMAN.value:
-            self._send_websocket_msg({
-                'command': 'states',
-                'data': {
-                    'frequence': frequence
-                }
-            })
-            print('The debug state is enabled successfully! '
-                  'please listen to the data with the on_message function processing function as "SonnieGetStates"')
-        else:
-            print('robot type not allow this command! The current function is only applicable to humans')
+            response = requests.get(f'{self.baseurl}/robot/enable_states_listen')
+            return response.json()
+        print('robot type not allow this command! The current function is only applicable to humans')
 
     def disable_debug_state(self):
         if self.type == RobotType.HUMAN.value:
-            self._send_websocket_msg({
-                'command': 'states',
-                'data': {
-                    'switch': False
-                }
-            })
-            print('The debug state is enabled successfully! '
-                  'please listen to the data with the on_message function processing function as "SonnieGetStates"')
-        else:
-            print('robot type not allow this command! The current function is only applicable to humans')
-
-    def stand(self) -> Dict[str, Any]:
-        if self.type == RobotType.HUMAN.value:
-            response = requests.post(f'{self.baseurl}/robot/stand')
+            response = requests.get(f'{self.baseurl}/robot/disable_states_listen')
             return response.json()
-        print('robot type not allow this command! The current function is only applicable to human')
+        print('robot type not allow this command! The current function is only applicable to humans')
 
     def move(self, angle: float, speed: float):
         angle = self._cover_param(angle, 'angle', -45, 45)

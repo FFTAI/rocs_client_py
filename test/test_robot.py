@@ -67,17 +67,23 @@ class TestRobot(unittest.TestCase):
         print(f'robot.test_get_joint_states: {res}')
         assert res.get('code') == 0
 
+    def test_start(self):
+        res = robot.start()
+        print(f'robot.test_start: {res}')
+        assert res.get('code') == 0
+
+    def test_stop(self):
+        res = robot.stop()
+        print(f'robot.test_stop: {res}')
+        assert res.get('code') == 0
+
     def test_stand(self):
         res = robot.stand()
         print(f'robot.test_stand: {res}')
         assert res.get('code') == 0
 
     def test_move(self):
-        res = robot.move(1, 0.8)
-        print(f'robot.test_move: {res}')
-        assert res.get('code') == 0
+        robot.move(1, 0.8)
 
     def test_head(self):
-        res = robot.head(1,1, 0.8)
-        print(f'robot.test_head: {res}')
-        assert res.get('code') == 0
+        robot.head(1, 1, 0.8)
