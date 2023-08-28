@@ -8,6 +8,7 @@ import websocket
 from websocket import *
 
 from .common.camera import Camera
+from .common.system import System
 
 
 class RobotBase:
@@ -28,16 +29,14 @@ class RobotBase:
         self._on_close = on_close
         self._on_error = on_error
 
-        if self._on_open:
-            asyncio.run(self._on_open(self._ws))
-
         self.camera = Camera(self._baseurl)
         self.system = System()
 
-        self._receive_thread = threading.Thread(target=self._receive_loop)
+        self._receive_thread = threading.Thread(target=self._event_)
         self._receive_thread.start()
 
-    def _receive_loop(self):
+    def _event_(self):
+        self._on_open(self._ws)
         while True:
             try:
                 message = self._ws.recv()
@@ -49,17 +48,6 @@ class RobotBase:
             except websocket.WebSocketException as e:
                 if self._on_error:
                     asyncio.run(self._on_error(self._ws, e))
-
-    def start(self) -> Dict[str, Any]:
-        response = requests.post(f'{self._baseurl}/robot/start')
-        return response.json()
-
-    def stop(self):
-        response = requests.post(f'{self._baseurl}/robot/stop')
-        return response.json()
-
-    def exit(self):
-        self._ws.close()
 
     def _send_websocket_msg(self, message: json):
         self._ws.send(json.dumps(message))
@@ -80,3 +68,14 @@ class RobotBase:
                 f"greater than maximum, expected not to be less than {min_threshold}, actual {param}")
             param = min_threshold
         return param
+
+    def start(self) -> Dict[str, Any]:
+        response = requests.post(f'{self._baseurl}/robot/start')
+        return response.json()
+
+    def stop(self):
+        response = requests.post(f'{self._baseurl}/robot/stop')
+        return response.json()
+
+    def exit(self):
+        self._ws.close()

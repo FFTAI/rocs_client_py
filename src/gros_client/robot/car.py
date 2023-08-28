@@ -4,7 +4,6 @@ from typing import Callable, Dict, Any
 import requests
 
 from ..robot_base import RobotBase
-from ..robot_type import RobotType
 
 
 class Mod(Enum):
@@ -22,7 +21,6 @@ class Car(RobotBase):
                  on_message: Callable = None, on_close: Callable = None, on_error: Callable = None):
         super().__init__(ssl, host, port, on_open, on_message, on_close, on_error)
         self._mod = None
-        self._type: RobotType = RobotType.CAR
 
     def set_mode(self, mod: Mod) -> Dict[str, Any]:
         self._mod: Mod = mod
