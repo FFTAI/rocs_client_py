@@ -1,0 +1,30 @@
+src.gros\_client package
+========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.gros_client.common
+   src.gros_client.robot
+
+Submodules
+----------
+
+src.gros\_client.robot\_base module
+-----------------------------------
+
+.. automodule:: src.gros_client.robot_base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.gros_client
+   :members:
+   :undoc-members:
+   :show-inheritance:
