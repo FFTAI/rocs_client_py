@@ -3,17 +3,19 @@ from typing import Callable, Dict, Any
 
 import requests
 
-from ..robot_base import RobotBase
+from .robot_base import RobotBase
 
 
 class Mod(Enum):
-    MOD_4_WHEEL = "WHEEL_4",
-    MOD_3_WHEEL = "WHEEL_3",
-    MOD_2_WHEEL = "WHEEL_2",
+    """ 对应car set_mode函数的参数 """
 
-    _MOD_HOME = 'HOME',
-    _MOD_FIX = 'FIX',
-    _MOD_ACTION = 'ACTION',
+    MOD_4_WHEEL = "WHEEL_4"
+    MOD_3_WHEEL = "WHEEL_3"
+    MOD_2_WHEEL = "WHEEL_2"
+
+    _MOD_HOME = 'HOME'
+    _MOD_FIX = 'FIX'
+    _MOD_ACTION = 'ACTION'
 
 
 class Car(RobotBase):

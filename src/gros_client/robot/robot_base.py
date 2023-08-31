@@ -1,37 +1,25 @@
 import asyncio
 import json
 import threading
-from typing import Callable, Dict, Any
+from typing import Callable
 
 import requests
 import websocket
 from websocket import *
 
-from .common.camera import Camera
-from .common.system import System
+from ..common.camera import Camera
+from ..common.system import System
 
 
 class RobotBase:
-    """ robot base class
+    """ Robot 基类
 
-    when instantiated create A websocket client!
-    so you need to implement the corresponding 'on_**' function to process to your business logic
+    实例化的时候会通过websocket连接到对应设备的控制端口！
     """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001,
-                 on_open: Callable = None, on_message: Callable = None,
+                 on_connected: Callable = None, on_message: Callable = None,
                  on_close: Callable = None, on_error: Callable = None):
-        """
-
-        Args:
-            ssl(bool):  https ?
-            host(str):  The host where your service or robot is located
-            port(int):  The port where your service or robot is located
-            on_open(Callable):  events when connected to robotic devices
-            on_message(Callable): events when the robot replies
-            on_close(Callable): events when closed to robotic devices
-            on_error(Callable): events when error to robotic devices
-        """
         if ssl:
             self._baseurl: str = f'https://{host}:{port}'
             self._ws_url = f'wss://{host}:{port}/ws'
@@ -40,7 +28,7 @@ class RobotBase:
             self._ws_url = f'ws://{host}:{port}/ws'
 
         self._ws: WebSocket = create_connection(self._ws_url)
-        self._on_open = on_open
+        self._on_connected = on_connected
         self._on_message = on_message
         self._on_close = on_close
         self._on_error = on_error
@@ -49,7 +37,7 @@ class RobotBase:
         self.system = System()
 
         if self._ws:
-            asyncio.run(self._on_open(self._ws))
+            asyncio.run(self._on_connected(self._ws))
         self._receive_thread = threading.Thread(target=self._event_)
         self._receive_thread.start()
 
@@ -86,24 +74,22 @@ class RobotBase:
             param = min_threshold
         return param
 
-    def start(self) -> Dict[str, Any]:
-        """ robot start
+    def start(self):
+        """ 启动 : 重置/归零/对设备初始状态的校准/
 
-        When you want to control the robot
+        当你想要控制Robot设备的时候，你的第一个指令
         """
         response = requests.post(f'{self._baseurl}/robot/start')
         return response.json()
 
     def stop(self):
-        """ robot stop
+        """ 停止
 
-        This command takes precedence over other commands! Stop in case of emergency
+        ``该命令优先于其他命令! 会掉电停止。请在紧急情况下触发``
         """
         response = requests.post(f'{self._baseurl}/robot/stop')
         return response.json()
 
     def exit(self):
-        """
-        Close the socket link when you finish to avoid memory leaks
-        """
+        """ 端口Robot链接 """
         self._ws.close()

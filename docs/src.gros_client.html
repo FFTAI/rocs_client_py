@@ -113,10 +113,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="src.gros_client.robot.html#module-src.gros_client.robot.dog">src.gros_client.robot.dog module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="src.gros_client.robot.html#src.gros_client.robot.dog.Dog"><code class="docutils literal notranslate"><span class="pre">Dog</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="src.gros_client.robot.html#module-src.gros_client.robot.human">src.gros_client.robot.human module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="src.gros_client.robot.html#src.gros_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="src.gros_client.robot.html#src.gros_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
@@ -130,46 +126,20 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="src.gros_client.robot.html#module-src.gros_client.robot.robot_base">src.gros_client.robot.robot_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.gros_client.robot.html#src.gros_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.gros_client.robot.html#src.gros_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.gros_client.robot.html#src.gros_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.gros_client.robot.html#src.gros_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="src.gros_client.robot.html#module-src.gros_client.robot">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</section>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
-</section>
-<section id="module-src.gros_client.robot_base">
-<span id="src-gros-client-robot-base-module"></span><h2>src.gros_client.robot_base module<a class="headerlink" href="#module-src.gros_client.robot_base" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="src.gros_client.robot_base.RobotBase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.gros_client.robot_base.</span></span><span class="sig-name descname"><span class="pre">RobotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot_base.RobotBase" title="Link to this definition"></a></dt>
-<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>robot base class</p>
-<p>when instantiated create A websocket client!
-so you need to implement the corresponding ‘on_**’ function to process to your business logic</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="src.gros_client.robot_base.RobotBase.exit">
-<span class="sig-name descname"><span class="pre">exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot_base.RobotBase.exit" title="Link to this definition"></a></dt>
-<dd><p>Close the socket link when you finish to avoid memory leaks</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.gros_client.robot_base.RobotBase.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#src.gros_client.robot_base.RobotBase.start" title="Link to this definition"></a></dt>
-<dd><p>robot start</p>
-<p>When you want to control the robot</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.gros_client.robot_base.RobotBase.stop">
-<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot_base.RobotBase.stop" title="Link to this definition"></a></dt>
-<dd><p>robot stop</p>
-<p>This command takes precedence over other commands! Stop in case of emergency</p>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 <section id="module-src.gros_client">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.gros_client" title="Link to this heading"></a></h2>

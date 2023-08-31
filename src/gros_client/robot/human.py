@@ -2,7 +2,7 @@ from typing import Any, Dict, Callable
 
 import requests
 
-from ..robot_base import RobotBase
+from .robot_base import RobotBase
 
 
 class Human(RobotBase):
