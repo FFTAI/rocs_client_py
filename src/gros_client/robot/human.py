@@ -105,9 +105,9 @@ class Human(RobotBase):
         ``该请求维持了长链接的方式进行发送``
 
         Args:
-            roll(float):
-            pitch(float):
-            yaw(float):
+            roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
+            pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
+            yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
         """
         self._send_websocket_msg({
             'command': 'head',
