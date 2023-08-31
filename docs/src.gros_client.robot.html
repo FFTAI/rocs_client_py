@@ -61,10 +61,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.gros_client.robot.dog">src.gros_client.robot.dog module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.gros_client.robot.dog.Dog"><code class="docutils literal notranslate"><span class="pre">Dog</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-src.gros_client.robot.human">src.gros_client.robot.human module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#src.gros_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#src.gros_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
@@ -74,6 +70,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#src.gros_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#src.gros_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#src.gros_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.gros_client.robot.robot_base">src.gros_client.robot.robot_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.gros_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.gros_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.gros_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.gros_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -116,17 +121,49 @@
 <span id="src-gros-client-robot-car-module"></span><h2>src.gros_client.robot.car module<a class="headerlink" href="#module-src.gros_client.robot.car" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="src.gros_client.robot.car.Car">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.gros_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.car.Car" title="Link to this definition"></a></dt>
-<dd><p>基类：<a class="reference internal" href="src.gros_client.html#src.gros_client.robot_base.RobotBase" title="src.gros_client.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.gros_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.car.Car" title="Link to this definition"></a></dt>
+<dd><p>基类：<a class="reference internal" href="#src.gros_client.robot.robot_base.RobotBase" title="src.gros_client.robot.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
+<p>Car对象</p>
+<p>在你需要连接Car的时候，你可以创建一个Car()对象！ 这将会在后台连接到控制系统，并提供对应的控制函数和状态监听！</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ssl</strong> (<em>bool</em>) – 是否开启ssl认证。默认 False</p></li>
+<li><p><strong>host</strong> (<em>str</em>) – car的网络IP</p></li>
+<li><p><strong>port</strong> (<em>int</em>) – car的控制服务的PORT</p></li>
+<li><p><strong>on_connected</strong> (<em>Callable</em>) – 该监听将会在car连接成功时触发</p></li>
+<li><p><strong>on_message</strong> (<em>Callable</em>) – 该监听将会在car发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑</p></li>
+<li><p><strong>on_close</strong> (<em>Callable</em>) – 该监听将会在car连接关闭时触发</p></li>
+<li><p><strong>on_error</strong> (<em>Callable</em>) – 该监听将会在car发生错误时触发</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.gros_client.robot.car.Car.move">
 <span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.car.Car.move" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>控制Car行走</p>
+<p><code class="docutils literal notranslate"><span class="pre">该请求维持了长链接的方式进行发送</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)</p></li>
+<li><p><strong>speed</strong> (<em>float</em>) – 速度 控制前后，取值范围为正负500。向前为正，向后为负！(浮点数8位)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="src.gros_client.robot.car.Car.set_mode">
 <span class="sig-name descname"><span class="pre">set_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.gros_client.robot.car.Mod" title="src.gros_client.robot.car.Mod"><span class="pre">Mod</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#src.gros_client.robot.car.Car.set_mode" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>设置小车的模式</p>
+<p>完成后小车将在对应模式下运动，包括 4轮 3轮 2轮</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mod</strong> (<a class="reference internal" href="#src.gros_client.robot.car.Mod" title="src.gros_client.robot.car.Mod"><em>Mod</em></a>) – 模式对象定义</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -134,31 +171,22 @@
 <dt class="sig sig-object py" id="src.gros_client.robot.car.Mod">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.gros_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.car.Mod" title="Link to this definition"></a></dt>
 <dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>An enumeration.</p>
+<p>对应car set_mode函数的参数</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.gros_client.robot.car.Mod.MOD_2_WHEEL">
-<span class="sig-name descname"><span class="pre">MOD_2_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('WHEEL_2',)</span></em><a class="headerlink" href="#src.gros_client.robot.car.Mod.MOD_2_WHEEL" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">MOD_2_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_2'</span></em><a class="headerlink" href="#src.gros_client.robot.car.Mod.MOD_2_WHEEL" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.gros_client.robot.car.Mod.MOD_3_WHEEL">
-<span class="sig-name descname"><span class="pre">MOD_3_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('WHEEL_3',)</span></em><a class="headerlink" href="#src.gros_client.robot.car.Mod.MOD_3_WHEEL" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">MOD_3_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_3'</span></em><a class="headerlink" href="#src.gros_client.robot.car.Mod.MOD_3_WHEEL" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.gros_client.robot.car.Mod.MOD_4_WHEEL">
-<span class="sig-name descname"><span class="pre">MOD_4_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('WHEEL_4',)</span></em><a class="headerlink" href="#src.gros_client.robot.car.Mod.MOD_4_WHEEL" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">MOD_4_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_4'</span></em><a class="headerlink" href="#src.gros_client.robot.car.Mod.MOD_4_WHEEL" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-</section>
-<section id="module-src.gros_client.robot.dog">
-<span id="src-gros-client-robot-dog-module"></span><h2>src.gros_client.robot.dog module<a class="headerlink" href="#module-src.gros_client.robot.dog" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="src.gros_client.robot.dog.Dog">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.gros_client.robot.dog.</span></span><span class="sig-name descname"><span class="pre">Dog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_open</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.dog.Dog" title="Link to this definition"></a></dt>
-<dd><p>基类：<a class="reference internal" href="src.gros_client.html#src.gros_client.robot_base.RobotBase" title="src.gros_client.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
 </dd></dl>
 
 </section>
@@ -167,8 +195,8 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="src.gros_client.robot.human.Human">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.gros_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Human</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.human.Human" title="Link to this definition"></a></dt>
-<dd><p>基类：<a class="reference internal" href="src.gros_client.html#src.gros_client.robot_base.RobotBase" title="src.gros_client.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
-<p>GR-1人形机器人</p>
+<dd><p>基类：<a class="reference internal" href="#src.gros_client.robot.robot_base.RobotBase" title="src.gros_client.robot.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
+<p>GR-1人形机器人对象</p>
 <p>在你需要连接GR-1人形机器人的时候，你可以创建一个Human()对象！ 这将会在后台连接到人形的控制系统，并提供对应的控制函数和状态监听！</p>
 <dl class="field-list simple">
 <dt class="field-odd">参数<span class="colon">:</span></dt>
@@ -267,6 +295,37 @@
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.gros_client.robot.robot_base">
+<span id="src-gros-client-robot-robot-base-module"></span><h2>src.gros_client.robot.robot_base module<a class="headerlink" href="#module-src.gros_client.robot.robot_base" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.gros_client.robot.robot_base.RobotBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.gros_client.robot.robot_base.</span></span><span class="sig-name descname"><span class="pre">RobotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.robot_base.RobotBase" title="Link to this definition"></a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Robot 基类</p>
+<p>实例化的时候会通过websocket连接到对应设备的控制端口！</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.gros_client.robot.robot_base.RobotBase.exit">
+<span class="sig-name descname"><span class="pre">exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.robot_base.RobotBase.exit" title="Link to this definition"></a></dt>
+<dd><p>端口Robot链接</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.gros_client.robot.robot_base.RobotBase.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.robot_base.RobotBase.start" title="Link to this definition"></a></dt>
+<dd><p>启动 : 重置/归零/对设备初始状态的校准/</p>
+<p>当你想要控制Robot设备的时候，你的第一个指令</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.gros_client.robot.robot_base.RobotBase.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.gros_client.robot.robot_base.RobotBase.stop" title="Link to this definition"></a></dt>
+<dd><p>停止</p>
+<p><code class="docutils literal notranslate"><span class="pre">该命令优先于其他命令!</span> <span class="pre">会掉电停止。请在紧急情况下触发</span></code></p>
 </dd></dl>
 
 </dd></dl>
