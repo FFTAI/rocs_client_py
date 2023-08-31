@@ -41,10 +41,63 @@ class Human(RobotBase):
     def get_joint_limit(self) -> Dict[str, Any]:
         """
         获取关节限位
+        Args:
+            None
 
         Returns:
             result(Dict):
+                    code (int): 返回码，0-表示成功，-1-表示失败
+                    msg (str): 返回消息，ok表示正常，失败返回错误信息
+                    data (dict): 数据对象，包含具体数据
+                        - data (list): 关节限制列表，每个元素是一个字典
+                            - name (str): 关节名称
+                            - qdotaMax (float): 关节最大速度，单位：rad/s
+                            - qaMax (float): 关节最大弧度，单位：rad
+                            - qaMin (float): 关节最小角度，单位：rad
+                            - tauaMax (float): 最大扭矩，单位：n*m
+                        - function (str): 函数名称
 
+        Example:
+            {
+                "code": 0,
+                "msg": "ok",
+                "data": {
+                    "data": {
+                        "jointlimit": [
+                            {
+                                "name": "left_hip_roll",
+                                "qaMax": 0.523598775598299,
+                                "qaMin": -0.087266462599716,
+                                "qdotaMax": 12.56637061435917,
+                                "tauaMax": 82.5
+                            },
+                            {
+                                "name": "left_hip_yaw",
+                                "qaMax": 0.392699081698724,
+                                "qaMin": -0.392699081698724,
+                                "qdotaMax": 12.56637061435917,
+                                "tauaMax": 82.5
+                            },
+                            {
+                                "name": "left_hip_pitch",
+                                "qaMax": 0.698131700797732,
+                                "qaMin": -1.221730476396031,
+                                "qdotaMax": 22.441443522143093,
+                                "tauaMax": 200
+                            },
+                            {
+                                "name": "left_knee_pitch",
+                                "qaMax": 2.094395102393195,
+                                "qaMin": -0.087266462599716,
+                                "qdotaMax": 22.441443522143093,
+                                "tauaMax": 200
+                            }
+
+                        ]
+                    },
+                    "function": "SonnieGetStatesLimit"
+                }
+            }
         """
         response = requests.get(f'{self._baseurl}/robot/joint_limit')
         return response.json()
@@ -53,9 +106,52 @@ class Human(RobotBase):
         """
         获取关节状态
 
+        Args:
+            None
+
         Returns:
             result(Dict):
+                code (int): 状态码，0-表示正常，-1-表示异常
+                msg (str): 状态信息，ok表示正常
+                data (dict): 响应数据
+                    - data (dict): 状态数据
+                        - bodyandlegstate (dict): 身体和腿部状态
+                            - currentstatus (str): 当前状态，StartComplete表示启动完成
+                            - log (dict): 日志信息
+                                - logBuffer (list): 日志缓冲区
+                                    - log (str): 日志内容，GRPC system state response init complete表示GRPC系统状态响应初始化完成
+                        - leftarmstate (dict): 左侧手臂状态
+                            - armstatus (str): 手臂状态，Swing表示摆臂模式
+                        - rightarmstate (dict): 右侧手臂状态
+                            - armstatus (str): 手臂状态，Swing表示摆臂模式
+                    - function (str): 调用该接口的函数名，SonnieGetSystemStates表示获取系统状态接口
 
+        Example:
+            {
+                "code": 0,
+                "msg": "ok",
+                "data": {
+                    "data": {
+                        "bodyandlegstate": {
+                            "currentstatus": "StartComplete",
+                            "log": {
+                                "logBuffer": [
+                                    {
+                                        "log": "GRPC system state response init complete"
+                                    }
+                                ]
+                            }
+                        },
+                        "leftarmstate": {
+                            "armstatus": "Swing"
+                        },
+                        "rightarmstate": {
+                            "armstatus": "Swing"
+                        }
+                    },
+                    "function": "SonnieGetSystemStates"
+                }
+            }
         """
         response = requests.get(f'{self._baseurl}/robot/joint_states')
         return response.json()
