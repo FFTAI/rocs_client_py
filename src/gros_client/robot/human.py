@@ -46,9 +46,9 @@ class Human(RobotBase):
 
         Returns:
             result(Dict):
-                    code (int): 返回码，0-表示成功，-1-表示失败
-                    msg (str): 返回消息，ok表示正常，失败返回错误信息
-                    data (dict): 数据对象，包含具体数据
+                    - code (int): 返回码，0-表示成功，-1-表示失败
+                    - msg (str): 返回消息，ok表示正常，失败返回错误信息
+                    - data (dict): 数据对象，包含具体数据
                         - data (list): 关节限制列表，每个元素是一个字典
                             - name (str): 关节名称
                             - qdotaMax (float): 关节最大速度，单位：rad/s
