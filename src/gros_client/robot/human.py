@@ -110,10 +110,10 @@ class Human(RobotBase):
             None
 
         Returns:
-            result(Dict):
-                code (int): 状态码，0-表示正常，-1-表示异常
-                msg (str): 状态信息，ok表示正常
-                data (dict): 响应数据
+            result(Dict): 返回数据
+                - code (int): 状态码，0-表示正常，-1-表示异常
+                - msg (str): 状态信息，ok表示正常
+                - data (dict): 响应数据
                     - data (dict): 状态数据
                         - bodyandlegstate (dict): 身体和腿部状态
                             - currentstatus (str): 当前状态，StartComplete表示启动完成
