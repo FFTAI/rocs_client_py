@@ -12,18 +12,18 @@ gros\_client.robot.car module
    :undoc-members:
    :show-inheritance:
 
-gros\_client.robot.dog module
------------------------------
-
-.. automodule:: gros_client.robot.dog
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 gros\_client.robot.human module
 -------------------------------
 
 .. automodule:: gros_client.robot.human
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+gros\_client.robot.robot\_base module
+-------------------------------------
+
+.. automodule:: gros_client.robot.robot_base
    :members:
    :undoc-members:
    :show-inheritance:

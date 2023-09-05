@@ -1,7 +1,7 @@
-src
-===
+gros_client
+===========
 
 .. toctree::
    :maxdepth: 4
 
-   src
+   gros_client

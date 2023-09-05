@@ -10,17 +10,6 @@ Subpackages
    gros_client.common
    gros_client.robot
 
-Submodules
-----------
-
-gros\_client.robot\_base module
--------------------------------
-
-.. automodule:: gros_client.robot_base
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 Module contents
 ---------------
 
