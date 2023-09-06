@@ -1,2 +1,2 @@
 from . import common
-from . import robot
+from .robot import Human, Car
