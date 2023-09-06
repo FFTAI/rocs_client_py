@@ -1,7 +1,0 @@
-gros_client
-===========
-
-.. toctree::
-   :maxdepth: 4
-
-   gros_client
