@@ -2,7 +2,7 @@ import asyncio
 import json
 import threading
 from enum import Enum
-from typing import Callable, Dict
+from typing import Callable, Dict, Any
 
 import requests
 import websocket
@@ -14,9 +14,9 @@ class Mod(Enum):
     _HOME = 590338
     _STOP = 131331
 
-    MOD_4_WHEEL = 590558
-    MOD_3_WHEEL = 590558
-    MOD_2_WHEEL = 590558
+    MOD_4_WHEEL = 592385
+    MOD_3_WHEEL = 592386
+    MOD_2_WHEEL = 592387
 
 
 class Car:
@@ -95,17 +95,17 @@ class Car:
         """ 断开Robot链接 """
         self._ws.close()
 
-    def video_status(self) -> Dict:
+    def video_status(self):
         """ 获取设备视频状态 """
         response = requests.get(f'{self._baseurl}/control/camera_status')
         return response.json()
 
-    def start(self) -> Dict:
+    def start(self):
         """ 小车启动 """
         response = requests.post(f'{self._baseurl}/control/car/mode', Mod._HOME)
         return response.json()
 
-    def stop(self) -> Dict:
+    def stop(self):
         """ 小车急停
 
         ``该命令优先于其他命令! 会掉电停止。请在紧急情况下触发``
@@ -113,7 +113,7 @@ class Car:
         response = requests.post(f'{self._baseurl}/control/car/mode', Mod._STOP)
         return response.json()
 
-    def set_mode(self, mod: Mod) -> Dict:
+    def set_mode(self, mod: Mod):
         """
         设置小车的运动模式
 

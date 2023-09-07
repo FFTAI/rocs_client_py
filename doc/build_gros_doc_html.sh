@@ -18,4 +18,3 @@ sphinx-apidoc -o source ../src
 make html
 
 
-mv build/html/* ../docs

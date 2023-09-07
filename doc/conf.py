@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 extensions = [
     'sphinx.ext.autodoc',       # 包括来自docstrings的文档
     'sphinx.ext.napoleon',      # 启用NumPy或Google样式的文档风格
+    'sphinx_markdown_builder',      # 启用NumPy或Google样式的文档风格
     'sphinx.ext.intersphinx',   # 链接到其他文档
     'sphinx.ext.todo',          # 支持todo项
     'sphinx.ext.coverage',      # 收集文档覆盖率统计
