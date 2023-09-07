@@ -6,6 +6,7 @@
 /bin/
 /dist
 /src/gros_client.egg-info/
+/gros_client.egg-info/
 
 .classpath
 .project
