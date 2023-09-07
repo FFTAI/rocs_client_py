@@ -10,6 +10,5 @@ Welcome to gros's documentation!
    :maxdepth: 1
    :caption: Contents:
 
-   src.gros_client.common
-   src.gros_client.robot
+   src.gros_client_car
 

@@ -1,10 +1,10 @@
 [project]
-name = "gros_client"
-version = "1.0.7"
+name = "gros_client_car"
+version = "0.1.15"
 authors = [
     { name = "jax", email = "ming.li@fftai.com" },
 ]
-description = "fftai-robot controller sdk"
+description = "fftai-robot-car controller sdk"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
