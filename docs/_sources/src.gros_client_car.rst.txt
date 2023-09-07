@@ -1,0 +1,21 @@
+src.gros\_client\_car package
+=============================
+
+Submodules
+----------
+
+src.gros\_client\_car.car module
+--------------------------------
+
+.. automodule:: src.gros_client_car.car
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.gros_client_car
+   :members:
+   :undoc-members:
+   :show-inheritance:

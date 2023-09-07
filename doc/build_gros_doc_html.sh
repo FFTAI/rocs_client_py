@@ -17,3 +17,5 @@ cp -r index.rst ./source
 sphinx-apidoc -o source ../src
 make html
 
+
+mv build/html/* ../docs
