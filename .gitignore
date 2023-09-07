@@ -52,3 +52,4 @@ Thumbs.db
 /.pytest_cache/
 /doc/build/
 /doc/source
+/gros_client.egg-info/

@@ -1,10 +1,24 @@
-from setuptools import setup
+import setuptools
 
-setup(
-    name='gros_client',  # 需要打包的名字,即本模块要发布的名字
-    version='1.0.7',  # 版本
-    description='init',
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="gros_client",
+    version="1.0.10",
     author='jax',
     author_email='ming.li@fftai.com',
-    license='MIT'
+    license='MIT',
+    description="Fourier General Robotics OS - Client Library (python)",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/FFTAI/gros_client_py",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    install_requires=['requests>=2.31.0', 'websocket-client>=1.6.2'],
+    python_requires='>=3'
 )
