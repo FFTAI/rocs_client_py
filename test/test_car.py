@@ -1,8 +1,15 @@
+# 安装依赖
+# pip install gros_client_car
+
+# 引入依赖
+from gros_client_car import Car
+
+# 实例化human对象
+car = Car(host='192.168.9.17')
+# 调用启动方法
+car.start()
+
 import unittest
-
-from src.gros_client import robot
-
-car = robot.Car()
 
 
 class TestCar(unittest.TestCase):
