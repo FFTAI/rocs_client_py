@@ -42,7 +42,5 @@ language = 'en'
 html_theme = 'alabaster'
 html_static_path = ['_static']
 
-# -- Options for todo extension ----------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/extensions/todo.html#configuration
 
 todo_include_todos = True
