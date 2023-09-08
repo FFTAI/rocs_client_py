@@ -58,6 +58,9 @@ class Human(RobotBase):
                         - function (str): 函数名称
 
         Example:
+
+        ..code-block:: json
+
             {
                 "code": 0,
                 "msg": "ok",
@@ -127,6 +130,9 @@ class Human(RobotBase):
                     - function (str): 调用该接口的函数名，SonnieGetSystemStates表示获取系统状态接口
 
         Example:
+
+        ..code-block:: json
+
             {
                 "code": 0,
                 "msg": "ok",
@@ -212,7 +218,11 @@ class Human(RobotBase):
                     - nanos (int):
                     - seconds (str):
             function (str): 接口名
+
         Example:
+
+        ..code-block:: json
+
             {
                 "data": {
                     "states": {

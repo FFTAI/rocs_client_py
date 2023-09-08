@@ -4,3 +4,6 @@ setuptools>=65.5.1
 
 requests>=2.31.0
 websocket-client>=1.6.2
+sphinx>=6.2.1
+sphinx_rtd_theme>=1.2.2
+sphinx-markdown-builder>=0.6.5
