@@ -12,13 +12,14 @@ class Human(RobotBase):
     在你需要连接GR-1人形机器人的时候，你可以创建一个Human()对象！ 这将会在后台连接到人形的控制系统，并提供对应的控制函数和状态监听！
 
     Args:
-        ssl(bool):  是否开启ssl认证。默认 False
-        host(str):  GR-01人形设备的网络IP
-        port(int):  GR-01人形设备的控制服务的PORT
-        on_connected(Callable):  该监听将会在GR-01人形设备连接成功时触发
-        on_message(Callable): 该监听将会在GR-01人形设备发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑
-        on_close(Callable): 该监听将会在GR-01人形设备连接关闭时触发
-        on_error(Callable): 该监听将会在GR-01人形设备发生错误时触发
+
+        - ssl(bool):  是否开启ssl认证。默认 False
+        - host(str):  GR-01人形设备的网络IP
+        - port(int):  GR-01人形设备的控制服务的PORT
+        - on_connected(Callable):  该监听将会在GR-01人形设备连接成功时触发
+        - on_message(Callable): 该监听将会在GR-01人形设备发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑
+        - on_close(Callable): 该监听将会在GR-01人形设备连接关闭时触发
+        - on_error(Callable): 该监听将会在GR-01人形设备发生错误时触发
     """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
@@ -32,6 +33,7 @@ class Human(RobotBase):
         当进行了start之后如果你想对GR-01人形设备进行指令控制，你同样需要调用该函数让其位置stand的模式。如果是在行走过程中需要停止，你同样可以调用该函数进行stand
 
         Returns:
+
              result(Dict): return一个结果集 {code: 0, msg: 'ok'}  or  {code: -1, msg: $ERR_MSG}
 
         """
@@ -42,14 +44,19 @@ class Human(RobotBase):
         """
         获取关节限位
         Args:
+
             None
 
         Returns:
+
             result(Dict):
+
                     - code (int): 返回码，0-表示成功，-1-表示失败
                     - msg (str): 返回消息，ok表示正常，失败返回错误信息
                     - data (dict): 数据对象，包含具体数据
+
                         - data (list): 关节限制列表，每个元素是一个字典
+
                             - name (str): 关节名称
                             - qdotaMax (float): 关节最大速度，单位：rad/s
                             - qaMax (float): 关节最大弧度，单位：rad
@@ -59,7 +66,7 @@ class Human(RobotBase):
 
         Example:
 
-        ..code-block:: json
+        .. code-block:: json
 
             {
                 "code": 0,
@@ -109,29 +116,38 @@ class Human(RobotBase):
         """
         获取关节状态
 
-        Args:
-            None
-
         Returns:
-            result(Dict): 返回数据
-                - code (int): 状态码，0-表示正常，-1-表示异常
-                - msg (str): 状态信息，ok表示正常
-                - data (dict): 响应数据
-                    - data (dict): 状态数据
-                        - bodyandlegstate (dict): 身体和腿部状态
-                            - currentstatus (str): 当前状态，StartComplete表示启动完成
-                            - log (dict): 日志信息
-                                - logBuffer (list): 日志缓冲区
-                                    - log (str): 日志内容，GRPC system state response init complete表示GRPC系统状态响应初始化完成
-                        - leftarmstate (dict): 左侧手臂状态
-                            - armstatus (str): 手臂状态，Swing表示摆臂模式
-                        - rightarmstate (dict): 右侧手臂状态
-                            - armstatus (str): 手臂状态，Swing表示摆臂模式
-                    - function (str): 调用该接口的函数名，SonnieGetSystemStates表示获取系统状态接口
+
+            Dict: 返回数据包含以下字段:
+
+            - `code` (int): 状态码，0 表示正常，-1 表示异常
+            - `msg` (str): 状态信息，"ok" 表示正常
+            - `data` (dict): 响应数据，包含以下字段：
+
+                - `data` (dict): 状态数据，包含以下字段：
+
+                    - `bodyandlegstate` (dict): 身体和腿部状态，包含以下字段：
+
+                        - `currentstatus` (str): 当前状态，"StartComplete" 表示启动完成
+                        - `log` (dict): 日志信息，包含以下字段：
+
+                            - `logBuffer` (list): 日志缓冲区，包含以下字段：
+
+                                - `log` (str): 日志内容，"GRPC system state response init complete" 表示 GRPC 系统状态响应初始化完成
+
+                    - `leftarmstate` (dict): 左侧手臂状态，包含以下字段：
+
+                        - `armstatus` (str): 手臂状态，"Swing" 表示摆臂模式
+
+                    - `rightarmstate` (dict): 右侧手臂状态，包含以下字段：
+
+                        - `armstatus` (str): 手臂状态，"Swing" 表示摆臂模式
+
+                - `function` (str): 调用该接口的函数名，"SonnieGetSystemStates" 表示获取系统状态接口
 
         Example:
 
-        ..code-block:: json
+        .. code-block:: json
 
             {
                 "code": 0,
@@ -158,6 +174,7 @@ class Human(RobotBase):
                     "function": "SonnieGetSystemStates"
                 }
             }
+
         """
         response = requests.get(f'{self._baseurl}/robot/joint_states')
         return response.json()
@@ -169,15 +186,22 @@ class Human(RobotBase):
         触发该函数将会在后台触发GR-01人形设备主动发送状态值的指令，因此对应的你需要监听on_message函数进行处理
 
         Args:
+
             frequence(int): 频率
 
         Returns:
+
             data (dict): 响应数据
+
                 - log (dict): 日志信息
+
                     - logBuffer (list): 日志缓冲区
+
                         - log (str): 日志内容
                 - states (dict): 关节状态数据
+
                     - basestate (dict): 机器人状态数据
+
                         - a (float): hip roll
                         - b (float): hip Pitch
                         - c (float): hip Yaw
@@ -190,9 +214,12 @@ class Human(RobotBase):
                         - x (float): base  X，站立时X位置
                         - y (float): base  Y，站立时Y位置
                         - z (float): base  Z，站立时Z位置
+
                     - fsmstatename (dict): 有关状态机状态的数据
+
                         - currentstatus (str): 当前状态 Unknown、Start、Zero、Stand、Walk、Stop
                     - jointStates (list): 关节状态列表
+
                         - name (str): 关节名称
                         - qa (float): 真实的关节角度，单位：rad（弧度）
                         - qdota (float): 真实的关节速度，单位：rad/s（弧度/秒）
@@ -202,6 +229,7 @@ class Human(RobotBase):
                         - tauc (float): 期望的关节扭矩，单位：unit:n*m
                     - stanceindex (dict): 姿态索引 not use
                     - contactforce (dict): 接触力数据 not use
+
                         - fxL (float): 左脚接触力
                         - fyL (float): 左脚接触力
                         - fzL (float): 左脚接触力
@@ -215,13 +243,15 @@ class Human(RobotBase):
                         - myR (float): 右脚接触力
                         - mzR (float): 右脚接触力
                 - timestamp (dict): 时间戳
+
                     - nanos (int):
                     - seconds (str):
+
             function (str): 接口名
 
         Example:
 
-        ..code-block:: json
+        .. code-block:: json
 
             {
                 "data": {
@@ -446,8 +476,9 @@ class Human(RobotBase):
         ``该请求维持了长链接的方式进行发送``
 
         Args:
-            angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
-            speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
+
+            - angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
+            - speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -0.8, 0.8)
@@ -466,9 +497,10 @@ class Human(RobotBase):
         ``该请求维持了长链接的方式进行发送``
 
         Args:
-            roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
-            pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
-            yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
+
+            - roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
+            - pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
+            - yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
         """
         self._send_websocket_msg({
             'command': 'head',

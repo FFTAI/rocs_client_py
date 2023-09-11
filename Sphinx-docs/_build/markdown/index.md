@@ -1,5 +1,5 @@
 <!-- gros_client_py_markdown documentation master file, created by
-sphinx-quickstart on Fri Sep  8 17:03:01 2023.
+sphinx-quickstart on Mon Sep 11 17:56:50 2023.
 You can adapt this file completely to your liking, but it should at least
 contain the root `toctree` directive. -->
 
@@ -7,6 +7,9 @@ contain the root `toctree` directive. -->
 
 # Contents:
 
+* [conf module](conf.md)
+  * [`setup()`](conf.md#conf.setup)
+  * [`skip()`](conf.md#conf.skip)
 * [markdown_conf module](markdown_conf.md)
   * [`setup()`](markdown_conf.md#markdown_conf.setup)
   * [`skip()`](markdown_conf.md#markdown_conf.skip)

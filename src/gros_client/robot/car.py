@@ -25,13 +25,14 @@ class Car(RobotBase):
     在你需要连接Car的时候，你可以创建一个Car()对象！ 这将会在后台连接到控制系统，并提供对应的控制函数和状态监听！
 
     Args:
-        ssl(bool):  是否开启ssl认证。默认 False
-        host(str):  car的网络IP
-        port(int):  car的控制服务的PORT
-        on_connected(Callable):  该监听将会在car连接成功时触发
-        on_message(Callable): 该监听将会在car发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑
-        on_close(Callable): 该监听将会在car连接关闭时触发
-        on_error(Callable): 该监听将会在car发生错误时触发
+
+        - ssl(bool):  是否开启ssl认证。默认 False
+        - host(str):  car的网络IP
+        - port(int):  car的控制服务的PORT
+        - on_connected(Callable):  该监听将会在car连接成功时触发
+        - on_message(Callable): 该监听将会在car发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑
+        - on_close(Callable): 该监听将会在car连接关闭时触发
+        - on_error(Callable): 该监听将会在car发生错误时触发
     """
     
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
@@ -46,7 +47,8 @@ class Car(RobotBase):
         完成后小车将在对应模式下运动，包括 4轮 3轮 2轮
 
         Args:
-            mod(Mod): 模式对象定义
+
+            - mod(Mod): 模式对象定义
         """
         self._mod: Mod = mod
         data = {'mod_val': mod}
@@ -60,8 +62,9 @@ class Car(RobotBase):
         ``该请求维持了长链接的方式进行发送``
 
         Args:
-            angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
-            speed(float): 速度 控制前后，取值范围为正负500。向前为正，向后为负！(浮点数8位)
+
+            - angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
+            - speed(float): 速度 控制前后，取值范围为正负500。向前为正，向后为负！(浮点数8位)
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -500, 500)
