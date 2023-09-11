@@ -86,56 +86,56 @@ Args:
 触发该函数将会在后台触发GR-01人形设备主动发送状态值的指令，因此对应的你需要监听on_message函数进行处理
 
 Args:
-: - frequence(int): 频率
+: frequence(int): 频率
 
 Returns:
-: - data (dict): 响应数据:<br>
-    : - log (dict): 日志信息<br>
-        : - logBuffer (list): 日志缓冲区<br>
-            : - log (str): 日志内容<br>
-      - states (dict): 关节状态数据:<br>
-        : - basestate (dict): 机器人状态数据:<br>
-            : - a (float): hip roll<br>
-              - b (float): hip Pitch<br>
-              - c (float): hip Yaw<br>
-              - va (float): not use<br>
-              - vb (float): not use<br>
-              - vc (float): not use<br>
-              - vx (float): 前进方向速度，单位m/s<br>
-              - vy (float): 左右方向速度，单位m/s<br>
-              - vz (float): not use<br>
-              - x (float): base  X，站立时X位置<br>
-              - y (float): base  Y，站立时Y位置<br>
-              - z (float): base  Z，站立时Z位置<br>
-          - fsmstatename (dict): 有关状态机状态的数据:<br>
-            : - currentstatus (str): 当前状态 Unknown、Start、Zero、Stand、Walk、Stop<br>
-          - jointStates (list): 关节状态列表:<br>
-            : - name (str): 关节名称<br>
-              - qa (float): 真实的关节角度，单位：rad（弧度）<br>
-              - qdota (float): 真实的关节速度，单位：rad/s（弧度/秒）<br>
-              - taua (float): 真实的扭矩，单位:n\*m<br>
-              - qc (float): 期望的关节速度，单位：rad<br>
-              - qdotc (float): 期望的关节速度，单位：rad/s（弧度/秒）<br>
-              - tauc (float): 期望的关节扭矩，单位：unit:n\*m<br>
-          - stanceindex (dict): 姿态索引 not use:<br>
-          - contactforce (dict): 接触力数据 not use:<br>
-            : - fxL (float): 左脚接触力<br>
-              - fyL (float): 左脚接触力<br>
-              - fzL (float): 左脚接触力<br>
-              - mxL (float): 左脚接触力<br>
-              - myL (float): 左脚接触力<br>
-              - mzL (float): 左脚接触力<br>
-              - fxR (float): 右脚接触力<br>
-              - fyR (float): 右脚接触力<br>
-              - fzR (float): 右脚接触力<br>
-              - mxR (float): 右脚接触力<br>
-              - myR (float): 右脚接触力<br>
-              - mzR (float): 右脚接触力<br>
-      - timestamp (dict): 时间戳:<br>
-        : - nanos (int):<br>
-          - seconds (str):<br>
+: data (dict): 响应数据
+  : - log (dict): 日志信息
+      : - logBuffer (list): 日志缓冲区
+          : - log (str): 日志内容
+    - states (dict): 关节状态数据
+      : - basestate (dict): 机器人状态数据
+          : - a (float): hip roll
+            - b (float): hip Pitch
+            - c (float): hip Yaw
+            - va (float): not use
+            - vb (float): not use
+            - vc (float): not use
+            - vx (float): 前进方向速度，单位m/s
+            - vy (float): 左右方向速度，单位m/s
+            - vz (float): not use
+            - x (float): base  X，站立时X位置
+            - y (float): base  Y，站立时Y位置
+            - z (float): base  Z，站立时Z位置
+        - fsmstatename (dict): 有关状态机状态的数据
+          : - currentstatus (str): 当前状态 Unknown、Start、Zero、Stand、Walk、Stop
+        - jointStates (list): 关节状态列表
+          : - name (str): 关节名称
+            - qa (float): 真实的关节角度，单位：rad（弧度）
+            - qdota (float): 真实的关节速度，单位：rad/s（弧度/秒）
+            - taua (float): 真实的扭矩，单位:n\*m
+            - qc (float): 期望的关节速度，单位：rad
+            - qdotc (float): 期望的关节速度，单位：rad/s（弧度/秒）
+            - tauc (float): 期望的关节扭矩，单位：unit:n\*m
+        - stanceindex (dict): 姿态索引 not use
+        - contactforce (dict): 接触力数据 not use
+          : - fxL (float): 左脚接触力
+            - fyL (float): 左脚接触力
+            - fzL (float): 左脚接触力
+            - mxL (float): 左脚接触力
+            - myL (float): 左脚接触力
+            - mzL (float): 左脚接触力
+            - fxR (float): 右脚接触力
+            - fyR (float): 右脚接触力
+            - fzR (float): 右脚接触力
+            - mxR (float): 右脚接触力
+            - myR (float): 右脚接触力
+            - mzR (float): 右脚接触力
+    - timestamp (dict): 时间戳
+      : - nanos (int):
+        - seconds (str):
   <br/>
-  function (str): 接口名<br>
+  function (str): 接口名
 
 Example:
 
@@ -475,29 +475,31 @@ Example:
 
 获取关节状态
 
-Args:
-: None
-
 Returns:
-: result(Dict): 返回数据
-  : - code (int): 状态码，0-表示正常，-1-表示异常
-    - msg (str): 状态信息，ok表示正常
-    - data (dict): 响应数据
-      : - data (dict): 状态数据
-          : - bodyandlegstate (dict): 身体和腿部状态
-              : - currentstatus (str): 当前状态，StartComplete表示启动完成
-                - log (dict): 日志信息
-                  : - logBuffer (list): 日志缓冲区
-                      : - log (str): 日志内容，GRPC system state response init complete表示GRPC系统状态响应初始化完成
-            - leftarmstate (dict): 左侧手臂状态
-              : - armstatus (str): 手臂状态，Swing表示摆臂模式
-            - rightarmstate (dict): 右侧手臂状态
-              : - armstatus (str): 手臂状态，Swing表示摆臂模式
-        - function (str): 调用该接口的函数名，SonnieGetSystemStates表示获取系统状态接口
+: Dict: 返回数据包含以下字段:
+  <br/>
+  - code (int): 状态码，0 表示正常，-1 表示异常
+  - msg (str): 状态信息，”ok” 表示正常
+  - data (dict): 响应数据，包含以下字段：
+    > - data (dict): 状态数据，包含以下字段：
+    >   > - bodyandlegstate (dict): 身体和腿部状态，包含以下字段：
+    >   >   > - currentstatus (str): 当前状态，”StartComplete” 表示启动完成
+    >   >   > - log (dict): 日志信息，包含以下字段：
+    >   >   >   > - logBuffer (list): 日志缓冲区，包含以下字段：
+    >   >   >   >   > - log (str): 日志内容，”GRPC system state response init complete” 表示 GRPC 系统状态响应初始化完成
+    >   > - leftarmstate (dict): 左侧手臂状态，包含以下字段：
+    >   >   > - armstatus (str): 手臂状态，”Swing” 表示摆臂模式
+    >   > - rightarmstate (dict): 右侧手臂状态，包含以下字段：
+    >   >   > - armstatus (str): 手臂状态，”Swing” 表示摆臂模式
+    > - function (str): 调用该接口的函数名，”SonnieGetSystemStates” 表示获取系统状态接口
 
 Example:
 
-..code-block:: json
+```
+``
+```
+
+\` json
 
 > {
 > : “code”: 0,
@@ -535,8 +537,6 @@ Example:
 >   > “function”: “SonnieGetSystemStates”
 >   <br/>
 >   }
-
-> }
 
 #### head(roll: float, pitch: float, yaw: float)
 
