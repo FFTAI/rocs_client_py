@@ -53,3 +53,4 @@ Thumbs.db
 /.pytest_cache/
 /doc/build/
 /doc/source
+/src/gros_client_car.egg-info/

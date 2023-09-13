@@ -55,11 +55,12 @@ class Car:
         self.video_stream_url = f'{self._baseurl}/control/camera'
 
         if self._ws:
-            asyncio.run(self._on_connected(self._ws))
-        self._receive_thread = threading.Thread(target=self._event_)
-        self._receive_thread.start()
+            self._receive_thread = threading.Thread(target=self._event_)
+            self._receive_thread.start()
 
     def _event_(self):
+        if self._on_connected:
+            asyncio.run(self._on_connected(self._ws))
         while True:
             try:
                 message = self._ws.recv()
@@ -102,7 +103,10 @@ class Car:
 
     def start(self):
         """ 小车启动 """
-        response = requests.post(f'{self._baseurl}/control/car/mode', Mod._HOME)
+        response = requests.post(f'{self._baseurl}/control/car/mode', json={"mode": Mod._HOME.value,
+                                                                            "host": '127.0.0.1',
+                                                                            "port": 4197
+                                                                            })
         return response.json()
 
     def stop(self):
@@ -110,7 +114,8 @@ class Car:
 
         ``该命令优先于其他命令! 会掉电停止。请在紧急情况下触发``
         """
-        response = requests.post(f'{self._baseurl}/control/car/mode', Mod._STOP)
+        response = requests.post(f'{self._baseurl}/control/car/mode',
+                                 json={"mode": Mod._STOP.value, "host": '127.0.0.1', "port": 4197})
         return response.json()
 
     def set_mode(self, mod: Mod):
@@ -123,7 +128,8 @@ class Car:
             mod(Mod): 模式对象定义
         """
         self._mod: Mod = mod
-        response = requests.post(f'{self._baseurl}/control/car/mode', {"mode": mod})
+        response = requests.post(f'{self._baseurl}/control/car/mode',
+                                 json={"mode": mod.value, "host": '127.0.0.1', "port": 4197})
         return response.json()
 
     def move(self, velocity: float, direction: float):
@@ -144,8 +150,6 @@ class Car:
             "type": 'command',
             "client_type": "car",
             'command': 'operate',
-            'data': {
-                'velocity': velocity,
-                'direction': direction
-            }
+            'velocity': velocity,
+            'direction': direction
         })

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gros_client_car",
-    version="0.1.17",
+    version="0.1.20",
     author='jax',
     author_email='ming.li@fftai.com',
     license='MIT',
@@ -13,7 +13,6 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/FFTAI/gros_client_py/tree/feat-car/0721",
-    packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
