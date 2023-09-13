@@ -17,7 +17,7 @@ class Human(RobotBase):
         - host(str):  GR-01人形设备的网络IP
         - port(int):  GR-01人形设备的控制服务的PORT
         - on_connected(Callable):  该监听将会在GR-01人形设备连接成功时触发
-        - on_message(Callable): 该监听将会在GR-01人形设备发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑
+        - on_message(Callable): 该监听将会在GR-01人形设备发送系统状态时候触发，你可能需要监听该回调处理你的逻辑
         - on_close(Callable): 该监听将会在GR-01人形设备连接关闭时触发
         - on_error(Callable): 该监听将会在GR-01人形设备发生错误时触发
     """
@@ -43,9 +43,6 @@ class Human(RobotBase):
     def get_joint_limit(self) -> Dict[str, Any]:
         """
         获取关节限位
-        Args:
-
-            None
 
         Returns:
 
