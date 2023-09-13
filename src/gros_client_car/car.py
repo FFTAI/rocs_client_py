@@ -2,7 +2,7 @@ import asyncio
 import json
 import threading
 from enum import Enum
-from typing import Callable, Dict, Any
+from typing import Callable
 
 import requests
 import websocket
@@ -139,8 +139,8 @@ class Car:
         ``该请求维持了长链接的方式进行发送``
 
         Args:
-            direction(float): 方向/角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
-            velocity(float): 速度 控制前后，取值范围为正负500。向前为正，向后为负！(浮点数8位)
+            direction(float): 方向/角度 控制方向，取值范围为正负45度。向右为正，向左为负！(浮点数8位)
+            velocity(float): 速度 控制前后，取值范围为正负500。向后为正，向前为负！(浮点数8位)
         """
         velocity = self._cover_param(velocity, 'velocity', -500, 500)
         direction = self._cover_param(direction, 'direction', -45, 45)
