@@ -35,9 +35,9 @@ class Car:
         on_error(Callable): 该监听将会在car发生错误时触发
     """
     video_stream_url: str
-    _mod: Mod
+    mod: Mod._HOME
 
-    def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001,
+    def __init__(self, ssl: bool = False, host: str = '192.168.12.1', port: int = 8001,
                  on_connected: Callable = None, on_message: Callable = None,
                  on_close: Callable = None, on_error: Callable = None):
         if ssl:
@@ -127,7 +127,7 @@ class Car:
         Args:
             mod(Mod): 模式对象定义
         """
-        self._mod: Mod = mod
+        self.mod: Mod = mod
         response = requests.post(f'{self._baseurl}/control/car/mode',
                                  json={"mode": mod.value, "host": '127.0.0.1', "port": 4197})
         return response.json()
@@ -147,6 +147,7 @@ class Car:
         self._send_websocket_msg({
             "host": '127.0.0.1',
             "port": 4197,
+            "mode": self.mod.value,
             "type": 'command',
             "client_type": "car",
             'command': 'operate',
