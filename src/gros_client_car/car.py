@@ -96,10 +96,10 @@ class Car:
         """ 断开Robot链接 """
         self._ws.close()
 
-    def video_status(self):
+    def video_status(self) -> bool:
         """ 获取设备视频状态 """
-        response = requests.get(f'{self._baseurl}/control/camera_status')
-        return response.json()
+        response = requests.get(f'{self._baseurl}/control/cameraOpen')
+        return response.json()['data']
 
     def start(self):
         """ 小车启动 """

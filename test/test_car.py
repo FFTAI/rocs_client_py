@@ -3,11 +3,13 @@ import unittest
 # 安装依赖
 # pip install gros_client_car
 # 引入依赖
-from gros_client_car.car import Mod, Car
+from src.gros_client_car.car import Mod, Car
 # 实例化Car对象
 car = Car(host='127.0.0.1')
 # 调用启动方法
-time.sleep(5)
+
+print(f'video_status: {car.video_status()}')
+print(f'video_stream_url: {car.video_stream_url}')
 
 
 class TestCar(unittest.TestCase):
@@ -25,4 +27,5 @@ class TestCar(unittest.TestCase):
         car.set_mode(Mod.MOD_4_WHEEL)
 
     def test_move(self):
-        car.move(1, 0.8)
+        car.move(1, 10)
+
