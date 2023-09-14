@@ -19,7 +19,7 @@ def setup(app):
 
 project = 'gros_client_py_markdown'
 copyright = '2023, Matteo Ferla'
-author = 'Matteo Ferla'
+author = 'larry'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -29,14 +29,10 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
     'sphinx_markdown_builder'
+
 ]
 
-def skip(app, what, name, obj, would_skip, options):
-    if name in ( '__init__',):
-        return False
-    return would_skip
-def setup(app):
-    app.connect('autodoc-skip-member', skip)
+autodoc_mock_imports = ["app"]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
