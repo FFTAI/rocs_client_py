@@ -36,12 +36,12 @@ class RobotBase:
         self.camera = Camera(self._baseurl)
         self.system = System()
 
-        if self._ws:
-            asyncio.run(self._on_connected(self._ws))
         self._receive_thread = threading.Thread(target=self._event_)
         self._receive_thread.start()
 
     def _event_(self):
+        if self._on_connected:
+            asyncio.run(self._on_connected(self._ws))
         while True:
             try:
                 message = self._ws.recv()
@@ -91,5 +91,5 @@ class RobotBase:
         return response.json()
 
     def exit(self):
-        """ 端口Robot链接 """
+        """ 断开Robot链接 """
         self._ws.close()

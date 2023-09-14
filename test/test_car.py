@@ -1,6 +1,6 @@
 import unittest
 
-from src.gros_client import robot
+from gros_client import robot
 
 car = robot.Car()
 
