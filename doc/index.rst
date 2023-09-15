@@ -10,6 +10,6 @@ Welcome to GROS's documentation!
    :maxdepth: 4
    :caption: Contents:
 
-   gros_client
-   gros_client.robot
-   gros_client.common
+   src.gros_client
+   src.gros_client.robot
+   src.gros_client.common
