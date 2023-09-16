@@ -26,13 +26,13 @@ class Car(RobotBase):
 
     Args:
 
-        - ssl(bool):  是否开启ssl认证。默认 False
-        - host(str):  car的网络IP
-        - port(int):  car的控制服务的PORT
-        - on_connected(Callable):  该监听将会在car连接成功时触发
-        - on_message(Callable): 该监听将会在car发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑
-        - on_close(Callable): 该监听将会在car连接关闭时触发
-        - on_error(Callable): 该监听将会在car发生错误时触发
+        ssl(bool):  是否开启ssl认证。默认 False
+        host(str):  car的网络IP
+        port(int):  car的控制服务的PORT
+        on_connected(Callable):  该监听将会在car连接成功时触发
+        on_message(Callable): 该监听将会在car发送系统状态时候触发，你可能需要监听该回掉处理你的逻辑
+        on_close(Callable): 该监听将会在car连接关闭时触发
+        on_error(Callable): 该监听将会在car发生错误时触发
     """
     
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
