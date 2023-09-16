@@ -474,8 +474,8 @@ class Human(RobotBase):
 
         Args:
 
-            - angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
-            - speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
+             angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
+             speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -0.8, 0.8)
@@ -495,9 +495,9 @@ class Human(RobotBase):
 
         Args:
 
-            - roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
-            - pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
-            - yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
+             roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
+             pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
+             yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
         """
         self._send_websocket_msg({
             'command': 'head',
