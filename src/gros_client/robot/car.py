@@ -49,6 +49,13 @@ class Car(RobotBase):
         Args:
 
             mod(Mod): 模式对象定义
+
+        Returns:
+
+            Dict: 返回数据包含以下字段:
+
+            - `code` (int): 状态码，0 表示正常，-1 表示异常
+            - `msg` (str): 状态信息，"ok" 表示正常
         """
         self._mod: Mod = mod
         data = {'mod_val': mod}
