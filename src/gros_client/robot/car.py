@@ -71,10 +71,10 @@ class Car(RobotBase):
         Args:
 
              angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
-             speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
+             speed(float): 速度 控制前后，取值范围为正负500。向前为正，向后为负！(浮点数8位)
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
-        speed = self._cover_param(speed, 'speed', -0.8, 0.8)
+        speed = self._cover_param(speed, 'speed', -500, 500)
 
         self._send_websocket_msg({
             'command': 'move',
