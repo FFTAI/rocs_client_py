@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gros_client_car",
-    version="0.1.22",
+    version="0.1.23",
     author='jax',
     author_email='ming.li@fftai.com',
     license='MIT',

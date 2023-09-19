@@ -152,5 +152,5 @@ class Car:
             "client_type": "car",
             'command': 'operate',
             'velocity': velocity,
-            'direction': direction
+            'direction': direction / 500
         })
