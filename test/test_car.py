@@ -3,7 +3,7 @@ import unittest
 # 安装依赖
 # pip install gros_client_car
 # 引入依赖
-from gros_client_car.car import Mod, Car
+from src.gros_client_car.car import Mod, Car
 # 实例化Car对象
 car = Car(host='192.168.12.1')
 
@@ -31,14 +31,10 @@ class TestCar(unittest.TestCase):
 
     def test_move(self):
         car.set_mode(Mod.MOD_4_WHEEL)
-        time.sleep(5)
-        car.move(0, 1)
-        time.sleep(1)
-        car.move(0, 2)
-        time.sleep(1)
-        car.move(0, 3)
-        time.sleep(1)
-        car.move(0, 4)
-        time.sleep(1)
-        car.move(0, 5)
+        time.sleep(3)
+        car.move(-0, 10)
+        car.move(-0, 20)
+        car.move(-0, 30)
+        car.move(-0, 40)
+        car.move(-0, 45)
 

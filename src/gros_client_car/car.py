@@ -74,6 +74,7 @@ class Car:
                     asyncio.run(self._on_error(self._ws, e))
 
     def _send_websocket_msg(self, message: json):
+        print(f"----{json.dumps(message)}")
         self._ws.send(json.dumps(message))
 
     def _cover_param(self, param: float, value: str, min_threshold: float, max_threshold: float) -> float:
@@ -151,6 +152,6 @@ class Car:
             "type": 'command',
             "client_type": "car",
             'command': 'operate',
-            'velocity': velocity,
-            'direction': direction / 500
+            'velocity': velocity / 500,
+            'direction': direction / 45
         })
