@@ -32,9 +32,11 @@ class TestCar(unittest.TestCase):
     def test_move(self):
         car.set_mode(Mod.MOD_4_WHEEL)
         time.sleep(3)
-        car.move(-0, 10)
-        car.move(-0, 20)
-        car.move(-0, 30)
-        car.move(-0, 40)
-        car.move(-0, 45)
+        car.move(-100, 0)
+        car.move(-150, 0)
+        car.move(-180, 0)
+        car.move(-200, 0)
+
+        time.sleep(3)
+        car.move(0, 30)
 
