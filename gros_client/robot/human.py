@@ -458,7 +458,7 @@ class Human(RobotBase):
                 "function": "SonnieGetStates"
             }
         """
-        response = requests.get(f'{self._baseurl}/robot/enable_states_listen')
+        response = requests.get(f'{self._baseurl}/robot/enable_states_listen?frequence={frequence}')
         return response.json()
 
     def disable_debug_state(self):

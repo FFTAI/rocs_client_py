@@ -2,7 +2,7 @@ import unittest
 
 import websocket
 
-from src.gros_client import robot
+from gros_client import robot
 
 
 async def on_open(ws: websocket):
@@ -21,7 +21,7 @@ async def on_error(ws: websocket.WebSocketException, error: Exception):
     print("WebSocket error:", error)
 
 
-human = robot.Human(on_connected=on_open,host="192.168.9.17", on_message=on_message, on_close=on_close, on_error=on_error)
+human = robot.Human(on_connected=on_open, host="192.168.9.17", on_message=on_message, on_close=on_close, on_error=on_error)
 
 
 class TestHuman(unittest.TestCase):
