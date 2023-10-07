@@ -3,6 +3,7 @@ import unittest
 import websocket
 
 from gros_client import robot
+from gros_client.robot.human import ArmAction, HandAction
 
 
 async def on_open(ws: websocket):
@@ -73,3 +74,12 @@ class TestHuman(unittest.TestCase):
 
     def test_head(self):
         human.head(1, 1, 0.8)
+
+    def test_move_joint(self):
+        human.move_joint(1, 1)
+
+    def test_action_arm(self):
+        human.action_arm(ArmAction.HELLO)
+
+    def test_action_hand(self):
+        human.action_hand(HandAction.OK)

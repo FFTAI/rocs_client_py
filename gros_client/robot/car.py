@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Callable, Dict, Any
+from typing import Callable, Dict
 
 import requests
 
@@ -34,13 +34,13 @@ class Car(RobotBase):
         on_close(Callable): 该监听将会在car连接关闭时触发
         on_error(Callable): 该监听将会在car发生错误时触发
     """
-    
+
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
                  on_message: Callable = None, on_close: Callable = None, on_error: Callable = None):
         super().__init__(ssl, host, port, on_connected, on_message, on_close, on_error)
         self._mod = None
 
-    def set_mode(self, mod: Mod) -> Dict[str, Any]:
+    def set_mode(self, mod: Mod):
         """
         设置小车的模式
 
@@ -58,8 +58,7 @@ class Car(RobotBase):
             - `msg` (str): 状态信息，"ok" 表示正常
         """
         self._mod: Mod = mod
-        data = {'mod_val': mod}
-        response = requests.post(f'{self._baseurl}/robot/mode', data)
+        response = requests.post(f'{self._baseurl}/robot/mode', {'mod_val': mod})
         return response.json()
 
     def move(self, angle: float, speed: float):

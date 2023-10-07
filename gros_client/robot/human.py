@@ -5,6 +5,20 @@ import requests
 from .robot_base import RobotBase
 
 
+from dataclasses import dataclass
+from enum import Enum
+
+
+@dataclass
+class ArmAction(Enum):
+    HELLO = ""
+
+
+@dataclass
+class HandAction(Enum):
+    OK = ""
+
+
 class Human(RobotBase):
     """
     GR-1人形机器人对象
@@ -34,10 +48,14 @@ class Human(RobotBase):
 
         Returns:
 
-             result(Dict): return一个结果集 {code: 0, msg: 'ok'}  or  {code: -1, msg: $ERR_MSG}
-
+             Dict: return一个结果集 {code: 0, msg: 'ok'}  or  {code: -1, msg: $ERR_MSG}
         """
         response = requests.post(f'{self._baseurl}/robot/stand')
+        return response.json()
+
+    def reset(self):
+        """ 重置/归零/对设备初始状态的校准 """
+        response = requests.post(f'{self._baseurl}/robot/reset')
         return response.json()
 
     def get_joint_limit(self) -> Dict[str, Any]:
@@ -46,20 +64,20 @@ class Human(RobotBase):
 
         Returns:
 
-            result(Dict):
+            Dict:
 
-                    - code (int): 返回码，0-表示成功，-1-表示失败
-                    - msg (str): 返回消息，ok表示正常，失败返回错误信息
-                    - data (dict): 数据对象，包含具体数据
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
 
-                        - data (list): 关节限制列表，每个元素是一个字典
+                - data (list): 关节限制列表，每个元素是一个字典
 
-                            - name (str): 关节名称
-                            - qdotaMax (float): 关节最大速度，单位：rad/s
-                            - qaMax (float): 关节最大弧度，单位：rad
-                            - qaMin (float): 关节最小角度，单位：rad
-                            - tauaMax (float): 最大扭矩，单位：n*m
-                        - function (str): 函数名称
+                    - name (str): 关节名称
+                    - qdotaMax (float): 关节最大速度，单位：rad/s
+                    - qaMax (float): 关节最大弧度，单位：rad
+                    - qaMin (float): 关节最小角度，单位：rad
+                    - tauaMax (float): 最大扭矩，单位：n*m
+                - function (str): 函数名称
 
         Example:
 
@@ -188,7 +206,7 @@ class Human(RobotBase):
 
         Returns:
 
-            data (dict): 响应数据
+            Dict: 响应数据
 
                 - log (dict): 日志信息
 
@@ -461,8 +479,17 @@ class Human(RobotBase):
         response = requests.get(f'{self._baseurl}/robot/enable_states_listen?frequence={frequence}')
         return response.json()
 
-    def disable_debug_state(self):
-        """ 关闭state调试模式 """
+    def disable_debug_state(self) -> Dict[str, Any]:
+        """ 关闭state调试模式
+
+        Returns:
+
+            Dict:
+
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
+        """
         response = requests.get(f'{self._baseurl}/robot/disable_states_listen')
         return response.json()
 
@@ -507,3 +534,55 @@ class Human(RobotBase):
                 'yaw': yaw
             }
         })
+
+    def move_joint(self, joint_no: int, offset: float):
+        """ 移动关节
+
+        Args:
+            joint_no(int): 关节编号
+            offset(float): 偏移量
+
+        Returns:
+
+            Dict: 返回一个结果集
+
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
+        """
+        response = requests.post(f'{self._baseurl}/robot/move/joint', json={"joint_no": joint_no, "offset": offset})
+        return response.json()
+
+    def action_arm(self, action: ArmAction):
+        """ 胳膊预设动作
+
+        Args:
+            action(HandAction): 动作指令枚举
+
+        Returns:
+
+            Dict: 返回一个结果集
+
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
+        """
+        response = requests.post(f'{self._baseurl}/robot/action/arm', json={"action_value": action.value})
+        return response.json()
+
+    def action_hand(self, action: HandAction):
+        """ 手预设动作
+
+        Args:
+            action(HandAction): 动作指令枚举
+
+        Returns:
+
+            Dict: 返回一个结果集
+
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
+        """
+        response = requests.post(f'{self._baseurl}/robot/action/hand', json={"action_value": action.value})
+        return response.json()
