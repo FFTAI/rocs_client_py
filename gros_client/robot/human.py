@@ -8,10 +8,6 @@ import requests
 from .robot_base import RobotBase
 
 
-from dataclasses import dataclass
-from enum import Enum
-
-
 @dataclass
 class Motor:
     no: str
@@ -33,6 +29,7 @@ class ArmAction(Enum):
     HELLO = "HELLO"
 
 
+@dataclass
 class HandAction(Enum):
     # 半握手
     HALF_HANDSHAKE = "HALF_HANDSHAKE"
@@ -567,7 +564,7 @@ class Human(RobotBase):
             }
         })
 
-    def upper_body(self, upper_body: dict):
+    def upper_body(self, arm: ArmAction = None, hand: HandAction = None):
         """
         上肢预设动作，手、胳膊设定好动作
         Args:
@@ -581,7 +578,12 @@ class Human(RobotBase):
             - data (dict): 数据对象，包含具体数据
 
         """
-        response = requests.post(f'{self._baseurl}/robot/upper_body', data=json.dumps(upper_body))
+        upper_body_action = {}
+        if arm:
+            upper_body_action["arm_action"] = ArmAction.TWO_ARMS_WAVE.value
+        if hand:
+            upper_body_action["hand_action"] = ArmAction.TWO_ARMS_WAVE.value
+        response = requests.post(f'{self._baseurl}/robot/upper_body', data=json.dumps(upper_body_action))
         return response.json()
 
     def _get_motor_limit_list(self):
@@ -601,6 +603,16 @@ class Human(RobotBase):
         return response.json()
 
     def move_joint(self, *args: Motor):
+        """ 移动关节
+
+        Args:
+
+            *args: (Motor) : 关节对象，所有字段都必传。具体的限位等信息可以通过 motor_limits 属性获取
+
+
+        Returns:
+
+        """
         motors = []
         target_list = []
         for motor in args:
@@ -618,19 +630,3 @@ class Human(RobotBase):
                 motor.pop('max_angle', 0)
                 motor.pop('ip', 0)
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
-    def upper_body(self, upper_body: dict):
-        """
-        上肢预设动作，手、胳膊设定好动作
-        Args:
-            - arm_action: (str): 胳膊动作:RESET（归零）、LEFT_ARM_WAVE（左挥手）、TWO_ARMS_WAVE（双臂挥手）、ARMS_SWING（甩胳膊）、HELLO（打招呼）
-            - hand_action: (str): 手动作:HALF_HANDSHAKE（半握手）、THUMBS_UP（竖大拇指）、OPEN（手张开）、SLIGHTLY_BENT（手微屈）、GRASP（抓握）、TREMBLE（抖动手）、HANDSHAKE（握手）
-
-
-        Returns:
-            - code (int): 返回码，0-表示成功，-1-表示失败
-            - msg (str): 返回消息，ok表示正常，失败返回错误信息
-            - data (dict): 数据对象，包含具体数据
-
-        """
-        response = requests.post(f'{self._baseurl}/robot/upper_body', data=upper_body)
-        return response.json()

@@ -87,29 +87,18 @@ class TestHuman(unittest.TestCase):
         human.move_joint(Motor(no='1', angle=100, orientation='left'), Motor(no='1', angle=100, orientation='right'))
         time.sleep(3)
         human.move_joint(Motor(no='1', angle=0, orientation='left'), Motor(no='1', angle=0, orientation='right'))
-        human.move_joint(1, 1)
 
     def test_upper_body_arm(self):
         # 胳膊动作测试
         # 1、左挥手
-        upper_body_action = {}
-        upper_body_action["arm_action"] = ArmAction.LEFT_ARM_WAVE.value
-        human.upper_body(upper_body_action)
+        human.upper_body(arm=ArmAction.LEFT_ARM_WAVE)
         # 等待动作执行结束
         time.sleep(10)
         # 2、挥手
-        upper_body_action["arm_action"] = ArmAction.TWO_ARMS_WAVE.value
-        human.upper_body(upper_body_action)
+        human.upper_body(arm=ArmAction.TWO_ARMS_WAVE)
 
     def test_upper_body_(self):
         # 手部动作测试
         # 1、抖动手指头
-        upper_body_action = {}
-        upper_body_action["hand_action"] = HandAction.TREMBLE.value
-        human.upper_body(upper_body_action)
+        human.upper_body(hand=HandAction.TREMBLE)
 
-    def test_action_arm(self):
-        human.action_arm(ArmAction.HELLO)
-
-    def test_action_hand(self):
-        human.action_hand(HandAction.OK)
