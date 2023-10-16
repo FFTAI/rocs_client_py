@@ -1,3 +1,4 @@
+import time
 import unittest
 
 import websocket
@@ -22,7 +23,7 @@ async def on_error(ws: websocket.WebSocketException, error: Exception):
     print("WebSocket error:", error)
 
 
-human = robot.Human(on_connected=on_open, host="192.168.9.17", on_message=on_message, on_close=on_close, on_error=on_error)
+human = robot.Human(on_connected=on_open, host="192.168.11.173", on_message=on_message, on_close=on_close, on_error=on_error)
 
 
 class TestHuman(unittest.TestCase):
@@ -77,6 +78,25 @@ class TestHuman(unittest.TestCase):
 
     def test_move_joint(self):
         human.move_joint(1, 1)
+
+    def test_upper_body_arm(self):
+        # 胳膊动作测试
+        # 1、左挥手
+        upper_body_action = {}
+        upper_body_action["arm_action"] = ArmAction.LEFT_ARM_WAVE.value
+        human.upper_body(upper_body_action)
+        # 等待动作执行结束
+        time.sleep(10)
+        # 2、挥手
+        upper_body_action["arm_action"] = ArmAction.TWO_ARMS_WAVE.value
+        human.upper_body(upper_body_action)
+
+    def test_upper_body_(self):
+        # 手部动作测试
+        # 1、抖动手指头
+        upper_body_action = {}
+        upper_body_action["hand_action"] = HandAction.TREMBLE.value
+        human.upper_body(upper_body_action)
 
     def test_action_arm(self):
         human.action_arm(ArmAction.HELLO)

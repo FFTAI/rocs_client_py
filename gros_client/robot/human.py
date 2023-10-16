@@ -1,3 +1,4 @@
+import json
 from typing import Any, Dict, Callable
 
 import requests
@@ -11,12 +12,34 @@ from enum import Enum
 
 @dataclass
 class ArmAction(Enum):
-    HELLO = ""
+    # 归零
+    RESET = "RESET"
+    # 左挥手
+    LEFT_ARM_WAVE = "LEFT_ARM_WAVE"
+    # 双臂挥手
+    TWO_ARMS_WAVE = "TWO_ARMS_WAVE"
+    # 甩胳膊
+    ARMS_SWING = "ARMS_SWING"
+    # 打招呼
+    HELLO = "HELLO"
 
 
 @dataclass
 class HandAction(Enum):
-    OK = ""
+    # 半握手
+    HALF_HANDSHAKE = "HALF_HANDSHAKE"
+    # 竖大拇指
+    THUMB_UP = "THUMB_UP"
+    # 手张开
+    OPEN = "OPEN"
+    # 手微屈
+    SLIGHTLY_BENT = "SLIGHTLY_BENT"
+    # 抓握
+    GRASP = "GRASP"
+    # 抖动手
+    TREMBLE = "TREMBLE"
+    # 握手
+    HANDSHAKE = "HANDSHAKE"
 
 
 class Human(RobotBase):
@@ -553,39 +576,7 @@ class Human(RobotBase):
         response = requests.post(f'{self._baseurl}/robot/move/joint', json={"joint_no": joint_no, "offset": offset})
         return response.json()
 
-    def action_arm(self, action: ArmAction):
-        """ 胳膊预设动作
 
-        Args:
-            action(HandAction): 动作指令枚举
-
-        Returns:
-
-            Dict: 返回一个结果集
-
-            - code (int): 返回码，0-表示成功，-1-表示失败
-            - msg (str): 返回消息，ok表示正常，失败返回错误信息
-            - data (dict): 数据对象，包含具体数据
-        """
-        response = requests.post(f'{self._baseurl}/robot/action/arm', json={"action_value": action.value})
-        return response.json()
-
-    def action_hand(self, action: HandAction):
-        """ 手预设动作
-
-        Args:
-            action(HandAction): 动作指令枚举
-
-        Returns:
-
-            Dict: 返回一个结果集
-
-            - code (int): 返回码，0-表示成功，-1-表示失败
-            - msg (str): 返回消息，ok表示正常，失败返回错误信息
-            - data (dict): 数据对象，包含具体数据
-        """
-        response = requests.post(f'{self._baseurl}/robot/action/hand', json={"action_value": action.value})
-        return response.json()
 
     def upper_body(self, upper_body: dict):
         """
@@ -601,5 +592,5 @@ class Human(RobotBase):
             - data (dict): 数据对象，包含具体数据
 
         """
-        response = requests.post(f'{self._baseurl}/robot/upper_body', data=json.dumps(upper_body))
+        response = requests.post(f'{self._baseurl}/robot/upper_body', data=upper_body)
         return response.json()
