@@ -1,12 +1,11 @@
+import json
+from dataclasses import dataclass
+from enum import Enum
 from typing import Any, Dict, Callable
 
 import requests
 
 from .robot_base import RobotBase
-
-
-from dataclasses import dataclass
-from enum import Enum
 
 
 @dataclass
@@ -17,6 +16,13 @@ class ArmAction(Enum):
 @dataclass
 class HandAction(Enum):
     OK = ""
+
+
+@dataclass
+class Motor:
+    no: str
+    orientation: str
+    angle: float
 
 
 class Human(RobotBase):
@@ -39,6 +45,7 @@ class Human(RobotBase):
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
                  on_message: Callable = None, on_close: Callable = None, on_error: Callable = None):
         super().__init__(ssl, host, port, on_connected, on_message, on_close, on_error)
+        self.motor_limits = self._get_motor_limit_list()['data']
 
     def stand(self) -> Dict[str, Any]:
         """
@@ -535,58 +542,6 @@ class Human(RobotBase):
             }
         })
 
-    def move_joint(self, joint_no: int, offset: float):
-        """ 移动关节
-
-        Args:
-            joint_no(int): 关节编号
-            offset(float): 偏移量
-
-        Returns:
-
-            Dict: 返回一个结果集
-
-            - code (int): 返回码，0-表示成功，-1-表示失败
-            - msg (str): 返回消息，ok表示正常，失败返回错误信息
-            - data (dict): 数据对象，包含具体数据
-        """
-        response = requests.post(f'{self._baseurl}/robot/move/joint', json={"joint_no": joint_no, "offset": offset})
-        return response.json()
-
-    def action_arm(self, action: ArmAction):
-        """ 胳膊预设动作
-
-        Args:
-            action(HandAction): 动作指令枚举
-
-        Returns:
-
-            Dict: 返回一个结果集
-
-            - code (int): 返回码，0-表示成功，-1-表示失败
-            - msg (str): 返回消息，ok表示正常，失败返回错误信息
-            - data (dict): 数据对象，包含具体数据
-        """
-        response = requests.post(f'{self._baseurl}/robot/action/arm', json={"action_value": action.value})
-        return response.json()
-
-    def action_hand(self, action: HandAction):
-        """ 手预设动作
-
-        Args:
-            action(HandAction): 动作指令枚举
-
-        Returns:
-
-            Dict: 返回一个结果集
-
-            - code (int): 返回码，0-表示成功，-1-表示失败
-            - msg (str): 返回消息，ok表示正常，失败返回错误信息
-            - data (dict): 数据对象，包含具体数据
-        """
-        response = requests.post(f'{self._baseurl}/robot/action/hand', json={"action_value": action.value})
-        return response.json()
-
     def upper_body(self, upper_body: dict):
         """
         上肢预设动作，手、胳膊设定好动作
@@ -603,3 +558,38 @@ class Human(RobotBase):
         """
         response = requests.post(f'{self._baseurl}/robot/upper_body', data=json.dumps(upper_body))
         return response.json()
+
+    def _get_motor_limit_list(self):
+        """ 获取电机限位
+
+        Returns:
+
+            Dict: 返回一个结果集
+
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
+        """
+        response = requests.get(f'{self._baseurl}/robot/motor/limit/list')
+        self.motor_limits = response.json()['data']
+        print(f'human_motor_limit: {self.motor_limits}')
+        return response.json()
+
+    def move_joint(self, *args: Motor):
+        motors = []
+        target_list = []
+        for motor in args:
+            motors.append({"no": motor.no, "orientation": motor.orientation, "angle": motor.angle})
+        for item1 in motors:
+            for item2 in self.motor_limits:
+                if item1.get('no') == item2.get('no') and item1.get('orientation') == item2.get('orientation'):
+                    merged_item = {**item1, **item2}
+                    target_list.append(merged_item)
+        if len(target_list):
+            for motor in target_list:
+                motor['angle'] = (
+                    self._cover_param(motor.get('angle'), 'angle', motor.get('min_angle'), motor.get('max_angle')))
+                motor.pop('min_angle', 0)
+                motor.pop('max_angle', 0)
+                motor.pop('ip', 0)
+            self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
