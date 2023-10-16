@@ -13,6 +13,13 @@ from enum import Enum
 
 
 @dataclass
+class Motor:
+    no: str
+    orientation: str
+    angle: float
+
+
+@dataclass
 class ArmAction(Enum):
     # 归零
     RESET = "RESET"
@@ -26,11 +33,6 @@ class ArmAction(Enum):
     HELLO = "HELLO"
 
 
-@dataclass
-class Motor:
-    no: str
-    orientation: str
-    angle: float
 class HandAction(Enum):
     # 半握手
     HALF_HANDSHAKE = "HALF_HANDSHAKE"
