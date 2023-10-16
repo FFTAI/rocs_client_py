@@ -9,7 +9,8 @@
 | 版本号 | 作者     | 日期     | 描述                           | 快速预览                                       |
 |-----|--------|--------|------------------------------|--------------------------------------------|
 | 0.1 | 傅利叶软件部 | 2023.8 | 1. 立项<br/>2. 确认基础架构          | [0.1说明](https://fftai.github.io/v0.1.html) |
-| 0.2 | 傅利叶软件部    | 2023.9 | 1. 控制模块、系统模块<br/>2. 具体coding | [0.2说明](https://fftai.github.io/v0.2.html) |
+| 0.2 | 傅利叶软件部 | 2023.9 | 1. 控制模块、系统模块<br/>2. 具体coding | [0.2说明](https://fftai.github.io/v0.2.html) |
+| 1.* | 傅利叶软件部 | 2023.9 | 1. 手部、头部预设动作<br/>2. 上肢单关节控制  |  |
 
 
 ## 快速上手
@@ -79,6 +80,6 @@ human.upper_body(arm=ArmAction.TWO_ARMS_WAVE)       # 挥手
 human.upper_body(hand=HandAction.TREMBLE)           # 抖动手指
 
 human.move_joint(Motor(no='1', angle=10, orientation='left'), 
-                 Motor(no='1', angle=10, orientation='right')) # 移动一号电机 右侧右侧各10度
+                 Motor(no='1', angle=10, orientation='right')) # 移动一号电机 左侧右侧各10度
 
 ```
