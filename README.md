@@ -54,20 +54,18 @@ human = Human(host='192.168.12.1')
   - roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
   - pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
   - yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
-- move_joint(joint_no, offset): 移动关节
-  - joint_no(int): 关节编号
-  - offset(float): 偏移量
-- action_arm(action): 胳膊预设动作
-  - action(HandAction): 动作指令枚举
-- action_hand(action): 手预设动作
-  - action(HandAction): 动作指令枚举  
-
+- move_joint(*motor): 移动关节(长度可变参数，可以同时控制多个关节，延迟预估2ms)
+  - motor(Motor): 关节对象, 可以通过human.motor_limits 获取对应关节的映射关系和参数编号
+- upper_body(arm_action, hand_action): 上肢预设指令
+  - arm_action(ArmAction): 胳膊预设指令枚举
+  - hand_action(HandAction): 手部预设指令枚举
 ### 示例代码
 下面是一个完整的示例代码，演示如何使用这个SDK来控制机器人：
 
 ```python
 import time
 from gros_client import Human
+from gros_client.robot.human import ArmAction, HandAction, Motor
 
 human = Human(host='192.168.9.17') # 请将host替换为您所拥有设备的ip
 human.start() # 启动远程控制
@@ -75,4 +73,12 @@ time.sleep(10) # 控制系统内置状态机。为了保证机器人的校准和
 
 human.stand() # 站立
 human.walk(0, 0.1) # 以0.1的速度向正前方移动
+
+human.upper_body(arm=ArmAction.LEFT_ARM_WAVE)       # 左挥手
+human.upper_body(arm=ArmAction.TWO_ARMS_WAVE)       # 挥手
+human.upper_body(hand=HandAction.TREMBLE)           # 抖动手指
+
+human.move_joint(Motor(no='1', angle=10, orientation='left'), 
+                 Motor(no='1', angle=10, orientation='right')) # 移动一号电机 右侧右侧各10度
+
 ```
