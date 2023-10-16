@@ -7,9 +7,9 @@ Welcome to GROS's documentation!
 ================================
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 3
    :caption: Contents:
 
-   src.gros_client
-   src.gros_client.robot
-   src.gros_client.common
+   gros_client
+   gros_client.robot
+   gros_client.common

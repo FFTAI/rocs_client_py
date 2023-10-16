@@ -75,7 +75,7 @@ class RobotBase:
         return param
 
     def start(self):
-        """ 启动 : 重置/归零/对设备初始状态的校准
+        """ 启动
 
         当你想要控制Robot设备的时候，你的第一个指令
         """

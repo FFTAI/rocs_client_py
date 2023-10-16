@@ -2,7 +2,7 @@
 
 
 ## 概述
-    本例(GROS Client SDK)适用于您已经拥有傅利叶（Fourier）所提供的机器人设备，通过本例可实现对机器人的控制。它提供了一组简单的API，让你可以轻松地与机器人进行交互。
+本例(GROS Client SDK)适用于您已经拥有傅利叶（Fourier）所提供的机器人设备！ 通过本例可实现对机器人的控制。它提供了一组简单的API，让你可以轻松地与机器人进行交互。
 
 ## 历程
     
@@ -40,7 +40,29 @@ from gros_client import Human  # 按需导入Human、同理还有Car、Dog等
 human = Human(host='192.168.12.1')
 ```
 
-#### 示例代码
+### 控制机器人
+你可以使用以下方法来控制机器人：
+
+- start(): 回零/开启控制
+- stop(): 急停（会掉电停止）
+- exit(): 退出机器人控制
+- stand(): 原地站立
+- walk(angle, speed): 控制机器人移动、走路
+  - angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
+  - speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
+- head(roll, pitch, yaw): 控制GR-01人形头部运动
+  - roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
+  - pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
+  - yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
+- move_joint(joint_no, offset): 移动关节
+  - joint_no(int): 关节编号
+  - offset(float): 偏移量
+- action_arm(action): 胳膊预设动作
+  - action(HandAction): 动作指令枚举
+- action_hand(action): 手预设动作
+  - action(HandAction): 动作指令枚举  
+
+### 示例代码
 下面是一个完整的示例代码，演示如何使用这个SDK来控制机器人：
 
 ```python

@@ -1,8 +1,8 @@
 import unittest
 
-from gros_client import robot
+from gros_client import Car, Mod
 
-car = robot.Car()
+car = Car()
 
 
 class TestCar(unittest.TestCase):
@@ -19,3 +19,6 @@ class TestCar(unittest.TestCase):
 
     def test_move(self):
         car.move(1, 0.8)
+
+    def test_set_mode(self):
+        car.set_mode(Mod.MOD_4_WHEEL)
