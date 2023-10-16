@@ -23,7 +23,7 @@ async def on_error(ws: websocket.WebSocketException, error: Exception):
     print("WebSocket error:", error)
 
 
-human = robot.Human(on_connected=on_open, host="127.0.0.1", on_message=on_message, on_close=on_close, on_error=on_error)
+human = robot.Human(on_connected=on_open, host="192.168.11.173", on_message=on_message, on_close=on_close, on_error=on_error)
 
 
 class TestHuman(unittest.TestCase):

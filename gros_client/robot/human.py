@@ -5,7 +5,7 @@ from typing import Any, Dict, Callable
 
 import requests
 
-from .robot_base import RobotBase
+from gros_client.robot.robot_base import RobotBase
 
 
 @dataclass
@@ -580,9 +580,9 @@ class Human(RobotBase):
         """
         upper_body_action = {}
         if arm:
-            upper_body_action["arm_action"] = ArmAction.TWO_ARMS_WAVE.value
+            upper_body_action["arm_action"] = arm.value
         if hand:
-            upper_body_action["hand_action"] = ArmAction.TWO_ARMS_WAVE.value
+            upper_body_action["hand_action"] = hand.value
         response = requests.post(f'{self._baseurl}/robot/upper_body', data=json.dumps(upper_body_action))
         return response.json()
 
