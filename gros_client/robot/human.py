@@ -1,9 +1,6 @@
-import json
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, Callable
-
-import requests
 
 from gros_client.robot.robot_base import RobotBase
 
@@ -79,13 +76,11 @@ class Human(RobotBase):
 
              Dict: return一个结果集 {code: 0, msg: 'ok'}  or  {code: -1, msg: $ERR_MSG}
         """
-        response = requests.post(f'{self._baseurl}/robot/stand')
-        return response.json()
+        return self._send_request(url='/robot/stand', method='POST')
 
     def reset(self):
         """ 重置/归零/对设备初始状态的校准 """
-        response = requests.post(f'{self._baseurl}/robot/reset')
-        return response.json()
+        return self._send_request(url='/robot/reset', method="POST")
 
     def get_joint_limit(self) -> Dict[str, Any]:
         """
@@ -153,8 +148,7 @@ class Human(RobotBase):
                 }
             }
         """
-        response = requests.get(f'{self._baseurl}/robot/joint_limit')
-        return response.json()
+        return self._send_request(url='/robot/joint_limit', method="GET")
 
     def get_joint_states(self) -> Dict[str, Any]:
         """
@@ -220,8 +214,7 @@ class Human(RobotBase):
             }
 
         """
-        response = requests.get(f'{self._baseurl}/robot/joint_states')
-        return response.json()
+        return self._send_request(url='/robot/joint_states', method="GET")
 
     def enable_debug_state(self, frequence: int = 1):
         """
@@ -505,8 +498,7 @@ class Human(RobotBase):
                 "function": "SonnieGetStates"
             }
         """
-        response = requests.get(f'{self._baseurl}/robot/enable_states_listen?frequence={frequence}')
-        return response.json()
+        return self._send_request(url=f'/robot/enable_states_listen?frequence={frequence}', method="GET")
 
     def disable_debug_state(self) -> Dict[str, Any]:
         """ 关闭state调试模式
@@ -519,8 +511,7 @@ class Human(RobotBase):
             - msg (str): 返回消息，ok表示正常，失败返回错误信息
             - data (dict): 数据对象，包含具体数据
         """
-        response = requests.get(f'{self._baseurl}/robot/disable_states_listen')
-        return response.json()
+        return self._send_request(url='/robot/disable_states_listen', method="GET")
 
     def walk(self, angle: float, speed: float):
         """
@@ -583,8 +574,7 @@ class Human(RobotBase):
             upper_body_action["arm_action"] = arm.value
         if hand:
             upper_body_action["hand_action"] = hand.value
-        response = requests.post(f'{self._baseurl}/robot/upper_body', data=json.dumps(upper_body_action))
-        return response.json()
+        return self._send_request(url='/robot/upper_body', method="POST", json=upper_body_action)
 
     def _get_motor_limit_list(self):
         """ 获取电机限位
@@ -597,10 +587,10 @@ class Human(RobotBase):
             - msg (str): 返回消息，ok表示正常，失败返回错误信息
             - data (dict): 数据对象，包含具体数据
         """
-        response = requests.get(f'{self._baseurl}/robot/motor/limit/list')
-        self.motor_limits = response.json()['data']
+        response = self._send_request(url='/robot/motor/limit/list', method="GET")
+        self.motor_limits = response['data']
         print(f'human_motor_limit: {self.motor_limits}')
-        return response.json()
+        return response
 
     def move_joint(self, *args: Motor):
         """ 移动关节
@@ -608,7 +598,6 @@ class Human(RobotBase):
         Args:
 
             *args: (Motor) : 关节对象，所有字段都必传。具体的限位等信息可以通过 motor_limits 属性获取
-
 
         Returns:
 

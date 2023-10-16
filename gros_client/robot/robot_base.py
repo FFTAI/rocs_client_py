@@ -24,10 +24,18 @@ class RobotBase:
             self._baseurl: str = f'https://{host}:{port}'
             self._ws_url = f'wss://{host}:{port}/ws'
         else:
-            self._baseurl = f'http://{host}:{port}'
-            self._ws_url = f'ws://{host}:{port}/ws'
+            self._baseurl: str = f'http://{host}:{port}'
+            self._ws_url: str = f'ws://{host}:{port}/ws'
 
-        self._ws: WebSocket = create_connection(self._ws_url)
+        try:
+            self._ws: WebSocket = create_connection(self._ws_url)
+        except ConnectionRefusedError as e:
+            print(f'链接Robot设备出错。请检查server状态... {e}')
+            return
+        except Exception as e:
+            print(f'链接Robot设备出错... {e}')
+            return
+
         self._on_connected = on_connected
         self._on_message = on_message
         self._on_close = on_close
@@ -36,10 +44,10 @@ class RobotBase:
         self.camera = Camera(self._baseurl)
         self.system = System()
 
-        self._receive_thread = threading.Thread(target=self._event_)
+        self._receive_thread = threading.Thread(target=self._event)
         self._receive_thread.start()
 
-    def _event_(self):
+    def _event(self):
         if self._on_connected:
             asyncio.run(self._on_connected(self._ws))
         while True:
@@ -56,6 +64,14 @@ class RobotBase:
 
     def _send_websocket_msg(self, message: json):
         self._ws.send(json.dumps(message))
+
+    def _send_request(self, url: str, method: str = 'GET', params=None, json=None):
+        try:
+            response = requests.request(method, f'{self._baseurl}{url}', params=params, json=json)
+            return response.json()
+        except Exception as e:
+            print(f'下发指令失败，请检查设备server状态 {e}')
+            return {"code": -1, "msg": f"下发指令失败，请检查设备server状态", "data": None}
 
     @classmethod
     def _cover_param(cls, param: float, value: str, min_threshold: float, max_threshold: float) -> float:
@@ -79,16 +95,14 @@ class RobotBase:
 
         当你想要控制Robot设备的时候，你的第一个指令
         """
-        response = requests.post(f'{self._baseurl}/robot/start')
-        return response.json()
+        return self._send_request(url='/robot/start', method='POST')
 
     def stop(self):
         """ 停止
 
         ``该命令优先于其他命令! 会掉电停止。请在紧急情况下触发``
         """
-        response = requests.post(f'{self._baseurl}/robot/stop')
-        return response.json()
+        return self._send_request(url="/robot/stop", method="POST")
 
     def exit(self):
         """ 断开Robot链接 """

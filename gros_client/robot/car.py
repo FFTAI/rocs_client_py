@@ -1,8 +1,6 @@
 from enum import Enum
 from typing import Callable, Dict
 
-import requests
-
 from .robot_base import RobotBase
 
 
@@ -58,8 +56,7 @@ class Car(RobotBase):
             - `msg` (str): 状态信息，"ok" 表示正常
         """
         self._mod: Mod = mod
-        response = requests.post(f'{self._baseurl}/robot/mode', {'mod_val': mod})
-        return response.json()
+        return self._send_request(url='/robot/mode', method="POST", json={'mod_val': mod})
 
     def move(self, angle: float, speed: float):
         """

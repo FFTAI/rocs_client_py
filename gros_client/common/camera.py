@@ -14,10 +14,12 @@ class Camera:
 
     def __init__(self, baseurl: str):
         self._baseurl = baseurl
-        self.video_stream_status: bool = self._get_video_status().get('data')
+        self.video_stream_status: bool = self._get_video_status()
         if self.video_stream_status:
             self.video_stream_url: str = f'{self._baseurl}/control/camera'
 
-    def _get_video_status(self) -> Dict[str, Any]:
+    def _get_video_status(self) -> bool:
         response = requests.get(f'{self._baseurl}/control/camera_status')
-        return response.json()
+        if 'data' in response.json():
+            return response.json()['data'] == True
+        return False
