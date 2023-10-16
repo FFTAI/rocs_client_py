@@ -9,16 +9,6 @@ from .robot_base import RobotBase
 
 
 @dataclass
-class ArmAction(Enum):
-    HELLO = ""
-
-
-@dataclass
-class HandAction(Enum):
-    OK = ""
-
-
-@dataclass
 class Motor:
     no: str
     orientation: str
