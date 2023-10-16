@@ -4,7 +4,7 @@ import unittest
 import websocket
 
 from gros_client import robot
-from gros_client.robot.human import ArmAction, HandAction
+from gros_client.robot.human import ArmAction, HandAction, Motor
 
 
 async def on_open(ws: websocket):
@@ -23,7 +23,7 @@ async def on_error(ws: websocket.WebSocketException, error: Exception):
     print("WebSocket error:", error)
 
 
-human = robot.Human(on_connected=on_open, host="192.168.11.173", on_message=on_message, on_close=on_close, on_error=on_error)
+human = robot.Human(on_connected=on_open, host="127.0.0.1", on_message=on_message, on_close=on_close, on_error=on_error)
 
 
 class TestHuman(unittest.TestCase):
@@ -76,7 +76,17 @@ class TestHuman(unittest.TestCase):
     def test_head(self):
         human.head(1, 1, 0.8)
 
+    def test_get_motor_list(self):
+        print(f'human_motor_limit: {human.motor_limits}')
+
     def test_move_joint(self):
+        human.move_joint(Motor(no='1', angle=100, orientation='left'), Motor(no='1', angle=100, orientation='right'))
+        time.sleep(0.5)
+        human.move_joint(Motor(no='1', angle=100, orientation='left'), Motor(no='1', angle=100, orientation='right'))
+        time.sleep(0.5)
+        human.move_joint(Motor(no='1', angle=100, orientation='left'), Motor(no='1', angle=100, orientation='right'))
+        time.sleep(3)
+        human.move_joint(Motor(no='1', angle=0, orientation='left'), Motor(no='1', angle=0, orientation='right'))
         human.move_joint(1, 1)
 
     def test_upper_body_arm(self):
