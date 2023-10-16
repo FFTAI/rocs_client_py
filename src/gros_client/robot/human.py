@@ -1,3 +1,4 @@
+import json
 from typing import Any, Dict, Callable
 
 import requests
@@ -507,3 +508,20 @@ class Human(RobotBase):
                 'yaw': yaw
             }
         })
+
+    def upper_body(self, upper_body: dict):
+        """
+        上肢预设动作，手、胳膊设定好动作
+        Args:
+            - arm_action: (str): 胳膊动作:RESET（归零）、LEFT_ARM_WAVE（左挥手）、TWO_ARMS_WAVE（双臂挥手）、ARMS_SWING（甩胳膊）、HELLO（打招呼）
+            - hand_action: (str): 手动作:HALF_HANDSHAKE（半握手）、THUMBS_UP（竖大拇指）、OPEN（手张开）、SLIGHTLY_BENT（手微屈）、GRASP（抓握）、TREMBLE（抖动手）、HANDSHAKE（握手）
+
+
+        Returns:
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
+
+        """
+        response = requests.post(f'{self._baseurl}/robot/upper_body', data=json.dumps(upper_body))
+        return response.json()
