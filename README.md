@@ -1,87 +1,88 @@
-# RoCS-客户端SDK（python）
+# RoCS-Client SDK (python)
 
 
-## 概述
-本例(GROS Client SDK)适用于您已经拥有傅利叶（Fourier）所提供的机器人设备！ 通过本例可实现对机器人的控制。它提供了一组简单的API，让你可以轻松地与机器人进行交互。
+## Overview
+This example (RoCS Client SDK) is suitable for you already have a robot device provided by Fourier! 
+This example can be used to control the robot. 
+It provides a set of simple APIs that allow you to easily interact with the robot.
 
-## 历程
+## Journey
     
-| 版本号 | 作者     | 日期     | 描述                           | 快速预览                                       |
+| Version | Author     | Date     | Description                           | Quick Preview                                       |
 |-----|--------|--------|------------------------------|--------------------------------------------|
-| 0.1 | 傅利叶软件部 | 2023.8 | 1. 立项<br/>2. 确认基础架构          | [0.1说明](https://fftai.github.io/v0.1.html) |
-| 0.2 | 傅利叶软件部 | 2023.9 | 1. 控制模块、系统模块<br/>2. 具体coding | [0.2说明](https://fftai.github.io/v0.2.html) |
-| 1.* | 傅利叶软件部 | 2023.10 | 1. 手部、头部预设动作<br/>2. 上肢单关节控制  |  |
+| 0.1 | Fourier Software Department | 2023.8 | 1. Project initiation<br/>2. Confirm basic architecture          | [0.1 Description](https://fftai.github.io/v0.1.html) |
+| 0.2 | Fourier Software Department | 2023.9 | 1. Control module, system module<br/>2. Specific coding | [0.2 Description](https://fftai.github.io/v0.2.html) |
+| 1.* | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br/>2. Single joint control of upper body  |  |
 
 
-## 快速上手
+## Quick Start
 
-### 安装
+### Installation
     
 ```shell
 pip install gros_client 
 
-# 如遇网络延迟，可选择清华源安装 
+# If you encounter network delay, you can choose to install from Tsinghua source 
 # pip install -i https://pypi.tuna.tsinghua.edu.cn/simple gros_client
 ```
 
 
-### 使用方法
-#### 导入sdk
-首先你需要在你的Python代码中导入这个SDK
+### Usage
+#### Import sdk
+First, you need to import this SDK in your Python code
 
 ```python
-import gros_client   # 导入root
+import gros_client   # Import root
 ```
-#### 创建机器人对象
-然后，你需要创建一个机器人对象，以便使用这个SDK
+#### Create a robot object
+Then, you need to create a robot object in order to use this SDK
 
 ```python
-from gros_client import Human  # 按需导入Human、同理还有Car、Dog等
+from gros_client import Human  # Import Human as needed, similarly there are Car, Dog, etc.
 
 human = Human(host='192.168.12.1')
 ```
 
-### 控制机器人
-你可以使用以下方法来控制机器人：
+### Control the Robot
+You can use the following methods to control the robot:
 
-- start(): 回零/开启控制
-- stop(): 急停（会掉电停止）
-- exit(): 退出机器人控制
-- stand(): 原地站立
-- walk(angle, speed): 控制机器人移动、走路
-  - angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
-  - speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
-- head(roll, pitch, yaw): 控制GR-01人形头部运动
-  - roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
-  - pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
-  - yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
-- move_joint(*motor): 移动关节(长度可变参数，可以同时控制多个关节，延迟预估2ms)
-  - motor(Motor): 关节对象, 可以通过human.motor_limits 获取对应关节的映射关系和参数编号
-- upper_body(arm_action, hand_action): 上肢预设指令
-  - arm_action(ArmAction): 胳膊预设指令枚举
-  - hand_action(HandAction): 手部预设指令枚举
+- start(): Zero/Start control
+- stop(): Emergency stop (will stop with power off)
+- exit(): Exit robot control
+- stand(): Stand in place
+- walk(angle, speed): Control the robot to move, walk
+  - angle(float): Angle controls direction, range is plus or minus 45 degrees. Left is positive, right is negative! (Floating point number with 8 digits)
+  - speed(float): Speed controls forward and backward, range is plus or minus 0.8. Forward is positive, backward is negative! (Floating point number with 8 digits)
+- head(roll, pitch, yaw): Control GR-01 humanoid head movement
+  - roll(float): roll (roll angle): describes the angle of rotation around the x-axis, left turn head is negative, right turn is positive, range (-17.1887-17.1887)
+  - pitch(float): pitch (pitch angle): describes the angle of rotation around the y-axis. Nodding forward is positive, nodding backward is negative, range (-17.1887-17.1887)
+  - yaw(float): yaw (yaw angle): describes the angle of rotation around the z-axis. Turning left head is negative, turning right head is positive, range (-17.1887-17.1887)
+- move_joint(*motor): Move joint (variable length parameter, can control multiple joints at the same time, delay estimate 2ms)
+  - motor(Motor): Joint object, can get corresponding joint mapping relationship and parameter number through human.motor_limits
+- upper_body(arm_action, hand_action): Upper limb preset command
+  - arm_action(ArmAction): Arm preset command enumeration
+  - hand_action(HandAction): Hand preset command enumeration
   
-
-### 示例代码
-下面是一个完整的示例代码，演示如何使用这个SDK来控制机器人：
+### Sample Code
+Below is a complete sample code that demonstrates how to use this SDK to control a robot:
 
 ```python
 import time
 from gros_client import Human
 from gros_client.robot.human import ArmAction, HandAction, Motor
 
-human = Human(host='192.168.9.17') # 请将host替换为您所拥有设备的ip
-human.start() # 启动远程控制
-time.sleep(10) # 控制系统内置状态机。为了保证机器人的校准和启动正常，在start()指令之后建议10s再执行后续指令
+human = Human(host='192.168.9.17') # Please replace host with the ip of your device
+human.start() # Start remote control
+time.sleep(10) # Control system built-in state machine. To ensure normal calibration and startup of the robot, it is recommended to execute subsequent instructions after start() instruction for 10s
 
-human.stand() # 站立
-human.walk(0, 0.1) # 以0.1的速度向正前方移动
+human.stand() # Stand up
+human.walk(0, 0.1) # Move forward at a speed of 0.1
 
-human.upper_body(arm=ArmAction.LEFT_ARM_WAVE)       # 左挥手
-human.upper_body(arm=ArmAction.TWO_ARMS_WAVE)       # 挥手
-human.upper_body(hand=HandAction.TREMBLE)           # 抖动手指
+human.upper_body(arm=ArmAction.LEFT_ARM_WAVE)       # Wave left hand
+human.upper_body(arm=ArmAction.TWO_ARMS_WAVE)       # Wave hands
+human.upper_body(hand=HandAction.TREMBLE)           # Tremble fingers
 
 human.move_joint(Motor(no='1', angle=10, orientation='left'), 
-                 Motor(no='1', angle=10, orientation='right')) # 移动一号电机 左侧右侧各10度
+                 Motor(no='1', angle=10, orientation='right')) # Move motor no.1 left and right by 10 degrees each
 
 ```
