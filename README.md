@@ -6,14 +6,6 @@ This example (RoCS Client SDK) is suitable for you already have a robot device p
 This example can be used to control the robot. 
 It provides a set of simple APIs that allow you to easily interact with the robot.
 
-## Journey
-    
-| Version | Author     | Date     | Description                           | Quick Preview                                       |
-|-----|--------|--------|------------------------------|--------------------------------------------|
-| 0.1 | Fourier Software Department | 2023.8 | 1. Project initiation<br/>2. Confirm basic architecture          | [0.1 Description](https://fftai.github.io/v0.1.html) |
-| 0.2 | Fourier Software Department | 2023.9 | 1. Control module, system module<br/>2. Specific coding | [0.2 Description](https://fftai.github.io/v0.2.html) |
-| 1.* | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br/>2. Single joint control of upper body  |  |
-
 
 ## Quick Start
 
@@ -86,3 +78,13 @@ human.move_joint(Motor(no='1', angle=10, orientation='left'),
                  Motor(no='1', angle=10, orientation='right')) # Move motor no.1 left and right by 10 degrees each
 
 ```
+
+
+## Journey
+    
+| Version | Author     | Date     | Description                           | Quick Preview                                       |
+|-----|--------|--------|------------------------------|--------------------------------------------|
+| 0.1 | Fourier Software Department | 2023.8 | 1. Project initiation<br/>2. Confirm basic architecture          | [0.1 Description](https://fftai.github.io/v0.1.html) |
+| 0.2 | Fourier Software Department | 2023.9 | 1. Control module, system module<br/>2. Specific coding | [0.2 Description](https://fftai.github.io/v0.2.html) |
+| 1.* | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br/>2. Single joint control of upper body  |  |
+
