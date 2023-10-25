@@ -549,9 +549,9 @@ class Human(RobotBase):
         self._send_websocket_msg({
             'command': 'head',
             'data': {
-                'roll': roll,
-                'pitch': pitch,
-                'yaw': yaw
+                'roll': self._cover_param(roll, "roll", -17.1887, 17.1887),
+                'pitch': self._cover_param(pitch, "pitch", -17.1887, 17.1887),
+                'yaw': self._cover_param(yaw, "yaw", -17.1887, 17.1887)
             }
         })
 
