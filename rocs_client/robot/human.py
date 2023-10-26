@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, Callable
 
-from gros_client.robot.robot_base import RobotBase
+from rocs_client.robot.robot_base import RobotBase
 
 
 @dataclass

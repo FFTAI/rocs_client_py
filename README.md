@@ -12,10 +12,10 @@ It provides a set of simple APIs that allow you to easily interact with the robo
 ### Installation
     
 ```shell
-pip install gros_client 
+pip install rocs_client 
 
 # If you encounter network delay, you can choose to install from Tsinghua source 
-# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple gros_client
+# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple rocs_client
 ```
 
 
@@ -24,13 +24,13 @@ pip install gros_client
 First, you need to import this SDK in your Python code
 
 ```python
-import gros_client   # Import root
+import rocs_client   # Import root
 ```
 #### Create a robot object
 Then, you need to create a robot object in order to use this SDK
 
 ```python
-from gros_client import Human  # Import Human as needed, similarly there are Car, Dog, etc.
+from rocs_client import Human  # Import Human as needed, similarly there are Car, Dog, etc.
 
 human = Human(host='192.168.12.1')
 ```
@@ -60,8 +60,8 @@ Below is a complete sample code that demonstrates how to use this SDK to control
 
 ```python
 import time
-from gros_client import Human
-from gros_client.robot.human import ArmAction, HandAction, Motor
+from rocs_client import Human
+from rocs_client.robot.human import ArmAction, HandAction, Motor
 
 human = Human(host='192.168.9.17') # Please replace host with the ip of your device
 human.start() # Start remote control

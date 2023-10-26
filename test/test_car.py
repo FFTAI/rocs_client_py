@@ -1,6 +1,6 @@
 import unittest
 
-from gros_client import Car, Mod
+from rocs_client import Car, Mod
 
 car = Car()
 

@@ -5,8 +5,6 @@
 /.vscode/
 /bin/
 /dist
-/src/gros_client.egg-info/
-/gros_client.egg-info/
 
 .classpath
 .project
@@ -54,4 +52,4 @@ Thumbs.db
 /doc/build/
 /doc/source
 
-/gros_client.egg-info/
+/rocs_client.egg-info/

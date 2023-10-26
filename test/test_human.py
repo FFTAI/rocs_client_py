@@ -3,8 +3,8 @@ import unittest
 
 import websocket
 
-from gros_client import robot
-from gros_client.robot.human import ArmAction, HandAction, Motor
+from rocs_client import robot
+from rocs_client.robot.human import ArmAction, HandAction, Motor
 
 
 async def on_open(ws: websocket):
@@ -23,7 +23,7 @@ async def on_error(ws: websocket.WebSocketException, error: Exception):
     print("WebSocket error:", error)
 
 
-human = robot.Human(on_connected=on_open, host="192.168.10.101", on_message=on_message, on_close=on_close, on_error=on_error)
+human = robot.Human(on_connected=on_open, host="127.0.0.1", on_message=on_message, on_close=on_close, on_error=on_error)
 
 
 class TestHuman(unittest.TestCase):
