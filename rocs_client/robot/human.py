@@ -18,8 +18,6 @@ class ArmAction(Enum):
     RESET = "RESET"
     # 左挥手
     LEFT_ARM_WAVE = "LEFT_ARM_WAVE"
-    # 双臂挥手
-    TWO_ARMS_WAVE = "TWO_ARMS_WAVE"
     # 甩胳膊
     ARMS_SWING = "ARMS_SWING"
     # 打招呼
