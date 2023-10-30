@@ -49,18 +49,18 @@ class RobotBase:
 
     def _event(self):
         if self._on_connected:
-            asyncio.run(self._on_connected(self._ws))
-        while True:
-            try:
+            asyncio.run(self._on_connected())
+        try:
+            while True:
                 message = self._ws.recv()
                 if self._on_message:
-                    asyncio.run(self._on_message(self._ws, message))
-            except websocket.WebSocketConnectionClosedException:
-                if self._on_close:
-                    asyncio.run(self._on_close(self._ws))
-            except websocket.WebSocketException as e:
-                if self._on_error:
-                    asyncio.run(self._on_error(self._ws, e))
+                    asyncio.run(self._on_message(message))
+        except websocket.WebSocketConnectionClosedException:
+            if self._on_close:
+                asyncio.run(self._on_close())
+        except websocket.WebSocketException as e:
+            if self._on_error:
+                asyncio.run(self._on_error(e))
 
     def _send_websocket_msg(self, message: json):
         self._ws.send(json.dumps(message))
