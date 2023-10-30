@@ -82,9 +82,9 @@ human.move_joint(Motor(no='1', angle=10, orientation='left'),
 
 ## Journey
     
-| Version | Author     | Date     | Description                           | Quick Preview                                       |
-|-----|--------|--------|------------------------------|--------------------------------------------|
-| 0.1 | Fourier Software Department | 2023.8 | 1. Project initiation<br/>2. Confirm basic architecture          | [0.1 Description](https://fftai.github.io/v0.1.html) |
-| 0.2 | Fourier Software Department | 2023.9 | 1. Control module, system module<br/>2. Specific coding | [0.2 Description](https://fftai.github.io/v0.2.html) |
-| 1.* | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br/>2. Single joint control of upper body  |  |
+| Version | Author     | Date     | Description                           | Quick Preview                                                |
+|-----|--------|--------|------------------------------|--------------------------------------------------------------|
+| 0.1 | Fourier Software Department | 2023.8 | 1. Project initiation<br/>2. Confirm basic architecture          | [0.1 Description](https://fftai.github.io/release/v0.1.html) |
+| 0.2 | Fourier Software Department | 2023.9 | 1. Control module, system module<br/>2. Specific coding | [0.2 Description](https://fftai.github.io/release/v0.2.html) |
+| 1.* | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br/>2. Single joint control of upper body  | [1.1 Description](https://fftai.github.io/release/v1.1.html) |
 
