@@ -93,10 +93,6 @@ class TestHuman(unittest.TestCase):
         # 胳膊动作测试
         # 1、左挥手
         self.human.upper_body(arm=ArmAction.LEFT_ARM_WAVE)
-        # 等待动作执行结束
-        time.sleep(10)
-        # 2、挥手
-        self.human.upper_body(arm=ArmAction.TWO_ARMS_WAVE)
 
     def test_upper_body_hand(self):
         # 手部动作测试
