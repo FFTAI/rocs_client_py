@@ -624,13 +624,14 @@ class Human(RobotBase):
             print(chunk.decode("utf-8"))
 
     def control_svr_close(self) -> Dict[str, Any]:
-        """ 启动控制程序 """
+        """ 关闭控制程序 """
         return self._send_request(url='/robot/sdk_ctrl/close', method="GET")
 
     def control_svr_status(self) -> Dict[str, Any]:
-        """ 启动控制程序 """
+        """ 查看控制程序状态 """
         return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
 
-    def control_svr_log_view(self) -> Dict[str, Any]:
+    def control_svr_log_view(self):
+        """ 查看控制程序日志 """
         for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
             print(chunk.decode("utf-8"))
