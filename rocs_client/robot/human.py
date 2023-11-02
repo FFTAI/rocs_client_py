@@ -617,3 +617,20 @@ class Human(RobotBase):
                 motor.pop('max_angle', 0)
                 motor.pop('ip', 0)
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
+
+    def control_svr_start(self):
+        """ 启动控制程序 """
+        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET"):
+            print(chunk.decode("utf-8"))
+
+    def control_svr_close(self) -> Dict[str, Any]:
+        """ 启动控制程序 """
+        return self._send_request(url='/robot/sdk_ctrl/close', method="GET")
+
+    def control_svr_status(self) -> Dict[str, Any]:
+        """ 启动控制程序 """
+        return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
+
+    def control_svr_log_view(self) -> Dict[str, Any]:
+        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
+            print(chunk.decode("utf-8"))

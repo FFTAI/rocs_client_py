@@ -97,3 +97,18 @@ class TestHuman(unittest.TestCase):
         # 1、抖动手指头
         self.human.upper_body(hand=HandAction.TREMBLE)
 
+    def test_start_control_svr(self):
+        self.human.control_svr_start()
+
+    def test_close_control_svr(self):
+        print(self.human.control_svr_close())
+
+    def test_status_control_svr(self):
+        print(self.human.control_svr_status())
+
+    def test_log_view_control_svr(self):
+        self.human.control_svr_log_view()
+
+
+
+

@@ -73,6 +73,12 @@ class RobotBase:
             print(f'下发指令失败，请检查设备server状态 {e}')
             return {"code": -1, "msg": f"下发指令失败，请检查设备server状态", "data": None}
 
+    def _send_request_stream(self, url: str, method: str = 'GET', params=None, json=None):
+        response = requests.request(method, f'{self._baseurl}{url}', params=params, json=json, stream=True)
+        for chunk in response.iter_content(chunk_size=1024):
+            if chunk:
+                yield chunk
+
     @classmethod
     def _cover_param(cls, param: float, value: str, min_threshold: float, max_threshold: float) -> float:
         if param is None:
