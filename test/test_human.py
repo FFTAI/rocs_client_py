@@ -1,8 +1,6 @@
 import time
 import unittest
 
-import websocket
-
 from rocs_client import Human
 from rocs_client.robot.human import ArmAction, HandAction, Motor
 
