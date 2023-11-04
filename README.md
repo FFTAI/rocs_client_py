@@ -38,6 +38,10 @@ human = Human(host='192.168.12.1')
 ### Control the Robot
 You can use the following methods to control the robot:
 
+- control_svr_start(): Turn on the robot control program
+- control_svr_status(): View the running status of the robot
+- control_svr_log_view(): View robot run logs
+- control_svr_close(): Turn off the robot control program
 - start(): Zero/Start control
 - stop(): Emergency stop (will stop with power off)
 - exit(): Exit robot control
@@ -64,6 +68,12 @@ from rocs_client import Human
 from rocs_client.robot.human import ArmAction, HandAction, Motor
 
 human = Human(host='192.168.9.17') # Please replace host with the ip of your device
+
+# human.control_svr_start() # Turn on the robot control program
+# human.control_svr_status() # View the running status of the robot
+# human.control_svr_log_view() # View robot run logs
+# human.control_svr_close() # Turn off the robot control program
+
 human.start() # Start remote control
 time.sleep(10) # Control system built-in state machine. To ensure normal calibration and startup of the robot, it is recommended to execute subsequent instructions after start() instruction for 10s
 
@@ -76,7 +86,6 @@ human.upper_body(hand=HandAction.TREMBLE)           # Tremble fingers
 
 human.move_joint(Motor(no='1', angle=10, orientation='left'), 
                  Motor(no='1', angle=10, orientation='right')) # Move motor no.1 left and right by 10 degrees each
-
 ```
 
 
