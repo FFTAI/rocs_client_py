@@ -3,13 +3,24 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GROS's documentation!
+Welcome to RoCS's documentation!
 ================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :caption: Contents:
 
-   gros_client
-   gros_client.robot
-   gros_client.common
+   rocs_client
+   rocs_client.robot
+   rocs_client.common
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+
+

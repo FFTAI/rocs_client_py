@@ -12,5 +12,6 @@ mkdir source
 cp conf.py ./source/
 cp index.rst ./source/
 
-sphinx-apidoc -o source ../gros_client
+sphinx-apidoc -o source ../
+make dirhtml
 make markdown
