@@ -1,8 +1,6 @@
 import time
 import unittest
 
-import websocket
-
 from rocs_client import Human
 from rocs_client.robot.human import ArmAction, HandAction, Motor
 
@@ -25,7 +23,7 @@ async def on_error(error: Exception):
 
 class TestHuman(unittest.TestCase):
 
-    human = Human(on_connected=on_connected, host="127.0.0.1", on_message=on_message, on_close=on_close, on_error=on_error)
+    human = Human(on_connected=on_connected, host="192.168.12.1", on_message=on_message, on_close=on_close, on_error=on_error)
 
     def test_enable_debug_state(self):
         res = self.human.enable_debug_state(10)
@@ -98,4 +96,19 @@ class TestHuman(unittest.TestCase):
         # 手部动作测试
         # 1、抖动手指头
         self.human.upper_body(hand=HandAction.TREMBLE)
+
+    def test_start_control_svr(self):
+        self.human.control_svr_start()
+
+    def test_close_control_svr(self):
+        print(self.human.control_svr_close())
+
+    def test_status_control_svr(self):
+        print(self.human.control_svr_status())
+
+    def test_log_view_control_svr(self):
+        self.human.control_svr_log_view()
+
+
+
 

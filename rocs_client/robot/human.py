@@ -520,7 +520,7 @@ class Human(RobotBase):
         Args:
 
              angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
-             speed(float): 速度 控制前后，取值范围为正负0.8。向前为正，向后为负！(浮点数8位)
+             speed(float): 速度 控制前后，取值范围为正负0.8米/秒。向前为正，向后为负！(浮点数8位)
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -0.8, 0.8)
@@ -617,3 +617,21 @@ class Human(RobotBase):
                 motor.pop('max_angle', 0)
                 motor.pop('ip', 0)
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
+
+    def control_svr_start(self):
+        """ 启动控制程序 """
+        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET"):
+            print(chunk.decode("utf-8"))
+
+    def control_svr_close(self) -> Dict[str, Any]:
+        """ 关闭控制程序 """
+        return self._send_request(url='/robot/sdk_ctrl/close', method="GET")
+
+    def control_svr_status(self) -> Dict[str, Any]:
+        """ 查看控制程序状态 """
+        return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
+
+    def control_svr_log_view(self):
+        """ 查看控制程序日志 """
+        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
+            print(chunk.decode("utf-8"))
