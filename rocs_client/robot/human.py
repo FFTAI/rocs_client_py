@@ -1,3 +1,5 @@
+import json
+import time
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, Callable
@@ -9,7 +11,7 @@ from rocs_client.robot.robot_base import RobotBase
 class Motor:
     no: str
     orientation: str
-    angle: float
+    angle: float = 0
 
 
 @dataclass
@@ -587,7 +589,7 @@ class Human(RobotBase):
         """
         response = self._send_request(url='/robot/motor/limit/list', method="GET")
         self.motor_limits = response['data']
-        print(f'human_motor_limit: {self.motor_limits}')
+        print(f'human_motor_limit: {json.dumps(self.motor_limits, indent=4)}')
         return response
 
     def move_joint(self, *args: Motor):
@@ -618,6 +620,18 @@ class Human(RobotBase):
                 motor.pop('ip', 0)
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
 
+    def move_motor(self, no, orientation: str, angle: float):
+        self.move_joint(Motor(no=no, orientation=orientation, angle=angle))
+
+    def smooth_move_motor_example(self, no, orientation: str, angle: float, offset=0.05, wait_time=0.002):
+        current_offset = 0
+        offset_angle = offset if angle >= 0 else offset * -1
+        cycle = int(angle / offset)
+        for i in range(0, abs(cycle)):
+            current_offset += offset_angle
+            self.move_motor(no, orientation, current_offset)
+            time.sleep(wait_time)
+
     def control_svr_start(self):
         """ 启动控制程序 """
         for chunk in self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET"):
@@ -635,3 +649,17 @@ class Human(RobotBase):
         """ 查看控制程序日志 """
         for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
             print(chunk.decode("utf-8"))
+
+    def enable_motor(self, no: str, orientation: str):
+        data = {
+            'no': no,
+            'orientation': orientation
+        }
+        self._send_websocket_msg({'command': 'enable_motor', 'data': {"command": data}})
+
+    def disable_motor(self, no: str, orientation: str):
+        data = {
+            'no': no,
+            'orientation': orientation
+        }
+        self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
