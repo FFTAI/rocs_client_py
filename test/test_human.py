@@ -102,30 +102,4 @@ class TestHuman(unittest.TestCase):
     def test_log_view_control_svr(self):
         self.human.control_svr_log_view()
 
-    def test_disable_motor(self):
-        self.human.disable_motor("4", "left")
-        self.human.disable_motor("4", "right")
 
-    def test_move_joint(self, no, orientation: str, angle: float, offset=0.05):
-        # current_offset = 0
-        # offset_angle = offset if angle >= 0 else offset * -1
-        # cycle = int(angle / offset)
-        # for i in range(0, abs(cycle)):
-        #     current_offset += offset_angle
-        #     self.human.move_motor(no, orientation, current_offset)
-        #     time.sleep(0.002)
-
-        self.human.smooth_move_motor_example(no, orientation, angle)
-
-    def test_move_joints(self):
-        self.human.enable_motor('4', orientation='left')
-        threading.Thread(target=self.test_move_joint, args=('4', 'left', 45)).start()
-
-        self.human.enable_motor('4', orientation='right')
-        threading.Thread(target=self.test_move_joint, args=('4', 'right', -45)).start()
-        #
-        self.human.enable_motor('2', orientation='left')
-        threading.Thread(target=self.test_move_joint, args=('2', 'left', -45)).start()
-
-        self.human.enable_motor('2', orientation='right')
-        threading.Thread(target=self.test_move_joint, args=('2', 'right', 45)).start()
