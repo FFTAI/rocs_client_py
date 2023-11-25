@@ -671,3 +671,10 @@ class Human(RobotBase):
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
+
+    def get_motor_pvc(self, no: str, orientation: str):
+        data = {
+            'no': str(no),
+            'orientation': orientation
+        }
+        return self._send_request(url='/robot/motor/pvc', method="POST", json=data)
