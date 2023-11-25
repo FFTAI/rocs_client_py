@@ -621,16 +621,7 @@ class Human(RobotBase):
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
 
     def move_motor(self, no, orientation: str, angle: float):
-        self.move_joint(Motor(no=no, orientation=orientation, angle=angle))
-
-    def smooth_move_motor_example(self, no, orientation: str, angle: float, offset=0.05, wait_time=0.002):
-        current_offset = 0
-        offset_angle = offset if angle >= 0 else offset * -1
-        cycle = int(angle / offset)
-        for i in range(0, abs(cycle)):
-            current_offset += offset_angle
-            self.move_motor(no, orientation, current_offset)
-            time.sleep(wait_time)
+        self.move_joint(Motor(no=str(no), orientation=orientation, angle=angle))
 
     def control_svr_start(self):
         """ 启动控制程序 """
@@ -649,6 +640,23 @@ class Human(RobotBase):
         """ 查看控制程序日志 """
         for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
             print(chunk.decode("utf-8"))
+
+    def check_motor_for_flag(self, no: str, orientation: str):
+        data = {
+            'no': no,
+            'orientation': orientation
+        }
+        self._send_websocket_msg({'command': 'check_motor_for_flag', 'data': {"command": data}})
+        print('check_motor_for_flag is done! please restart motor...')
+
+    def check_motor_for_set_pd(self, no: str, orientation: str, p: float, d: float):
+        data = {
+            'no': no,
+            'orientation': orientation,
+            'p': p,
+            'd': d
+        }
+        self._send_websocket_msg({'command': 'check_motor_for_set_pd', 'data': {"command": data}})
 
     def enable_motor(self, no: str, orientation: str):
         data = {
