@@ -12,7 +12,7 @@ python -m unittest test_human_motor.TestHumanMotor.test_action_hello
 
 
 class TestHumanMotor(unittest.TestCase):
-    human = Human(host="127.0.0.1")
+    human = Human(host="192.168.137.210")
 
     def enable_all(self):
         for motor in self.human.motor_limits:
@@ -70,61 +70,6 @@ class TestHumanMotor(unittest.TestCase):
         print(f"left  4====={self.human.get_motor_pvc('4', 'left')}")
         print(f"right 4====={self.human.get_motor_pvc('4', 'right')}")
 
-    def test_move_joints(self):
-        self.enable_all()
-
-        # threading.Thread(target=self.smooth_move_motor_example, args=('1', 'left', 20)).start()
-        # threading.Thread(target=self.smooth_move_motor_example, args=('1', 'right', -20)).start()
-        #
-        # threading.Thread(target=self.smooth_move_motor_example, args=('2', 'left', -20)).start()
-        # threading.Thread(target=self.smooth_move_motor_example, args=('2', 'right', 20)).start()
-
-        # threading.Thread(target=self.smooth_move_motor_example, args=('3', 'left', -20)).start()
-        # threading.Thread(target=self.smooth_move_motor_example, args=('3', 'right', 20)).start()
-
-        # threading.Thread(target=self.smooth_move_motor_example, args=('4', 'left', 0)).start()
-        # threading.Thread(target=self.smooth_move_motor_example, args=('4', 'right', -0)).start()
-
-        # threading.Thread(target=self.smooth_move_motor_example, args=('5', 'left', 20)).start()
-        # threading.Thread(target=self.smooth_move_motor_example, args=('5', 'right', -20)).start()
-
-        # threading.Thread(target=self.smooth_move_motor_example, args=('6', 'left', -21)).start()
-        # threading.Thread(target=self.smooth_move_motor_example, args=('6', 'right', 21)).start()
-        #
-        # threading.Thread(target=self.smooth_move_motor_example, args=('7', 'left', 21)).start()
-        # threading.Thread(target=self.smooth_move_motor_example, args=('7', 'right', -21)).start()
-
-        threading.Thread(target=self.smooth_move_motor_example, args=('8', 'left', 0)).start()
-        threading.Thread(target=self.smooth_move_motor_example, args=('8', 'right', 0)).start()
-
-    def test_right(self):
-        self.enable_all()
-
-        def left_1():
-            self.smooth_move_motor_example('1', 'right', -20)
-            self.smooth_move_motor_example('1', 'right', 0)
-            self.smooth_move_motor_example('1', 'right', -20)
-            self.smooth_move_motor_example('1', 'right', 0)
-            self.smooth_move_motor_example('1', 'right', -20)
-
-        def left_2():
-            self.smooth_move_motor_example('2', 'right', 20)
-            self.smooth_move_motor_example('2', 'right', 40)
-            self.smooth_move_motor_example('2', 'right', 20)
-            self.smooth_move_motor_example('2', 'right', 40)
-            self.smooth_move_motor_example('2', 'right', 20)
-
-        def left_4():
-            self.smooth_move_motor_example('4', 'right', -40)
-            self.smooth_move_motor_example('4', 'right', -60)
-            self.smooth_move_motor_example('4', 'right', -40)
-            self.smooth_move_motor_example('4', 'right', -60)
-            self.smooth_move_motor_example('4', 'right', -40)
-
-        # threading.Thread(target=left_1).start()
-        threading.Thread(target=left_2).start()
-        threading.Thread(target=left_4).start()
-
     def test_action_hug(self):
         self.enable_all()
 
@@ -158,21 +103,77 @@ class TestHumanMotor(unittest.TestCase):
     def test_action_hello(self):
         self.enable_all()
 
-        joint_1 = threading.Thread(target=self.smooth_move_motor_example, args=('1', 'right', -65, 0.15, 0.004))
+        joint_1 = threading.Thread(target=self.smooth_move_motor_example, args=('1', 'right', -65, 0.17, 0.004))
         joint_2 = threading.Thread(target=self.smooth_move_motor_example, args=('2', 'right', 0, 0.15, 0.004))
-        joint_4 = threading.Thread(target=self.smooth_move_motor_example, args=('4', 'right', -90, 0.17, 0.003))
+        joint_4 = threading.Thread(target=self.smooth_move_motor_example, args=('4', 'right', -90, 0.175, 0.003))
         joint_5 = threading.Thread(target=self.smooth_move_motor_example, args=('5', 'right', 90, 0.18, 0.003))
         joint_1.start(), joint_2.start(), joint_4.start(), joint_5.start()
         joint_1.join(), joint_2.join(), joint_4.join(), joint_5.join()
 
-        time.sleep(1.5)
+        time.sleep(0.5)
 
         for i in range(0, 3):
-            self.smooth_move_motor_example('3', 'right', 8, offset=0.15, wait_time=0.003)
             self.smooth_move_motor_example('3', 'right', -35, offset=0.15, wait_time=0.003)
+            self.smooth_move_motor_example('3', 'right', 8, offset=0.15, wait_time=0.003)
 
         threading.Thread(target=self.smooth_move_motor_example, args=('1', 'right', 0, 0.15, 0.002)).start()
         threading.Thread(target=self.smooth_move_motor_example, args=('4', 'right', 0, 0.2, 0.002)).start()
         threading.Thread(target=self.smooth_move_motor_example, args=('2', 'right', 0, 0.15, 0.002)).start()
         threading.Thread(target=self.smooth_move_motor_example, args=('3', 'right', 0, 0.2, 0.002)).start()
         threading.Thread(target=self.smooth_move_motor_example, args=('5', 'right', 0, 0.2, 0.002)).start()
+
+    def test_action_hold_left(self):
+        for i in range(0, 3):
+            self.smooth_move_motor_example('2', 'left', -35, offset=0.1, wait_time=0.004)
+            self.smooth_move_motor_example('2', 'left', -80, offset=0.1, wait_time=0.004)
+            time.sleep(0.5)
+
+    def test_action_hold_right(self):
+        for i in range(0, 3):
+            self.smooth_move_motor_example('2', 'right', 35, offset=0.1, wait_time=0.004)
+            self.smooth_move_motor_example('2', 'right', 80, offset=0.1, wait_time=0.004)
+            time.sleep(0.5)
+
+    def test_action_hold(self):
+        self.enable_all()
+
+        left_joint_2 = threading.Thread(target=self.smooth_move_motor_example, args=('2', 'left', -60, 0.14, 0.003))
+        left_joint_3 = threading.Thread(target=self.smooth_move_motor_example, args=('3', 'left', 90, 0.2, 0.003))
+        left_joint_4 = threading.Thread(target=self.smooth_move_motor_example, args=('4', 'left', 40, 0.16, 0.004))
+        left_joint_5 = threading.Thread(target=self.smooth_move_motor_example, args=('5', 'left', -90, 0.16, 0.004))
+        left_joint_6 = threading.Thread(target=self.smooth_move_motor_example, args=('6', 'left', 15, 0.16, 0.004))
+
+        right_joint_2 = threading.Thread(target=self.smooth_move_motor_example, args=('2', 'right', 60, 0.14, 0.003))
+        right_joint_3 = threading.Thread(target=self.smooth_move_motor_example, args=('3', 'right', -90, 0.2, 0.003))
+        right_joint_4 = threading.Thread(target=self.smooth_move_motor_example, args=('4', 'right', -40, 0.16, 0.004))
+        right_joint_5 = threading.Thread(target=self.smooth_move_motor_example, args=('5', 'right', 90, 0.16, 0.004))
+        right_joint_6 = threading.Thread(target=self.smooth_move_motor_example, args=('6', 'right', -15, 0.16, 0.004))
+
+        left_joint_2.start(), left_joint_3.start(), left_joint_4.start(), left_joint_5.start(), left_joint_6.start()
+        right_joint_2.start(), right_joint_3.start(), right_joint_4.start(), right_joint_5.start(), right_joint_6.start()
+        #
+        left_joint_2.join(), left_joint_3.join(), left_joint_4.join()
+        right_joint_2.join(), right_joint_3.join(), right_joint_4.join()
+
+        time.sleep(3.5)
+
+        hold_left = threading.Thread(target=self.test_action_hold_left)
+        hold_left.start()
+
+        hold_right = threading.Thread(target=self.test_action_hold_right())
+        hold_right.start()
+
+        hold_left.join()
+        hold_right.join()
+
+        threading.Thread(target=self.smooth_move_motor_example, args=('2', 'left', 0, 0.15, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('3', 'left', 0, 0.2, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('4', 'left', 0, 0.2, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('5', 'left', 0, 0.2, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('6', 'left', 0, 0.2, 0.002)).start()
+
+        threading.Thread(target=self.smooth_move_motor_example, args=('2', 'right', 0, 0.15, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('3', 'right', 0, 0.2, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('4', 'right', 0, 0.2, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('5', 'right', 0, 0.2, 0.002)).start()
+        threading.Thread(target=self.smooth_move_motor_example, args=('6', 'right˚¬', 0, 0.2, 0.002)).start()

@@ -589,7 +589,7 @@ class Human(RobotBase):
         """
         response = self._send_request(url='/robot/motor/limit/list', method="GET")
         self.motor_limits = response['data']
-        print(f'human_motor_limit: {json.dumps(self.motor_limits, indent=4)}')
+        print(f'human_motor_limit: {self.motor_limits}')
         return response
 
     def move_joint(self, *args: Motor):
