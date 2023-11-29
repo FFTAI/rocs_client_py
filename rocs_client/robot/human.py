@@ -621,7 +621,7 @@ class Human(RobotBase):
     def _control_svr_status(self) -> Dict[str, Any]:
         return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
 
-    def move_joint(self, *args: Motor):
+    def _move_joint(self, *args: Motor):
         """ 移动关节
 
         Args:
@@ -650,17 +650,16 @@ class Human(RobotBase):
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
 
     def move_motor(self, no, orientation: str, angle: float):
-        self.move_joint(Motor(no=str(no), orientation=orientation, angle=angle))
+        self._move_joint(Motor(no=str(no), orientation=orientation, angle=angle))
 
-    def check_motor_for_flag(self, no: str, orientation: str):
+    def set_motor_pd_flag(self, no: str, orientation: str):
         data = {
             'no': no,
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'check_motor_for_flag', 'data': {"command": data}})
-        print('check_motor_for_flag is done! please restart motor...')
 
-    def check_motor_for_set_pd(self, no: str, orientation: str, p: float, d: float):
+    def set_motor_pd(self, no: str, orientation: str, p: float, d: float):
         data = {
             'no': no,
             'orientation': orientation,

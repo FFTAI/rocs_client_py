@@ -13,14 +13,14 @@ python -m unittest test_human_motor.TestHumanMotor.test_action_hello
 human = Human(host="192.168.137.210")
 
 
-def open_set_pd_flag():
+def set_pds_flag():
     for motor in human.motor_limits:
-        human.check_motor_for_flag(motor['no'], motor['orientation'])
+        human.set_motor_pd_flag(motor['no'], motor['orientation'])
 
 
 def set_pds():
     for motor in human.motor_limits:
-        human.check_motor_for_set_pd(motor['no'], motor['orientation'], 0.36, 0.042)
+        human.set_motor_pd(motor['no'], motor['orientation'], 0.36, 0.042)
 
 
 def enable_all():
@@ -55,8 +55,11 @@ def _disable_right():
 
 def disable_all():
     time.sleep(2)
-    threading.Thread(target=_disable_left).start()
-    threading.Thread(target=_disable_right).start()
+    t_left = threading.Thread(target=_disable_left)
+    t_right = threading.Thread(target=_disable_right)
+    t_left.start(), t_right.start()
+    t_left.join(), t_right.join()
+    human.exit()
 
 
 def wait_target_done(no, orientation, target_angle, rel_tol=1):
@@ -91,7 +94,7 @@ def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=
 class TestHumanMotor(unittest.TestCase):
 
     def test_open_set_pd_flag(self):
-        open_set_pd_flag()
+        set_pds_flag()
 
     def test_set_pd(self):
         set_pds()
