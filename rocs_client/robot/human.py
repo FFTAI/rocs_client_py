@@ -658,6 +658,7 @@ class Human(RobotBase):
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'check_motor_for_flag', 'data': {"command": data}})
+        print(f"Set PID mode on! please reboot motor:  {no}-{orientation}")
 
     def set_motor_pd(self, no: str, orientation: str, p: float, d: float):
         data = {
@@ -667,6 +668,7 @@ class Human(RobotBase):
             'd': d
         }
         self._send_websocket_msg({'command': 'check_motor_for_set_pd', 'data': {"command": data}})
+        print(f"Parameter setting successful! please reboot motor:  {no}-{orientation}")
 
     def enable_motor(self, no: str, orientation: str):
         data = {
@@ -674,6 +676,7 @@ class Human(RobotBase):
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'enable_motor', 'data': {"command": data}})
+        print(f"Motor enabled successful:  {no}-{orientation}")
 
     def disable_motor(self, no: str, orientation: str):
         data = {
@@ -681,6 +684,7 @@ class Human(RobotBase):
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
+        print(f"Motor disabled successful:  {no}-{orientation}")
 
     def get_motor_pvc(self, no: str, orientation: str):
         data = {
