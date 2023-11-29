@@ -95,21 +95,16 @@ def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=
 
 class TestHumanMotor(unittest.TestCase):
 
-    def test_open_set_pd_flag(self):
+    def test_set_pd_flag(self):
         set_pds_flag()
 
     def test_set_pd(self):
         set_pds()
 
-    def test_enabled_all(self):
+    def test_action_simple(self):
         enable_all()
-
-    def test_disable_all(self):
-        disable_all()
-
-    def test_get_pvc(self):
-        print(f"left  4====={human.get_motor_pvc('4', 'left')}")
-        print(f"right 4====={human.get_motor_pvc('4', 'right')}")
+        smooth_move_motor_example('2', 'left', -20)
+        # disable_all()
 
     def test_action_hug(self):
         enable_all()
