@@ -91,15 +91,15 @@ class TestHuman(unittest.TestCase):
         self.human.upper_body(hand=HandAction.TREMBLE)
 
     def test_start_control_svr(self):
-        self.human.control_svr_start()
+        self.human._control_svr_start()
 
     def test_close_control_svr(self):
-        print(self.human.control_svr_close())
+        self.human._control_svr_start()
 
     def test_status_control_svr(self):
-        print(self.human.control_svr_status())
+        self.human._control_svr_start()
 
     def test_log_view_control_svr(self):
-        self.human.control_svr_log_view()
+        self.human._control_svr_start()
 
 

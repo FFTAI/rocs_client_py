@@ -30,7 +30,7 @@ def disable_right():
 
 
 def disable_all():
-    time.sleep(1)
+    time.sleep(2)
     threading.Thread(target=disable_left).start()
     threading.Thread(target=disable_right).start()
 
@@ -84,10 +84,12 @@ def test_move_joints():
 
 def test_move_joints_async():
     enable_all()
-    threading.Thread(target=smooth_move_motor_example, args=('2', 'left', -45)).start()
-    threading.Thread(target=smooth_move_motor_example, args=('2', 'right', 45)).start()
-    threading.Thread(target=smooth_move_motor_example, args=('4', 'left', 45)).start()
-    threading.Thread(target=smooth_move_motor_example, args=('4', 'right', -45)).start()
+    left_2 = threading.Thread(target=smooth_move_motor_example, args=('2', 'left', -45))
+    right_2 = threading.Thread(target=smooth_move_motor_example, args=('2', 'right', 45))
+    left_4 = threading.Thread(target=smooth_move_motor_example, args=('4', 'left', 45))
+    right_4 = threading.Thread(target=smooth_move_motor_example, args=('4', 'right', -45))
+    left_2.start(), right_2.start(), left_4.start(), right_4.start()
+    left_2.join(), right_2.join(), left_4.join(), right_4.join()
     disable_all()
 
 
@@ -132,13 +134,12 @@ def test_action_hug():
     left.start(), right.start()
     left.join(), right.join()
 
-    time.sleep(2)
     disable_all()
 
 
 if __name__ == '__main__':
-    test_move_joints()
-    # test_move_joints_async()
+    # test_move_joints()
+    test_move_joints_async()
     # test_action_hello()
     # test_action_hug()
     pass
