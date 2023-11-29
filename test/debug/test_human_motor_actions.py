@@ -17,7 +17,11 @@ def disable_left():
     for i in range((len(human.motor_limits) - 1), -1, -1):
         motor = human.motor_limits[i]
         if motor['orientation'] == 'left':
-            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=0.3, wait_time=0.03)
+            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1.3, wait_time=0.04)
+
+    for i in range((len(human.motor_limits) - 1), -1, -1):
+        motor = human.motor_limits[i]
+        if motor['orientation'] == 'left':
             human.disable_motor(motor['no'], motor['orientation'])
 
 
@@ -25,7 +29,11 @@ def disable_right():
     for i in range((len(human.motor_limits) - 1), -1, -1):
         motor = human.motor_limits[i]
         if motor['orientation'] != 'left':
-            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=0.3, wait_time=0.03)
+            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1.3, wait_time=0.04)
+
+    for i in range((len(human.motor_limits) - 1), -1, -1):
+        motor = human.motor_limits[i]
+        if motor['orientation'] != 'left':
             human.disable_motor(motor['no'], motor['orientation'])
 
 
@@ -75,10 +83,21 @@ def test_move_joints():
     smooth_move_motor_example('2', 'left', -40)
     smooth_move_motor_example('4', 'left', 80)
     smooth_move_motor_example('2', 'left', -10)
+
     smooth_move_motor_example('1', 'left', 30)
     smooth_move_motor_example('1', 'left', -30)
     smooth_move_motor_example('1', 'left', 30)
     smooth_move_motor_example('1', 'left', -30)
+    smooth_move_motor_example('1', 'left', 30)
+
+    smooth_move_motor_example('5', 'left', -90)
+
+    smooth_move_motor_example('8', 'left', 50)
+    smooth_move_motor_example('8', 'left', 0)
+    smooth_move_motor_example('8', 'left', 50)
+    smooth_move_motor_example('8', 'left', 0)
+    smooth_move_motor_example('8', 'left', 50)
+    smooth_move_motor_example('8', 'left', 0)
     disable_all()
 
 
@@ -94,6 +113,16 @@ def test_move_joints_async():
 
 
 def test_action_hello():
+    def move_3():
+        for i in range(0, 5):
+            smooth_move_motor_example('3', 'right', -40, offset=0.2, wait_time=0.003)
+            smooth_move_motor_example('3', 'right', 5, offset=0.2, wait_time=0.003)
+
+    def move_5():
+        for i in range(0, 3):
+            smooth_move_motor_example('5', 'right', 90, offset=0.15, wait_time=0.005)
+            smooth_move_motor_example('5', 'right', 55, offset=0.15, wait_time=0.005)
+
     enable_all()
 
     joint_1 = threading.Thread(target=smooth_move_motor_example, args=('1', 'right', -65, 0.16, 0.003))
@@ -104,10 +133,13 @@ def test_action_hello():
     joint_1.join(), joint_2.join(), joint_4.join(), joint_5.join()
 
     time.sleep(1)
+    t_move_3 = threading.Thread(target=move_3)
+    t_move_5 = threading.Thread(target=move_5)
 
-    for i in range(0, 5):
-        smooth_move_motor_example('3', 'right', -40, offset=0.2, wait_time=0.003)
-        smooth_move_motor_example('3', 'right', 5, offset=0.2, wait_time=0.003)
+    t_move_3.start()
+    t_move_5.start()
+    t_move_3.join()
+    t_move_5.join()
 
     disable_all()
 
@@ -138,8 +170,8 @@ def test_action_hug():
 
 
 if __name__ == '__main__':
-    # test_move_joints()
-    test_move_joints_async()
+    test_move_joints()
+    # test_move_joints_async()
     # test_action_hello()
     # test_action_hug()
     pass
