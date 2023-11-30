@@ -1,23 +1,25 @@
-.. GROS documentation master file, created by
-   sphinx-quickstart on Thu Sep 14 12:42:24 2023.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. raw:: html
 
-.. image:: _static/ico.jpg
-   :alt: logo
+    <p align="center">
+        <a href="https://fftai.github.io" target="_blank" rel="noopener noreferrer">
+            <img width="150" src="_static/ico.jpg" alt="logo">
+        </a>
+    </p>
 
-Welcome to RoCS's documentation!
+This example mainly introduces the RoCS Client SDK. In this example, you can see in detail the structure of the class, the specific code situation, as well as some SDK writing ideas and descriptive information
+
+Welcome to the RoCS Python SDK!
 ================================
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
    rocs_client.robot
    rocs_client.common
 
 
-Indices and tables
+Portal
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
+* SDK release and usage examples  `RoCS client <https://pypi.org/project/rocs-client/>`_.
+* More information can be found on the `FFTAI website <https://fftai.github.io>`_.
