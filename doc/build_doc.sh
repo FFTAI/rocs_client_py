@@ -2,7 +2,6 @@
 
 rm -rf source
 rm -rf build
-rm -rf
 
 mkdir -p build/
 mkdir -p source/_static
@@ -14,4 +13,3 @@ cp index.rst ./source/
 
 sphinx-apidoc -o source ../
 make dirhtml
-make markdown
