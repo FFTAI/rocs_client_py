@@ -188,7 +188,7 @@ time.sleep(2)
 human.disable_motor('2', 'left')
 ```
 
-[More test cases are in the Test folder](./test/)
+- **[More test cases are in the Test folder](https://github.com/FFTAI/rocs_client_py/tree/main/test)**
 
 ## Journey
 
