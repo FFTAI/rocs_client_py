@@ -1,45 +1,23 @@
+<p align="center">
+    <a href="https://fftai.github.io" target="_blank" rel="noopener noreferrer">
+        <img width="200" src="https://raw.githubusercontent.com/FFTAI/rocs_server/main/assets/ico.jpg" alt="logo">
+    </a>
+</p>
+
 # RoCS-Client SDK (python)
 
 ## Overview
-
 This example (RoCS Client SDK) is suitable for you already have a robot device provided by Fourier!
 This example can be used to control the robot.
 It provides a set of simple APIs that allow you to easily interact with the robot.
 
-## Quick Start
-
-### Installation
-
+## Installation
 ```shell
 pip install rocs_client 
-
-# If you encounter network delay, you can choose to install from Tsinghua source 
-# pip install -i https://pypi.tuna.tsinghua.edu.cn/simple rocs_client
 ```
 
-### Usage
-
-#### Import sdk
-
-First, you need to import this SDK in your Python code
-
-```python
-import rocs_client  # Import root
-```
-
-#### Create a robot object
-
-Then, you need to create a robot object in order to use this SDK
-
-```python
-from rocs_client import Human  # Import Human as needed, similarly there are Car, Dog, etc.
-
-human = Human(host='192.168.12.1')
-```
-
-### Control the Robot
-
-You can use the following methods to control the robot:
+## Function introduction
+**You can use the following methods to control the robot**
 
 - _control_svr_start(): Turn on the robot control program
 - _control_svr_status(): View the running status of the robot
@@ -65,14 +43,28 @@ You can use the following methods to control the robot:
     - arm_action(ArmAction): Arm preset command enumeration
     - hand_action(HandAction): Hand preset command enumeration
 
-### Sample Code
+## Usage
 
+### Import sdk
+First, you need to import this SDK in your Python code
+```python
+import rocs_client  # Import root
+```
+
+### Create a robot object
+Then, you need to create a robot object in order to use this SDK
+```python
+from rocs_client import Human  # Import Human as needed, similarly there are Car, Dog, etc.
+
+human = Human(host='192.168.12.1')# Please replace host with the ip of your device
+```
+
+## Sample Code
 Below is a complete sample code that demonstrates how to use this SDK to control a robot:
 
+
+### Whole machine control (rocs_client>=1.0)
 ```python 
-"""
-Whole machine control (rocs_client>=1.0)
-"""
 import time
 from rocs_client import Human
 from rocs_client.robot.human import ArmAction, HandAction
@@ -88,13 +80,10 @@ human.upper_body(hand=HandAction.TREMBLE)  # Tremble fingers
 
 human.stand()  # Stand up
 human.walk(0, 0.1)  # Move forward at a speed of 0.1
-
 ```
 
+### Single motor control (rocs_client>=1.2.8)
 ```python
-"""
-Single motor control (rocs_client>=1.2.8)
-"""
 import math
 import threading
 import time
@@ -199,12 +188,14 @@ time.sleep(2)
 human.disable_motor('2', 'left')
 ```
 
+[More test cases are in the Test folder](./test/)
+
 ## Journey
 
-| Version | Author                      | Date    | Description                                                            | Quick Preview                                                |
-|---------|-----------------------------|---------|------------------------------------------------------------------------|--------------------------------------------------------------|
-| 0.1     | Fourier Software Department | 2023.8  | 1. Project initiation<br/>2. Confirm basic architecture                | [0.1 Description](https://fftai.github.io/release/v0.1.html) |
-| 0.2     | Fourier Software Department | 2023.9  | 1. Control module, system module<br/>2. Specific coding                | [0.2 Description](https://fftai.github.io/release/v0.2.html) |
+| Version | Author                      | Date    | Description                                                        | Quick Preview                                                |
+|---------|-----------------------------|---------|--------------------------------------------------------------------|--------------------------------------------------------------|
+| 0.1     | Fourier Software Department | 2023.8  | 1. Project initiation<br/>2. Confirm basic architecture            | [0.1 Description](https://fftai.github.io/release/v0.1.html) |
+| 0.2     | Fourier Software Department | 2023.9  | 1. Control module, system module<br/>2. Specific coding            | [0.2 Description](https://fftai.github.io/release/v0.2.html) |
 | 1.1     | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br/>2. Single joint control of upper body | [1.1 Description](https://fftai.github.io/release/v1.1.html) |
-| 1.2     | Fourier Software Department | 2023.11 | 1. single motor control<br/>2. smooth movement example                 |                                                              |
+| 1.2     | Fourier Software Department | 2023.11 | smooth movement example for single motor control                   |                                                              |
 
