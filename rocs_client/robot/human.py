@@ -9,7 +9,7 @@ from rocs_client.robot.robot_base import RobotBase
 class Motor:
     no: str
     orientation: str
-    angle: float
+    angle: float = 0
 
 
 @dataclass
@@ -44,20 +44,22 @@ class HandAction(Enum):
 
 class Human(RobotBase):
     """
-    GR-1人形机器人对象
-
-    在你需要连接GR-1人形机器人的时候，你可以创建一个Human()对象！ 这将会在后台连接到人形的控制系统，并提供对应的控制函数和状态监听！
+    When you need to connect a Human, you can create a Human() object!
+    This will connect to the control system in the background,
+    and provide the corresponding control function and status monitoring!
 
     Args:
 
-        ssl (bool):  是否开启ssl认证。默认 False
-        host (str):  GR-01人形设备的网络IP
-        port (int):  GR-01人形设备的控制服务的PORT
-        on_connected (Callable):  该监听将会在GR-01人形设备连接成功时触发
-        on_message (Callable): 该监听将会在GR-01人形设备发送系统状态时候触发，你可能需要监听该回调处理你的逻辑
-        on_close (Callable): 该监听将会在GR-01人形设备连接关闭时触发
-        on_error (Callable): 该监听将会在GR-01人形设备发生错误时触发
+        ssl(bool): Indicates whether ssl authentication is enabled. Default False
+        host(str): indicates the network IP address of the car
+        port(int): specifies the PORT of the car control service
+        on_connected(callable): This listener is triggered when the car connection is successful
+        on_message(callable): This listener will be triggered when the car sends system status
+        on_close(callable): This listener will be triggered when the car connection is closed
+        on_error(callable): This listener will be triggered when a car error occurs
     """
+    motor_limits: list
+    """ This is the maximum limit and minimum limit Angle of the motor """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
                  on_message: Callable = None, on_close: Callable = None, on_error: Callable = None):
@@ -66,40 +68,53 @@ class Human(RobotBase):
 
     def stand(self) -> Dict[str, Any]:
         """
-        GR-01人形设备将会原地站立
+        The GR-01 Human device will stand in place
 
-        当进行了start之后如果你想对GR-01人形设备进行指令控制，你同样需要调用该函数让其位置stand的模式。如果是在行走过程中需要停止，你同样可以调用该函数进行stand
+        If you want to command the GR-01 humanoid device after start!
+        you also need to call this function to set its position to stand mode.
+        If you need to stop during a walk, you can also call this function to stand
 
         Returns:
 
-             Dict: return一个结果集 {code: 0, msg: 'ok'}  or  {code: -1, msg: $ERR_MSG}
+             Dict:
+                `code` (int): statu code，0: Normal -1: Anomaly
+                `msg` (str): result msg
         """
         return self._send_request(url='/robot/stand', method='POST')
 
     def reset(self):
-        """ 重置/归零/对设备初始状态的校准 """
+        """
+        Reset/zero/calibration of the initial state of the device
+        """
         return self._send_request(url='/robot/reset', method="POST")
 
     def get_joint_limit(self) -> Dict[str, Any]:
         """
-        获取关节限位
+        Obtain joint limit
 
         Returns:
 
             Dict:
+                - `code` (int):
+                    statu code，0: Normal    -1: Anomaly
 
-            - code (int): 返回码，0-表示成功，-1-表示失败
-            - msg (str): 返回消息，ok表示正常，失败返回错误信息
-            - data (dict): 数据对象，包含具体数据
+                - `msg` (str):
+                    result msg
 
-                - data (list): 关节限制列表，每个元素是一个字典
+                - `data` (dict):
+                    results
 
-                    - name (str): 关节名称
-                    - qdotaMax (float): 关节最大速度，单位：rad/s
-                    - qaMax (float): 关节最大弧度，单位：rad
-                    - qaMin (float): 关节最小角度，单位：rad
-                    - tauaMax (float): 最大扭矩，单位：n*m
-                - function (str): 函数名称
+                    - function (str):
+                        函数名称
+
+                    - data(dict):
+                        - jointlimit (list): 关节限制列表，每个元素是一个字典
+                            - name (str): 关节名称
+                            - qdotaMax (float): 关节最大速度，单位：rad/s
+                            - qaMax (float): 关节最大弧度，单位：rad
+                            - qaMin (float): 关节最小角度，单位：rad
+                            - tauaMax (float): 最大扭矩，单位：n*m
+
 
         Example:
 
@@ -216,26 +231,28 @@ class Human(RobotBase):
 
     def enable_debug_state(self, frequence: int = 1):
         """
-        开启state调试模式
+        open debug mode
 
-        触发该函数将会在后台触发GR-01人形设备主动发送状态值的指令，因此对应的你需要监听on_message函数进行处理
+        Triggering this function will trigger the GR-01 human device to actively send status values in the background,
+        so you need to listen to the on_message function for processing
 
         Args:
 
-            frequence(int): 频率
+            frequence(int): frequency
 
         Returns:
 
-            Dict: 响应数据
+            Dict:
 
-                - log (dict): 日志信息
+                - log (dict): log
 
-                    - logBuffer (list): 日志缓冲区
+                    - logBuffer (list): logBuffers
 
-                        - log (str): 日志内容
-                - states (dict): 关节状态数据
+                        - log (str): content
 
-                    - basestate (dict): 机器人状态数据
+                - states (dict): joint data content
+
+                    - basestate (dict): robot status data
 
                         - a (float): hip roll
                         - b (float): hip Pitch
@@ -282,7 +299,7 @@ class Human(RobotBase):
                     - nanos (int):
                     - seconds (str):
 
-            function (str): 接口名
+            function (str): interface name / function name
 
         Example:
 
@@ -590,7 +607,21 @@ class Human(RobotBase):
         print(f'human_motor_limit: {self.motor_limits}')
         return response
 
-    def move_joint(self, *args: Motor):
+    def _control_svr_start(self):
+        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET"):
+            print(chunk.decode("utf-8"))
+
+    def _control_svr_log_view(self):
+        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
+            print(chunk.decode("utf-8"))
+
+    def _control_svr_close(self) -> Dict[str, Any]:
+        return self._send_request(url='/robot/sdk_ctrl/close', method="GET")
+
+    def _control_svr_status(self) -> Dict[str, Any]:
+        return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
+
+    def _move_joint(self, *args: Motor):
         """ 移动关节
 
         Args:
@@ -618,20 +649,46 @@ class Human(RobotBase):
                 motor.pop('ip', 0)
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
 
-    def control_svr_start(self):
-        """ 启动控制程序 """
-        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET"):
-            print(chunk.decode("utf-8"))
+    def move_motor(self, no, orientation: str, angle: float):
+        self._move_joint(Motor(no=str(no), orientation=orientation, angle=angle))
 
-    def control_svr_close(self) -> Dict[str, Any]:
-        """ 关闭控制程序 """
-        return self._send_request(url='/robot/sdk_ctrl/close', method="GET")
+    def set_motor_pd_flag(self, no: str, orientation: str):
+        data = {
+            'no': no,
+            'orientation': orientation
+        }
+        self._send_websocket_msg({'command': 'check_motor_for_flag', 'data': {"command": data}})
+        print(f"Set PID mode on! please reboot motor:  {no}-{orientation}")
 
-    def control_svr_status(self) -> Dict[str, Any]:
-        """ 查看控制程序状态 """
-        return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
+    def set_motor_pd(self, no: str, orientation: str, p: float, d: float):
+        data = {
+            'no': no,
+            'orientation': orientation,
+            'p': p,
+            'd': d
+        }
+        self._send_websocket_msg({'command': 'check_motor_for_set_pd', 'data': {"command": data}})
+        print(f"Parameter setting successful! please reboot motor:  {no}-{orientation}")
 
-    def control_svr_log_view(self):
-        """ 查看控制程序日志 """
-        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
-            print(chunk.decode("utf-8"))
+    def enable_motor(self, no: str, orientation: str):
+        data = {
+            'no': no,
+            'orientation': orientation
+        }
+        self._send_websocket_msg({'command': 'enable_motor', 'data': {"command": data}})
+        print(f"Motor enabled successful:  {no}-{orientation}")
+
+    def disable_motor(self, no: str, orientation: str):
+        data = {
+            'no': no,
+            'orientation': orientation
+        }
+        self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
+        print(f"Motor disabled successful:  {no}-{orientation}")
+
+    def get_motor_pvc(self, no: str, orientation: str):
+        data = {
+            'no': str(no),
+            'orientation': orientation
+        }
+        return self._send_request(url='/robot/motor/pvc', method="POST", json=data)

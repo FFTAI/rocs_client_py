@@ -1,7 +1,6 @@
 class System:
-    """系统控制
-
-    用于关机、重启、重置等其他系统指令操作
+    """
+    It is used to shut down, restart, and reset other system commands
     """
 
     @staticmethod
