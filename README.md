@@ -41,10 +41,10 @@ human = Human(host='192.168.12.1')
 
 You can use the following methods to control the robot:
 
-- control_svr_start(): Turn on the robot control program
-- control_svr_status(): View the running status of the robot
-- control_svr_log_view(): View robot run logs
-- control_svr_close(): Turn off the robot control program
+- _control_svr_start(): Turn on the robot control program
+- _control_svr_status(): View the running status of the robot
+- _control_svr_log_view(): View robot run logs
+- _control_svr_close(): Turn off the robot control program
 - start(): Zero/Start control
 - stop(): Emergency stop (will stop with power off)
 - exit(): Exit robot control
@@ -61,10 +61,6 @@ You can use the following methods to control the robot:
       nodding backward is negative, range (-17.1887-17.1887)
     - yaw(float): yaw (yaw angle): describes the angle of rotation around the z-axis. Turning left head is negative,
       turning right head is positive, range (-17.1887-17.1887)
-- move_joint(*motor): Move joint (variable length parameter, can control multiple joints at the same time, delay
-  estimate 2ms)
-    - motor(Motor): Joint object, can get corresponding joint mapping relationship and parameter number through
-      human.motor_limits
 - upper_body(arm_action, hand_action): Upper limb preset command
     - arm_action(ArmAction): Arm preset command enumeration
     - hand_action(HandAction): Hand preset command enumeration
@@ -73,32 +69,134 @@ You can use the following methods to control the robot:
 
 Below is a complete sample code that demonstrates how to use this SDK to control a robot:
 
-```python
+```python 
+"""
+Whole machine control (rocs_client>=1.0)
+"""
 import time
 from rocs_client import Human
 from rocs_client.robot.human import ArmAction, HandAction
 
 human = Human(host='192.168.9.17')  # Please replace host with the ip of your device
-
-# human._control_svr_start() # Turn on the robot control program
-# human._control_svr_status() # View the running status of the robot
-# human._control_svr_log_view() # View robot run logs
-# human._control_svr_close() # Turn off the robot control program
-
+        
 human.start()  # Start remote control
 time.sleep(10)  # Control system built-in state machine. To ensure normal calibration and startup of the robot, it is recommended to execute subsequent instructions after start() instruction for 10s
-
 human.stand()  # Stand up
-human.walk(0, 0.1)  # Move forward at a speed of 0.1
 
 human.upper_body(arm=ArmAction.LEFT_ARM_WAVE)  # Wave left hand
 human.upper_body(hand=HandAction.TREMBLE)  # Tremble fingers
 
-human.set_motor_pd_flag('1', 'left')  # Turn on the set PID parameter switch
+human.stand()  # Stand up
+human.walk(0, 0.1)  # Move forward at a speed of 0.1
 
-human.set_motor_pd('1', 'left', 0.36, 0.042)  # Set PID parameters
+```
 
-human.move_motor(1, "left", 10)  # Move motor no.1 left by 10 degrees
+```python
+"""
+Single motor control (rocs_client>=1.2.8)
+"""
+import math
+import threading
+import time
+
+from rocs_client import Human
+
+human = Human(host="192.168.9.17")  # Please replace host with the ip of your device
+
+def set_pds_flag():
+    for motor in human.motor_limits:
+        human.set_motor_pd_flag(motor['no'], motor['orientation'])
+    human.exit()
+
+
+def set_pds():
+    for motor in human.motor_limits:
+        human.set_motor_pd(motor['no'], motor['orientation'], 0.36, 0.042)
+    human.exit()
+
+
+def enable_all():
+    for motor in human.motor_limits:
+        human.enable_motor(motor['no'], motor['orientation'])
+    time.sleep(1)
+
+
+def _disable_left():
+    for i in range((len(human.motor_limits) - 1), -1, -1):
+        motor = human.motor_limits[i]
+        if motor['orientation'] == 'left':
+            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
+
+    for i in range((len(human.motor_limits) - 1), -1, -1):
+        motor = human.motor_limits[i]
+        if motor['orientation'] == 'left':
+            human.disable_motor(motor['no'], motor['orientation'])
+
+
+def _disable_right():
+    for i in range((len(human.motor_limits) - 1), -1, -1):
+        motor = human.motor_limits[i]
+        if motor['orientation'] != 'left':
+            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
+
+    for i in range((len(human.motor_limits) - 1), -1, -1):
+        motor = human.motor_limits[i]
+        if motor['orientation'] != 'left':
+            human.disable_motor(motor['no'], motor['orientation'])
+
+
+def disable_all():
+    time.sleep(2)
+    t_left = threading.Thread(target=_disable_left)
+    t_right = threading.Thread(target=_disable_right)
+    t_left.start(), t_right.start()
+    t_left.join(), t_right.join()
+    human.exit()
+
+
+def wait_target_done(no, orientation, target_angle, rel_tol=1):
+    while True:
+        p, _, _ = human.get_motor_pvc(str(no), orientation)['data']
+        if math.isclose(p, target_angle, rel_tol=rel_tol):
+            break
+
+
+def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=0.05, wait_time=0.004):
+    current_position = 0
+    while True:
+        try:
+            current_position, _, _ = (human.get_motor_pvc(no, orientation))['data']
+            if current_position is not None and current_position != 0:
+                break
+        except Exception as e:
+            pass
+    target_position = target_angle
+    cycle = abs(int((target_position - current_position) / offset))
+
+    for i in range(0, cycle):
+        if target_position > current_position:
+            current_position += offset
+        else:
+            current_position -= offset
+        human.move_motor(no, orientation, current_position)
+        time.sleep(wait_time)
+    wait_target_done(no, orientation, current_position)
+
+
+"""
+This is the action of simple
+When you first single-control a motor, I strongly recommend that you must run this function for testing
+
+If the motor's motion is linear and smooth, then you can try something slightly more complicated
+But if it freezes, you need to debug your P and D parameters.
+"""
+human.enable_motor('2', 'left')
+time.sleep(2)
+smooth_move_motor_example('2', 'left', -10)
+smooth_move_motor_example('2', 'left', -20)
+smooth_move_motor_example('2', 'left', -10)
+time.sleep(2)
+human.disable_motor('2', 'left')
 ```
 
 ## Journey
@@ -108,5 +206,5 @@ human.move_motor(1, "left", 10)  # Move motor no.1 left by 10 degrees
 | 0.1     | Fourier Software Department | 2023.8  | 1. Project initiation<br/>2. Confirm basic architecture                | [0.1 Description](https://fftai.github.io/release/v0.1.html) |
 | 0.2     | Fourier Software Department | 2023.9  | 1. Control module, system module<br/>2. Specific coding                | [0.2 Description](https://fftai.github.io/release/v0.2.html) |
 | 1.1     | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br/>2. Single joint control of upper body | [1.1 Description](https://fftai.github.io/release/v1.1.html) |
-| 1.2     | Fourier Software Department | 2023.11 | single motor control                                                   |                                                              |
+| 1.2     | Fourier Software Department | 2023.11 | 1. single motor control<br/>2. smooth movement example                 |                                                              |
 
