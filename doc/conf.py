@@ -14,9 +14,11 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx_markdown_builder'
+    'sphinx_markdown_builder',
+    'recommonmark'
 ]
 
+html_static_path = ['_static']
 html_theme = 'sizzle'
 exclude_patterns = []
 
