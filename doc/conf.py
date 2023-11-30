@@ -1,7 +1,7 @@
 import os
 import sys
 
-project = 'Fourier-RoCS'
+project = 'RoCS Python SDK '
 copyright = '2023, Fourier Software Department'
 author = 'Fourier Software Department'
 release = '1.0'
@@ -14,11 +14,10 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx_wagtail_theme',
     'sphinx_markdown_builder'
 ]
 
-html_theme = 'sphinx_wagtail_theme'
+html_theme = 'sizzle'
 exclude_patterns = []
 
-language = 'zh_CN'
+language = 'en'

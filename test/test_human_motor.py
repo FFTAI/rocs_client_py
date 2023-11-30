@@ -6,7 +6,7 @@ import unittest
 from rocs_client import Human
 
 """
-python -m unittest test_human_motor.TestHumanMotor.test_action_hello
+python -m unittest test_human_motor.TestHumanMotor.test_action_simple
 
 """
 
@@ -102,9 +102,16 @@ class TestHumanMotor(unittest.TestCase):
         set_pds()
 
     def test_action_simple(self):
+        """
+        This is the action of simple
+        When you first single-control a motor, I strongly recommend that you must run this function for testing
+
+        If the motor's motion is linear and smooth, then you can try something slightly more complicated
+        But if it freezes, you need to debug your P and D parameters.
+        """
         enable_all()
         smooth_move_motor_example('2', 'left', -20)
-        # disable_all()
+        disable_all()
 
     def test_action_hug(self):
         enable_all()
