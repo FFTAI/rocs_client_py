@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>RoCS Python SDK  - rocs_client.robot package</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha256-8uHMIn1ru0GS5KO+zf7Zccf8Uw12IA5DrdEcmMuWLFM=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tooltipster@4.2.8/dist/css/tooltipster.bundle.min.css" integrity="sha256-Qc4lCfqZWYaHF5hgEOFrYzSIX9Rrxk0NPHRac+08QeQ=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tooltipster@4.2.8/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" integrity="sha256-Wa1I4jhSXeWd3N6RhfPlkqr1WlT+zS3Vh2YGCg0129E=" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro|Roboto|Roboto+Mono" rel="stylesheet">
+<link href="https://fonts.red-dove.com/iosevka-ss09-regular/webfont.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/sizzle.css" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js" integrity="sha512-2V49R8ndaagCOnwmj8QnbT1Gz/rie17UouD9Re5WxbzRVUGoftCu5IuqqtAM9+UC3fwfHCSJR1hkzNQh/2wdtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/tooltipster@4.2.8/dist/js/tooltipster.bundle.min.js" integrity="sha256-v8akIv8SCqn5f3mbVB7vEWprIizxPh6oV0yhao/dbB4=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        LINK_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+      $(document).data('sizzle', {on_load: []});
+    </script>
+    <script src="app-data.js"></script>
+<link rel="index" title="Index" href="genindex.html" />
+<link rel="search" title="Search" href="search.html" />
+<link rel="next" title="rocs_client.common package" href="rocs_client.common.html" />
+<link rel="prev" title="Welcome to the RoCS Python SDK!" href="index.html" />
+
+</head>
+<body class="full-height test">
+<noscript>
+  <div>
+    <div id="noscript-message">JavaScript is not enabled. It is needed for this website to work.</div>
+  </div>
+</noscript>
+<div id="whole-page" class="container-fluid content full-height">
+  <div id="header-row" class="row">
+    <div id="header-container" class="col-md-12">
+      <div id="hdr-left">
+        <i class="fa fa-bars menu-toggle"></i>
+        
+<a href="index.html" class="text-logo">RoCS Python SDK  1.0 documentation</a>
+
+      </div>
+      <div id="hdr-centre" class="text-center stretch">
+        <h3 title="rocs_client.robot package">rocs_client.robot package</h3>
+        <h6>rocs_client.robot package</h6>
+      </div>
+      <div id="hdr-search">
+        
+<div class="input-group" title="Enter something to search for and then either press Enter or click the magnifying glass">
+  <input type="text" class="form-control search-query" placeholder="Search docs ...">
+  <div class="input-group-addon">
+    <i class="fa fa-search"></i>
+  </div>
+</div>
+      </div>
+
+      <div id="hdr-index">
+        <a href="genindex.html" class="btn btn-default" title="Go to the index"><i class="fa fa-list"></i></a>
+      </div>
+
+      <div id="hdr-source">
+        <a href="_sources/rocs_client.robot.rst.txt" class="btn btn-default" title="See the source for this page"><i class="fa fa-code"></i></a>
+      </div>
+
+      <div id="hdr-right">
+        
+  
+  <div class="prev-next">
+    
+      <div class="pull-left">
+        <a class="btn btn-default prev" href="index.html" title="Previous chapter (Welcome to the RoCS Python SDK!)"><i class="fa fa-chevron-left mr-1em" aria-hidden="true"></i><span class="btn-text">Welcome to the RoCS Python SDK!</span></a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-default next" href="rocs_client.common.html" title="Next chapter (rocs_client.common package)"><span class="btn-text">rocs_client.common package</span>&nbsp;<i class="fa fa-chevron-right ml-1em" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  
+      </div>
+      <div id="alt-hdr-right">
+
+        <a href="index.html"><i class="fa fa-chevron-left mr-8"></i></a>
+
+
+        <a href="index.html"><i class="fa fa-home mr-8"></i></a>
+
+
+        <a href="search.html"><i class="fa fa-search mr-8"></i></a>
+
+
+        <a href="genindex.html"><i class="fa fa-list mr-8"></i></a>
+
+
+        <a href="rocs_client.common.html"><i class="fa fa-chevron-right"></i></a>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="content-row" class="row">
+    <div id="page-content" class="col-md-12 flex-col">
+      <div id="content-container">
+        <div id="nav">
+          
+  <div class="navsidebar">
+    <div id="sidebar-search">
+      
+<div class="input-group" title="Enter something to search for and then either press Enter or click the magnifying glass">
+  <input type="text" class="form-control search-query" placeholder="Search docs ...">
+  <div class="input-group-addon">
+    <i class="fa fa-search"></i>
+  </div>
+</div>
+    </div>
+      <div class="sidebar-block">
+        <div class="sidebar-tocheading">
+          <div class="pull-left">
+            <h2>Table Of Contents</h2>
+          </div>
+          <div class="pull-right" title="Hide this sidebar (hover at left edge to bring it back)"><i class="fa fa-chevron-left hidetoc"></i></div>
+        </div>
+        <div class="sidebar-toc">
+      
+          <div id="toc-filter" title="Type in here to show only matching topics">
+            <input class="form-control" id="toc-filter-query" placeholder="Filter by title ...">
+          </div>
+      
+        
+  
+    <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#rocs-client-robot-package">rocs_client.robot package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.car">rocs_client.robot.car module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Car"><code class="docutils literal notranslate"><span class="pre">Car</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.move"><code class="docutils literal notranslate"><span class="pre">Car.move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.set_mode"><code class="docutils literal notranslate"><span class="pre">Car.set_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Mod"><code class="docutils literal notranslate"><span class="pre">Mod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_2_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_3_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_4_WHEEL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.human">rocs_client.robot.human module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.ArmAction"><code class="docutils literal notranslate"><span class="pre">ArmAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.ARMS_SWING"><code class="docutils literal notranslate"><span class="pre">ArmAction.ARMS_SWING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.HELLO"><code class="docutils literal notranslate"><span class="pre">ArmAction.HELLO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE"><code class="docutils literal notranslate"><span class="pre">ArmAction.LEFT_ARM_WAVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.RESET"><code class="docutils literal notranslate"><span class="pre">ArmAction.RESET</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.HandAction"><code class="docutils literal notranslate"><span class="pre">HandAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.GRASP"><code class="docutils literal notranslate"><span class="pre">HandAction.GRASP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HALF_HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.OPEN"><code class="docutils literal notranslate"><span class="pre">HandAction.OPEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT"><code class="docutils literal notranslate"><span class="pre">HandAction.SLIGHTLY_BENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.THUMB_UP"><code class="docutils literal notranslate"><span class="pre">HandAction.THUMB_UP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.TREMBLE"><code class="docutils literal notranslate"><span class="pre">HandAction.TREMBLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rocs_client.common.html#rocs-client-common-package">rocs_client.common package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.camera">rocs_client.common.camera module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera"><code class="docutils literal notranslate"><span class="pre">Camera</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera.video_stream_status"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera.video_stream_url"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_url</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.system">rocs_client.common.system module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System.reboot"><code class="docutils literal notranslate"><span class="pre">System.reboot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System.shutdown"><code class="docutils literal notranslate"><span class="pre">System.shutdown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  
+        </div>
+      </div>
+  </div>
+        </div>
+        <div id="content" tabindex="0" class="stretch">
+          <div id="mnav">
+            
+  
+    <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#rocs-client-robot-package">rocs_client.robot package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.car">rocs_client.robot.car module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Car"><code class="docutils literal notranslate"><span class="pre">Car</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.move"><code class="docutils literal notranslate"><span class="pre">Car.move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.set_mode"><code class="docutils literal notranslate"><span class="pre">Car.set_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Mod"><code class="docutils literal notranslate"><span class="pre">Mod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_2_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_3_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_4_WHEEL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.human">rocs_client.robot.human module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.ArmAction"><code class="docutils literal notranslate"><span class="pre">ArmAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.ARMS_SWING"><code class="docutils literal notranslate"><span class="pre">ArmAction.ARMS_SWING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.HELLO"><code class="docutils literal notranslate"><span class="pre">ArmAction.HELLO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE"><code class="docutils literal notranslate"><span class="pre">ArmAction.LEFT_ARM_WAVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.RESET"><code class="docutils literal notranslate"><span class="pre">ArmAction.RESET</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.HandAction"><code class="docutils literal notranslate"><span class="pre">HandAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.GRASP"><code class="docutils literal notranslate"><span class="pre">HandAction.GRASP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HALF_HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.OPEN"><code class="docutils literal notranslate"><span class="pre">HandAction.OPEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT"><code class="docutils literal notranslate"><span class="pre">HandAction.SLIGHTLY_BENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.THUMB_UP"><code class="docutils literal notranslate"><span class="pre">HandAction.THUMB_UP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.TREMBLE"><code class="docutils literal notranslate"><span class="pre">HandAction.TREMBLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rocs_client.common.html#rocs-client-common-package">rocs_client.common package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.camera">rocs_client.common.camera module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera"><code class="docutils literal notranslate"><span class="pre">Camera</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera.video_stream_status"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera.video_stream_url"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_url</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.system">rocs_client.common.system module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System.reboot"><code class="docutils literal notranslate"><span class="pre">System.reboot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System.shutdown"><code class="docutils literal notranslate"><span class="pre">System.shutdown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  
+          </div>
+          <div class="body">
+            
+  <div class="section" id="rocs-client-robot-package">
+<h1>rocs_client.robot package<a class="headerlink" href="#rocs-client-robot-package" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</div>
+<div class="section" id="module-rocs_client.robot.car">
+<span id="rocs-client-robot-car-module"></span><h2>rocs_client.robot.car module<a class="headerlink" href="#module-rocs_client.robot.car" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rocs_client.robot.car.Car">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><code class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></code><code class="sig-name descname"><span class="pre">Car</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class hover docutils literal notranslate" data-hoverref="rocs_client.robot.car.rocs_client.robot.robot_base.RobotBase"><span class="pre">RobotBase</span></code></a></p>
+<p>When you need to connect a Car, you can create a Car() object!
+This will connect to the control system in the background,
+and provide the corresponding control function and status monitoring!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ssl</strong> (<em class="hover">bool</em>) – Indicates whether ssl authentication is enabled. Default False</li>
+<li><strong>host</strong> (<em class="hover">str</em>) – indicates the network IP address of the car</li>
+<li><strong>port</strong> (<em class="hover">int</em>) – specifies the PORT of the car control service</li>
+<li><strong>on_connected</strong> (<em class="hover">callable</em>) – This listener is triggered when the car connection is successful</li>
+<li><strong>on_message</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car sends system status</li>
+<li><strong>on_close</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car connection is closed</li>
+<li><strong>on_error</strong> (<em class="hover">callable</em>) – This listener will be triggered when a car error occurs</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.car.Car.move">
+<code class="sig-name descname"><span class="pre">move</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Control Car walk</p>
+<p><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">request</span> <span class="pre">is</span> <span class="pre">sent</span> <span class="pre">by</span> <span class="pre">maintaining</span> <span class="pre">a</span> <span class="pre">long</span> <span class="pre">link</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>angle</strong> (<em class="hover">float</em>) – Angle Control direction. The value ranges from plus to minus 45 degrees. Left is positive, right is negative! (floating point 8 bits)</li>
+<li><strong>speed</strong> (<em class="hover">float</em>) – Before and after the speed control, the value can be plus or minus 500. Forward is positive, backward is negative! (floating point 8 bits)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.car.Car.set_mode">
+<code class="sig-name descname"><span class="pre">set_mode</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">mod</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.car.Mod" title="rocs_client.robot.car.Mod"><span class="pre">Mod</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car.set_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the car mode</p>
+<p>the car will move in the corresponding mode, including 4 rounds, 3 rounds and 2 rounds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mod</strong> (<a class="reference internal" href="#rocs_client.robot.car.Mod" title="rocs_client.robot.car.Mod"><em class="hover">Mod</em></a>) – Mode object definition</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><cite>code</cite> (int): statu code，0: Normal -1: Anomaly
+<cite>msg</cite> (str): result msg</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rocs_client.robot.car.Mod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><code class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></code><code class="sig-name descname"><span class="pre">Mod</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Mod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate" data-hoverref="rocs_client.robot.car.enum.Enum"><span class="pre">Enum</span></code></p>
+<p>Arguments that apply to the <cite>set_mode</cite> Function</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.car.Mod.MOD_2_WHEEL">
+<code class="sig-name descname"><span class="pre">MOD_2_WHEEL</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_2'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.car.Mod.MOD_3_WHEEL">
+<code class="sig-name descname"><span class="pre">MOD_3_WHEEL</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_3'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.car.Mod.MOD_4_WHEEL">
+<code class="sig-name descname"><span class="pre">MOD_4_WHEEL</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_4'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-rocs_client.robot.human">
+<span id="rocs-client-robot-human-module"></span><h2>rocs_client.robot.human module<a class="headerlink" href="#module-rocs_client.robot.human" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><code class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></code><code class="sig-name descname"><span class="pre">ArmAction</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.ArmAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate" data-hoverref="rocs_client.robot.human.enum.Enum"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.ARMS_SWING">
+<code class="sig-name descname"><span class="pre">ARMS_SWING</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ARMS_SWING'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.ARMS_SWING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.HELLO">
+<code class="sig-name descname"><span class="pre">HELLO</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HELLO'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.HELLO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE">
+<code class="sig-name descname"><span class="pre">LEFT_ARM_WAVE</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LEFT_ARM_WAVE'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.RESET">
+<code class="sig-name descname"><span class="pre">RESET</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RESET'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.RESET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><code class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></code><code class="sig-name descname"><span class="pre">HandAction</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.HandAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate" data-hoverref="rocs_client.robot.human.enum.Enum"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.GRASP">
+<code class="sig-name descname"><span class="pre">GRASP</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GRASP'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.GRASP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.HALF_HANDSHAKE">
+<code class="sig-name descname"><span class="pre">HALF_HANDSHAKE</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HALF_HANDSHAKE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.HANDSHAKE">
+<code class="sig-name descname"><span class="pre">HANDSHAKE</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HANDSHAKE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.HANDSHAKE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.OPEN">
+<code class="sig-name descname"><span class="pre">OPEN</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'OPEN'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.OPEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.SLIGHTLY_BENT">
+<code class="sig-name descname"><span class="pre">SLIGHTLY_BENT</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SLIGHTLY_BENT'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.THUMB_UP">
+<code class="sig-name descname"><span class="pre">THUMB_UP</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'THUMB_UP'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.THUMB_UP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.TREMBLE">
+<code class="sig-name descname"><span class="pre">TREMBLE</span></code><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TREMBLE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.TREMBLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><code class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></code><code class="sig-name descname"><span class="pre">Human</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class hover docutils literal notranslate" data-hoverref="rocs_client.robot.human.rocs_client.robot.robot_base.RobotBase"><span class="pre">RobotBase</span></code></a></p>
+<p>When you need to connect a Human, you can create a Human() object!
+This will connect to the control system in the background,
+and provide the corresponding control function and status monitoring!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ssl</strong> (<em class="hover">bool</em>) – Indicates whether ssl authentication is enabled. Default False</li>
+<li><strong>host</strong> (<em class="hover">str</em>) – indicates the network IP address of the car</li>
+<li><strong>port</strong> (<em class="hover">int</em>) – specifies the PORT of the car control service</li>
+<li><strong>on_connected</strong> (<em class="hover">callable</em>) – This listener is triggered when the car connection is successful</li>
+<li><strong>on_message</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car sends system status</li>
+<li><strong>on_close</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car connection is closed</li>
+<li><strong>on_error</strong> (<em class="hover">callable</em>) – This listener will be triggered when a car error occurs</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.disable_debug_state">
+<code class="sig-name descname"><span class="pre">disable_debug_state</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_debug_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>关闭state调试模式</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li>code (int): 返回码，0-表示成功，-1-表示失败</li>
+<li>msg (str): 返回消息，ok表示正常，失败返回错误信息</li>
+<li>data (dict): 数据对象，包含具体数据</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.disable_motor">
+<code class="sig-name descname"><span class="pre">disable_motor</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_motor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.enable_debug_state">
+<code class="sig-name descname"><span class="pre">enable_debug_state</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">frequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_debug_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>open debug mode</p>
+<p>Triggering this function will trigger the GR-01 human device to actively send status values in the background,
+so you need to listen to the on_message function for processing</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>frequence</strong> (<em class="hover">int</em>) – frequency</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><blockquote>
+<div><ul>
+<li>log (dict): log<blockquote>
+<div><ul>
+<li>logBuffer (list): logBuffers<blockquote>
+<div><ul class="simple">
+<li>log (str): content</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li>states (dict): joint data content<blockquote>
+<div><ul>
+<li>basestate (dict): robot status data<blockquote>
+<div><ul class="simple">
+<li>a (float): hip roll</li>
+<li>b (float): hip Pitch</li>
+<li>c (float): hip Yaw</li>
+<li>va (float): not use</li>
+<li>vb (float): not use</li>
+<li>vc (float): not use</li>
+<li>vx (float): 前进方向速度，单位m/s</li>
+<li>vy (float): 左右方向速度，单位m/s</li>
+<li>vz (float): not use</li>
+<li>x (float): base  X，站立时X位置</li>
+<li>y (float): base  Y，站立时Y位置</li>
+<li>z (float): base  Z，站立时Z位置</li>
+</ul>
+</div></blockquote>
+</li>
+<li>fsmstatename (dict): 有关状态机状态的数据<blockquote>
+<div><ul class="simple">
+<li>currentstatus (str): 当前状态 Unknown、Start、Zero、Stand、Walk、Stop</li>
+</ul>
+</div></blockquote>
+</li>
+<li>jointStates (list): 关节状态列表<blockquote>
+<div><ul class="simple">
+<li>name (str): 关节名称</li>
+<li>qa (float): 真实的关节角度，单位：rad（弧度）</li>
+<li>qdota (float): 真实的关节速度，单位：rad/s（弧度/秒）</li>
+<li>taua (float): 真实的扭矩，单位:n*m</li>
+<li>qc (float): 期望的关节速度，单位：rad</li>
+<li>qdotc (float): 期望的关节速度，单位：rad/s（弧度/秒）</li>
+<li>tauc (float): 期望的关节扭矩，单位：unit:n*m</li>
+</ul>
+</div></blockquote>
+</li>
+<li>stanceindex (dict): 姿态索引 not use</li>
+<li>contactforce (dict): 接触力数据 not use<blockquote>
+<div><ul class="simple">
+<li>fxL (float): 左脚接触力</li>
+<li>fyL (float): 左脚接触力</li>
+<li>fzL (float): 左脚接触力</li>
+<li>mxL (float): 左脚接触力</li>
+<li>myL (float): 左脚接触力</li>
+<li>mzL (float): 左脚接触力</li>
+<li>fxR (float): 右脚接触力</li>
+<li>fyR (float): 右脚接触力</li>
+<li>fzR (float): 右脚接触力</li>
+<li>mxR (float): 右脚接触力</li>
+<li>myR (float): 右脚接触力</li>
+<li>mzR (float): 右脚接触力</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li>timestamp (dict): 时间戳<blockquote>
+<div><ul class="simple">
+<li>nanos (int):</li>
+<li>seconds (str):</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>function (str): interface name / function name</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;basestate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00008816774229518624</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;b&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0031777816310660227</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;c&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;va&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.2955695877132929e-9</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;vb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.542262024864478e-7</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;vc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0403557796187139e-8</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;vx&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;vy&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;vz&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;z&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;contactforce&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;fxL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fxR&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fyL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fyR&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fzL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fzR&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;mxL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;mxR&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;myL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;myR&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;mzL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;mzR&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;fsmstatename&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;currentstatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;jointStates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_hip_roll&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000002967348844382189</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-4.195799309522971e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.2811068419807388e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-2.5650460977039419e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00000421397498061693</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00000421397498061693</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_hip_yaw&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.1561011056000389e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.763118985802831e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.413053331490085e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.998095673038479e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.607576848879348e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.607576848879348e-7</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_hip_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00004391517501779261</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.515751869369811e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.9014878092501132e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-4.227869290635517e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000007239519592483131</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000007239519592483131</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_knee_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00004577103623661791</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.825644254205245e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.9871683938840232e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.3400628221563269e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000004188456587918816</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000004188456587918816</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_ankle_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000515945298803933</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.2981673142499234e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.242746827673787e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-2.258893072672217e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-7.153918887352573e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-7.153918887352573e-8</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_ankle_roll&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.419495520105573e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.706374175342285e-11</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.794181899265958e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.949285977052194e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.093729550329863e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.093729550329863e-10</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right_hip_roll&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000028389355052439439</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.865708590789946e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.2246925191446977e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.962174546204988e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000004837825973754749</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000004837825973754749</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right_hip_yaw&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-4.364693140246345e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.000702384094449e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.8497568931031923e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.7781221204499439e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.867529228984824e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.867529228984824e-7</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right_hip_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000045113585488131829</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.367752787246051e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.950714297088208e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.520824184784889e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000011320537478692172</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000011320537478692172</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right_knee_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0000479437468878189</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.324249646390596e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0757655546078694e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.4486023522267125e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00000557281564261239</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.00000557281564261239</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right_ankle_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00005468652781599774</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.4630029782206445e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.3684484798495586e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-2.2533190930925487e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-7.817536142908409e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-7.817536142908409e-8</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right_ankle_roll&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.4411157156501987e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.786951464767337e-11</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.347293532005193e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.275949957243541e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.977234519649815e-11</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.977234519649815e-11</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;waist_yaw&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.7287197903010758e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.9509172839224989e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.182983232727597e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.5630533392766103e-7</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.000003249343357926737</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0000017639729379187398</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;waist_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.1411541437762108e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.783273072262379e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-5.121972652033971e-13</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.810219915783962e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000011505459672511687</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000005496170595926694</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;waist_roll&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.302909426086466e-8</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.480917136286735e-9</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.6044103175709825e-13</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-4.3982596326637839e-10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000013027709577777855</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000006483935166648911</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;head_yaw&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;head_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;head_roll&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qa&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;taua&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;stanceindex&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;nanos&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SonnieGetStates&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.enable_motor">
+<code class="sig-name descname"><span class="pre">enable_motor</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_motor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_joint_limit">
+<code class="sig-name descname"><span class="pre">get_joint_limit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.get_joint_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain joint limit</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><dl class="first docutils">
+<dt><cite>code</cite> (int):</dt><dd>statu code，0: Normal    -1: Anomaly</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>msg</cite> (str):</dt><dd>result msg</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>data</cite> (dict):</dt><dd>results<ul>
+<li><dl class="first docutils">
+<dt>function (str):</dt><dd>函数名称</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>data(dict):</dt><dd><ul>
+<li><dl class="first docutils">
+<dt>jointlimit (list): 关节限制列表，每个元素是一个字典</dt><dd><ul>
+<li>name (str): 关节名称</li>
+<li>qdotaMax (float): 关节最大速度，单位：rad/s</li>
+<li>qaMax (float): 关节最大弧度，单位：rad</li>
+<li>qaMin (float): 关节最小角度，单位：rad</li>
+<li>tauaMax (float): 最大扭矩，单位：n*m</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;jointlimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_hip_roll&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.523598775598299</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.087266462599716</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.56637061435917</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">82.5</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_hip_yaw&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.392699081698724</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.392699081698724</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.56637061435917</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">82.5</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_hip_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.698131700797732</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-1.221730476396031</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22.441443522143093</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left_knee_pitch&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.094395102393195</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qaMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.087266462599716</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;qdotaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22.441443522143093</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;tauaMax&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SonnieGetStatesLimit&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_joint_states">
+<code class="sig-name descname"><span class="pre">get_joint_states</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.get_joint_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取关节状态</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">返回数据包含以下字段:<ul>
+<li><cite>code</cite> (int): 状态码，0 表示正常，-1 表示异常</li>
+<li><cite>msg</cite> (str): 状态信息，”ok” 表示正常</li>
+<li><cite>data</cite> (dict): 响应数据，包含以下字段：<blockquote>
+<div><ul>
+<li><cite>data</cite> (dict): 状态数据，包含以下字段：<blockquote>
+<div><ul>
+<li><cite>bodyandlegstate</cite> (dict): 身体和腿部状态，包含以下字段：<blockquote>
+<div><ul>
+<li><cite>currentstatus</cite> (str): 当前状态，”StartComplete” 表示启动完成</li>
+<li><cite>log</cite> (dict): 日志信息，包含以下字段：<blockquote>
+<div><ul>
+<li><cite>logBuffer</cite> (list): 日志缓冲区，包含以下字段：<blockquote>
+<div><ul class="simple">
+<li><cite>log</cite> (str): 日志内容，”GRPC system state response init complete” 表示 GRPC 系统状态响应初始化完成</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><cite>leftarmstate</cite> (dict): 左侧手臂状态，包含以下字段：<blockquote>
+<div><ul class="simple">
+<li><cite>armstatus</cite> (str): 手臂状态，”Swing” 表示摆臂模式</li>
+</ul>
+</div></blockquote>
+</li>
+<li><cite>rightarmstate</cite> (dict): 右侧手臂状态，包含以下字段：<blockquote>
+<div><ul class="simple">
+<li><cite>armstatus</cite> (str): 手臂状态，”Swing” 表示摆臂模式</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><cite>function</cite> (str): 调用该接口的函数名，”SonnieGetSystemStates” 表示获取系统状态接口</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;bodyandlegstate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;currentstatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;StartComplete&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;log&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;logBuffer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;log&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GRPC system state response init complete&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;leftarmstate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;armstatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Swing&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;rightarmstate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;armstatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Swing&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SonnieGetSystemStates&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_motor_pvc">
+<code class="sig-name descname"><span class="pre">get_motor_pvc</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.get_motor_pvc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.head">
+<code class="sig-name descname"><span class="pre">head</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">roll</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em><span class="n"><span class="pre">pitch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em><span class="n"><span class="pre">yaw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.head" title="Permalink to this definition">¶</a></dt>
+<dd><p>控制GR-01人形头部运动</p>
+<p><code class="docutils literal notranslate"><span class="pre">该请求维持了长链接的方式进行发送</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>roll</strong> (<em class="hover">float</em>) – roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）</li>
+<li><strong>pitch</strong> (<em class="hover">float</em>) – pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）</li>
+<li><strong>yaw</strong> (<em class="hover">float</em>) – yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.motor_limits">
+<code class="sig-name descname"><span class="pre">motor_limits</span></code><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#rocs_client.robot.human.Human.motor_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the maximum limit and minimum limit Angle of the motor</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.move_motor">
+<code class="sig-name descname"><span class="pre">move_motor</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">no</span></span></em>, <em><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.move_motor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset/zero/calibration of the initial state of the device</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.set_motor_pd">
+<code class="sig-name descname"><span class="pre">set_motor_pd</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.set_motor_pd_flag">
+<code class="sig-name descname"><span class="pre">set_motor_pd_flag</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.stand">
+<code class="sig-name descname"><span class="pre">stand</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.stand" title="Permalink to this definition">¶</a></dt>
+<dd><p>The GR-01 Human device will stand in place</p>
+<p>If you want to command the GR-01 humanoid device after start!
+you also need to call this function to set its position to stand mode.
+If you need to stop during a walk, you can also call this function to stand</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><cite>code</cite> (int): statu code，0: Normal -1: Anomaly
+<cite>msg</cite> (str): result msg</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.upper_body">
+<code class="sig-name descname"><span class="pre">upper_body</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">arm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.ArmAction" title="rocs_client.robot.human.ArmAction"><span class="pre">ArmAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">hand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.HandAction" title="rocs_client.robot.human.HandAction"><span class="pre">HandAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.upper_body" title="Permalink to this definition">¶</a></dt>
+<dd><p>上肢预设动作，手、胳膊设定好动作
+:param - arm_action: (str): 胳膊动作:RESET（归零）、LEFT_ARM_WAVE（左挥手）、TWO_ARMS_WAVE（双臂挥手）、ARMS_SWING（甩胳膊）、HELLO（打招呼）
+:param - hand_action: (str): 手动作:HALF_HANDSHAKE（半握手）、THUMBS_UP（竖大拇指）、OPEN（手张开）、SLIGHTLY_BENT（手微屈）、GRASP（抓握）、TREMBLE（抖动手）、HANDSHAKE（握手）</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">返回码，0-表示成功，-1-表示失败
+- msg (str): 返回消息，ok表示正常，失败返回错误信息
+- data (dict): 数据对象，包含具体数据</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><ul class="simple">
+<li>code (int)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Human.walk">
+<code class="sig-name descname"><span class="pre">walk</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>控制GR-01人形设备行走</p>
+<p><code class="docutils literal notranslate"><span class="pre">该请求维持了长链接的方式进行发送</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>angle</strong> (<em class="hover">float</em>) – 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)</li>
+<li><strong>speed</strong> (<em class="hover">float</em>) – 速度 控制前后，取值范围为正负0.8米/秒。向前为正，向后为负！(浮点数8位)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Motor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><code class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></code><code class="sig-name descname"><span class="pre">Motor</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Motor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate" data-hoverref="rocs_client.robot.human.object"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Motor.angle">
+<code class="sig-name descname"><span class="pre">angle</span></code><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.angle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Motor.no">
+<code class="sig-name descname"><span class="pre">no</span></code><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.no" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rocs_client.robot.human.Motor.orientation">
+<code class="sig-name descname"><span class="pre">orientation</span></code><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.orientation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-rocs_client.robot.robot_base">
+<span id="rocs-client-robot-robot-base-module"></span><h2>rocs_client.robot.robot_base module<a class="headerlink" href="#module-rocs_client.robot.robot_base" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><code class="sig-prename descclassname"><span class="pre">rocs_client.robot.robot_base.</span></code><code class="sig-name descname"><span class="pre">RobotBase</span></code><span class="sig-paren">(</span><em><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate" data-hoverref="rocs_client.robot.robot_base.object"><span class="pre">object</span></code></p>
+<p>Robot 基类</p>
+<p>实例化的时候会通过websocket连接到对应设备的控制端口！</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase.exit">
+<code class="sig-name descname"><span class="pre">exit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>断开Robot链接</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase.start">
+<code class="sig-name descname"><span class="pre">start</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>启动</p>
+<p>当你想要控制Robot设备的时候，你的第一个指令</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase.stop">
+<code class="sig-name descname"><span class="pre">stop</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>停止</p>
+<p><code class="docutils literal notranslate"><span class="pre">该命令优先于其他命令!</span> <span class="pre">会掉电停止。请在紧急情况下触发</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-rocs_client.robot">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rocs_client.robot" title="Permalink to this heading">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-row" class="row">
+
+    <div class="col-md-12">
+        <span title="Built on 2023-12-01" class="pull-right">&copy; Copyright 2023, Fourier Software Department.
+        Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1 and the
+        <a href="https://pypi.org/project/sphinx-sizzle-theme/"
+
+           title="0.1.3/579ed3af [2023-08-31T22:56:32]"
+
+        >Sizzle</a> theme.</span>
+    </div>
+
+  </div>
+</div>
+
+<div id="tooltips" class="hidden">
+</div>
+
+<script>
+$(document).ready(function() {
+  'use strict';
+  var $search = $('.search-query');
+
+  var $filter = $('#toc-filter-query');
+  var $toclist = $('.sidebar-toc > ul').find('li');
+
+  if ($toclist.length === 0) {
+    $toclist = $('.localtoc > ul').find('li');
+  }
+
+
+  var $nav = $('#nav');
+
+  //$('#whole-page').removeClass('hidden');
+  var nav_width = $nav.width();
+
+
+  var search_url = 'search.html';
+
+  function perform_search(e) {
+    var $elem;
+
+    if (e.type === 'keypress') {
+      $elem = $(e.target);
+    }
+    else if (e.type === 'click') {
+      $elem = $(e.target).parents('.input-group').find('input');
+    }
+    var q = $elem.val().trim();
+
+    if (q) {
+      var url = search_url + '?q=' + q + '&check_keywords=yes&area=default';
+
+      location.href = url;
+    }
+  }
+
+
+  function apply_filter() {
+    var s = $filter.val().trim().toLowerCase();
+
+    $toclist.find('a').removeClass('hidden');
+    $toclist.each(function() {
+      var $this = $(this);
+      var $link = $this.find('> a');
+      var t = $link.text().toLowerCase();
+      var show = t.indexOf(s) >= 0;
+
+      if (!show) {
+        $link.addClass('hidden');
+      }
+    });
+  }
+
+  $filter.on('keyup', function(e) {
+    apply_filter();
+  });
+
+
+
+  $search.on('keypress', function(e) {
+    if (e.which == 13) {
+      perform_search(e);
+    }
+  });
+  $search.parents('.input-group').find('.input-group-addon').on('click', perform_search);
+  $(document).on('click', '.summary .fa-caret-right', function(e) {
+    var $elem = $(e.target).parents('li');
+    var $next = $elem.next();
+    $elem.addClass('hidden');
+    $next.removeClass('hidden');
+  });
+  $(document).on('click', '.detail .fa-caret-down', function(e) {
+    var $elem = $(e.target).parents('li');
+    var $prev = $elem.prev();
+    $elem.addClass('hidden');
+    $prev.removeClass('hidden');
+  });
+
+  $('#content').on('click', function() {
+    $('#mnav').hide();
+  });
+
+  var counter = 0;
+  var timer = null;
+
+  function show_nav() {
+    $('#content').off('mousemove', track_mouse);
+    if (timer !== null) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    $nav.show();
+  }
+
+  function track_mouse(e) {
+    var x = e.clientX;
+
+    if (x < 15) {
+      ++counter;
+      if (timer === null) {
+        timer = setTimeout(show_nav, 2000);
+      }
+    }
+    else {
+      counter = 0;
+    }
+    if (counter >= 20) {
+      show_nav();
+    }
+  };
+
+  function hide_nav() {
+    $nav.hide();
+    counter = 0;
+    $('#content').on('mousemove', track_mouse);
+  }
+
+  $('.hidetoc').on('click', hide_nav);
+
+  $(document).on('keyup', function(e) {
+    if (e.ctrlKey) {
+      if (e.which == 37) {      // Ctrl+left arrow
+        hide_nav();
+      }
+      else if (e.which == 39) { // Ctrl+right arrow
+        show_nav();
+      }
+    }
+  });
+
+  $('.menu-toggle').on('click', function(e) {
+    $('#mnav').toggle();
+  });
+
+  function scroll_nav(frag) {
+    var sel = '#nav ' + (frag ? 'a[href="' + frag + '"]' : '.toctree-l1 a.current');
+
+    var $link = $(sel);
+
+    if ($link.length > 0) {
+      $link[0].scrollIntoView({block: 'center'});
+    }
+  }
+
+  // If the navigator is long, then the item we clicked on to get here might
+  // not be in view. Try to scroll it into the view - a slight delay is needed
+  // to get it to sync properly with other stuff going on (as the page has just
+  // loaded). Hence the setTimeout with a timeout of 0.
+
+  function do_scroll() {
+    scroll_nav(window.location.hash);
+  }
+
+  setTimeout(do_scroll, 0);
+
+  function adjust_size() {
+    // we need to set the height explicitly so that scrolling regions in the
+    // content area work properly.
+    var h = $('#page-content').height();
+
+    $('#nav, #content').height(h);
+    if ($('#nav').is(':visible')) {
+      $('#mnav').hide();
+    }
+  }
+
+  adjust_size();
+
+  $(window).on('resize', adjust_size);
+
+  function focus_content() {
+    $('#content').focus();  // so that keyboard can be used to scroll, etc.
+  }
+
+  setTimeout(focus_content, 150);
+
+  var sizzle = $(document).data('sizzle');
+
+  function make_tooltip(id, h, b) {
+    var $e = $('<div>').attr('id', id);
+    var $b = $('<div>').addClass('tc-body').html(b);
+
+    if (h) {
+      var $h = $('<div>').addClass('tc-heading').html(h);
+      $e.append($h);
+    }
+    $e.append($b);
+    return $e;
+  }
+
+  var default_tt_options = {
+    theme: ['tooltipster-light', 'tooltipster-light-customized'],
+    interactive: true,
+    maxWidth: 600,
+    contentCloning: true
+  };
+
+  function activate_tooltips() {
+    var $tt = $('.tt');
+
+    //console.log('tt links:', $tt.length);
+    $tt.tooltipster(default_tt_options);
+  }
+
+
+
+  function add_glossary_tooltips() {
+    var links = $('a');  // can qualify with .reference.internal
+    var glinks = {};
+    var pat = /(.*)\.html#(term-.*)$/;
+    var found = false;  // links in this document
+
+    $.each(links, function(i, link) {
+        var $link = $(link);
+        var href = $link.attr('href');
+        var m = href.match(pat);
+
+        if (m) {
+          var s = m[1].replace(/^(\.\.\/)+/, '');
+
+          if (s === sizzle.app_data.glossary.document) {
+            var k = m[2];
+
+            if (k in glinks) {
+              glinks[k].push($link);
+            }
+            else {
+              glinks[k] = [$link];
+            }
+            found = true;
+          }
+        }
+    });
+    if (found) {
+      var $t = $('#tooltips');
+      var data = sizzle.app_data.glossary.terms;
+
+      $.each(glinks, function(k, v) {
+        var d = data[k];
+
+        if (d) {  // as a sanity check
+          var s = 'tc-'+ k;
+          var $e = make_tooltip(s, d.term, d.defn);
+          $t.append($e);
+
+          $.each(v, function(i, link) {
+            link.addClass('tt').attr('data-tooltip-content', '#' + s);
+          });
+        }
+      });
+    }
+  }
+
+  if (sizzle.app_data && sizzle.app_data.glossary &&
+      sizzle.app_data.glossary.document) {
+    add_glossary_tooltips();
+  }
+
+
+
+
+  function add_custom_tooltips() {
+    if (!sizzle.app_data) {
+      return;
+    }
+
+    var info_tips = sizzle.app_data.custom_data['info-tips'] || {};
+    var hover_tips = sizzle.app_data.custom_data['hovers'] || {};
+
+    if ($.isEmptyObject(info_tips) && $.isEmptyObject(hover_tips)) {
+      return;
+    }
+
+    var tt_options = $.extend({contentAsHTML: true}, default_tt_options);
+
+    if (!$.isEmptyObject(info_tips)) {
+      $('.tc-info').each(function() {
+        var $elem = $(this).prev();
+        var classes = $elem.attr('class');
+        var m = /\btci-([\S]+)/.exec(classes);
+
+        if (m !== null) {
+          var key = m[1];
+
+          if (key in info_tips) {
+            var v = info_tips[key];
+            var tt = $elem.tooltipster(tt_options).tooltipster('content', v);
+          }
+        }
+      });
+    }
+    if (!$.isEmptyObject(hover_tips)) {
+      var current_origin, current_instance;
+
+      var h_options = {
+        functionBefore: function(instance, helper) {
+          current_instance = instance;
+          current_origin = helper.origin;
+          //console.log('before', current_instance, current_origin);
+        },
+        functionAfter: function(instance, helper) {
+          current_instance = null;
+          current_origin = null;
+          //console.log('after', current_instance, current_origin);
+        }
+      };
+
+      var ht_options = $.extend(h_options, tt_options);
+      $('.hover').each(function() {
+        var $e = $(this);
+        var ref = $e.data('hoverref');
+
+        if (ref) {
+          var tip = hover_tips[ref];
+
+          if (tip) {
+            $e.tooltipster(ht_options).tooltipster('content', tip);
+            //if (/encrypt_and_sign/.test(ref)) { console.log(tip); }
+          }
+        }
+      });
+/*
+      $(document).on('click', '.hovertip a.hoverlink', function(e) {
+        if (!sizzle.app_data) {
+          return;
+        }
+        var $this = $(this);
+        var $content = $this.parent('.tooltipster-content');
+        var ref = $this.data('href');
+        var hover_tips = sizzle.app_data.custom_data['hovers'] || {};
+        var tip = hover_tips[ref];
+
+        if (tip && current_instance) {
+          current_instance.content(tip);
+        }
+
+      });
+ */
+    }
+  }
+
+  add_custom_tooltips();
+
+  setTimeout(activate_tooltips, 1000);
+
+
+  // Clipboard copy for code blocks with captions
+
+  $('.code-block-caption').each(function() {
+    var $cap = $(this);
+    var $btn = $('<span class="clip-copy"><span class="copied hidden">Copied!</span><i class="fa fa-clipboard" title="Copy contents"></i></span>');
+    var $code = $cap.parent().find('.highlight');
+
+    $cap.append($btn);
+    $btn.find('.fa-clipboard').data('clip-text', $code.text());
+  });
+
+  var clipboard = new ClipboardJS('.code-block-caption .fa-clipboard', {
+    'text': function(trigger) {
+      return $(trigger).data('clip-text');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var $copied = $(e.trigger).prev();
+
+    $copied.removeClass('hidden');
+
+    setTimeout(function() {$copied.addClass('hidden'); }, 1000);
+  });
+
+  if (sizzle.on_load) {
+    sizzle.on_load.forEach(function(f) {
+      f();
+    });
+  }
+});
+</script>
+</body>
+</html>

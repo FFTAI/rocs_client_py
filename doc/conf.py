@@ -14,8 +14,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx_markdown_builder',
-    'recommonmark'
+    'sphinx_markdown_builder'
 ]
 
 html_static_path = ['_static']

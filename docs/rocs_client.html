@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Welcome to the RoCS Python SDK!</title>
+<title>RoCS Python SDK  - rocs_client package</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
@@ -37,7 +37,6 @@
     <script src="app-data.js"></script>
 <link rel="index" title="Index" href="genindex.html" />
 <link rel="search" title="Search" href="search.html" />
-<link rel="next" title="rocs_client.robot package" href="rocs_client.robot.html" />
 
 </head>
 <body class="full-height test">
@@ -52,12 +51,12 @@
       <div id="hdr-left">
         <i class="fa fa-bars menu-toggle"></i>
         
-<span class="text-logo">RoCS Python SDK  1.0 documentation</span>
+<a href="index.html" class="text-logo">RoCS Python SDK  1.0 documentation</a>
 
       </div>
       <div id="hdr-centre" class="text-center stretch">
-        <h3 title="Welcome to the RoCS Python SDK!">Welcome to the RoCS Python SDK!</h3>
-        <h6>Welcome to the RoCS Python SDK!</h6>
+        <h3 title="rocs_client package">rocs_client package</h3>
+        <h6>rocs_client package</h6>
       </div>
       <div id="hdr-search">
         
@@ -74,22 +73,17 @@
       </div>
 
       <div id="hdr-source">
-        <a href="_sources/index.rst.txt" class="btn btn-default" title="See the source for this page"><i class="fa fa-code"></i></a>
+        <a href="_sources/rocs_client.rst.txt" class="btn btn-default" title="See the source for this page"><i class="fa fa-code"></i></a>
       </div>
 
       <div id="hdr-right">
         
   
-  <div class="prev-next">
-    
-      <div class="pull-right">
-        <a class="btn btn-default next" href="rocs_client.robot.html" title="Next chapter (rocs_client.robot package)"><span class="btn-text">rocs_client.robot package</span>&nbsp;<i class="fa fa-chevron-right ml-1em" aria-hidden="true"></i></a>
-      </div>
-    </div>
-  
       </div>
       <div id="alt-hdr-right">
 
+
+        <a href="index.html"><i class="fa fa-home mr-8"></i></a>
 
 
         <a href="search.html"><i class="fa fa-search mr-8"></i></a>
@@ -97,8 +91,6 @@
 
         <a href="genindex.html"><i class="fa fa-list mr-8"></i></a>
 
-
-        <a href="rocs_client.robot.html"><i class="fa fa-chevron-right"></i></a>
 
       </div>
     </div>
@@ -341,39 +333,112 @@
           </div>
           <div class="body">
             
-  <p align="center">
-    <a href="https://fftai.github.io" target="_blank" rel="noopener noreferrer">
-        <img width="150" src="_static/ico.jpg" alt="logo">
-    </a>
-</p><p>This example mainly introduces the RoCS Client SDK. In this example, you can see in detail the structure of the class, the specific code situation, as well as some SDK writing ideas and descriptive information</p>
-<div class="section" id="welcome-to-the-rocs-python-sdk">
-<h1>Welcome to the RoCS Python SDK!<a class="headerlink" href="#welcome-to-the-rocs-python-sdk" title="Permalink to this heading">¶</a></h1>
+  <div class="section" id="rocs-client-package">
+<h1>rocs_client package<a class="headerlink" href="#rocs-client-package" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rocs_client.robot.html">rocs_client.robot package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot.car">rocs_client.robot.car module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot.human">rocs_client.robot.human module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot">Module contents</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="rocs_client.common.html">rocs_client.common package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.camera">rocs_client.common.camera module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.system">rocs_client.common.system module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.camera">rocs_client.common.camera module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera"><code class="docutils literal notranslate"><span class="pre">Camera</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera.video_stream_status"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.camera.Camera.video_stream_url"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_url</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common.system">rocs_client.common.system module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System.reboot"><code class="docutils literal notranslate"><span class="pre">System.reboot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.common.html#rocs_client.common.system.System.shutdown"><code class="docutils literal notranslate"><span class="pre">System.shutdown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="rocs_client.common.html#module-rocs_client.common">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="rocs_client.robot.html">rocs_client.robot package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot.car">rocs_client.robot.car module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.car.Car"><code class="docutils literal notranslate"><span class="pre">Car</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.car.Car.move"><code class="docutils literal notranslate"><span class="pre">Car.move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.car.Car.set_mode"><code class="docutils literal notranslate"><span class="pre">Car.set_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.car.Mod"><code class="docutils literal notranslate"><span class="pre">Mod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.car.Mod.MOD_2_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_2_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.car.Mod.MOD_3_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_3_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.car.Mod.MOD_4_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_4_WHEEL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot.human">rocs_client.robot.human module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.ArmAction"><code class="docutils literal notranslate"><span class="pre">ArmAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.ArmAction.ARMS_SWING"><code class="docutils literal notranslate"><span class="pre">ArmAction.ARMS_SWING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.ArmAction.HELLO"><code class="docutils literal notranslate"><span class="pre">ArmAction.HELLO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE"><code class="docutils literal notranslate"><span class="pre">ArmAction.LEFT_ARM_WAVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.ArmAction.RESET"><code class="docutils literal notranslate"><span class="pre">ArmAction.RESET</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction"><code class="docutils literal notranslate"><span class="pre">HandAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction.GRASP"><code class="docutils literal notranslate"><span class="pre">HandAction.GRASP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction.HALF_HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HALF_HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction.HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction.OPEN"><code class="docutils literal notranslate"><span class="pre">HandAction.OPEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction.SLIGHTLY_BENT"><code class="docutils literal notranslate"><span class="pre">HandAction.SLIGHTLY_BENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction.THUMB_UP"><code class="docutils literal notranslate"><span class="pre">HandAction.THUMB_UP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.HandAction.TREMBLE"><code class="docutils literal notranslate"><span class="pre">HandAction.TREMBLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="rocs_client.robot.html#rocs_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rocs_client.robot.html#module-rocs_client.robot">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<div class="section" id="portal">
-<h1>Portal<a class="headerlink" href="#portal" title="Permalink to this heading">¶</a></h1>
-<ul class="simple">
-<li>SDK release and usage examples  <a class="reference external" href="https://pypi.org/project/rocs-client/">RoCS client</a>.</li>
-<li>More information can be found on the <a class="reference external" href="https://fftai.github.io">FFTAI website</a>.</li>
-</ul>
+<div class="section" id="module-rocs_client">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rocs_client" title="Permalink to this heading">¶</a></h2>
+</div>
 </div>
 
 
