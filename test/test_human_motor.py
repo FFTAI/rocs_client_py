@@ -143,6 +143,11 @@ class TestHumanMotor(unittest.TestCase):
                 smooth_move_motor_example('3', 'right', -40, offset=0.2, wait_time=0.003)
                 smooth_move_motor_example('3', 'right', 5, offset=0.2, wait_time=0.003)
 
+        def shake_head():
+            for i in range(0, 4):
+                smooth_move_motor_example('0', 'yaw', 12, offset=0.2)
+                smooth_move_motor_example('0', 'yaw', -12, offset=0.2)
+
         joint_1 = threading.Thread(target=smooth_move_motor_example, args=('1', 'right', -65, 0.17, 0.004))
         joint_2 = threading.Thread(target=smooth_move_motor_example, args=('2', 'right', 0, 0.15, 0.004))
         joint_4 = threading.Thread(target=smooth_move_motor_example, args=('4', 'right', -90, 0.175, 0.003))
@@ -151,8 +156,47 @@ class TestHumanMotor(unittest.TestCase):
         joint_1.join(), joint_2.join(), joint_4.join(), joint_5.join()
         time.sleep(1)
 
+        t_shake_head = threading.Thread(target=shake_head)
+        t_shake_head.start()
+
         t_move_3 = threading.Thread(target=move_3)
         t_move_3.start()
         t_move_3.join()
+        t_shake_head.join()
+
+        disable_all()
+
+    def test_head(self):
+        enable_all()
+
+        def nod_head():
+            for i in range(0, 5):
+                pass
+                smooth_move_motor_example('0', 'pitch', 12, offset=0.1)
+                smooth_move_motor_example('0', 'pitch', -12, offset=0.1)
+            time.sleep(0.5)
+            smooth_move_motor_example('0', 'pitch', 0, offset=1)
+
+        def shake_head():
+            for i in range(0, 5):
+                smooth_move_motor_example('0', 'yaw', 12, offset=0.1)
+                smooth_move_motor_example('0', 'yaw', -12, offset=0.1)
+            time.sleep(0.5)
+            smooth_move_motor_example('0', 'yaw', 0, offset=1)
+
+        def turn_head():
+            for i in range(0, 5):
+                pass
+                smooth_move_motor_example('0', 'roll', 12, offset=0.1)
+                smooth_move_motor_example('0', 'roll', -12, offset=0.1)
+            time.sleep(0.5)
+            smooth_move_motor_example('0', 'roll', 0, offset=1)
+
+        t_shake_head = threading.Thread(target=shake_head)
+        t_nod_head = threading.Thread(target=nod_head)
+        t_turn_head = threading.Thread(target=turn_head)
+
+        t_nod_head.start(), t_shake_head.start(), t_turn_head.start()
+        t_nod_head.join(), t_shake_head.join(), t_turn_head.join()
 
         disable_all()

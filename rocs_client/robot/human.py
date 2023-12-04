@@ -14,52 +14,52 @@ class Motor:
 
 @dataclass
 class ArmAction(Enum):
-    # Reset
+    # 归零
     RESET = "RESET"
-    # Wave left arm
+    # 左挥手
     LEFT_ARM_WAVE = "LEFT_ARM_WAVE"
-    # Swing arms
+    # 甩胳膊
     ARMS_SWING = "ARMS_SWING"
-    # Wave hello
+    # 打招呼
     HELLO = "HELLO"
 
 
 @dataclass
 class HandAction(Enum):
-    # Half handshake
+    # 半握手
     HALF_HANDSHAKE = "HALF_HANDSHAKE"
-    # Thumb up
+    # 竖大拇指
     THUMB_UP = "THUMB_UP"
-    # Open hands
+    # 手张开
     OPEN = "OPEN"
-    # Slightly bend hands
+    # 手微屈
     SLIGHTLY_BENT = "SLIGHTLY_BENT"
-    # Grasp
+    # 抓握
     GRASP = "GRASP"
-    # Tremble
+    # 抖动手
     TREMBLE = "TREMBLE"
-    # Handshake
+    # 握手
     HANDSHAKE = "HANDSHAKE"
 
 
 class Human(RobotBase):
     """
-    Used to implements the behavior of the GR-1 robot. It establishes a connection
-    to the robot and offers control functions along with status monitoring.
+    When you need to connect a Human, you can create a Human() object!
+    This will connect to the control system in the background,
+    and provide the corresponding control function and status monitoring!
 
     Args:
 
-        ssl(bool): Indicates whether SSL authentication is enabled. Default is False.
-        host(str): Specifies the network IP address of the robot. Default is '127.0.0.1'.
-        port(int): Specifies the PORT of  the robot. Default is 8001.
-        on_connected(callable): Listener triggered when the connection to the robot is successful.
-        on_message(callable): Listener triggered when the robot sends messages.
-        on_close(callable): Listener triggered when the connection to the robot is closed.
-        on_error(callable): Listener triggered when error occurs in the robot.
+        ssl(bool): Indicates whether ssl authentication is enabled. Default False
+        host(str): indicates the network IP address of the car
+        port(int): specifies the PORT of the car control service
+        on_connected(callable): This listener is triggered when the car connection is successful
+        on_message(callable): This listener will be triggered when the car sends system status
+        on_close(callable): This listener will be triggered when the car connection is closed
+        on_error(callable): This listener will be triggered when a car error occurs
     """
-   
     motor_limits: list
-    """ Used to retrieve the motor limits. """
+    """ This is the maximum limit and minimum limit Angle of the motor """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
                  on_message: Callable = None, on_close: Callable = None, on_error: Callable = None):
@@ -68,31 +68,29 @@ class Human(RobotBase):
 
     def stand(self) -> Dict[str, Any]:
         """
-        Used to make the robot stand up from a resting position or other positions.
+        The GR-01 Human device will stand in place
 
-        Once you've called start() and waited for stabilization, go ahead and use stand() to get the robot into a
-        standing position.
-        Only after making the stand() call can you then give further control commands or motion instructions.
-        If the robot is walking or in the middle of other movements, you can also use this function to bring it to a
-        stop.
+        If you want to command the GR-01 humanoid device after start!
+        you also need to call this function to set its position to stand mode.
+        If you need to stop during a walk, you can also call this function to stand
 
         Returns:
 
              Dict:
-                `code` (int): status code，0 for Normal and -1 for Anomaly
-                `msg` (str): result message
+                `code` (int): statu code，0: Normal -1: Anomaly
+                `msg` (str): result msg
         """
         return self._send_request(url='/robot/stand', method='POST')
 
     def reset(self):
         """
-        Used to initiate the process to reset, zero, or calibrate the robot, bringing it to its initial state.
+        Reset/zero/calibration of the initial state of the device
         """
         return self._send_request(url='/robot/reset', method="POST")
 
     def get_joint_limit(self) -> Dict[str, Any]:
         """
-        Used to obtain joint limit information.
+        Obtain joint limit
 
         Returns:
 
@@ -107,16 +105,15 @@ class Human(RobotBase):
                     results
 
                     - function (str):
-                        name of the function
+                        函数名称
 
                     - data(dict):
-                        - jointlimit (list): List of dictionaries, each representing the limits of a joint. Each
-                                             dictionary contains the following information for a joint:
-                            - name (str): The name of the joint.
-                            - qdotaMax (float): Maximum joint speed, unit: rad/s.
-                            - qaMax (float): Maximum joint angle, unit: radians.
-                            - qaMin (float): Minimum joint angle, unit: radians.
-                            - tauaMax (float): Maximum joint torque, unit: N.M.
+                        - jointlimit (list): 关节限制列表，每个元素是一个字典
+                            - name (str): 关节名称
+                            - qdotaMax (float): 关节最大速度，单位：rad/s
+                            - qaMax (float): 关节最大弧度，单位：rad
+                            - qaMin (float): 关节最小角度，单位：rad
+                            - tauaMax (float): 最大扭矩，单位：n*m
 
 
         Example:
@@ -168,39 +165,36 @@ class Human(RobotBase):
 
     def get_joint_states(self) -> Dict[str, Any]:
         """
-        Used to retrieve the current joint states of the robot.This data is essential for monitoring and controlling the
-         robot's articulation in real-time, enabling precise adjustments and ensuring the robot's overall
-         operational status.
+        获取关节状态
 
         Returns:
 
-            Dict: Response data with the following fields:
+            Dict: 返回数据包含以下字段:
 
-            - `code` (int): Status code. 0 indicates normal, -1 indicates an anomaly.
-            - `msg` (str): Status message. "ok" indicates normal.
-            - `data` (dict): Response data with the following fields:
+            - `code` (int): 状态码，0 表示正常，-1 表示异常
+            - `msg` (str): 状态信息，"ok" 表示正常
+            - `data` (dict): 响应数据，包含以下字段：
 
-                - `data` (dict): Status data with the following fields:
+                - `data` (dict): 状态数据，包含以下字段：
 
-                    - `bodyandlegstate` (dict): Body and leg status with the following fields:
+                    - `bodyandlegstate` (dict): 身体和腿部状态，包含以下字段：
 
-                        - `currentstatus` (str): Current status. "StartComplete" indicates startup completion.
-                        - `log` (dict): Log information with the following fields:
+                        - `currentstatus` (str): 当前状态，"StartComplete" 表示启动完成
+                        - `log` (dict): 日志信息，包含以下字段：
 
-                            - `logBuffer` (list): Log buffer with the following fields:
+                            - `logBuffer` (list): 日志缓冲区，包含以下字段：
 
-                                - `log` (str): Log content. "gRPC system state response init complete" indicates
-                                               gRPC system state response initialization completion.
+                                - `log` (str): 日志内容，"GRPC system state response init complete" 表示 GRPC 系统状态响应初始化完成
 
-                    - `leftarmstate` (dict): Left arm status with the following fields:
+                    - `leftarmstate` (dict): 左侧手臂状态，包含以下字段：
 
-                        - `armstatus` (str): Arm status. "Swing" indicates swing arm mode.
+                        - `armstatus` (str): 手臂状态，"Swing" 表示摆臂模式
 
-                    - `rightarmstate` (dict): Right arm state with the following fields:
+                    - `rightarmstate` (dict): 右侧手臂状态，包含以下字段：
 
-                        - `armstatus` (str):  Arm status. "Swing" indicates swing arm mode.
+                        - `armstatus` (str): 手臂状态，"Swing" 表示摆臂模式
 
-                - `function` (str):Function name that invoked this interface.
+                - `function` (str): 调用该接口的函数名，"SonnieGetSystemStates" 表示获取系统状态接口
 
         Example:
 
@@ -216,7 +210,7 @@ class Human(RobotBase):
                             "log": {
                                 "logBuffer": [
                                     {
-                                        "log": "gRPC system state response initialization completed"
+                                        "log": "GRPC system state response init complete"
                                     }
                                 ]
                             }
@@ -237,70 +231,70 @@ class Human(RobotBase):
 
     def enable_debug_state(self, frequence: int = 1):
         """
-        Used to enable debug mode.
+        open debug mode
 
-        Triggering this function allows the robot to actively send periodic state updates. This is beneficial for
-        real-time monitoring. To handle and process the received data, be sure to listen to the 'on_message' function.
+        Triggering this function will trigger the GR-01 human device to actively send status values in the background,
+        so you need to listen to the on_message function for processing
 
         Args:
 
-            frequence(int): Frequency of status updates.
+            frequence(int): frequency
 
         Returns:
 
             Dict:
 
-                - log (dict): Log information.
+                - log (dict): log
 
-                    - logBuffer (list): Log buffers.
+                    - logBuffer (list): logBuffers
 
-                        - log (str): Log content.
+                        - log (str): content
 
-                - states (dict): Joint data content
+                - states (dict): joint data content
 
-                    - basestate (dict): Robot status data
+                    - basestate (dict): robot status data
 
-                        - a (float): Hip roll.
-                        - b (float): Hip Pitch.
-                        - c (float): Hip Yaw.
-                        - va (float): Not used.
-                        - vb (float): Not used.
-                        - vc (float): Not used.
-                        - vx (float): Forward-backward direction velocity, unit: m/s.
-                        - vy (float): Left-right direction velocity, unit: m/s.
-                        - vz (float): Not used.
-                        - x (float): Base X position when standing.
-                        - y (float): Base y position when standing.
-                        - z (float): Base z position when standing.
+                        - a (float): hip roll
+                        - b (float): hip Pitch
+                        - c (float): hip Yaw
+                        - va (float): not use
+                        - vb (float): not use
+                        - vc (float): not use
+                        - vx (float): 前进方向速度，单位m/s
+                        - vy (float): 左右方向速度，单位m/s
+                        - vz (float): not use
+                        - x (float): base  X，站立时X位置
+                        - y (float): base  Y，站立时Y位置
+                        - z (float): base  Z，站立时Z位置
 
-                    - fsmstatename (dict): Data related to the state machine status.
+                    - fsmstatename (dict): 有关状态机状态的数据
 
-                        - currentstatus (str): Current status (Unknown, Start, Zero, Stand, Walk, Stop).
-                    - jointStates (list): Joint state list.
+                        - currentstatus (str): 当前状态 Unknown、Start、Zero、Stand、Walk、Stop
+                    - jointStates (list): 关节状态列表
 
-                        - name (str): Joint name.
-                        - qa (float): Actual joint angle, unit: rad.
-                        - qdota (float): Actual joint speed, unit: rad/s.
-                        - taua (float): Actual joint torque, unit: N.m.
-                        - qc (float): Expected joint angle, unit: rad.
-                        - qdotc (float): Expected joint speed, unit: rad/s.
-                        - tauc (float): Expected joint torque, unit: N.m.
-                    - stanceindex (dict): Pose index (not used).
-                    - contactforce (dict): Contact force data (not used).
+                        - name (str): 关节名称
+                        - qa (float): 真实的关节角度，单位：rad（弧度）
+                        - qdota (float): 真实的关节速度，单位：rad/s（弧度/秒）
+                        - taua (float): 真实的扭矩，单位:n*m
+                        - qc (float): 期望的关节速度，单位：rad
+                        - qdotc (float): 期望的关节速度，单位：rad/s（弧度/秒）
+                        - tauc (float): 期望的关节扭矩，单位：unit:n*m
+                    - stanceindex (dict): 姿态索引 not use
+                    - contactforce (dict): 接触力数据 not use
 
-                        - fxL (float): Left foot contact force.
-                        - fyL (float): Left foot contact force.
-                        - fzL (float): Left foot contact force.
-                        - mxL (float): Left foot contact force.
-                        - myL (float): Left foot contact force.
-                        - mzL (float): Left foot contact force.
-                        - fxR (float): Right foot contact force.
-                        - fyR (float): Right foot contact force.
-                        - fzR (float): Right foot contact force.
-                        - mxR (float): Right foot contact force.
-                        - myR (float): Right foot contact force.
-                        - mzR (float): Right foot contact force.
-                - timestamp (dict): Timestamp.
+                        - fxL (float): 左脚接触力
+                        - fyL (float): 左脚接触力
+                        - fzL (float): 左脚接触力
+                        - mxL (float): 左脚接触力
+                        - myL (float): 左脚接触力
+                        - mzL (float): 左脚接触力
+                        - fxR (float): 右脚接触力
+                        - fyR (float): 右脚接触力
+                        - fzR (float): 右脚接触力
+                        - mxR (float): 右脚接触力
+                        - myR (float): 右脚接触力
+                        - mzR (float): 右脚接触力
+                - timestamp (dict): 时间戳
 
                     - nanos (int):
                     - seconds (str):
@@ -522,30 +516,28 @@ class Human(RobotBase):
         return self._send_request(url=f'/robot/enable_states_listen?frequence={frequence}', method="GET")
 
     def disable_debug_state(self) -> Dict[str, Any]:
-        """ Used to disable the debug state mode. It will stop the periodic state updates from the robot.
+        """ 关闭state调试模式
 
         Returns:
 
             Dict:
 
-            - code (int): Return code. 0 indicates success, -1 indicates failure.
-            - msg (str): Return message. "ok" indicates normal, failure returns an error message.
-            - data (dict): Data object containing specific details.
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
         """
         return self._send_request(url='/robot/disable_states_listen', method="GET")
 
     def walk(self, angle: float, speed: float):
         """
-        Control the walking behavior of the robot. This request is sent via a long-lived connection.
+        控制GR-01人形设备行走
 
-
+        ``该请求维持了长链接的方式进行发送``
 
         Args:
 
-             angle(float): Angle to control the direction, ranging from -45 to 45 degrees.
-                           Positive values turn left, negative values turn right. Precision of 8 decimal places.
-             speed(float): Speed to control forward/backward, ranging from -0.8 to 0.8 meters per second.
-                           Positive values move forward, negative values move backward. Precision of 8 decimal places.
+             angle(float): 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)
+             speed(float): 速度 控制前后，取值范围为正负0.8米/秒。向前为正，向后为负！(浮点数8位)
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -0.8, 0.8)
@@ -559,17 +551,15 @@ class Human(RobotBase):
 
     def head(self, roll: float, pitch: float, yaw: float):
         """
-        Control the movement of the robot's head. This request is sent via a long-lived connection.
+        控制GR-01人形头部运动
 
+        ``该请求维持了长链接的方式进行发送``
 
         Args:
 
-             roll(float): specify the rotation around the x-axis. Negative values turn the head to the left, and
-                          positive values turn it to the right. Range: -17.1887 to 17.1887.
-             pitch(float): specify the rotation around the y-axis. Positive values tilt the head forward, and negative
-                           values tilt it backward. Range: -17.1887 to 17.1887.
-             yaw(float): specify the rotation around the z-axis. Negative values twist the head to the left,
-                         and positive values twist it to the right. Range: -17.1887 to 17.1887.
+             roll(float): roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）
+             pitch(float): pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）
+             yaw(float): yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）
         """
         self._send_websocket_msg({
             'command': 'head',
@@ -582,17 +572,16 @@ class Human(RobotBase):
 
     def upper_body(self, arm: ArmAction = None, hand: HandAction = None):
         """
-        Execute predefined upper body actions by setting arm and hand movements.
+        上肢预设动作，手、胳膊设定好动作
         Args:
-            - arm_action: (str): Arm action. Options: RESET, LEFT_ARM_WAVE, TWO_ARMS_WAVE, ARMS_SWING, HELLO.
-            - hand_action: (str): Hand action. Options: HALF_HANDSHAKE, THUMBS_UP, OPEN, SLIGHTLY_BENT, GRASP, TREMBLE,
-                                  HANDSHAKE.
+            - arm_action: (str): 胳膊动作:RESET（归零）、LEFT_ARM_WAVE（左挥手）、TWO_ARMS_WAVE（双臂挥手）、ARMS_SWING（甩胳膊）、HELLO（打招呼）
+            - hand_action: (str): 手动作:HALF_HANDSHAKE（半握手）、THUMBS_UP（竖大拇指）、OPEN（手张开）、SLIGHTLY_BENT（手微屈）、GRASP（抓握）、TREMBLE（抖动手）、HANDSHAKE（握手）
 
 
         Returns:
-            - code (int): Return code. 0 indicates success, -1 indicates failure.
-            - msg (str): Return message. "ok" indicates normal, failure returns an error message.
-            - data (dict): Data object containing specific details.
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
 
         """
         upper_body_action = {}
@@ -603,15 +592,15 @@ class Human(RobotBase):
         return self._send_request(url='/robot/upper_body', method="POST", json=upper_body_action)
 
     def _get_motor_limit_list(self):
-        """ Retrieve motor limits.
+        """ 获取电机限位
 
         Returns:
 
-            Dict: Return data with the following fields:
+            Dict: 返回一个结果集
 
-            - code (int): Return code. 0 indicates success, -1 indicates failure.
-            - msg (str): Return message. "ok" indicates normal, failure returns an error message.
-            - data (dict): Data object containing specific data.
+            - code (int): 返回码，0-表示成功，-1-表示失败
+            - msg (str): 返回消息，ok表示正常，失败返回错误信息
+            - data (dict): 数据对象，包含具体数据
         """
         response = self._send_request(url='/robot/motor/limit/list', method="GET")
         self.motor_limits = response['data']
@@ -633,15 +622,13 @@ class Human(RobotBase):
         return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
 
     def _move_joint(self, *args: Motor):
-        """
-            This function allows you to adjust the positions of various joints, taking into account the limits set for
- each motor. It simplifies the process of moving multiple joints in the robot by accepting an array of motors along with their target angles. The function ensures that each joint's movement stays within the predefined motor limits. If the motor limits aren't initially available, the function will attempt to retrieve them after a brief delay. It's important to provide valid motor objects with properties like 'no', 'orientation', and 'angle'. Ensuring accurate motor limits is crucial for achieving safe and precise joint movements.
+        """ 移动关节
 
         Args:
 
-            *args: (Motor) : All fields must be provided. Motor limits and other information can be obtained through the 'motor_limits' property.
+            *args: (Motor) : 关节对象，所有字段都必传。具体的限位等信息可以通过 motor_limits 属性获取
 
-        Returns: None.
+        Returns:
 
         """
         motors = []

@@ -6,7 +6,7 @@ from .robot_base import RobotBase
 
 class Mod(Enum):
     """
-    Enumerates arguments applicable to the `set_mode` function.
+    Arguments that apply to the `set_mode` Function
     """
     MOD_4_WHEEL = "WHEEL_4"
     MOD_3_WHEEL = "WHEEL_3"
@@ -19,17 +19,19 @@ class Mod(Enum):
 
 class Car(RobotBase):
     """
-    This class represents a Car object, providing functionality for connecting to the control system and controlling the car's movements and monitoring its status.
+    When you need to connect a Car, you can create a Car() object!
+    This will connect to the control system in the background,
+    and provide the corresponding control function and status monitoring!
 
     Args:
 
-        ssl(bool): Indicates whether SSL authentication is enabled. Default is False.
-        host(str): Specifies the network IP address of the car robot. Default is '127.0.0.1'.
-        port(int): Specifies the PORT of the car robot. Default is 8001.
-        on_connected(callable): Listener triggered when the connection to the car robot is successful.
-        on_message(callable): Listener triggered when the car robot sends messages.
-        on_close(callable): Listener triggered when the connection to the car robot is closed.
-        on_error(callable): Listener triggered when error occurs in the car robot.
+        ssl(bool): Indicates whether ssl authentication is enabled. Default False
+        host(str): indicates the network IP address of the car
+        port(int): specifies the PORT of the car control service
+        on_connected(callable): This listener is triggered when the car connection is successful
+        on_message(callable): This listener will be triggered when the car sends system status
+        on_close(callable): This listener will be triggered when the car connection is closed
+        on_error(callable): This listener will be triggered when a car error occurs
     """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
@@ -39,10 +41,9 @@ class Car(RobotBase):
 
     def set_mode(self, mod: Mod):
         """
-        Set the motion mode of the car robot. This function sends a POST request to the "/robot/mode" endpoint with the
-        specified mode value.
+        set the car mode
 
-        Once completed, the car robot will move in the corresponding mode, including 4-wheel, 3-wheel, and 2-wheel modes.
+        the car will move in the corresponding mode, including 4 rounds, 3 rounds and 2 rounds
 
         Args:
 
@@ -51,22 +52,22 @@ class Car(RobotBase):
         Returns:
 
             Dict:
-                `code` (int): Status code. 0 for normal, -1 for anomaly.
-                `msg` (str): Result message.
+                `code` (int): statu code，0: Normal -1: Anomaly
+                `msg` (str): result msg
         """
         self._mod: Mod = mod
         return self._send_request(url='/robot/mode', method="POST", json={'mod_val': mod})
 
     def move(self, angle: float, speed: float):
         """
-        Control the car robot's movements.
+        Control Car walk
 
-        The request is sent via a long-lived connection
+        ``The request is sent by maintaining a long link``
 
         Args:
 
-             angle(float): Angle control for direction. Range: -45 to 45 degrees. Positive for left, negative for right. Precision with 8 decimal places.
-             speed(float): Speed control for forward and backward. Range: -500 to 500. Positive for forward, negative for backward. Precision with 8 decimal places.
+             angle(float): Angle Control direction. The value ranges from plus to minus 45 degrees. Left is positive, right is negative! (floating point 8 bits)
+             speed(float): Before and after the speed control, the value can be plus or minus 500. Forward is positive, backward is negative! (floating point 8 bits)
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -500, 500)
