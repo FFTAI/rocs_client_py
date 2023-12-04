@@ -12,9 +12,9 @@ from ..common.system import System
 
 
 class RobotBase:
-    """ Robot 基类
+    """ Base class for Robot
 
-    实例化的时候会通过websocket连接到对应设备的控制端口！
+    When instantiated, it connects to the corresponding robot's port via WebSocket.
     """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001,
@@ -30,10 +30,12 @@ class RobotBase:
         try:
             self._ws: WebSocket = create_connection(self._ws_url)
         except ConnectionRefusedError as e:
-            print(f'链接Robot设备出错。请检查server状态... {e}')
+            print(f'Error connecting to the robot. Please check the server status. {e}')
             return
         except Exception as e:
-            print(f'链接Robot设备出错... {e}')
+            print(
+                f'Error connecting to the robot. Please check the network settings, server availability, and ensure '
+                f'the correct IP address and port are used. {e}')
             return
 
         self._on_connected = on_connected
@@ -70,8 +72,10 @@ class RobotBase:
             response = requests.request(method, f'{self._baseurl}{url}', params=params, json=json)
             return response.json()
         except Exception as e:
-            print(f'下发指令失败，请检查设备server状态 {e}')
-            return {"code": -1, "msg": f"下发指令失败，请检查设备server状态", "data": None}
+            print(f'Failed to send command. Please check the server status and ensure the command is valid. {e}')
+            return {"code": -1,
+                    "msg": f"Failed to send command. Please check the server status and ensure the command is valid.",
+                    "data": None}
 
     def _send_request_stream(self, url: str, method: str = 'GET', params=None, json=None):
         response = requests.request(method, f'{self._baseurl}{url}', params=params, json=json, stream=True)
@@ -80,36 +84,43 @@ class RobotBase:
                 yield chunk
 
     @classmethod
-    def _cover_param(cls, param: float, value: str, min_threshold: float, max_threshold: float) -> float:
-        if param is None:
-            print(f"Illegal parameter: {value} = {param}")
-            param = 0
-        if param > max_threshold:
+    def _cover_param(cls, value: float, name: str, min_threshold: float, max_threshold: float) -> float:
+        """
+        Used to handle a numerical parameter along with its value, minimum, and maximum thresholds. It guarantees that the parameter stays within the defined range, and if it falls outside those bounds, it adjusts it to the nearest threshold.
+
+        """
+        if value is None:
+            print(f"Invalid parameter: {name} is {value}. The value 0 will be used")
+            value = 0
+        if value > max_threshold:
             print(
-                f"Illegal parameter: {value} = {param}, "
-                f"greater than maximum, expected not to be greater than {max_threshold}, actual {param}")
-            param = max_threshold
-        if param < min_threshold:
+                f"Invalid parameter: {name} ({value}) exceeds maximum allowed value ({max_threshold}). The maximum value {max_threshold} will be used."
+            )
+            value = max_threshold
+        if value < min_threshold:
             print(
-                f"Illegal parameter: {value} = {param}, "
-                f"greater than maximum, expected not to be less than {min_threshold}, actual {param}")
-            param = min_threshold
-        return param
+                f"Invalid parameter: {name} ({value}) is less than the minimum allowed value ({min_threshold}). The minimum value ({min_threshold}) will be used."
+            )
+            value = min_threshold
+        return value
 
     def start(self):
-        """ 启动
-
-        当你想要控制Robot设备的时候，你的第一个指令
+        """
+        Used to initiate the process to reset, zero, or calibrate the robot, bringing it to its initial state.
+        This command is crucial when you intend to take control of the robot, ensuring it starts from a known and calibrated position.
+        Ensure that the robot has sufficient clearance and is ready for the calibration process before issuing this command.
         """
         return self._send_request(url='/robot/start', method='POST')
 
     def stop(self):
-        """ 停止
+        """
+        Used to initiate the process to safely power down the robot. This command takes precedence over other commands, ensuring an orderly shutdown. It is recommended to trigger this command in emergency situations or when an immediate stop is necessary.
 
-        ``该命令优先于其他命令! 会掉电停止。请在紧急情况下触发``
+        Use this command with caution, as it results in a powered-down state of the robot. Ensure that there are no critical tasks or movements in progress before invoking this command to prevent unexpected behavior.
+
         """
         return self._send_request(url="/robot/stop", method="POST")
 
     def exit(self):
-        """ 断开Robot链接 """
+        """ Used to disconnect from the robot."""
         self._ws.close()
