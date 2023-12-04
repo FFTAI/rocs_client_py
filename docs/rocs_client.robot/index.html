@@ -1,153 +1,393 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en-gb">
 <head>
-    <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>RoCS Python SDK  - rocs_client.robot package</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha256-8uHMIn1ru0GS5KO+zf7Zccf8Uw12IA5DrdEcmMuWLFM=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tooltipster@4.2.8/dist/css/tooltipster.bundle.min.css" integrity="sha256-Qc4lCfqZWYaHF5hgEOFrYzSIX9Rrxk0NPHRac+08QeQ=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tooltipster@4.2.8/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" integrity="sha256-Wa1I4jhSXeWd3N6RhfPlkqr1WlT+zS3Vh2YGCg0129E=" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro|Roboto|Roboto+Mono" rel="stylesheet">
+<link href="https://fonts.red-dove.com/iosevka-ss09-regular/webfont.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/sizzle.css" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js" integrity="sha512-2V49R8ndaagCOnwmj8QnbT1Gz/rie17UouD9Re5WxbzRVUGoftCu5IuqqtAM9+UC3fwfHCSJR1hkzNQh/2wdtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/tooltipster@4.2.8/dist/js/tooltipster.bundle.min.js" integrity="sha256-v8akIv8SCqn5f3mbVB7vEWprIizxPh6oV0yhao/dbB4=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        LINK_SUFFIX: '.html',
+        HAS_SOURCE:  false,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+      $(document).data('sizzle', {on_load: []});
+    </script>
+    <script src="../search/"></script>
+<link rel="index" title="Index" href="../genindex/" />
+<link rel="search" title="Search" href="../search/" />
+<link rel="next" title="rocs_client.common package" href="../rocs_client.common/" />
+<link rel="prev" title="Welcome to the RoCS Python SDK!" href="../" />
+
+</head>
+<body class="full-height test">
+<noscript>
+  <div>
+    <div id="noscript-message">JavaScript is not enabled. It is needed for this website to work.</div>
+  </div>
+</noscript>
+<div id="whole-page" class="container-fluid content full-height">
+  <div id="header-row" class="row">
+    <div id="header-container" class="col-md-12">
+      <div id="hdr-left">
+        <i class="fa fa-bars menu-toggle"></i>
+        
+<a href="../" class="text-logo">RoCS Python SDK  1.0 documentation</a>
+
+      </div>
+      <div id="hdr-centre" class="text-center stretch">
+        <h3 title="rocs_client.robot package">rocs_client.robot package</h3>
+        <h6>rocs_client.robot package</h6>
+      </div>
+      <div id="hdr-search">
+        
+<div class="input-group" title="Enter something to search for and then either press Enter or click the magnifying glass">
+  <input type="text" class="form-control search-query" placeholder="Search docs ...">
+  <div class="input-group-addon">
+    <i class="fa fa-search"></i>
+  </div>
+</div>
+      </div>
+
+      <div id="hdr-index">
+        <a href="../genindex/" class="btn btn-default" title="Go to the index"><i class="fa fa-list"></i></a>
+      </div>
+
+      <div id="hdr-source">
+        <a href="../_sources/rocs_client.robot.rst.txt" class="btn btn-default" title="See the source for this page"><i class="fa fa-code"></i></a>
+      </div>
+
+      <div id="hdr-right">
+        
+  
+  <div class="prev-next">
     
-        <title>rocs_client.robot package &mdash; RoCS Python SDK  1.0 documentation</title>
+      <div class="pull-left">
+        <a class="btn btn-default prev" href="../" title="Previous chapter (Welcome to the RoCS Python SDK!)"><i class="fa fa-chevron-left mr-1em" aria-hidden="true"></i><span class="btn-text">Welcome to the RoCS Python SDK!</span></a>
+      </div>
     
-    <link rel="stylesheet" type="text/css" href="../_static/dist/fontawesome.css" />
-      <link rel="stylesheet" type="text/css" href="../_static/dist/theme.css?v=f85e6685" />
-            <link rel="index" title="Index" href="../genindex/" />
-            <link rel="search" title="Search" href="../search/" />
-            <link rel="top" title="RoCS Python SDK  1.0 documentation" href="#" />
-            <link rel="next" title="rocs_client.common package" href="../rocs_client.common/" />
-            <link rel="prev" title="Welcome to the RoCS Python SDK!" href="../" />
-    </head>
-<body>
-    <script type="text/javascript" src="../_static/dist/blocking.js"></script>
-    <header class="container-fluid bg-primary">
-        <a class="btn btn-sm btn-light skip-to-content-link" href="#main">Skip to content</a>
-        <div class="container-fluid">
-            <div class="navbar navbar-expand-lg navbar-dark font-weight-bold">
-                    <a href="../"
-                        title="Wagtail"
-                        class="logo navbar-brand"
-                    >
-                        <img src="../_static/img/wagtail-logo-new.svg" width="45" height="59" alt="Wagtail"
-                            class="logo-img"
-                        />
-                        Sphinx Wagtail Theme
-                    </a>
-                
-                
-                <button class="navbar-toggler btn btn-primary d-lg-none" type="button" data-toggle="collapse" data-target="#collapseSidebar" aria-expanded="false" aria-controls="collapseExample">
-                    <span class="navbar-toggler-icon"></span>
-                    <span class="sr-only">menu</span>
-                </button>
-            </div>
+      <div class="pull-right">
+        <a class="btn btn-default next" href="../rocs_client.common/" title="Next chapter (rocs_client.common package)"><span class="btn-text">rocs_client.common package</span>&nbsp;<i class="fa fa-chevron-right ml-1em" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  
+      </div>
+      <div id="alt-hdr-right">
+
+        <a href="../"><i class="fa fa-chevron-left mr-8"></i></a>
+
+
+        <a href="../"><i class="fa fa-home mr-8"></i></a>
+
+
+        <a href="../search/"><i class="fa fa-search mr-8"></i></a>
+
+
+        <a href="../genindex/"><i class="fa fa-list mr-8"></i></a>
+
+
+        <a href="../rocs_client.common/"><i class="fa fa-chevron-right"></i></a>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="content-row" class="row">
+    <div id="page-content" class="col-md-12 flex-col">
+      <div id="content-container">
+        <div id="nav">
+          
+  <div class="navsidebar">
+    <div id="sidebar-search">
+      
+<div class="input-group" title="Enter something to search for and then either press Enter or click the magnifying glass">
+  <input type="text" class="form-control search-query" placeholder="Search docs ...">
+  <div class="input-group-addon">
+    <i class="fa fa-search"></i>
+  </div>
+</div>
+    </div>
+      <div class="sidebar-block">
+        <div class="sidebar-tocheading">
+          <div class="pull-left">
+            <h2>Table Of Contents</h2>
+          </div>
+          <div class="pull-right" title="Hide this sidebar (hover at left edge to bring it back)"><i class="fa fa-chevron-left hidetoc"></i></div>
         </div>
-    </header>
-    <div class="container-fluid">
-        <div class="row">
-            <aside class="col-12 col-lg-3 sidebar-container">
-                <div id="collapseSidebar" class="collapse sticky-top d-lg-block pt-5 pr-lg-4">
-<div id="searchbox" class="searchbox mb-6 px-1" role="search">
-    <form id="search-form" action="../search/" autocomplete="off" method="get" role="search">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text border-right-0 bg-white py-3 pl-3 pr-2"><span class="fas fa-search"></span></div>
-            </div>
-            <input class="form-control py-3 pr-3 pl-1 h-100 border-left-0" type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" id="searchinput" />
-        </div>
-        <input type="hidden" name="check_keywords" value="yes" />
-        <input type="hidden" name="area" value="default" />
-    </form>
-</div><div class="site-toc">
-    <nav class="toc mt-3" aria-label="Main menu">
-        <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">rocs_client.robot package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rocs_client.common/">rocs_client.common package</a></li>
+        <div class="sidebar-toc">
+      
+          <div id="toc-filter" title="Type in here to show only matching topics">
+            <input class="form-control" id="toc-filter-query" placeholder="Filter by title ...">
+          </div>
+      
+        
+  
+    <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rocs_client.robot package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.car">rocs_client.robot.car module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Car"><code class="docutils literal notranslate"><span class="pre">Car</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.move"><code class="docutils literal notranslate"><span class="pre">Car.move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.set_mode"><code class="docutils literal notranslate"><span class="pre">Car.set_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Mod"><code class="docutils literal notranslate"><span class="pre">Mod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_2_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_3_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_4_WHEEL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.human">rocs_client.robot.human module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.ArmAction"><code class="docutils literal notranslate"><span class="pre">ArmAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.ARMS_SWING"><code class="docutils literal notranslate"><span class="pre">ArmAction.ARMS_SWING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.HELLO"><code class="docutils literal notranslate"><span class="pre">ArmAction.HELLO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE"><code class="docutils literal notranslate"><span class="pre">ArmAction.LEFT_ARM_WAVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.RESET"><code class="docutils literal notranslate"><span class="pre">ArmAction.RESET</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.HandAction"><code class="docutils literal notranslate"><span class="pre">HandAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.GRASP"><code class="docutils literal notranslate"><span class="pre">HandAction.GRASP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HALF_HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.OPEN"><code class="docutils literal notranslate"><span class="pre">HandAction.OPEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT"><code class="docutils literal notranslate"><span class="pre">HandAction.SLIGHTLY_BENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.THUMB_UP"><code class="docutils literal notranslate"><span class="pre">HandAction.THUMB_UP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.TREMBLE"><code class="docutils literal notranslate"><span class="pre">HandAction.TREMBLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.common/">rocs_client.common package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#module-rocs_client.common.camera">rocs_client.common.camera module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.camera.Camera"><code class="docutils literal notranslate"><span class="pre">Camera</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.camera.Camera.video_stream_status"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.camera.Camera.video_stream_url"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_url</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#module-rocs_client.common.system">rocs_client.common.system module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.system.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.system.System.reboot"><code class="docutils literal notranslate"><span class="pre">System.reboot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.system.System.shutdown"><code class="docutils literal notranslate"><span class="pre">System.shutdown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#module-rocs_client.common">Module contents</a></li>
+</ul>
+</li>
 </ul>
 
-    </nav>
-    <template data-toggle-item-template>
-        <button class="btn btn-sm btn-link toctree-expand" type="button">
-            <span class="sr-only">Toggle menu contents</span>
-        </button>
-    </template>
-</div>
-                    <div class="d-lg-none border-bottom">
-                        
-                    </div>
-                </div>
-            </aside>
-            <div class="col-12 col-lg-9 pt-5">
-                <header class="row align-items-baseline">
-                    <div class="col">
-                        <nav aria-label="breadcrumb">
-    <ol class="breadcrumb m-0 p-0 bg-transparent">
-        <li class="breadcrumb-item"><a href="../">Docs</a></li>
-        <li class="breadcrumb-item active" aria-current="page">rocs_client.robot package</li>
-    </ol>
-</nav>
-                    </div>
-                    <div class="col-sm-12 col-lg-auto mt-3 mt-lg-3">
-                        <noscript>
-                            <p>JavaScript is required to toggle light/dark mode..</p>
-                        </noscript>
-                        <button id="wagtail-theme" class="btn btn-sm btn-light text-decoration-none" type="button">
-                            <span class="dark-only"><i class="fas fa-sun"></i> Light mode</span>
-                            <span class="light-only"><i class="fas fa-moon"></i> Dark mode</span>
-                        </button>
-    <a class="btn btn-sm btn-light text-decoration-none" href="https://github.com/wagtail/sphinx_wagtail_theme/blob/main/docs/rocs_client.robot.rst" rel="nofollow">
-        <span class="btn-icon"><span class="fab fa-github"></span></span>
-        <span class="btn-text">Edit on GitHub</span>
-    </a>
-    <a class="btn btn-sm btn-light text-decoration-none" href="../_sources/rocs_client.robot.rst.txt" rel="nofollow">
-        <span class="btn-icon"><span class="fas fa-code"></span></span>
-        <span class="btn-text">View source</span>
-    </a>
-                        
-                    </div>
-                </header>
-                <div class="row" >
-                    <div class="col-12">
-                        <hr class="w-100 my-4">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-lg-9 order-last order-lg-first rst-content">
-                        <main role="main" id="main">
-    <section id="rocs-client-robot-package">
-<h1>rocs_client.robot package<a class="headerlink" href="#rocs-client-robot-package" title="Link to this heading">¶</a></h1>
+  
+        </div>
+      </div>
+  </div>
+        </div>
+        <div id="content" tabindex="0" class="stretch">
+          <div id="mnav">
+            
+  
+    <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rocs_client.robot package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.car">rocs_client.robot.car module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Car"><code class="docutils literal notranslate"><span class="pre">Car</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.move"><code class="docutils literal notranslate"><span class="pre">Car.move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.set_mode"><code class="docutils literal notranslate"><span class="pre">Car.set_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Mod"><code class="docutils literal notranslate"><span class="pre">Mod</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_2_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_3_WHEEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_4_WHEEL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.human">rocs_client.robot.human module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.ArmAction"><code class="docutils literal notranslate"><span class="pre">ArmAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.ARMS_SWING"><code class="docutils literal notranslate"><span class="pre">ArmAction.ARMS_SWING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.HELLO"><code class="docutils literal notranslate"><span class="pre">ArmAction.HELLO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE"><code class="docutils literal notranslate"><span class="pre">ArmAction.LEFT_ARM_WAVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.RESET"><code class="docutils literal notranslate"><span class="pre">ArmAction.RESET</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.HandAction"><code class="docutils literal notranslate"><span class="pre">HandAction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.GRASP"><code class="docutils literal notranslate"><span class="pre">HandAction.GRASP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HALF_HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HANDSHAKE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.OPEN"><code class="docutils literal notranslate"><span class="pre">HandAction.OPEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT"><code class="docutils literal notranslate"><span class="pre">HandAction.SLIGHTLY_BENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.THUMB_UP"><code class="docutils literal notranslate"><span class="pre">HandAction.THUMB_UP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.HandAction.TREMBLE"><code class="docutils literal notranslate"><span class="pre">HandAction.TREMBLE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.common/">rocs_client.common package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#module-rocs_client.common.camera">rocs_client.common.camera module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.camera.Camera"><code class="docutils literal notranslate"><span class="pre">Camera</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.camera.Camera.video_stream_status"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_status</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.camera.Camera.video_stream_url"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_url</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#module-rocs_client.common.system">rocs_client.common.system module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.system.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.system.System.reboot"><code class="docutils literal notranslate"><span class="pre">System.reboot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.common/#rocs_client.common.system.System.shutdown"><code class="docutils literal notranslate"><span class="pre">System.shutdown()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.common/#module-rocs_client.common">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  
+          </div>
+          <div class="body">
+            
+  <section id="rocs-client-robot-package">
+<h1>rocs_client.robot package<a class="headerlink" href="#rocs-client-robot-package" title="Permalink to this heading">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-rocs_client.robot.car">
-<span id="rocs-client-robot-car-module"></span><h2>rocs_client.robot.car module<a class="headerlink" href="#module-rocs_client.robot.car" title="Link to this heading">¶</a></h2>
+<span id="rocs-client-robot-car-module"></span><h2>rocs_client.robot.car module<a class="headerlink" href="#module-rocs_client.robot.car" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Car">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class hover docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
 <p>When you need to connect a Car, you can create a Car() object!
 This will connect to the control system in the background,
 and provide the corresponding control function and status monitoring!</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ssl</strong> (<em>bool</em>) – Indicates whether ssl authentication is enabled. Default False</p></li>
-<li><p><strong>host</strong> (<em>str</em>) – indicates the network IP address of the car</p></li>
-<li><p><strong>port</strong> (<em>int</em>) – specifies the PORT of the car control service</p></li>
-<li><p><strong>on_connected</strong> (<em>callable</em>) – This listener is triggered when the car connection is successful</p></li>
-<li><p><strong>on_message</strong> (<em>callable</em>) – This listener will be triggered when the car sends system status</p></li>
-<li><p><strong>on_close</strong> (<em>callable</em>) – This listener will be triggered when the car connection is closed</p></li>
-<li><p><strong>on_error</strong> (<em>callable</em>) – This listener will be triggered when a car error occurs</p></li>
+<li><p><strong>ssl</strong> (<em class="hover">bool</em>) – Indicates whether ssl authentication is enabled. Default False</p></li>
+<li><p><strong>host</strong> (<em class="hover">str</em>) – indicates the network IP address of the car</p></li>
+<li><p><strong>port</strong> (<em class="hover">int</em>) – specifies the PORT of the car control service</p></li>
+<li><p><strong>on_connected</strong> (<em class="hover">callable</em>) – This listener is triggered when the car connection is successful</p></li>
+<li><p><strong>on_message</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car sends system status</p></li>
+<li><p><strong>on_close</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car connection is closed</p></li>
+<li><p><strong>on_error</strong> (<em class="hover">callable</em>) – This listener will be triggered when a car error occurs</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Car.move">
-<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car.move" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car.move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Control Car walk</p>
 <p><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">request</span> <span class="pre">is</span> <span class="pre">sent</span> <span class="pre">by</span> <span class="pre">maintaining</span> <span class="pre">a</span> <span class="pre">long</span> <span class="pre">link</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>angle</strong> (<em>float</em>) – Angle Control direction. The value ranges from plus to minus 45 degrees. Left is positive, right is negative! (floating point 8 bits)</p></li>
-<li><p><strong>speed</strong> (<em>float</em>) – Before and after the speed control, the value can be plus or minus 500. Forward is positive, backward is negative! (floating point 8 bits)</p></li>
+<li><p><strong>angle</strong> (<em class="hover">float</em>) – Angle Control direction. The value ranges from plus to minus 45 degrees. Left is positive, right is negative! (floating point 8 bits)</p></li>
+<li><p><strong>speed</strong> (<em class="hover">float</em>) – Before and after the speed control, the value can be plus or minus 500. Forward is positive, backward is negative! (floating point 8 bits)</p></li>
 </ul>
 </dd>
 </dl>
@@ -155,12 +395,12 @@ and provide the corresponding control function and status monitoring!</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Car.set_mode">
-<span class="sig-name descname"><span class="pre">set_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.car.Mod" title="rocs_client.robot.car.Mod"><span class="pre">Mod</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car.set_mode" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.car.Mod" title="rocs_client.robot.car.Mod"><span class="pre">Mod</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car.set_mode" title="Permalink to this definition">¶</a></dt>
 <dd><p>set the car mode</p>
 <p>the car will move in the corresponding mode, including 4 rounds, 3 rounds and 2 rounds</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mod</strong> (<a class="reference internal" href="#rocs_client.robot.car.Mod" title="rocs_client.robot.car.Mod"><em>Mod</em></a>) – Mode object definition</p>
+<dd class="field-odd"><p><strong>mod</strong> (<a class="reference internal" href="#rocs_client.robot.car.Mod" title="rocs_client.robot.car.Mod"><em class="hover">Mod</em></a>) – Mode object definition</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><cite>code</cite> (int): statu code，0: Normal -1: Anomaly
@@ -176,121 +416,121 @@ and provide the corresponding control function and status monitoring!</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Mod">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Mod" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Mod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>Arguments that apply to the <cite>set_mode</cite> Function</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Mod.MOD_2_WHEEL">
-<span class="sig-name descname"><span class="pre">MOD_2_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_2'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">MOD_2_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_2'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Mod.MOD_3_WHEEL">
-<span class="sig-name descname"><span class="pre">MOD_3_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_3'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">MOD_3_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_3'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Mod.MOD_4_WHEEL">
-<span class="sig-name descname"><span class="pre">MOD_4_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_4'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">MOD_4_WHEEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHEEL_4'</span></em><a class="headerlink" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-rocs_client.robot.human">
-<span id="rocs-client-robot-human-module"></span><h2>rocs_client.robot.human module<a class="headerlink" href="#module-rocs_client.robot.human" title="Link to this heading">¶</a></h2>
+<span id="rocs-client-robot-human-module"></span><h2>rocs_client.robot.human module<a class="headerlink" href="#module-rocs_client.robot.human" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">ArmAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.ArmAction" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">ArmAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.ArmAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.ARMS_SWING">
-<span class="sig-name descname"><span class="pre">ARMS_SWING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ARMS_SWING'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.ARMS_SWING" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">ARMS_SWING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ARMS_SWING'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.ARMS_SWING" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.HELLO">
-<span class="sig-name descname"><span class="pre">HELLO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HELLO'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.HELLO" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">HELLO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HELLO'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.HELLO" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE">
-<span class="sig-name descname"><span class="pre">LEFT_ARM_WAVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LEFT_ARM_WAVE'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">LEFT_ARM_WAVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LEFT_ARM_WAVE'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction.RESET">
-<span class="sig-name descname"><span class="pre">RESET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RESET'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.RESET" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">RESET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'RESET'</span></em><a class="headerlink" href="#rocs_client.robot.human.ArmAction.RESET" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">HandAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.HandAction" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">HandAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.HandAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.GRASP">
-<span class="sig-name descname"><span class="pre">GRASP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GRASP'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.GRASP" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">GRASP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GRASP'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.GRASP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.HALF_HANDSHAKE">
-<span class="sig-name descname"><span class="pre">HALF_HANDSHAKE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HALF_HANDSHAKE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">HALF_HANDSHAKE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HALF_HANDSHAKE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.HANDSHAKE">
-<span class="sig-name descname"><span class="pre">HANDSHAKE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HANDSHAKE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.HANDSHAKE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">HANDSHAKE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HANDSHAKE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.HANDSHAKE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.OPEN">
-<span class="sig-name descname"><span class="pre">OPEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'OPEN'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.OPEN" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">OPEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'OPEN'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.OPEN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.SLIGHTLY_BENT">
-<span class="sig-name descname"><span class="pre">SLIGHTLY_BENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SLIGHTLY_BENT'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">SLIGHTLY_BENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SLIGHTLY_BENT'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.THUMB_UP">
-<span class="sig-name descname"><span class="pre">THUMB_UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'THUMB_UP'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.THUMB_UP" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">THUMB_UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'THUMB_UP'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.THUMB_UP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction.TREMBLE">
-<span class="sig-name descname"><span class="pre">TREMBLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TREMBLE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.TREMBLE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">TREMBLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TREMBLE'</span></em><a class="headerlink" href="#rocs_client.robot.human.HandAction.TREMBLE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Human</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Human</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class hover docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
 <p>When you need to connect a Human, you can create a Human() object!
 This will connect to the control system in the background,
 and provide the corresponding control function and status monitoring!</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ssl</strong> (<em>bool</em>) – Indicates whether ssl authentication is enabled. Default False</p></li>
-<li><p><strong>host</strong> (<em>str</em>) – indicates the network IP address of the car</p></li>
-<li><p><strong>port</strong> (<em>int</em>) – specifies the PORT of the car control service</p></li>
-<li><p><strong>on_connected</strong> (<em>callable</em>) – This listener is triggered when the car connection is successful</p></li>
-<li><p><strong>on_message</strong> (<em>callable</em>) – This listener will be triggered when the car sends system status</p></li>
-<li><p><strong>on_close</strong> (<em>callable</em>) – This listener will be triggered when the car connection is closed</p></li>
-<li><p><strong>on_error</strong> (<em>callable</em>) – This listener will be triggered when a car error occurs</p></li>
+<li><p><strong>ssl</strong> (<em class="hover">bool</em>) – Indicates whether ssl authentication is enabled. Default False</p></li>
+<li><p><strong>host</strong> (<em class="hover">str</em>) – indicates the network IP address of the car</p></li>
+<li><p><strong>port</strong> (<em class="hover">int</em>) – specifies the PORT of the car control service</p></li>
+<li><p><strong>on_connected</strong> (<em class="hover">callable</em>) – This listener is triggered when the car connection is successful</p></li>
+<li><p><strong>on_message</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car sends system status</p></li>
+<li><p><strong>on_close</strong> (<em class="hover">callable</em>) – This listener will be triggered when the car connection is closed</p></li>
+<li><p><strong>on_error</strong> (<em class="hover">callable</em>) – This listener will be triggered when a car error occurs</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.disable_debug_state">
-<span class="sig-name descname"><span class="pre">disable_debug_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_debug_state" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">disable_debug_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_debug_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>关闭state调试模式</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -309,18 +549,18 @@ and provide the corresponding control function and status monitoring!</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.disable_motor">
-<span class="sig-name descname"><span class="pre">disable_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_motor" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">disable_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_motor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.enable_debug_state">
-<span class="sig-name descname"><span class="pre">enable_debug_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_debug_state" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">enable_debug_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_debug_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>open debug mode</p>
 <p>Triggering this function will trigger the GR-01 human device to actively send status values in the background,
 so you need to listen to the on_message function for processing</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>frequence</strong> (<em>int</em>) – frequency</p>
+<dd class="field-odd"><p><strong>frequence</strong> (<em class="hover">int</em>) – frequency</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><blockquote>
@@ -632,12 +872,12 @@ so you need to listen to the on_message function for processing</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.enable_motor">
-<span class="sig-name descname"><span class="pre">enable_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_motor" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">enable_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_motor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_joint_limit">
-<span class="sig-name descname"><span class="pre">get_joint_limit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.get_joint_limit" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_limit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.get_joint_limit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Obtain joint limit</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -735,7 +975,7 @@ so you need to listen to the on_message function for processing</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_joint_states">
-<span class="sig-name descname"><span class="pre">get_joint_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.get_joint_states" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_joint_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.get_joint_states" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取关节状态</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -829,20 +1069,20 @@ so you need to listen to the on_message function for processing</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_motor_pvc">
-<span class="sig-name descname"><span class="pre">get_motor_pvc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.get_motor_pvc" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_motor_pvc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.get_motor_pvc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.head">
-<span class="sig-name descname"><span class="pre">head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.head" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.head" title="Permalink to this definition">¶</a></dt>
 <dd><p>控制GR-01人形头部运动</p>
 <p><code class="docutils literal notranslate"><span class="pre">该请求维持了长链接的方式进行发送</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>roll</strong> (<em>float</em>) – roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）</p></li>
-<li><p><strong>pitch</strong> (<em>float</em>) – pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）</p></li>
-<li><p><strong>yaw</strong> (<em>float</em>) – yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）</p></li>
+<li><p><strong>roll</strong> (<em class="hover">float</em>) – roll（翻滚角）：描述围绕x轴旋转的角度，左转头为负，向右转为正，范围（-17.1887-17.1887）</p></li>
+<li><p><strong>pitch</strong> (<em class="hover">float</em>) – pitch（俯仰角）：描述围绕y轴旋转的角度。前点头为正，后点头为负，范围（-17.1887-17.1887）</p></li>
+<li><p><strong>yaw</strong> (<em class="hover">float</em>) – yaw（偏航角）：描述围绕z轴旋转的角度。左扭头为负，右扭头为正，范围（-17.1887-17.1887）</p></li>
 </ul>
 </dd>
 </dl>
@@ -850,34 +1090,34 @@ so you need to listen to the on_message function for processing</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.motor_limits">
-<span class="sig-name descname"><span class="pre">motor_limits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#rocs_client.robot.human.Human.motor_limits" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">motor_limits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#rocs_client.robot.human.Human.motor_limits" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the maximum limit and minimum limit Angle of the motor</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.move_motor">
-<span class="sig-name descname"><span class="pre">move_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.move_motor" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">move_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.move_motor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.reset">
-<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.reset" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset/zero/calibration of the initial state of the device</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.set_motor_pd">
-<span class="sig-name descname"><span class="pre">set_motor_pd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_motor_pd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.set_motor_pd_flag">
-<span class="sig-name descname"><span class="pre">set_motor_pd_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd_flag" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_motor_pd_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd_flag" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.stand">
-<span class="sig-name descname"><span class="pre">stand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.stand" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">stand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.stand" title="Permalink to this definition">¶</a></dt>
 <dd><p>The GR-01 Human device will stand in place</p>
 <p>If you want to command the GR-01 humanoid device after start!
 you also need to call this function to set its position to stand mode.
@@ -895,7 +1135,7 @@ If you need to stop during a walk, you can also call this function to stand</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.upper_body">
-<span class="sig-name descname"><span class="pre">upper_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.ArmAction" title="rocs_client.robot.human.ArmAction"><span class="pre">ArmAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.HandAction" title="rocs_client.robot.human.HandAction"><span class="pre">HandAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.upper_body" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">upper_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.ArmAction" title="rocs_client.robot.human.ArmAction"><span class="pre">ArmAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.HandAction" title="rocs_client.robot.human.HandAction"><span class="pre">HandAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.upper_body" title="Permalink to this definition">¶</a></dt>
 <dd><p>上肢预设动作，手、胳膊设定好动作
 :param - arm_action: (str): 胳膊动作:RESET（归零）、LEFT_ARM_WAVE（左挥手）、TWO_ARMS_WAVE（双臂挥手）、ARMS_SWING（甩胳膊）、HELLO（打招呼）
 :param - hand_action: (str): 手动作:HALF_HANDSHAKE（半握手）、THUMBS_UP（竖大拇指）、OPEN（手张开）、SLIGHTLY_BENT（手微屈）、GRASP（抓握）、TREMBLE（抖动手）、HANDSHAKE（握手）</p>
@@ -916,14 +1156,14 @@ If you need to stop during a walk, you can also call this function to stand</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.walk">
-<span class="sig-name descname"><span class="pre">walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.walk" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.walk" title="Permalink to this definition">¶</a></dt>
 <dd><p>控制GR-01人形设备行走</p>
 <p><code class="docutils literal notranslate"><span class="pre">该请求维持了长链接的方式进行发送</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>angle</strong> (<em>float</em>) – 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)</p></li>
-<li><p><strong>speed</strong> (<em>float</em>) – 速度 控制前后，取值范围为正负0.8米/秒。向前为正，向后为负！(浮点数8位)</p></li>
+<li><p><strong>angle</strong> (<em class="hover">float</em>) – 角度 控制方向，取值范围为正负45度。向左为正，向右为负！(浮点数8位)</p></li>
+<li><p><strong>speed</strong> (<em class="hover">float</em>) – 速度 控制前后，取值范围为正负0.8米/秒。向前为正，向后为负！(浮点数8位)</p></li>
 </ul>
 </dd>
 </dl>
@@ -933,50 +1173,50 @@ If you need to stop during a walk, you can also call this function to stand</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Motor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Motor" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Motor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Motor.angle">
-<span class="sig-name descname"><span class="pre">angle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.angle" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">angle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.angle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Motor.no">
-<span class="sig-name descname"><span class="pre">no</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.no" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">no</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.no" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Motor.orientation">
-<span class="sig-name descname"><span class="pre">orientation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.orientation" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">orientation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.orientation" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-rocs_client.robot.robot_base">
-<span id="rocs-client-robot-robot-base-module"></span><h2>rocs_client.robot.robot_base module<a class="headerlink" href="#module-rocs_client.robot.robot_base" title="Link to this heading">¶</a></h2>
+<span id="rocs-client-robot-robot-base-module"></span><h2>rocs_client.robot.robot_base module<a class="headerlink" href="#module-rocs_client.robot.robot_base" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.robot_base.</span></span><span class="sig-name descname"><span class="pre">RobotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.robot_base.</span></span><span class="sig-name descname"><span class="pre">RobotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Robot 基类</p>
 <p>实例化的时候会通过websocket连接到对应设备的控制端口！</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase.exit">
-<span class="sig-name descname"><span class="pre">exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.exit" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.exit" title="Permalink to this definition">¶</a></dt>
 <dd><p>断开Robot链接</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.start" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>启动</p>
 <p>当你想要控制Robot设备的时候，你的第一个指令</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase.stop">
-<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.stop" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>停止</p>
 <p><code class="docutils literal notranslate"><span class="pre">该命令优先于其他命令!</span> <span class="pre">会掉电停止。请在紧急情况下触发</span></code></p>
 </dd></dl>
@@ -985,166 +1225,414 @@ If you need to stop during a walk, you can also call this function to stand</p>
 
 </section>
 <section id="module-rocs_client.robot">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rocs_client.robot" title="Link to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rocs_client.robot" title="Permalink to this heading">¶</a></h2>
 </section>
 </section>
 
-</main>
-                        <nav aria-label="Page navigation" class="py-4 my-5 clearfix font-weight-bold border-top">
-    <a class="float-left" href="../" title="Previous">
-        <span aria-hidden="true">←&nbsp;</span>Welcome to the RoCS Python SDK!
-    </a>
-    <a class="float-right" href="../rocs_client.common/" title="Next">
-        rocs_client.common package <span aria-hidden="true">&nbsp;→</span>
-    </a>
-</nav>
-                    </div>
-                    
-                    <nav class="col-12 col-lg-3 pb-4">
-                        <div class="sticky-top toc page-toc" aria-labelledby="page-toc-heading">
-                            <p class="font-weight-bold" id="page-toc-heading">Page contents</p>
-                            <ul>
-<li><a class="reference internal" href="#">rocs_client.robot package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-rocs_client.robot.car">rocs_client.robot.car module</a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.car.Car"><code class="docutils literal notranslate"><span class="pre">Car</span></code></a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.car.Car.move"><code class="docutils literal notranslate"><span class="pre">Car.move()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.car.Car.set_mode"><code class="docutils literal notranslate"><span class="pre">Car.set_mode()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rocs_client.robot.car.Mod"><code class="docutils literal notranslate"><span class="pre">Mod</span></code></a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_2_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_2_WHEEL</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_3_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_3_WHEEL</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.car.Mod.MOD_4_WHEEL"><code class="docutils literal notranslate"><span class="pre">Mod.MOD_4_WHEEL</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-rocs_client.robot.human">rocs_client.robot.human module</a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.human.ArmAction"><code class="docutils literal notranslate"><span class="pre">ArmAction</span></code></a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.human.ArmAction.ARMS_SWING"><code class="docutils literal notranslate"><span class="pre">ArmAction.ARMS_SWING</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.ArmAction.HELLO"><code class="docutils literal notranslate"><span class="pre">ArmAction.HELLO</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.ArmAction.LEFT_ARM_WAVE"><code class="docutils literal notranslate"><span class="pre">ArmAction.LEFT_ARM_WAVE</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.ArmAction.RESET"><code class="docutils literal notranslate"><span class="pre">ArmAction.RESET</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction"><code class="docutils literal notranslate"><span class="pre">HandAction</span></code></a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction.GRASP"><code class="docutils literal notranslate"><span class="pre">HandAction.GRASP</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction.HALF_HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HALF_HANDSHAKE</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction.HANDSHAKE"><code class="docutils literal notranslate"><span class="pre">HandAction.HANDSHAKE</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction.OPEN"><code class="docutils literal notranslate"><span class="pre">HandAction.OPEN</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction.SLIGHTLY_BENT"><code class="docutils literal notranslate"><span class="pre">HandAction.SLIGHTLY_BENT</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction.THUMB_UP"><code class="docutils literal notranslate"><span class="pre">HandAction.THUMB_UP</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.HandAction.TREMBLE"><code class="docutils literal notranslate"><span class="pre">HandAction.TREMBLE</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
-<li><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
-<li><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.stop"><code class="docutils literal notranslate"><span class="pre">RobotBase.stop()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
-</ul>
-</li>
-</ul>
 
-                        </div>
-                    </nav>
-                    
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <footer class="container-fluid bg-primary text-light">
-        <div class="container">
-            <div class="row">
-        <div class="col p-4">
-            
-                <nav aria-label="Footer">
-                    <ul class="nav justify-content-center mb-2">
-                        
-                            
-                            
-                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/features/">Features</a></li>
-                        
-                            
-                            
-                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/about-wagtail/"> About Wagtail</a></li>
-                        
-                            
-                            
-                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/services/"> Services</a></li>
-                        
-                            
-                            
-                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/blog/"> Blog</a></li>
-                        
-                            
-                            
-                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/packages/"> Packages</a></li>
-                        
-                            
-                            
-                            <li class="nav-item"><a class="nav-link text-light"  href="https://wagtail.org/developers/"> Developers</a></li>
-                        
-                    </ul>
-                </nav>
-            
-            <div class="text-center">
-                <p style="display: none">
-                    <a class="text-light" href="https://github.com/wagtail/sphinx_wagtail_theme" rel="nofollow" target="_blank">
-                        Wagtail Sphinx Theme 6.1.1
-                    </a>
-                </p>
-            </div>
-            <div class="text-center">
-                    &copy; Copyright 2023, Fourier Software Department
-            </div>
-        </div>
+  </div>
+  <div id="footer-row" class="row">
+
+    <div class="col-md-12">
+        <span title="Built on 2023-12-01" class="pull-right">&copy; Copyright 2023, Fourier Software Department.
+        Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1 and the
+        <a href="https://pypi.org/project/sphinx-sizzle-theme/"
+
+           title="0.1.3/579ed3af [2023-08-31T22:56:32]"
+
+        >Sizzle</a> theme.</span>
     </div>
-        </div>
-    </footer>
-        <script src="../_static/documentation_options.js?v=94e0f085"></script>
-        <script src="../_static/doctools.js?v=888ff710"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script type="text/javascript" src="../_static/dist/theme.js"></script>
-        <script type="text/javascript" src="../_static/dist/vendor.js"></script>
-        <script type="text/javascript" src="../_static/searchtools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() { Search.loadIndex("../searchindex.js"); });
-        </script>
-        <script type="text/javascript" id="searchindexloader"></script>
-    </body>
+
+  </div>
+</div>
+
+<div id="tooltips" class="hidden">
+</div>
+
+<script>
+$(document).ready(function() {
+  'use strict';
+  var $search = $('.search-query');
+
+  var $filter = $('#toc-filter-query');
+  var $toclist = $('.sidebar-toc > ul').find('li');
+
+  if ($toclist.length === 0) {
+    $toclist = $('.localtoc > ul').find('li');
+  }
+
+
+  var $nav = $('#nav');
+
+  //$('#whole-page').removeClass('hidden');
+  var nav_width = $nav.width();
+
+
+  var search_url = '../search/';
+
+  function perform_search(e) {
+    var $elem;
+
+    if (e.type === 'keypress') {
+      $elem = $(e.target);
+    }
+    else if (e.type === 'click') {
+      $elem = $(e.target).parents('.input-group').find('input');
+    }
+    var q = $elem.val().trim();
+
+    if (q) {
+      var url = search_url + '?q=' + q + '&check_keywords=yes&area=default';
+
+      location.href = url;
+    }
+  }
+
+
+  function apply_filter() {
+    var s = $filter.val().trim().toLowerCase();
+
+    $toclist.find('a').removeClass('hidden');
+    $toclist.each(function() {
+      var $this = $(this);
+      var $link = $this.find('> a');
+      var t = $link.text().toLowerCase();
+      var show = t.indexOf(s) >= 0;
+
+      if (!show) {
+        $link.addClass('hidden');
+      }
+    });
+  }
+
+  $filter.on('keyup', function(e) {
+    apply_filter();
+  });
+
+
+
+  $search.on('keypress', function(e) {
+    if (e.which == 13) {
+      perform_search(e);
+    }
+  });
+  $search.parents('.input-group').find('.input-group-addon').on('click', perform_search);
+  $(document).on('click', '.summary .fa-caret-right', function(e) {
+    var $elem = $(e.target).parents('li');
+    var $next = $elem.next();
+    $elem.addClass('hidden');
+    $next.removeClass('hidden');
+  });
+  $(document).on('click', '.detail .fa-caret-down', function(e) {
+    var $elem = $(e.target).parents('li');
+    var $prev = $elem.prev();
+    $elem.addClass('hidden');
+    $prev.removeClass('hidden');
+  });
+
+  $('#content').on('click', function() {
+    $('#mnav').hide();
+  });
+
+  var counter = 0;
+  var timer = null;
+
+  function show_nav() {
+    $('#content').off('mousemove', track_mouse);
+    if (timer !== null) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    $nav.show();
+  }
+
+  function track_mouse(e) {
+    var x = e.clientX;
+
+    if (x < 15) {
+      ++counter;
+      if (timer === null) {
+        timer = setTimeout(show_nav, 2000);
+      }
+    }
+    else {
+      counter = 0;
+    }
+    if (counter >= 20) {
+      show_nav();
+    }
+  };
+
+  function hide_nav() {
+    $nav.hide();
+    counter = 0;
+    $('#content').on('mousemove', track_mouse);
+  }
+
+  $('.hidetoc').on('click', hide_nav);
+
+  $(document).on('keyup', function(e) {
+    if (e.ctrlKey) {
+      if (e.which == 37) {      // Ctrl+left arrow
+        hide_nav();
+      }
+      else if (e.which == 39) { // Ctrl+right arrow
+        show_nav();
+      }
+    }
+  });
+
+  $('.menu-toggle').on('click', function(e) {
+    $('#mnav').toggle();
+  });
+
+  function scroll_nav(frag) {
+    var sel = '#nav ' + (frag ? 'a[href="' + frag + '"]' : '.toctree-l1 a.current');
+
+    var $link = $(sel);
+
+    if ($link.length > 0) {
+      $link[0].scrollIntoView({block: 'center'});
+    }
+  }
+
+  // If the navigator is long, then the item we clicked on to get here might
+  // not be in view. Try to scroll it into the view - a slight delay is needed
+  // to get it to sync properly with other stuff going on (as the page has just
+  // loaded). Hence the setTimeout with a timeout of 0.
+
+  function do_scroll() {
+    scroll_nav(window.location.hash);
+  }
+
+  setTimeout(do_scroll, 0);
+
+  function adjust_size() {
+    // we need to set the height explicitly so that scrolling regions in the
+    // content area work properly.
+    var h = $('#page-content').height();
+
+    $('#nav, #content').height(h);
+    if ($('#nav').is(':visible')) {
+      $('#mnav').hide();
+    }
+  }
+
+  adjust_size();
+
+  $(window).on('resize', adjust_size);
+
+  function focus_content() {
+    $('#content').focus();  // so that keyboard can be used to scroll, etc.
+  }
+
+  setTimeout(focus_content, 150);
+
+  var sizzle = $(document).data('sizzle');
+
+  function make_tooltip(id, h, b) {
+    var $e = $('<div>').attr('id', id);
+    var $b = $('<div>').addClass('tc-body').html(b);
+
+    if (h) {
+      var $h = $('<div>').addClass('tc-heading').html(h);
+      $e.append($h);
+    }
+    $e.append($b);
+    return $e;
+  }
+
+  var default_tt_options = {
+    theme: ['tooltipster-light', 'tooltipster-light-customized'],
+    interactive: true,
+    maxWidth: 600,
+    contentCloning: true
+  };
+
+  function activate_tooltips() {
+    var $tt = $('.tt');
+
+    //console.log('tt links:', $tt.length);
+    $tt.tooltipster(default_tt_options);
+  }
+
+
+
+  function add_glossary_tooltips() {
+    var links = $('a');  // can qualify with .reference.internal
+    var glinks = {};
+    var pat = /(.*)\.html#(term-.*)$/;
+    var found = false;  // links in this document
+
+    $.each(links, function(i, link) {
+        var $link = $(link);
+        var href = $link.attr('href');
+        var m = href.match(pat);
+
+        if (m) {
+          var s = m[1].replace(/^(\.\.\/)+/, '');
+
+          if (s === sizzle.app_data.glossary.document) {
+            var k = m[2];
+
+            if (k in glinks) {
+              glinks[k].push($link);
+            }
+            else {
+              glinks[k] = [$link];
+            }
+            found = true;
+          }
+        }
+    });
+    if (found) {
+      var $t = $('#tooltips');
+      var data = sizzle.app_data.glossary.terms;
+
+      $.each(glinks, function(k, v) {
+        var d = data[k];
+
+        if (d) {  // as a sanity check
+          var s = 'tc-'+ k;
+          var $e = make_tooltip(s, d.term, d.defn);
+          $t.append($e);
+
+          $.each(v, function(i, link) {
+            link.addClass('tt').attr('data-tooltip-content', '#' + s);
+          });
+        }
+      });
+    }
+  }
+
+  if (sizzle.app_data && sizzle.app_data.glossary &&
+      sizzle.app_data.glossary.document) {
+    add_glossary_tooltips();
+  }
+
+
+
+
+  function add_custom_tooltips() {
+    if (!sizzle.app_data) {
+      return;
+    }
+
+    var info_tips = sizzle.app_data.custom_data['info-tips'] || {};
+    var hover_tips = sizzle.app_data.custom_data['hovers'] || {};
+
+    if ($.isEmptyObject(info_tips) && $.isEmptyObject(hover_tips)) {
+      return;
+    }
+
+    var tt_options = $.extend({contentAsHTML: true}, default_tt_options);
+
+    if (!$.isEmptyObject(info_tips)) {
+      $('.tc-info').each(function() {
+        var $elem = $(this).prev();
+        var classes = $elem.attr('class');
+        var m = /\btci-([\S]+)/.exec(classes);
+
+        if (m !== null) {
+          var key = m[1];
+
+          if (key in info_tips) {
+            var v = info_tips[key];
+            var tt = $elem.tooltipster(tt_options).tooltipster('content', v);
+          }
+        }
+      });
+    }
+    if (!$.isEmptyObject(hover_tips)) {
+      var current_origin, current_instance;
+
+      var h_options = {
+        functionBefore: function(instance, helper) {
+          current_instance = instance;
+          current_origin = helper.origin;
+          //console.log('before', current_instance, current_origin);
+        },
+        functionAfter: function(instance, helper) {
+          current_instance = null;
+          current_origin = null;
+          //console.log('after', current_instance, current_origin);
+        }
+      };
+
+      var ht_options = $.extend(h_options, tt_options);
+      $('.hover').each(function() {
+        var $e = $(this);
+        var ref = $e.data('hoverref');
+
+        if (ref) {
+          var tip = hover_tips[ref];
+
+          if (tip) {
+            $e.tooltipster(ht_options).tooltipster('content', tip);
+            //if (/encrypt_and_sign/.test(ref)) { console.log(tip); }
+          }
+        }
+      });
+/*
+      $(document).on('click', '.hovertip a.hoverlink', function(e) {
+        if (!sizzle.app_data) {
+          return;
+        }
+        var $this = $(this);
+        var $content = $this.parent('.tooltipster-content');
+        var ref = $this.data('href');
+        var hover_tips = sizzle.app_data.custom_data['hovers'] || {};
+        var tip = hover_tips[ref];
+
+        if (tip && current_instance) {
+          current_instance.content(tip);
+        }
+
+      });
+ */
+    }
+  }
+
+  add_custom_tooltips();
+
+  setTimeout(activate_tooltips, 1000);
+
+
+  // Clipboard copy for code blocks with captions
+
+  $('.code-block-caption').each(function() {
+    var $cap = $(this);
+    var $btn = $('<span class="clip-copy"><span class="copied hidden">Copied!</span><i class="fa fa-clipboard" title="Copy contents"></i></span>');
+    var $code = $cap.parent().find('.highlight');
+
+    $cap.append($btn);
+    $btn.find('.fa-clipboard').data('clip-text', $code.text());
+  });
+
+  var clipboard = new ClipboardJS('.code-block-caption .fa-clipboard', {
+    'text': function(trigger) {
+      return $(trigger).data('clip-text');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    var $copied = $(e.trigger).prev();
+
+    $copied.removeClass('hidden');
+
+    setTimeout(function() {$copied.addClass('hidden'); }, 1000);
+  });
+
+  if (sizzle.on_load) {
+    sizzle.on_load.forEach(function(f) {
+      f();
+    });
+  }
+});
+</script>
+</body>
 </html>
