@@ -44,7 +44,7 @@ class HandAction(Enum):
 
 class Human(RobotBase):
     """
-    The Human class implements the behavior of the GR-1 robot. It establishes a connection
+    Used to implements the behavior of the GR-1 robot. It establishes a connection
     to the robot and offers control functions along with status monitoring.
 
     Args:
@@ -59,7 +59,7 @@ class Human(RobotBase):
     """
    
     motor_limits: list
-    """ This function is used to retrieve the motor limits. """
+    """ Used to retrieve the motor limits. """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
                  on_message: Callable = None, on_close: Callable = None, on_error: Callable = None):
@@ -68,7 +68,7 @@ class Human(RobotBase):
 
     def stand(self) -> Dict[str, Any]:
         """
-        This method is used to make the robot stand up from a resting position or other positions.
+        Used to make the robot stand up from a resting position or other positions.
 
         Once you've called start() and waited for stabilization, go ahead and use stand() to get the robot into a
         standing position.
@@ -86,13 +86,13 @@ class Human(RobotBase):
 
     def reset(self):
         """
-        Initiates the process to reset, zero, or calibrate the robot, bringing it to its initial state.
+        Used to initiate the process to reset, zero, or calibrate the robot, bringing it to its initial state.
         """
         return self._send_request(url='/robot/reset', method="POST")
 
     def get_joint_limit(self) -> Dict[str, Any]:
         """
-        Obtain joint limit information.
+        Used to obtain joint limit information.
 
         Returns:
 
@@ -107,7 +107,7 @@ class Human(RobotBase):
                     results
 
                     - function (str):
-                        函数名称
+                        name of the function
 
                     - data(dict):
                         - jointlimit (list): List of dictionaries, each representing the limits of a joint. Each
@@ -168,7 +168,7 @@ class Human(RobotBase):
 
     def get_joint_states(self) -> Dict[str, Any]:
         """
-         Retrieve the current joint states of the robot.This data is essential for monitoring and controlling the
+        Used to retrieve the current joint states of the robot.This data is essential for monitoring and controlling the
          robot's articulation in real-time, enabling precise adjustments and ensuring the robot's overall
          operational status.
 
@@ -237,10 +237,10 @@ class Human(RobotBase):
 
     def enable_debug_state(self, frequence: int = 1):
         """
-        Enable debug mode
+        Used to enable debug mode.
 
-        Triggering this function activates the robot to proactively send status values in the background.
-         Listen to the `on_message` function to process the received data.
+        Triggering this function allows the robot to actively send periodic state updates. This is beneficial for
+        real-time monitoring. To handle and process the received data, be sure to listen to the 'on_message' function.
 
         Args:
 
@@ -522,7 +522,7 @@ class Human(RobotBase):
         return self._send_request(url=f'/robot/enable_states_listen?frequence={frequence}', method="GET")
 
     def disable_debug_state(self) -> Dict[str, Any]:
-        """ Disable debug state mode.
+        """ Used to disable the debug state mode. It will stop the periodic state updates from the robot.
 
         Returns:
 
@@ -633,17 +633,13 @@ class Human(RobotBase):
         return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
 
     def _move_joint(self, *args: Motor):
-        """ This function is used to move joints to specified positions, considering motor limits.
-            It facilitates the movement of multiple joints of the robot. It takes an array of motors with target angles
-            and ensures that each joint's movement adheres to predefined motor limits. If motor limits are not available
-            initially, the function retries after a delay until the limits are obtained.
-            Please be noted that it is crucial to provide valid motor objects with 'no', 'orientation', and 'angle'
-            properties. Additionally, having accurate motor limits ensures safe and controlled joint movements.
+        """
+            This function allows you to adjust the positions of various joints, taking into account the limits set for
+ each motor. It simplifies the process of moving multiple joints in the robot by accepting an array of motors along with their target angles. The function ensures that each joint's movement stays within the predefined motor limits. If the motor limits aren't initially available, the function will attempt to retrieve them after a brief delay. It's important to provide valid motor objects with properties like 'no', 'orientation', and 'angle'. Ensuring accurate motor limits is crucial for achieving safe and precise joint movements.
 
         Args:
 
-            *args: (Motor) : All fields must be provided. Motor limits and other information
-                           can be obtained through the motor_limits property.
+            *args: (Motor) : All fields must be provided. Motor limits and other information can be obtained through the 'motor_limits' property.
 
         Returns: None.
 

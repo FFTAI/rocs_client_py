@@ -82,7 +82,7 @@ class RobotBase:
     @classmethod
     def _cover_param(cls, value: float, name: str, min_threshold: float, max_threshold: float) -> float:
         """ 
-        This function is designed to handle a numerical parameter along with its value, minimum, and maximum thresholds. It guarantees that the parameter stays within the defined range, and if it falls outside those bounds, it adjusts it to the nearest threshold.
+        Used to handle a numerical parameter along with its value, minimum, and maximum thresholds. It guarantees that the parameter stays within the defined range, and if it falls outside those bounds, it adjusts it to the nearest threshold.
         
         """
         if value is None:
@@ -102,7 +102,7 @@ class RobotBase:
 
     def start(self):
         """ 
-        Initiates the process to reset, zero, or calibrate the robot, bringing it to its initial state.
+        Used to initiate the process to reset, zero, or calibrate the robot, bringing it to its initial state.
         This command is crucial when you intend to take control of the robot, ensuring it starts from a known and calibrated position.
         Ensure that the robot has sufficient clearance and is ready for the calibration process before issuing this command.
         """
@@ -110,7 +110,7 @@ class RobotBase:
 
     def stop(self):
         """ 
-        Initiates the process to safely power down the robot. This command takes precedence over other commands, ensuring an orderly shutdown. It is recommended to trigger this command in emergency situations or when an immediate stop is necessary.
+        Used to initiate the process to safely power down the robot. This command takes precedence over other commands, ensuring an orderly shutdown. It is recommended to trigger this command in emergency situations or when an immediate stop is necessary.
         
         Use this command with caution, as it results in a powered-down state of the robot. Ensure that there are no critical tasks or movements in progress before invoking this command to prevent unexpected behavior.
         
@@ -118,5 +118,5 @@ class RobotBase:
         return self._send_request(url="/robot/stop", method="POST")
 
     def exit(self):
-        """ Disconnect from the robot"""
+        """ Used to disconnect from the robot."""
         self._ws.close()
