@@ -66,7 +66,7 @@ def disable_all():
 
 def wait_target_done(no, orientation, target_angle, rel_tol=1):
     while True:
-        p, _, _ = human.get_motor_pvc(str(no), orientation)['data']
+        p = human.get_motor_pvc(str(no), orientation)['data']['position']
         if math.isclose(p, target_angle, rel_tol=rel_tol):
             break
 
@@ -75,7 +75,7 @@ def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=
     current_position = 0
     while True:
         try:
-            current_position, _, _ = (human.get_motor_pvc(no, orientation))['data']
+            current_position = (human.get_motor_pvc(no, orientation))['data']['position']
             if current_position is not None and current_position != 0:
                 break
         except Exception as e:
@@ -200,3 +200,9 @@ class TestHumanMotor(unittest.TestCase):
         t_nod_head.join(), t_shake_head.join(), t_turn_head.join()
 
         disable_all()
+
+    def test_get_pvc(self):
+        print(human.get_motor_pvc('0', 'yaw'))
+
+        time.sleep(3)
+        human.exit()
