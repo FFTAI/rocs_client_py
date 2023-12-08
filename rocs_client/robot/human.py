@@ -688,6 +688,7 @@ class Human(RobotBase):
         print(f"Parameter setting successful! please reboot motor:  {no}-{orientation}")
 
     def enable_motor(self, no: str, orientation: str):
+        """0-8"""
         data = {
             'no': no,
             'orientation': orientation
@@ -696,6 +697,7 @@ class Human(RobotBase):
         print(f"Motor enabled successful:  {no}-{orientation}")
 
     def disable_motor(self, no: str, orientation: str):
+        """0-8"""
         data = {
             'no': no,
             'orientation': orientation
@@ -703,9 +705,21 @@ class Human(RobotBase):
         self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
         print(f"Motor disabled successful:  {no}-{orientation}")
 
+    def enable_hand(self):
+        return self._send_request(url='/robot/motor/hand/enable', method="GET")
+
+    def disable_hand(self):
+        return self._send_request(url='/robot/motor/hand/disable', method="GET")
+
     def get_motor_pvc(self, no: str, orientation: str):
+        """
+        0-8
+        """
         data = {
             'no': str(no),
             'orientation': orientation
         }
         return self._send_request(url='/robot/motor/pvc', method="POST", json=data)
+
+    def get_hand_position(self):
+        return self._send_request(url='/robot/motor/hand/state', method="POST", json={})

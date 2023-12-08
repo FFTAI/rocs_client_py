@@ -3,14 +3,14 @@ import threading
 import time
 import unittest
 
-from rocs_client import Human
+from rocs_client import Human, Motor
 
 """
 python -m unittest test_human_motor.TestHumanMotor.test_action_simple
 
 """
 
-human = Human(host="192.168.137.210")
+human = Human(host="192.168.137.254")
 
 
 def set_pds_flag():
@@ -166,43 +166,100 @@ class TestHumanMotor(unittest.TestCase):
 
         disable_all()
 
-    def test_head(self):
-        enable_all()
-
-        def nod_head():
-            for i in range(0, 5):
-                pass
-                smooth_move_motor_example('0', 'pitch', 12, offset=0.1)
-                smooth_move_motor_example('0', 'pitch', -12, offset=0.1)
-            time.sleep(0.5)
-            smooth_move_motor_example('0', 'pitch', 0, offset=1)
-
-        def shake_head():
-            for i in range(0, 5):
-                smooth_move_motor_example('0', 'yaw', 12, offset=0.1)
-                smooth_move_motor_example('0', 'yaw', -12, offset=0.1)
-            time.sleep(0.5)
-            smooth_move_motor_example('0', 'yaw', 0, offset=1)
-
-        def turn_head():
-            for i in range(0, 5):
-                pass
-                smooth_move_motor_example('0', 'roll', 12, offset=0.1)
-                smooth_move_motor_example('0', 'roll', -12, offset=0.1)
-            time.sleep(0.5)
-            smooth_move_motor_example('0', 'roll', 0, offset=1)
-
-        t_shake_head = threading.Thread(target=shake_head)
-        t_nod_head = threading.Thread(target=nod_head)
-        t_turn_head = threading.Thread(target=turn_head)
-
-        t_nod_head.start(), t_shake_head.start(), t_turn_head.start()
-        t_nod_head.join(), t_shake_head.join(), t_turn_head.join()
-
-        disable_all()
-
     def test_get_pvc(self):
         print(human.get_motor_pvc('0', 'yaw'))
-
         time.sleep(3)
+        human.exit()
+
+    def test_enable_hand(self):
+        human.enable_hand()
+        human.exit()
+
+    def test_disable_hand(self):
+        human.disable_hand()
+        human.exit()
+
+    def test_get_hand_position(self):
+        #
+        # human._send_websocket_msg(
+        #     {
+        #         "command": "move_joint",
+        #         "data": {
+        #             "command": [
+        #                 {
+        #                     "no": "9",
+        #                     "orientation": "left",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "9",
+        #                     "orientation": "right",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "10",
+        #                     "orientation": "left",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "10",
+        #                     "orientation": "right",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "11",
+        #                     "orientation": "left",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "11",
+        #                     "orientation": "right",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "12",
+        #                     "orientation": "left",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "12",
+        #                     "orientation": "right",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "13",
+        #                     "orientation": "left",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "13",
+        #                     "orientation": "right",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "14",
+        #                     "orientation": "left",
+        #                     "angle": 0
+        #                 },
+        #                 {
+        #                     "no": "14",
+        #                     "orientation": "right",
+        #                     "angle": 0
+        #                 }
+        #
+        #             ]
+        #         }
+        #     }
+        # )
+        #
+        # human._move_joint(
+        #     Motor('10', 'right', 0),
+        #     Motor('11', 'right', 0),
+        #     Motor('12', 'right', 0),
+        #     Motor('13', 'right', 0))
+
+        human.move_motor('10', 'left', 0)
+
+        print(human.get_hand_position())
+
         human.exit()
