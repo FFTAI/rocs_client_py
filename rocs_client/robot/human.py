@@ -1,3 +1,5 @@
+
+
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, Callable
@@ -7,6 +9,26 @@ from rocs_client.robot.robot_base import RobotBase
 
 @dataclass
 class Motor:
+    """
+    Motor Class
+
+    Represents a motor with specific attributes.
+
+    Attribute:
+        - no (str): The identifier or label for the motor.
+        - orientation (str): The orientation of the motor.
+        - angle (float, optional): The angle associated with the motor. Defaults to 0.
+
+    Example:
+        # Creating an instance of the Motor class
+
+        motor_instance = Motor(no="M1", orientation="Vertical", angle=45.0)
+
+    Note:
+        The Motor class is decorated with the @dataclass decorator, which automatically generates
+        special methods like __init__, __repr__, and __eq__ based on the class attributes.
+    """
+
     no: str
     orientation: str
     angle: float = 0
@@ -14,6 +36,25 @@ class Motor:
 
 @dataclass
 class ArmAction(Enum):
+    """
+    ArmAction Enum
+
+    Enumerates different arm actions that can be performed with a robot's arms.
+
+    Actions:
+        - RESET (str): Reset the arm to its default position.
+        - LEFT_ARM_WAVE (str): Wave the left arm.
+        - ARMS_SWING (str): Swing both arms.
+        - HELLO (str): Wave hello with the arm.
+
+    Example:
+        # Using the ArmAction enumeration
+
+        arm_reset = ArmAction.RESET
+
+        arm_wave_left = ArmAction.LEFT_ARM_WAVE
+    """
+
     # Reset
     RESET = "RESET"
     # Wave left arm
@@ -26,6 +67,29 @@ class ArmAction(Enum):
 
 @dataclass
 class HandAction(Enum):
+    """
+    HandAction Enum
+
+    Enumerates different hand actions that can be performed with a robot's hand.
+
+    Actions:
+        - HALF_HANDSHAKE (str): Perform a half handshake.
+        - THUMB_UP (str): Show a thumbs-up gesture.
+        - OPEN (str): Open the hands.
+        - SLIGHTLY_BENT (str): Slightly bend the hands.
+        - GRASP (str): Perform a grasping motion.
+        - TREMBLE (str): Tremble the hands.
+        - HANDSHAKE (str): Perform a handshake.
+
+    Example:
+        # Using the HandAction enumeration
+
+        half_handshake = HandAction.HALF_HANDSHAKE
+
+        thumbs_up = HandAction.THUMB_UP
+
+    """
+
     # Half handshake
     HALF_HANDSHAKE = "HALF_HANDSHAKE"
     # Thumb up
@@ -44,20 +108,34 @@ class HandAction(Enum):
 
 class Human(RobotBase):
     """
-    The Human class implements the behavior of the GR-1 robot. It establishes a connection
+    Human Class
+
+    The `Human` class implements the behavior of the GR-1 robot. It establishes a connection
     to the robot and offers control functions along with status monitoring.
 
     Args:
+        ssl (bool): Indicates whether SSL authentication is enabled. Default is False.
+        host (str): Specifies the network IP address of the robot. Default is '127.0.0.1'.
+        port (int): Specifies the PORT of the robot. Default is 8001.
+        on_connected (Callable): Listener triggered when the connection to the robot is successful.
+        on_message (Callable): Listener triggered when the robot sends messages.
+        on_close (Callable): Listener triggered when the connection to the robot is closed.
+        on_error (Callable): Listener triggered when an error occurs in the robot.
 
-        ssl(bool): Indicates whether SSL authentication is enabled. Default is False.
-        host(str): Specifies the network IP address of the robot. Default is '127.0.0.1'.
-        port(int): Specifies the PORT of  the robot. Default is 8001.
-        on_connected(callable): Listener triggered when the connection to the robot is successful.
-        on_message(callable): Listener triggered when the robot sends messages.
-        on_close(callable): Listener triggered when the connection to the robot is closed.
-        on_error(callable): Listener triggered when error occurs in the robot.
+    Attributes:
+        motor_limits (list): A list containing motor limits.
+
+    Example:
+        # Creating an instance of the Human class
+
+        human_robot = Human()
+
+    Note:
+        The `Human` class inherits from `RobotBase` and extends its functionality to control the GR-1 robot.
+        Ensure that you have the necessary dependencies installed and a valid connection to your robot before using the SDK.
+
     """
-   
+
     motor_limits: list
     """ This function is used to retrieve the motor limits. """
 
@@ -68,102 +146,110 @@ class Human(RobotBase):
 
     def stand(self) -> Dict[str, Any]:
         """
-        This method is used to make the robot stand up from a resting position or other positions.
+        Stand Method
+
+        Make the robot stand up from a resting position or other positions.
 
         Once you've called start() and waited for stabilization, go ahead and use stand() to get the robot into a
-        standing position.
-        Only after making the stand() call can you then give further control commands or motion instructions.
-        If the robot is walking or in the middle of other movements, you can also use this function to bring it to a
-        stop.
+        standing position. Only after making the stand() call can you then give further control commands or motion
+        instructions. If the robot is walking or in the middle of other movements, you can also use this function
+        to bring it to a stop.
 
         Returns:
+            Dict:
+                - `code` (int): Status code. 0 for Normal and -1 for Anomaly.
 
-             Dict:
-                `code` (int): status code，0 for Normal and -1 for Anomaly
-                `msg` (str): result message
+                - `msg` (str): Result message.
+
         """
+
         return self._send_request(url='/robot/stand', method='POST')
 
     def reset(self):
         """
+        Reset Method
+
         Initiates the process to reset, zero, or calibrate the robot, bringing it to its initial state.
+
+        Returns:
+            Dict:
+                - `code` (int): Status code. 0 for Normal and -1 for Anomaly.
+                - `msg` (str): Result message.
+
         """
+
         return self._send_request(url='/robot/reset', method="POST")
 
     def get_joint_limit(self) -> Dict[str, Any]:
         """
-        Obtain joint limit information.
+        Get Joint Limit Information
+
+        Obtain the robot's joint limit information.
 
         Returns:
-
             Dict:
-                - `code` (int):
-                    statu code，0: Normal    -1: Anomaly
+                - `code` (int): Status code. 0 for Normal, -1 for Anomaly.
+                - `msg` (str): Result message.
 
-                - `msg` (str):
-                    result msg
+                - `data` (dict): Results.
 
-                - `data` (dict):
-                    results
+                    - `function` (str): Function name.
 
-                    - function (str):
-                        函数名称
+                    - `data` (dict):
 
-                    - data(dict):
-                        - jointlimit (list): List of dictionaries, each representing the limits of a joint. Each
-                                             dictionary contains the following information for a joint:
-                            - name (str): The name of the joint.
-                            - qdotaMax (float): Maximum joint speed, unit: rad/s.
-                            - qaMax (float): Maximum joint angle, unit: radians.
-                            - qaMin (float): Minimum joint angle, unit: radians.
-                            - tauaMax (float): Maximum joint torque, unit: N.M.
-
+                        - `jointlimit` (list): List of dictionaries, each representing the limits of a joint.
+                          Each dictionary contains the following information for a joint:
+                            - `name` (str): The name of the joint.
+                            - `qaMax` (float): Maximum joint angle, unit: radians.
+                            - `qaMin` (float): Minimum joint angle, unit: radians.
+                            - `qdotaMax` (float): Maximum joint speed, unit: rad/s.
+                            - `tauaMax` (float): Maximum joint torque, unit: N.M.
 
         Example:
+            .. code-block:: json
 
-        .. code-block:: json
-
-            {
-                "code": 0,
-                "msg": "ok",
-                "data": {
+                {
+                    "code": 0,
+                    "msg": "ok",
                     "data": {
-                        "jointlimit": [
-                            {
-                                "name": "left_hip_roll",
-                                "qaMax": 0.523598775598299,
-                                "qaMin": -0.087266462599716,
-                                "qdotaMax": 12.56637061435917,
-                                "tauaMax": 82.5
-                            },
-                            {
-                                "name": "left_hip_yaw",
-                                "qaMax": 0.392699081698724,
-                                "qaMin": -0.392699081698724,
-                                "qdotaMax": 12.56637061435917,
-                                "tauaMax": 82.5
-                            },
-                            {
-                                "name": "left_hip_pitch",
-                                "qaMax": 0.698131700797732,
-                                "qaMin": -1.221730476396031,
-                                "qdotaMax": 22.441443522143093,
-                                "tauaMax": 200
-                            },
-                            {
-                                "name": "left_knee_pitch",
-                                "qaMax": 2.094395102393195,
-                                "qaMin": -0.087266462599716,
-                                "qdotaMax": 22.441443522143093,
-                                "tauaMax": 200
-                            }
-
-                        ]
-                    },
-                    "function": "SonnieGetStatesLimit"
+                        "function": "SonnieGetStatesLimit",
+                        "data": {
+                            "jointlimit": [
+                                {
+                                    "name": "left_hip_roll",
+                                    "qaMax": 0.523598775598299,
+                                    "qaMin": -0.087266462599716,
+                                    "qdotaMax": 12.56637061435917,
+                                    "tauaMax": 82.5
+                                },
+                                {
+                                    "name": "left_hip_yaw",
+                                    "qaMax": 0.392699081698724,
+                                    "qaMin": -0.392699081698724,
+                                    "qdotaMax": 12.56637061435917,
+                                    "tauaMax": 82.5
+                                },
+                                {
+                                    "name": "left_hip_pitch",
+                                    "qaMax": 0.698131700797732,
+                                    "qaMin": -1.221730476396031,
+                                    "qdotaMax": 22.441443522143093,
+                                    "tauaMax": 200
+                                },
+                                {
+                                    "name": "left_knee_pitch",
+                                    "qaMax": 2.094395102393195,
+                                    "qaMin": -0.087266462599716,
+                                    "qdotaMax": 22.441443522143093,
+                                    "tauaMax": 200
+                                }
+                            ]
+                        }
+                    }
                 }
-            }
+
         """
+
         return self._send_request(url='/robot/joint_limit', method="GET")
 
     def get_joint_states(self) -> Dict[str, Any]:
@@ -233,6 +319,7 @@ class Human(RobotBase):
             }
 
         """
+
         return self._send_request(url='/robot/joint_states', method="GET")
 
     def enable_debug_state(self, frequence: int = 1):

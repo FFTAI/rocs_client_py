@@ -1,3 +1,78 @@
+"""RobotBase Class
+
+The `RobotBase` class is the base class for interacting with robots in the RoCS (Robot Control System) Client SDK.
+
+Attribute:
+    - _baseurl (str): The base URL for HTTP requests.
+    - _ws_url (str): The WebSocket URL for connecting to the robot.
+    - _ws (WebSocket): WebSocket connection object.
+    - _on_connected (Callable): Callback function for the connection event.
+    - _on_message (Callable): Callback function for incoming messages.
+    - _on_close (Callable): Callback function for the connection close event.
+    - _on_error (Callable): Callback function for connection errors.
+    - camera (Camera): Instance of the Camera class for camera-related functionalities.
+    - system (System): Instance of the System class for system-related functionalities.
+
+Method:
+    - __init__(ssl: bool = False, host: str = '127.0.0.1', port: int = 8001,
+    Constructor method for the RobotBase class.
+            - on_connected: Callable = None, on_message: Callable = None,
+
+            - on_close: Callable = None, on_error: Callable = None):
+
+
+
+    - _event():
+
+        Private method handling events from the WebSocket connection.
+
+    - _send_websocket_msg(message: json):
+
+        Private method for sending WebSocket messages.
+    - _send_request(url: str, method: str = 'GET', params=None, json=None):
+
+        Private method for sending HTTP requests.
+    - _send_request_stream(url: str, method: str = 'GET', params=None, json=None):
+
+        Private method for sending HTTP requests with streaming support.
+    - _cover_param(value: float, name: str, min_threshold: float, max_threshold: float) -> float:
+
+        Class method for handling numerical parameters within defined thresholds.
+    - start() -> dict:
+
+        Method for initiating the process to reset, zero, or calibrate the robot.
+    - stop() -> dict:
+
+        Method for initiating the process to safely power down the robot.
+    - exit():
+
+        Method for disconnecting from the robot.
+
+Usage:
+    from rocs_client.robot.robot_base import RobotBase
+
+Example:
+    # Creating an instance of the RobotBase class
+
+    robot = RobotBase()
+
+    # Initiating the process to reset, zero, or calibrate the robot
+
+    result = robot.start()
+    print(result)
+
+    # Safely powering down the robot
+
+    result = robot.stop()
+    print(result)
+
+    # Disconnecting from the robot
+
+    robot.exit()
+
+Note:
+    Ensure that you have the necessary dependencies installed and a valid connection to your robot before using the SDK.
+"""
 import asyncio
 import json
 import threading
