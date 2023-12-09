@@ -747,7 +747,8 @@ class Human(RobotBase):
         if len(target_list):
             for motor in target_list:
                 motor['angle'] = (
-                    self._cover_param(motor.get('angle'), 'angle', motor.get('min_angle'), motor.get('max_angle')))
+                    self._cover_param(motor.get('angle'), f'{motor.get("no")}-{motor.get("orientation")}-angle',
+                                      motor.get('min_angle'), motor.get('max_angle')))
                 motor.pop('min_angle', 0)
                 motor.pop('max_angle', 0)
                 motor.pop('ip', 0)

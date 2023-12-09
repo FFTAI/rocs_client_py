@@ -3,54 +3,51 @@ import threading
 import time
 import unittest
 
-from rocs_client import Human, Motor
+from rocs_client import Human
 
-"""
-python -m unittest test_human_motor.TestHumanMotor.test_action_simple
+human = Human(host="192.168.137.210")
 
-"""
-
-human = Human(host="127.0.0.1")
+motors = human.motor_limits[0:15]
 
 
 def set_pds_flag():
-    for motor in human.motor_limits:
+    for motor in motors:
         human.set_motor_pd_flag(motor['no'], motor['orientation'])
     human.exit()
 
 
 def set_pds():
-    for motor in human.motor_limits:
+    for motor in motors:
         human.set_motor_pd(motor['no'], motor['orientation'], 0.36, 0.042)
     human.exit()
 
 
 def enable_all():
-    for motor in human.motor_limits:
+    for motor in motors:
         human.enable_motor(motor['no'], motor['orientation'])
     time.sleep(1)
 
 
 def _disable_left():
-    for i in range((len(human.motor_limits) - 1), -1, -1):
-        motor = human.motor_limits[i]
+    for i in range((len(motors) - 1), -1, -1):
+        motor = motors[i]
         if motor['orientation'] == 'left':
             smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
 
-    for i in range((len(human.motor_limits) - 1), -1, -1):
-        motor = human.motor_limits[i]
+    for i in range((len(motors) - 1), -1, -1):
+        motor = motors[i]
         if motor['orientation'] == 'left':
             human.disable_motor(motor['no'], motor['orientation'])
 
 
 def _disable_right():
-    for i in range((len(human.motor_limits) - 1), -1, -1):
-        motor = human.motor_limits[i]
+    for i in range((len(motors) - 1), -1, -1):
+        motor = motors[i]
         if motor['orientation'] != 'left':
             smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
 
-    for i in range((len(human.motor_limits) - 1), -1, -1):
-        motor = human.motor_limits[i]
+    for i in range((len(motors) - 1), -1, -1):
+        motor = motors[i]
         if motor['orientation'] != 'left':
             human.disable_motor(motor['no'], motor['orientation'])
 
@@ -72,6 +69,9 @@ def wait_target_done(no, orientation, target_angle, rel_tol=1):
 
 
 def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=0.05, wait_time=0.004):
+    if int(no) > 8:
+        print('than 8 not support')
+        return
     current_position = 0
     while True:
         try:
@@ -91,6 +91,14 @@ def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=
         human.move_motor(no, orientation, current_position)
         time.sleep(wait_time)
     wait_target_done(no, orientation, current_position)
+
+
+def enable_hand():
+    human.enable_hand()
+
+
+def disable_hand():
+    human.disable_hand()
 
 
 class TestHumanMotor(unittest.TestCase):
@@ -168,23 +176,11 @@ class TestHumanMotor(unittest.TestCase):
 
     def test_get_pvc(self):
         print(human.get_motor_pvc('0', 'yaw'))
-        time.sleep(3)
-        human.exit()
-
-    def test_enable_hand(self):
-        human.enable_hand()
-        human.exit()
-
-    def test_disable_hand(self):
-        human.disable_hand()
         human.exit()
 
     def test_get_hand_position(self):
-        # human._move_joint(
-        #     Motor('10', 'right', 0),
-        #     Motor('11', 'right', 0),
-        #     Motor('12', 'right', 0),
-        #     Motor('13', 'right', 0))
+        human.move_motor('10', 'left', 0)
+        human.move_motor('10', 'left', 0)
         human.move_motor('10', 'left', 0)
         print(human.get_hand_position())
         human.exit()

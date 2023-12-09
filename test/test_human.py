@@ -22,7 +22,7 @@ async def on_error(error: Exception):
 
 
 class TestHuman(unittest.TestCase):
-    human = Human(on_connected=on_connected, host="127.0.0.1", on_message=on_message, on_close=on_close,
+    human = Human(on_connected=on_connected, host="192.168.137.210", on_message=on_message, on_close=on_close,
                   on_error=on_error)
 
     def test_enable_debug_state(self):
@@ -75,20 +75,18 @@ class TestHuman(unittest.TestCase):
         self.human.exit()
 
     def test_stand(self):
-        self.human.walk(0, 0)
-        time.sleep(5)
         res = self.human.stand()
         print(f'human.test_stand: {res}')
         time.sleep(5)
         self.human.exit()
 
     def test_move(self):
-        self.human.walk(0, 0.5)
+        self.human.walk(0, 0)
         time.sleep(5)
         self.human.exit()
 
     def test_head(self):
-        self.human.head(0, -15, 0)
+        self.human.head(1, 1, 0.8)
         time.sleep(5)
         self.human.exit()
 
