@@ -109,6 +109,10 @@ class TestHumanMotor(unittest.TestCase):
     def test_set_pd(self):
         set_pds()
 
+    def test_get_pvc(self):
+        print(human.get_motor_pvc('0', 'yaw'))
+        human.exit()
+
     def test_action_simple(self):
         """
         This is the action of simple
@@ -174,13 +178,9 @@ class TestHumanMotor(unittest.TestCase):
 
         disable_all()
 
-    def test_get_pvc(self):
-        print(human.get_motor_pvc('0', 'yaw'))
-        human.exit()
-
     def test_get_hand_position(self):
-        human.move_motor('10', 'left', 0)
-        human.move_motor('10', 'left', 0)
-        human.move_motor('10', 'left', 0)
+        human.move_motor('9', 'left', 100)
+        human.move_motor('10', 'left', 150)
+        human.move_motor('11', 'left', 200)
         print(human.get_hand_position())
         human.exit()
