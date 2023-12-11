@@ -1,4 +1,3 @@
-
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, Callable
@@ -21,7 +20,7 @@ class Motor:
     Example:
         # Creating an instance of the Motor class
 
-        motor_instance = Motor(no="M1", orientation="Vertical", angle=45.0)
+        motor_instance = Motor(no="1", orientation="Vertical", angle=45.0)
 
     Note:
         The Motor class is decorated with the @dataclass decorator, which automatically generates
@@ -845,7 +844,6 @@ class Human(RobotBase):
             orientation (str): Motor orientation.
         todo: confirm pd vs PID with SME.
         """
-
         data = {
             'no': no,
             'orientation': orientation
@@ -868,7 +866,6 @@ class Human(RobotBase):
             d (float): Derivative gain value.
 
         """
-
         data = {
             'no': no,
             'orientation': orientation,
@@ -888,12 +885,7 @@ class Human(RobotBase):
         todo: figure out what 0-8 means in original docstring.
 
         """
-
-
-        data = {
-            'no': no,
-            'orientation': orientation
-        }
+        data = {'no': no, 'orientation': orientation}
         self._send_websocket_msg({'command': 'enable_motor', 'data': {"command": data}})
         print(f"Motor enabled successfully:  {no}-{orientation}")
 
@@ -906,27 +898,16 @@ class Human(RobotBase):
             orientation (str): Motor orientation.
         todo: figure out what 0-8 means in original docstring.
          """
-
-        data = {
-            'no': no,
-            'orientation': orientation
-        }
+        data = {'no': no, 'orientation': orientation}
         self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
         print(f"Motor disabled successfully: {no}-{orientation}")
 
     def enable_hand(self):
-        """
-        Enable the robot hand.
-
-        """
+        """  Enable the Hand for individual control. """
         return self._send_request(url='/robot/motor/hand/enable', method="GET")
 
     def disable_hand(self):
-        """
-        Disable the robot hand.
-
-        """
-
+        """  Disable the Hand for individual control. """
         return self._send_request(url='/robot/motor/hand/disable', method="GET")
 
     def get_motor_pvc(self, no: str, orientation: str):
@@ -941,6 +922,34 @@ class Human(RobotBase):
             Dict: PVC information including position, velocity, and current.
 
         todo: figure out what 0-8 means in original docstring.
+
+        Args:
+            no (str): The identifier or label for the motor.
+            orientation (str): The orientation of the motor.
+
+        Returns:
+
+            Dict: Return data with the following fields:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Data object containing specific data.
+
+        Examples:
+
+        .. code-block:: json
+
+            {
+                "code": 0,
+                "msg": "ok",
+                "data": {
+                    "no": "4",
+                    "orientation": "right",
+                    "position": "85.00",
+                    "velocity": "0.0123",
+                    "current": "0.85674"
+                }
+            }
+
         """
 
         data = {
@@ -954,7 +963,27 @@ class Human(RobotBase):
         Get the current position of the robot's hand.
 
         Returns:
-            Dict: Hand position information.
-        """
 
+            Dict: Return data with the following fields:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Data object containing specific data.
+
+        Examples:
+
+        .. code-block:: json
+
+            {
+                "code": 0,
+                "msg": "ok",
+                "data": {
+                    "no": "4",
+                    "orientation": "right",
+                    "position": "85.00",
+                    "velocity": "0.0123",
+                    "current": "0.85674"
+                }
+            }
+
+        """
         return self._send_request(url='/robot/motor/hand/state', method="POST", json={})
