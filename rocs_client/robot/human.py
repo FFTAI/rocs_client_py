@@ -1,5 +1,3 @@
-
-
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, Callable
@@ -22,7 +20,7 @@ class Motor:
     Example:
         # Creating an instance of the Motor class
 
-        motor_instance = Motor(no="M1", orientation="Vertical", angle=45.0)
+        motor_instance = Motor(no="1", orientation="Vertical", angle=45.0)
 
     Note:
         The Motor class is decorated with the @dataclass decorator, which automatically generates
@@ -755,9 +753,24 @@ class Human(RobotBase):
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
 
     def move_motor(self, no, orientation: str, angle: float):
+        """
+        Simple instructions for moving the electric motor
+
+        Args:
+            no (str): The identifier or label for the motor.
+            orientation (str): The orientation of the motor.
+            angle (float): The angle associated with the motor.
+        """
         self._move_joint(Motor(no=str(no), orientation=orientation, angle=angle))
 
     def set_motor_pd_flag(self, no: str, orientation: str):
+        """
+        Enable Flag for setting PID
+
+        Args:
+            no (str): The identifier or label for the motor.
+            orientation (str): The orientation of the motor.
+        """
         data = {
             'no': no,
             'orientation': orientation
@@ -766,6 +779,15 @@ class Human(RobotBase):
         print(f"Set PID mode on! please reboot motor:  {no}-{orientation}")
 
     def set_motor_pd(self, no: str, orientation: str, p: float, d: float):
+        """
+        setting PID param
+
+        Args:
+            no (str): The identifier or label for the motor.
+            orientation (str): The orientation of the motor.
+            p (float): Proportional
+            d (float): Derivative
+        """
         data = {
             'no': no,
             'orientation': orientation,
@@ -776,32 +798,62 @@ class Human(RobotBase):
         print(f"Parameter setting successful! please reboot motor:  {no}-{orientation}")
 
     def enable_motor(self, no: str, orientation: str):
-        """0-8"""
-        data = {
-            'no': no,
-            'orientation': orientation
-        }
+        """
+        Enable the motor for individual control.
+
+        Args:
+            no (str): The identifier or label for the motor.
+            orientation (str): The orientation of the motor.
+        """
+        data = {'no': no, 'orientation': orientation}
         self._send_websocket_msg({'command': 'enable_motor', 'data': {"command": data}})
         print(f"Motor enabled successful:  {no}-{orientation}")
 
     def disable_motor(self, no: str, orientation: str):
-        """0-8"""
-        data = {
-            'no': no,
-            'orientation': orientation
-        }
+        """Disable the motor"""
+        data = {'no': no, 'orientation': orientation}
         self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
         print(f"Motor disabled successful:  {no}-{orientation}")
 
     def enable_hand(self):
+        """  Enable the Hand for individual control. """
         return self._send_request(url='/robot/motor/hand/enable', method="GET")
 
     def disable_hand(self):
+        """  Disable the Hand for individual control. """
         return self._send_request(url='/robot/motor/hand/disable', method="GET")
 
     def get_motor_pvc(self, no: str, orientation: str):
         """
-        0-8
+        Retrieve the positions of motors 0 through 8
+
+        Args:
+            no (str): The identifier or label for the motor.
+            orientation (str): The orientation of the motor.
+
+        Returns:
+
+            Dict: Return data with the following fields:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Data object containing specific data.
+
+        Examples:
+
+        .. code-block:: json
+
+            {
+                "code": 0,
+                "msg": "ok",
+                "data": {
+                    "no": "4",
+                    "orientation": "right",
+                    "position": "85.00",
+                    "velocity": "0.0123",
+                    "current": "0.85674"
+                }
+            }
+
         """
         data = {
             'no': str(no),
@@ -810,4 +862,31 @@ class Human(RobotBase):
         return self._send_request(url='/robot/motor/pvc', method="POST", json=data)
 
     def get_hand_position(self):
+        """
+        Retrieve the positions of hand
+
+        Returns:
+
+            Dict: Return data with the following fields:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Data object containing specific data.
+
+        Examples:
+
+        .. code-block:: json
+
+            {
+                "code": 0,
+                "msg": "ok",
+                "data": {
+                    "no": "4",
+                    "orientation": "right",
+                    "position": "85.00",
+                    "velocity": "0.0123",
+                    "current": "0.85674"
+                }
+            }
+
+        """
         return self._send_request(url='/robot/motor/hand/state', method="POST", json={})
