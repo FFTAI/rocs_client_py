@@ -1,5 +1,4 @@
 
-
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, Callable
@@ -26,7 +25,7 @@ class Motor:
 
     Note:
         The Motor class is decorated with the @dataclass decorator, which automatically generates
-        special methods like __init__, __repr__, and __eq__ based on the class attributes.
+        special methods like __init__ based on the class attributes.
     """
 
     no: str
@@ -137,7 +136,7 @@ class Human(RobotBase):
     """
 
     motor_limits: list
-    """ This function is used to retrieve the motor limits. """
+    """This function is used to retrieve the motor limits."""
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
                  on_message: Callable = None, on_close: Callable = None, on_error: Callable = None):
@@ -271,6 +270,7 @@ class Human(RobotBase):
                     - `bodyandlegstate` (dict): Body and leg status with the following fields:
 
                         - `currentstatus` (str): Current status. "StartComplete" indicates startup completion.
+
                         - `log` (dict): Log information with the following fields:
 
                             - `logBuffer` (list): Log buffer with the following fields:
@@ -286,7 +286,7 @@ class Human(RobotBase):
 
                         - `armstatus` (str):  Arm status. "Swing" indicates swing arm mode.
 
-                - `function` (str):Function name that invoked this interface.
+                - `function` (str): name of the Function that invoked this interface.
 
         Example:
 
@@ -367,26 +367,26 @@ class Human(RobotBase):
 
                         - name (str): Joint name.
                         - qa (float): Actual joint angle, unit: rad.
-                        - qdota (float): Actual joint speed, unit: rad/s.
+                        - qdota (float): Actual (measured) joint velocity, unit: rad/s.
                         - taua (float): Actual joint torque, unit: N.m.
-                        - qc (float): Expected joint angle, unit: rad.
-                        - qdotc (float): Expected joint speed, unit: rad/s.
-                        - tauc (float): Expected joint torque, unit: N.m.
+                        - qc (float): Commanded (desired) joint angle, unit: rad.
+                        - qdotc (float): Commanded (desired) joint velocity, unit: rad/s。
+                        - tauc (float): Commanded (desired) joint torques, unit: N.m.
                     - stanceindex (dict): Pose index (not used).
                     - contactforce (dict): Contact force data (not used).
 
-                        - fxL (float): Left foot contact force.
-                        - fyL (float): Left foot contact force.
-                        - fzL (float): Left foot contact force.
-                        - mxL (float): Left foot contact force.
-                        - myL (float): Left foot contact force.
-                        - mzL (float): Left foot contact force.
-                        - fxR (float): Right foot contact force.
-                        - fyR (float): Right foot contact force.
-                        - fzR (float): Right foot contact force.
-                        - mxR (float): Right foot contact force.
-                        - myR (float): Right foot contact force.
-                        - mzR (float): Right foot contact force.
+                        - fxL (float): Force along the X-axis for the left foot.
+                        - fyL (float): Force along the Y-axis for the left foot.
+                        - fzL (float): Force along the Z-axis for the left foot.
+                        - mxL (float): Moment (torque) around the X-axis for left foot.
+                        - myL (float): Moment (torque) around the Y-axis for left foot.
+                        - mzL (float): Moment (torque) around the Z-axis for left foot.
+                        - fxR (float): Force along the X-axis for the right foot.
+                        - fyR (float): Force along the Y-axis for the right foot.
+                        - fzR (float): Force along the Z-axis for the right foot.
+                        - mxR (float): Moment (torque) around the X-axis for right foot.
+                        - myR (float): Moment (torque) around the Y-axis for right foot.
+                        - mzR (float): Moment (torque) around the Z-axis for right foot.
                 - timestamp (dict): Timestamp.
 
                     - nanos (int):
@@ -609,31 +609,44 @@ class Human(RobotBase):
         return self._send_request(url=f'/robot/enable_states_listen?frequence={frequence}', method="GET")
 
     def disable_debug_state(self) -> Dict[str, Any]:
-        """ Disable debug state mode.
+        """Disable debug state mode.
 
         Returns:
-
-            Dict:
-
-            - code (int): Return code. 0 indicates success, -1 indicates failure.
-            - msg (str): Return message. "ok" indicates normal, failure returns an error message.
-            - data (dict): Data object containing specific details.
+            dict:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Additional data object containing specific details.
+                  (todo: Include information about the expected keys or structure in the data dictionary.)
         """
+
         return self._send_request(url='/robot/disable_states_listen', method="GET")
 
     def walk(self, angle: float, speed: float):
         """
-        Control the walking behavior of the robot. This request is sent via a long-lived connection.
-
-
+        Control the walking behavior of the robot via a long-lived connection.
 
         Args:
-
-             angle(float): Angle to control the direction, ranging from -45 to 45 degrees.
+            angle (float): Angle to control the direction, ranging from -45 to 45 degrees.
                            Positive values turn left, negative values turn right. Precision of 8 decimal places.
-             speed(float): Speed to control forward/backward, ranging from -0.8 to 0.8 meters per second.
+            speed (float): Speed to control forward/backward, ranging from -0.8 to 0.8 meters per second.
                            Positive values move forward, negative values move backward. Precision of 8 decimal places.
+
+        Returns:
+            None
+
+        Raises:
+            Any exceptions raised during the execution.
+
+        Notes:
+            - The request is sent via a long-lived connection.
+            - The provided angle and speed values are automatically adjusted to fit within the specified valid ranges if they go beyond the given thresholds.
+
+        Example:
+            To make the robot turn left at a speed of 0.5 m/s:
+
+            >>> human.walk(angle=30.0, speed=0.5)
         """
+
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -0.8, 0.8)
         self._send_websocket_msg({
@@ -646,18 +659,32 @@ class Human(RobotBase):
 
     def head(self, roll: float, pitch: float, yaw: float):
         """
-        Control the movement of the robot's head. This request is sent via a long-lived connection.
-
+        Control the movement of the robot's head via a long-lived connection.
 
         Args:
+            roll (float): Rotation around the x-axis. Negative values turn the head to the left,
+                         and positive values turn it to the right. Range: -17.1887 to 17.1887.
+            pitch (float): Rotation around the y-axis. Positive values tilt the head forward,
+                          and negative values tilt it backward. Range: -17.1887 to 17.1887.
+            yaw (float): Rotation around the z-axis. Negative values twist the head to the left,
+                        and positive values twist it to the right. Range: -17.1887 to 17.1887.
 
-             roll(float): specify the rotation around the x-axis. Negative values turn the head to the left, and
-                          positive values turn it to the right. Range: -17.1887 to 17.1887.
-             pitch(float): specify the rotation around the y-axis. Positive values tilt the head forward, and negative
-                           values tilt it backward. Range: -17.1887 to 17.1887.
-             yaw(float): specify the rotation around the z-axis. Negative values twist the head to the left,
-                         and positive values twist it to the right. Range: -17.1887 to 17.1887.
+        Returns:
+            None
+
+        Raises:
+            Any exceptions raised during the execution.
+
+        Notes:
+            - The request is sent via a long-lived connection.
+            - The roll, pitch, and yaw values are automatically adjusted to fit within the specified valid ranges if they go beyond the given thresholds.
+
+        Example:
+            To turn the robot's head to the right (roll), tilt it backward (pitch), and twist it to the left (yaw):
+
+            >>> human.head(roll=10.0, pitch=-5.0, yaw=-7.0)
         """
+
         self._send_websocket_msg({
             'command': 'head',
             'data': {
@@ -670,18 +697,18 @@ class Human(RobotBase):
     def upper_body(self, arm: ArmAction = None, hand: HandAction = None):
         """
         Execute predefined upper body actions by setting arm and hand movements.
-        Args:
-            - arm_action: (str): Arm action. Options: RESET, LEFT_ARM_WAVE, TWO_ARMS_WAVE, ARMS_SWING, HELLO.
-            - hand_action: (str): Hand action. Options: HALF_HANDSHAKE, THUMBS_UP, OPEN, SLIGHTLY_BENT, GRASP, TREMBLE,
-                                  HANDSHAKE.
 
+        Args:
+            arm (ArmAction): Arm action. Options: RESET, LEFT_ARM_WAVE, TWO_ARMS_WAVE, ARMS_SWING, HELLO.
+            hand (HandAction): Hand action. Options: HALF_HANDSHAKE, THUMBS_UP, OPEN, SLIGHTLY_BENT, GRASP, TREMBLE, HANDSHAKE.
 
         Returns:
-            - code (int): Return code. 0 indicates success, -1 indicates failure.
-            - msg (str): Return message. "ok" indicates normal, failure returns an error message.
-            - data (dict): Data object containing specific details.
-
+            Dict:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Data object containing specific details.
         """
+
         upper_body_action = {}
         if arm:
             upper_body_action["arm_action"] = arm.value
@@ -690,51 +717,93 @@ class Human(RobotBase):
         return self._send_request(url='/robot/upper_body', method="POST", json=upper_body_action)
 
     def _get_motor_limit_list(self):
-        """ Retrieve motor limits.
+        """Retrieve motor limits.
 
         Returns:
+            Dict:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
 
-            Dict: Return data with the following fields:
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
 
-            - code (int): Return code. 0 indicates success, -1 indicates failure.
-            - msg (str): Return message. "ok" indicates normal, failure returns an error message.
-            - data (dict): Data object containing specific data.
+                - data (dict): Data object containing motor limit information.
+                  todo： The structure of the 'data' field may include:
+
+                    - motor1_limit (float): Limit for motor 1.
+
+                    - motor2_limit (float): Limit for motor 2.
+
+                    - ...
         """
+
         response = self._send_request(url='/robot/motor/limit/list', method="GET")
         self.motor_limits = response['data']
         print(f'human_motor_limit: {self.motor_limits}')
         return response
 
     def _control_svr_start(self):
+        """Start the SDK control server and print the streaming log.
+
+        This method sends a request to start the SDK control server and continuously prints the streaming log received.
+
+        Returns:
+            None
+        """
+
         for chunk in self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET"):
             print(chunk.decode("utf-8"))
 
     def _control_svr_log_view(self):
+        """View the SDK control server log and print the streaming log.
+
+        This method sends a request to view the SDK control server log and continuously prints the streaming log received.
+
+        Returns:
+            None
+        """
+
         for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
             print(chunk.decode("utf-8"))
 
     def _control_svr_close(self) -> Dict[str, Any]:
+        """Close the SDK control server.
+
+        This method sends a request to close the SDK control server.
+
+        Returns:
+            Dict:
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Data object containing specific details.
+        """
+
         return self._send_request(url='/robot/sdk_ctrl/close', method="GET")
 
     def _control_svr_status(self) -> Dict[str, Any]:
+        """Retrieve the status of the SDK control server.
+
+        Returns:
+            Dict[str, Any]: Status information with the following fields:
+
+                - code (int): Return code. 0 indicates success, -1 indicates failure.
+                - msg (str): Return message. "ok" indicates normal, failure returns an error message.
+                - data (dict): Data object containing specific details.
+        """
+
         return self._send_request(url='/robot/sdk_ctrl/status', method="GET")
 
     def _move_joint(self, *args: Motor):
-        """ This function is used to move joints to specified positions, considering motor limits.
-            It facilitates the movement of multiple joints of the robot. It takes an array of motors with target angles
-            and ensures that each joint's movement adheres to predefined motor limits. If motor limits are not available
-            initially, the function retries after a delay until the limits are obtained.
-            Please be noted that it is crucial to provide valid motor objects with 'no', 'orientation', and 'angle'
-            properties. Additionally, having accurate motor limits ensures safe and controlled joint movements.
+        """ Move joints to specified positions, considering motor limits.
+
+        Facilitates the movement of multiple joints of the robot. Takes an array of motors with target angles
+        and ensures that each joint's movement adheres to predefined motor limits.
 
         Args:
+            *args (Motor): An array of Motor objects with 'no', 'orientation', and 'angle' properties.
 
-            *args: (Motor) : All fields must be provided. Motor limits and other information
-                           can be obtained through the motor_limits property.
-
-        Returns: None.
-
+        Returns:
+            None.
         """
+
         motors = []
         target_list = []
         for motor in args:
@@ -755,17 +824,51 @@ class Human(RobotBase):
             self._send_websocket_msg({'command': 'move_joint', 'data': {"command": target_list}})
 
     def move_motor(self, no, orientation: str, angle: float):
+        """Move a specific motor to the specified angle.
+
+        Args:
+            no (str): Motor number.
+            orientation (str): Motor orientation.
+            angle (float): Target angle for the motor.
+
+        Returns:
+            None.
+        """
+
         self._move_joint(Motor(no=str(no), orientation=orientation, angle=angle))
 
     def set_motor_pd_flag(self, no: str, orientation: str):
+        """ Set PD mode for a specific motor.
+
+        Args:
+            no (str): Motor number.
+            orientation (str): Motor orientation.
+        todo: confirm pd vs PID with SME.
+        """
+
         data = {
             'no': no,
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'check_motor_for_flag', 'data': {"command": data}})
-        print(f"Set PID mode on! please reboot motor:  {no}-{orientation}")
+        print(f"PD mode set! Please restart the motor: {no}-{orientation}")
 
     def set_motor_pd(self, no: str, orientation: str, p: float, d: float):
+        """
+        Set the parameters for a Proportional-Derivative (PD) control mode for a specific motor.
+
+        This function allows you to configure the proportional (P) and derivative (D) gains for the motor.
+        Providing valid values for 'no' (motor number), 'orientation' (motor orientation), 'p' (proportional gain),
+        and 'd' (derivative gain) is crucial for accurate and stable motor control.
+
+        Args:
+            no (str): Motor number.
+            orientation (str): Motor orientation.
+            p (float): Proportional gain value.
+            d (float): Derivative gain value.
+
+        """
+
         data = {
             'no': no,
             'orientation': orientation,
@@ -773,36 +876,73 @@ class Human(RobotBase):
             'd': d
         }
         self._send_websocket_msg({'command': 'check_motor_for_set_pd', 'data': {"command": data}})
-        print(f"Parameter setting successful! please reboot motor:  {no}-{orientation}")
+        print(f"Parameters set successfully! Please restart the motor: {no}-{orientation}")
 
     def enable_motor(self, no: str, orientation: str):
-        """0-8"""
+        """
+        Enable the specified motor.
+
+        Args:
+            no (str): Motor number.
+            orientation (str): Motor orientation.
+        todo: figure out what 0-8 means in original docstring.
+
+        """
+
+
         data = {
             'no': no,
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'enable_motor', 'data': {"command": data}})
-        print(f"Motor enabled successful:  {no}-{orientation}")
+        print(f"Motor enabled successfully:  {no}-{orientation}")
 
     def disable_motor(self, no: str, orientation: str):
-        """0-8"""
+        """
+        Disable the specified motor.
+
+        Args:
+            no (str): Motor number.
+            orientation (str): Motor orientation.
+        todo: figure out what 0-8 means in original docstring.
+         """
+
         data = {
             'no': no,
             'orientation': orientation
         }
         self._send_websocket_msg({'command': 'disable_motor', 'data': {"command": data}})
-        print(f"Motor disabled successful:  {no}-{orientation}")
+        print(f"Motor disabled successfully: {no}-{orientation}")
 
     def enable_hand(self):
+        """
+        Enable the robot hand.
+
+        """
         return self._send_request(url='/robot/motor/hand/enable', method="GET")
 
     def disable_hand(self):
+        """
+        Disable the robot hand.
+
+        """
+
         return self._send_request(url='/robot/motor/hand/disable', method="GET")
 
     def get_motor_pvc(self, no: str, orientation: str):
         """
-        0-8
+        Get the Position, Velocity, and Current (PVC) information for a specific motor.
+
+        Args:
+            no (str): Motor number.
+            orientation (str): Motor orientation.
+
+        Returns:
+            Dict: PVC information including position, velocity, and current.
+
+        todo: figure out what 0-8 means in original docstring.
         """
+
         data = {
             'no': str(no),
             'orientation': orientation
@@ -810,4 +950,11 @@ class Human(RobotBase):
         return self._send_request(url='/robot/motor/pvc', method="POST", json=data)
 
     def get_hand_position(self):
+        """
+        Get the current position of the robot's hand.
+
+        Returns:
+            Dict: Hand position information.
+        """
+
         return self._send_request(url='/robot/motor/hand/state', method="POST", json={})

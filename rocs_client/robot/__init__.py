@@ -1,9 +1,14 @@
 """
-RoCS Client SDK - Robot Module
+RoCS Client SDK - Robot subpackage
 
-The `robot` module in the RoCS (Robot Control System) Client SDK provides classes and functionality
-for interacting with humanoid robots. It includes components for controlling robot movements, accessing
+The `robot` subpackage in the RoCS (Robot Control System) Client SDK provides modules, classes and functionality
+for interacting with robots. It includes components for controlling robot movements, accessing
 sensory data, and managing robot actions.
+
+Modules:
+    - car: Module containing functionalities for car-like robots.
+    - human: Module containing functionalities for humanoid robots.
+    - robot_base: Module providing a base class and utilities for robot interaction.
 
 Classes:
     - Human: Class representing a humanoid robot.
