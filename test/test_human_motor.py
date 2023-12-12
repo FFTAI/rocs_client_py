@@ -7,7 +7,7 @@ from rocs_client import Human
 
 human = Human(host="192.168.137.210")
 
-motors = human.motor_limits[0:15]
+motors = human.motor_limits[0:19]
 
 
 def set_pds_flag():
@@ -28,32 +28,31 @@ def enable_all():
     time.sleep(1)
 
 
-def _disable_left():
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] == 'left':
-            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
-
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] == 'left':
-            human.disable_motor(motor['no'], motor['orientation'])
-
-
-def _disable_right():
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] != 'left':
-            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
-
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] != 'left':
-            human.disable_motor(motor['no'], motor['orientation'])
-
-
 def disable_all():
+    def _disable_left():
+        for i in range((len(motors) - 1), -1, -1):
+            motor = motors[i]
+            if motor['orientation'] == 'left':
+                smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=2.5, wait_time=0.035)
+
+        for i in range((len(motors) - 1), -1, -1):
+            motor = motors[i]
+            if motor['orientation'] == 'left':
+                human.disable_motor(motor['no'], motor['orientation'])
+
+    def _disable_right():
+        for i in range((len(motors) - 1), -1, -1):
+            motor = motors[i]
+            if motor['orientation'] != 'left':
+                smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=2.5, wait_time=0.035)
+
+        for i in range((len(motors) - 1), -1, -1):
+            motor = motors[i]
+            if motor['orientation'] != 'left':
+                human.disable_motor(motor['no'], motor['orientation'])
+
     time.sleep(2)
+
     t_left = threading.Thread(target=_disable_left)
     t_right = threading.Thread(target=_disable_right)
     t_left.start(), t_right.start()
@@ -61,18 +60,17 @@ def disable_all():
     human.exit()
 
 
-def wait_target_done(no, orientation, target_angle, rel_tol=1):
-    while True:
-        p = human.get_motor_pvc(str(no), orientation)['data']['position']
-        if math.isclose(p, target_angle, rel_tol=rel_tol):
-            break
-
-
 def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=0.05, wait_time=0.004):
     if int(no) > 8:
         print('than 8 not support')
         return
-    current_position = 0
+
+    def wait_target_done(rel_tol=1):
+        while True:
+            p = human.get_motor_pvc(str(no), orientation)['data']['position']
+            if math.isclose(p, target_angle, rel_tol=rel_tol):
+                break
+
     while True:
         try:
             current_position = (human.get_motor_pvc(no, orientation))['data']['position']
@@ -90,7 +88,7 @@ def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=
             current_position -= offset
         human.move_motor(no, orientation, current_position)
         time.sleep(wait_time)
-    wait_target_done(no, orientation, current_position)
+    wait_target_done()
 
 
 def enable_hand():
@@ -125,20 +123,27 @@ class TestHumanMotor(unittest.TestCase):
         smooth_move_motor_example('2', 'left', -20)
         disable_all()
 
+    def test_action_simple_hand(self):
+        human.move_motor('9', 'left', 100)
+        human.move_motor('10', 'left', 150)
+        human.move_motor('11', 'left', 200)
+        print(human.get_hand_position())
+        human.exit()
+
     def test_action_hug(self):
         enable_all()
 
         def left():
-            smooth_move_motor_example('1', 'left', 30)
-            smooth_move_motor_example('2', 'left', -60)
-            smooth_move_motor_example('4', 'left', 60)
-            smooth_move_motor_example('1', 'left', 45)
+            smooth_move_motor_example('1', 'left', 30, 0.3, 0.005)
+            smooth_move_motor_example('2', 'left', -60, 0.3, 0.005)
+            smooth_move_motor_example('4', 'left', 60, 0.3, 0.005)
+            smooth_move_motor_example('1', 'left', 45, 0.3, 0.005)
 
         def right():
-            smooth_move_motor_example('1', 'right', -30)
-            smooth_move_motor_example('2', 'right', 60)
-            smooth_move_motor_example('4', 'right', -60)
-            smooth_move_motor_example('1', 'right', -45)
+            smooth_move_motor_example('1', 'right', -30, 0.3, 0.005)
+            smooth_move_motor_example('2', 'right', 60, 0.3, 0.005)
+            smooth_move_motor_example('4', 'right', -60, 0.3, 0.005)
+            smooth_move_motor_example('1', 'right', -45, 0.3, 0.005)
 
         left = threading.Thread(target=left)
         right = threading.Thread(target=right)
@@ -152,18 +157,18 @@ class TestHumanMotor(unittest.TestCase):
 
         def move_3():
             for i in range(0, 5):
-                smooth_move_motor_example('3', 'right', -40, offset=0.2, wait_time=0.003)
-                smooth_move_motor_example('3', 'right', 5, offset=0.2, wait_time=0.003)
+                smooth_move_motor_example('3', 'right', -40, offset=0.3, wait_time=0.003)
+                smooth_move_motor_example('3', 'right', 5, offset=0.3, wait_time=0.003)
 
         def shake_head():
             for i in range(0, 4):
                 smooth_move_motor_example('0', 'yaw', 12, offset=0.2)
                 smooth_move_motor_example('0', 'yaw', -12, offset=0.2)
 
-        joint_1 = threading.Thread(target=smooth_move_motor_example, args=('1', 'right', -65, 0.17, 0.004))
-        joint_2 = threading.Thread(target=smooth_move_motor_example, args=('2', 'right', 0, 0.15, 0.004))
-        joint_4 = threading.Thread(target=smooth_move_motor_example, args=('4', 'right', -90, 0.175, 0.003))
-        joint_5 = threading.Thread(target=smooth_move_motor_example, args=('5', 'right', 90, 0.18, 0.003))
+        joint_1 = threading.Thread(target=smooth_move_motor_example, args=('1', 'right', -65, 0.4, 0.005))
+        joint_2 = threading.Thread(target=smooth_move_motor_example, args=('2', 'right', 0, 0.4, 0.005))
+        joint_4 = threading.Thread(target=smooth_move_motor_example, args=('4', 'right', -90, 0.4, 0.005))
+        joint_5 = threading.Thread(target=smooth_move_motor_example, args=('5', 'right', 90, 0.4, 0.005))
         joint_1.start(), joint_2.start(), joint_4.start(), joint_5.start()
         joint_1.join(), joint_2.join(), joint_4.join(), joint_5.join()
         time.sleep(1)
@@ -178,9 +183,25 @@ class TestHumanMotor(unittest.TestCase):
 
         disable_all()
 
-    def test_get_hand_position(self):
-        human.move_motor('9', 'left', 100)
-        human.move_motor('10', 'left', 150)
-        human.move_motor('11', 'left', 200)
-        print(human.get_hand_position())
-        human.exit()
+    def test_action_shake_hands(self):
+
+        enable_all()
+
+        def hand():
+            for i in range(0, 10):
+                smooth_move_motor_example('8', "right", 30, 1, 0.03)
+                smooth_move_motor_example('8', "right", 10, 1, 0.03)
+
+        t1 = threading.Thread(target=smooth_move_motor_example, args=('1', 'right', -65, 0.4, 0.006))
+        t2 = threading.Thread(target=smooth_move_motor_example, args=('2', 'right', 0, 0.4, 0.006))
+        t3 = threading.Thread(target=smooth_move_motor_example, args=('3', 'right', 90, 0.45, 0.005))
+        t4 = threading.Thread(target=smooth_move_motor_example, args=('4', 'right', -20, 0.4, 0.006))
+        t5 = threading.Thread(target=smooth_move_motor_example, args=('5', 'right', -60, 0.4, 0.006))
+        t6 = threading.Thread(target=smooth_move_motor_example, args=('6', 'right', 15, 0.4, 0.006))
+
+        t1.start(), t2.start(), t3.start(), t4.start(), t5.start(), t6.start()
+        t1.join(), t2.join(), t3.join(), t4.join(), t5.join(), t6.join()
+
+        hand()
+
+        disable_all()
