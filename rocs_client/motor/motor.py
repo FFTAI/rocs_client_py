@@ -6,7 +6,7 @@ from rocs_client.robot import RobotBase
 @dataclass
 class MotorScheme:
     """
-    Motor Class
+    MotorScheme Class
 
     Represents a motor with specific attributes.
 
@@ -18,6 +18,7 @@ class MotorScheme:
     Example:
 
         # Creating an instance of the Motor class
+
         motor_instance = Motor(no="1", orientation="Vertical", angle=45.0)
 
     Note:
@@ -138,11 +139,7 @@ class Motor(RobotBase):
 
         Args:
             *args (Motor): An array of Motor objects with 'no', 'orientation', and 'angle' properties.
-
-        Returns:
-            None.
         """
-
         motors = []
         target_list = []
         for motor in args:
@@ -203,7 +200,6 @@ class Motor(RobotBase):
             }
 
         """
-
         data = {
             'no': str(no),
             'orientation': orientation
