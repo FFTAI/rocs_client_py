@@ -15,7 +15,9 @@ Welcome to the RoCS Python SDK!
    :maxdepth: 2
 
    rocs_client.robot
+   rocs_client.motor
    rocs_client.common
+
 
 
 Portal
