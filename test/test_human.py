@@ -22,7 +22,7 @@ async def on_error(error: Exception):
 
 
 class TestHuman(unittest.TestCase):
-    human = Human(on_connected=on_connected, host="192.168.137.210", on_message=on_message, on_close=on_close,
+    human = Human(on_connected=on_connected, host="192.168.12.1", on_message=on_message, on_close=on_close,
                   on_error=on_error)
 
     def test_enable_debug_state(self):
@@ -90,11 +90,6 @@ class TestHuman(unittest.TestCase):
         time.sleep(5)
         self.human.exit()
 
-    def test_get_motor_list(self):
-        print(f'test_get_motor_list: {self.human.motor_limits}')
-        time.sleep(5)
-        self.human.exit()
-
     def test_upper_body_arm(self):
         # 胳膊动作测试
         # 1、左挥手
@@ -111,20 +106,14 @@ class TestHuman(unittest.TestCase):
 
     def test_start_control_svr(self):
         self.human._control_svr_start()
-        time.sleep(5)
-        self.human.exit()
 
     def test_close_control_svr(self):
         print('test_close_control_svr: ', self.human._control_svr_close())
-        time.sleep(5)
         self.human.exit()
 
     def test_status_control_svr(self):
         print('test_status_control_svr: ', self.human._control_svr_status())
-        time.sleep(5)
         self.human.exit()
 
     def test_log_view_control_svr(self):
         self.human._control_svr_log_view()
-        time.sleep(5)
-        self.human.exit()
