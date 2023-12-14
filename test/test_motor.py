@@ -5,18 +5,18 @@ import unittest
 
 from rocs_client import Motor
 
-motor = Motor(host="192.168.137.210")
-
-motors = motor.limits[0:19]
+motor = Motor(host="192.168.12.1")
 
 
 def set_pds_flag():
+    motors = motor.limits[0:19]
     for item in motors:
         motor.set_motor_pd_flag(item['no'], item['orientation'])
     motor.exit()
 
 
 def set_pds():
+    motors = motor.limits[0:19]
     for item in motors:
         motor.set_motor_pd(item['no'], item['orientation'], 0.36, 0.042)
     motor.exit()
@@ -55,12 +55,15 @@ def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.
 
 
 def enable_all():
+    motors = motor.limits[0:19]
     for item in motors:
         motor.enable_motor(item['no'], item['orientation'])
     time.sleep(1)
 
 
 def disable_all():
+    motors = motor.limits[0:19]
+
     def _disable_left():
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -125,9 +128,23 @@ class TestHumanMotor(unittest.TestCase):
         disable_all()
 
     def test_action_simple_hand(self):
-        motor.move_motor('9', 'left', 100)
-        motor.move_motor('10', 'left', 150)
-        motor.move_motor('11', 'left', 200)
+        motor.enable_hand()
+
+        angle = 300
+
+        motor.move_motor('9', 'left', angle)
+        motor.move_motor('10', 'left', angle)
+        motor.move_motor('11', 'left', angle)
+        motor.move_motor('12', 'left', angle)
+        motor.move_motor('13', 'left', angle)
+        motor.move_motor('14', 'left', angle)
+
+        motor.move_motor('9', 'right', angle)
+        motor.move_motor('10', 'right', angle)
+        motor.move_motor('11', 'right', angle)
+        motor.move_motor('12', 'right', angle)
+        motor.move_motor('13', 'right', angle)
+        motor.move_motor('14', 'right', angle)
         print(motor.get_hand_position())
         motor.exit()
 
@@ -185,7 +202,6 @@ class TestHumanMotor(unittest.TestCase):
         disable_all()
 
     def test_action_shake_hands(self):
-
         enable_all()
 
         def hand():
