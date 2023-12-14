@@ -147,9 +147,10 @@ class RobotBase:
             response = requests.request(method, f'{self._baseurl}{url}', params=params, json=json)
             return response.json()
         except Exception as e:
-            print(f'Failed to send command. Please check the server status and ensure the command is valid. {e}')
+            print(f'Failed to send command: {url} - {e}')
             return {"code": -1,
-                    "msg": f"Failed to send command. Please check the server status and ensure the command is valid.",
+                    "msg": f"Failed to send command: {url}. "
+                           f"Please check the server status and ensure the command is valid.",
                     "data": None}
 
     def _send_request_stream(self, url: str, method: str = 'GET', params=None, json=None):
@@ -161,20 +162,23 @@ class RobotBase:
     @classmethod
     def _cover_param(cls, value: float, name: str, min_threshold: float, max_threshold: float) -> float:
         """
-        Used to handle a numerical parameter along with its value, minimum, and maximum thresholds. It guarantees that the parameter stays within the defined range, and if it falls outside those bounds, it adjusts it to the nearest threshold.
-
+        Used to handle a numerical parameter along with its value, minimum, and maximum thresholds.
+        It guarantees that the parameter stays within the defined range, and if it falls outside those bounds,
+        it adjusts it to the nearest threshold.
         """
         if value is None:
             print(f"Invalid parameter: {name} is {value}. The value 0 will be used")
             value = 0
         if value > max_threshold:
             print(
-                f"Invalid parameter: {name} ({value}) exceeds maximum allowed value ({max_threshold}). The maximum value {max_threshold} will be used."
+                f"Invalid parameter: {name} ({value}) exceeds maximum allowed value ({max_threshold}). "
+                f"The maximum value {max_threshold} will be used."
             )
             value = max_threshold
         if value < min_threshold:
             print(
-                f"Invalid parameter: {name} ({value}) is less than the minimum allowed value ({min_threshold}). The minimum value ({min_threshold}) will be used."
+                f"Invalid parameter: {name} ({value}) is less than the minimum allowed value ({min_threshold}). "
+                f"The minimum value ({min_threshold}) will be used."
             )
             value = min_threshold
         return value
@@ -182,16 +186,23 @@ class RobotBase:
     def start(self):
         """
         Used to initiate the process to reset, zero, or calibrate the robot, bringing it to its initial state.
-        This command is crucial when you intend to take control of the robot, ensuring it starts from a known and calibrated position.
-        Ensure that the robot has sufficient clearance and is ready for the calibration process before issuing this command.
+        This command is crucial when you intend to take control of the robot,
+        ensuring it starts from a known and calibrated position.
+
+        Ensure that the robot has sufficient clearance
+        and is ready for the calibration process before issuing this command.
         """
         return self._send_request(url='/robot/start', method='POST')
 
     def stop(self):
         """
-        Used to initiate the process to safely power down the robot. This command takes precedence over other commands, ensuring an orderly shutdown. It is recommended to trigger this command in emergency situations or when an immediate stop is necessary.
+        Used to initiate the process to safely power down the robot. This command takes precedence over other commands,
+        ensuring an orderly shutdown. It is recommended to trigger this command in emergency situations
+        or when an immediate stop is necessary.
 
-        Use this command with caution, as it results in a powered-down state of the robot. Ensure that there are no critical tasks or movements in progress before invoking this command to prevent unexpected behavior.
+        Use this command with caution, as it results in a powered-down state of the robot.
+        Ensure that there are no critical tasks
+        or movements in progress before invoking this command to prevent unexpected behavior.
 
         """
         return self._send_request(url="/robot/stop", method="POST")

@@ -27,20 +27,24 @@ def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.
         print('than 8 not support')
         return
 
-    def wait_target_done(rel_tol=1):
+    def wait_target_done(rel_tol=2):
         while True:
-            p = motor.get_motor_pvc(no, orientation)['data']['position']
-            if math.isclose(p, target_angle, rel_tol=rel_tol):
-                break
+            try:
+                p = motor.get_motor_pvc(no, orientation)['data']['position']
+                if math.isclose(p, target_angle, rel_tol=rel_tol):
+                    break
+            except Exception as e:
+                print(f'wait_target_done err: {e}')
 
     while True:
         try:
-            current_position = (motor.get_motor_pvc(no, orientation))['data']['position']
+            result = motor.get_motor_pvc(no, orientation)
+            current_position = result['data']['position']
             if current_position is not None and current_position != 0:
                 break
         except Exception as e:
-            print(f'err: {e}')
-            pass
+            print(f'current_position err: {e}')
+
     target_position = target_angle
     cycle = abs(int((target_position - current_position) / offset))
 
@@ -95,14 +99,6 @@ def disable_all():
     motor.exit()
 
 
-def enable_hand():
-    motor.enable_hand()
-
-
-def disable_hand():
-    motor.disable_hand()
-
-
 class TestHumanMotor(unittest.TestCase):
 
     def test_set_pd_flag(self):
@@ -127,25 +123,26 @@ class TestHumanMotor(unittest.TestCase):
         smooth_move_motor_with_differential('2', 'left', -20)
         disable_all()
 
-    def test_action_simple_hand(self):
+    def test_enable_hand(self):
         motor.enable_hand()
+        motor.exit()
 
-        angle = 300
+    def test_disable_hand(self):
+        motor.disable_hand()
+        motor.exit()
 
-        motor.move_motor('9', 'left', angle)
-        motor.move_motor('10', 'left', angle)
+    def test_action_simple_hand(self):
+        angle = 500
+
         motor.move_motor('11', 'left', angle)
         motor.move_motor('12', 'left', angle)
         motor.move_motor('13', 'left', angle)
         motor.move_motor('14', 'left', angle)
 
-        motor.move_motor('9', 'right', angle)
-        motor.move_motor('10', 'right', angle)
         motor.move_motor('11', 'right', angle)
         motor.move_motor('12', 'right', angle)
         motor.move_motor('13', 'right', angle)
         motor.move_motor('14', 'right', angle)
-        print(motor.get_hand_position())
         motor.exit()
 
     def test_action_hug(self):
