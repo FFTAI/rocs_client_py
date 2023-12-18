@@ -7,22 +7,41 @@ from rocs_client import Motor
 
 motor = Motor(host="192.168.12.1")
 
+arm_motor = motor.limits[0:17]
+clamping_jaw = motor.limits[17:19]
+dexterous_hand = motor.limits[19:31]
+
+print(f'arm_motor: {arm_motor}')
+print(f'clamping_jaw: {clamping_jaw}')
+print(f'dexterous_hand: {dexterous_hand}')
+
+motors = arm_motor + clamping_jaw
+
 
 def set_pds_flag():
-    motors = motor.limits[0:19]
+    """ Enable the switch/flag for setting pd parameters """
     for item in motors:
         motor.set_motor_pd_flag(item['no'], item['orientation'])
     motor.exit()
 
 
 def set_pds():
-    motors = motor.limits[0:19]
+    """ Set pd parameters """
     for item in motors:
         motor.set_motor_pd(item['no'], item['orientation'], 0.36, 0.042)
     motor.exit()
 
 
-def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.05, wait_time=0.004):
+def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.05, interval=0.004):
+    """
+    Use the difference to move the motor smoothly
+    Args:
+        no: Number of the motor to be operated
+        orientation: Orientation of the motor to be operated
+        target_angle: Angle of motion
+        offset: The Angle of each move
+        interval: Interval of difference
+    """
     if int(no) > 8:
         print('than 8 not support')
         return
@@ -54,25 +73,25 @@ def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.
         else:
             current_position -= offset
         motor.move_motor(no, orientation, current_position)
-        time.sleep(wait_time)
+        time.sleep(interval)
     wait_target_done()
 
 
 def enable_all():
-    motors = motor.limits[0:19]
+    """ Enable All Motors """
     for item in motors:
         motor.enable_motor(item['no'], item['orientation'])
     time.sleep(1)
 
 
 def disable_all():
-    motors = motor.limits[0:19]
+    """Disable All Motors """
 
     def _disable_left():
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
             if item['orientation'] == 'left':
-                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=2.5, wait_time=0.035)
+                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
 
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -83,7 +102,7 @@ def disable_all():
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
             if item['orientation'] != 'left':
-                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=2.5, wait_time=0.035)
+                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
 
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -102,13 +121,24 @@ def disable_all():
 class TestHumanMotor(unittest.TestCase):
 
     def test_set_pd_flag(self):
+        """ Enable the switch/flag for setting pd parameters """
         set_pds_flag()
 
     def test_set_pd(self):
+        """ Set pd parameters """
         set_pds()
 
+    def test_enable_motors(self):
+        """ Enable All Motors """
+        enable_all()
+
+    def test_disable_motors(self):
+        """ Disable All Motors """
+        disable_all()
+
     def test_get_pvc(self):
-        print(motor.get_motor_pvc('0', 'yaw'))
+        """ Obtain the specified motor information """
+        print(f"test_get_pvc {motor.get_motor_pvc('0', 'yaw')}")
         motor.exit()
 
     def test_action_simple(self):
@@ -124,12 +154,18 @@ class TestHumanMotor(unittest.TestCase):
         disable_all()
 
     def test_enable_hand(self):
+        """Enabling hand"""
         motor.enable_hand()
         motor.exit()
 
     def test_disable_hand(self):
+        """ Disabled hand """
         motor.disable_hand()
         motor.exit()
+
+    def test_get_hand_position(self):
+        """ Obtain Hand Position"""
+        print(f'test_get_hand_position:  {motor.get_hand_position()}')
 
     def test_action_simple_hand(self):
         angle = 500
@@ -172,13 +208,8 @@ class TestHumanMotor(unittest.TestCase):
 
         def move_3():
             for i in range(0, 5):
-                smooth_move_motor_with_differential('3', 'right', -40, offset=0.3, wait_time=0.003)
-                smooth_move_motor_with_differential('3', 'right', 5, offset=0.3, wait_time=0.003)
-
-        def shake_head():
-            for i in range(0, 4):
-                smooth_move_motor_with_differential('0', 'yaw', 12, offset=0.2)
-                smooth_move_motor_with_differential('0', 'yaw', -12, offset=0.2)
+                smooth_move_motor_with_differential('3', 'right', -40, offset=0.3, interval=0.003)
+                smooth_move_motor_with_differential('3', 'right', 5, offset=0.3, interval=0.003)
 
         joint_1 = threading.Thread(target=smooth_move_motor_with_differential, args=('1', 'right', -65, 0.4, 0.005))
         joint_2 = threading.Thread(target=smooth_move_motor_with_differential, args=('2', 'right', 0, 0.4, 0.005))
@@ -188,33 +219,7 @@ class TestHumanMotor(unittest.TestCase):
         joint_1.join(), joint_2.join(), joint_4.join(), joint_5.join()
         time.sleep(1)
 
-        t_shake_head = threading.Thread(target=shake_head)
-        t_shake_head.start()
-
         t_move_3 = threading.Thread(target=move_3)
         t_move_3.start()
         t_move_3.join()
-        t_shake_head.join()
-
-        disable_all()
-
-    def test_action_shake_hands(self):
-        enable_all()
-
-        def hand():
-            for i in range(0, 10):
-                smooth_move_motor_with_differential('8', "right", 30, 1, 0.03)
-                smooth_move_motor_with_differential('8', "right", 10, 1, 0.03)
-
-        t1 = threading.Thread(target=smooth_move_motor_with_differential, args=('1', 'right', -65, 0.4, 0.006))
-        t2 = threading.Thread(target=smooth_move_motor_with_differential, args=('2', 'right', 0, 0.4, 0.006))
-        t3 = threading.Thread(target=smooth_move_motor_with_differential, args=('3', 'right', 90, 0.45, 0.005))
-        t4 = threading.Thread(target=smooth_move_motor_with_differential, args=('4', 'right', -20, 0.4, 0.006))
-        t5 = threading.Thread(target=smooth_move_motor_with_differential, args=('5', 'right', -60, 0.4, 0.006))
-        t6 = threading.Thread(target=smooth_move_motor_with_differential, args=('6', 'right', 15, 0.4, 0.006))
-
-        t1.start(), t2.start(), t3.start(), t4.start(), t5.start(), t6.start()
-        t1.join(), t2.join(), t3.join(), t4.join(), t5.join(), t6.join()
-
-        hand()
         disable_all()
