@@ -1,7 +1,8 @@
-import math
 import threading
-import time
 import unittest
+
+import math
+import time
 
 from rocs_client import Motor
 
@@ -148,13 +149,17 @@ class TestHumanMotor(unittest.TestCase):
 
         If the motor's motion is linear and smooth, then you can try something slightly more complicated
         But if it freezes, you need to debug your P and D parameters.
+
+        If your arm movements are smooth, you can perform more instruction programming on this basis.
+        If you want multiple joints to move simultaneously, you can use `threading` approach for control,
+        and you can refer to more examples for specific details.
         """
         enable_all()
         smooth_move_motor_with_differential('2', 'left', -20)
         disable_all()
 
     def test_enable_hand(self):
-        """Enabling hand"""
+        """ Enabling hand """
         motor.enable_hand()
         motor.exit()
 
@@ -163,11 +168,11 @@ class TestHumanMotor(unittest.TestCase):
         motor.disable_hand()
         motor.exit()
 
-    def test_get_hand_position(self):
-        """ Obtain Hand Position"""
-        print(f'test_get_hand_position:  {motor.get_hand_position()}')
-
     def test_action_simple_hand(self):
+        """ Demo of dexterous hand movements
+
+        `Please make sure you have executed the enable_hand instruction, otherwise the instruction will be ineffective`.
+        """
         angle = 500
 
         motor.move_motor('11', 'left', angle)
@@ -181,7 +186,15 @@ class TestHumanMotor(unittest.TestCase):
         motor.move_motor('14', 'right', angle)
         motor.exit()
 
+    def test_get_hand_position(self):
+        """ Obtain Hand Position"""
+        print(f'test_get_hand_position:  {motor.get_hand_position()}')
+
     def test_action_hug(self):
+        """
+        In this example, I want the left arm and the right arm to move to the same position simultaneously,
+        so I started two threads to distribute the movement.
+        """
         enable_all()
 
         def left():
