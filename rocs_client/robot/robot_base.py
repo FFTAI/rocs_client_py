@@ -1,4 +1,4 @@
-"""RobotBase Class
+"""RobotBase
 
 The `RobotBase` class is the base class for interacting with robots in the RoCS (Robot Control System) Client SDK.
 
@@ -15,11 +15,12 @@ Attribute:
 
 Method:
     - __init__(ssl: bool = False, host: str = '127.0.0.1', port: int = 8001,
-    Constructor method for the RobotBase class.
+
             - on_connected: Callable = None, on_message: Callable = None,
 
             - on_close: Callable = None, on_error: Callable = None):
 
+        Constructor method for the RobotBase class.
 
 
     - _event():
@@ -59,11 +60,13 @@ Example:
     # Initiating the process to reset, zero, or calibrate the robot
 
     result = robot.start()
+
     print(result)
 
     # Safely powering down the robot
 
     result = robot.stop()
+
     print(result)
 
     # Disconnecting from the robot
@@ -87,14 +90,46 @@ from ..common.system import System
 
 
 class RobotBase:
-    """ Base class for Robot
+    """Base class for Robot.
 
     When instantiated, it connects to the corresponding robot's port via WebSocket.
+
+    Param:
+        - ssl (bool): Indicates whether to use a secure WebSocket connection (default is False).
+        - host (str): The IP address or hostname of the robot (default is '127.0.0.1').
+        - port (int): The port number for the WebSocket connection (default is 8001).
+        - on_connected (Callable): Callback function executed when the WebSocket connection is established.
+        - on_message (Callable): Callback function executed when a message is received.
+        - on_close (Callable): Callback function executed when the WebSocket connection is closed.
+        - on_error (Callable): Callback function executed in case of a WebSocket error.
+
+    Attribute:
+        - camera: Instance of the Camera class for interacting with the robot's camera.
+        - system: Instance of the System class for system-related operations.
+
+    Method:
+        - start(): Initiates the process to reset, zero, or calibrate the robot, bringing it to its initial state.
+        - stop(): Initiates the process to safely power down the robot, ensuring an orderly shutdown.
+        - exit(): Disconnects from the robot by closing the WebSocket connection.
+
     """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001,
                  on_connected: Callable = None, on_message: Callable = None,
                  on_close: Callable = None, on_error: Callable = None):
+        """
+                Initialize the RobotBase instance and establish a WebSocket connection to the robot.
+
+                Args:
+                    ssl (bool): Indicates whether to use a secure WebSocket connection (default is False).
+                    host (str): The IP address or hostname of the robot (default is '127.0.0.1').
+                    port (int): The port number for the WebSocket connection (default is 8001).
+                    on_connected (Callable): Callback function executed when the WebSocket connection is established.
+                    on_message (Callable): Callback function executed when a message is received.
+                    on_close (Callable): Callback function executed when the WebSocket connection is closed.
+                    on_error (Callable): Callback function executed in case of a WebSocket error.
+
+        """
         if ssl:
             self._baseurl: str = f'https://{host}:{port}'
             self._ws_url = f'wss://{host}:{port}/ws'
@@ -181,21 +216,32 @@ class RobotBase:
 
     def start(self):
         """
-        Used to initiate the process to reset, zero, or calibrate the robot, bringing it to its initial state.
-        This command is crucial when you intend to take control of the robot, ensuring it starts from a known and calibrated position.
-        Ensure that the robot has sufficient clearance and is ready for the calibration process before issuing this command.
+        Initiate the process to reset, zero, or calibrate the robot, bringing it to its initial state.
+
+        Ensure that the robot has sufficient clearance and is ready for the start process before issuing this command.
+
+        Returns:
+            dict: Response indicating the success or failure of the command.
+
         """
+
         return self._send_request(url='/robot/start', method='POST')
 
     def stop(self):
         """
-        Used to initiate the process to safely power down the robot. This command takes precedence over other commands, ensuring an orderly shutdown. It is recommended to trigger this command in emergency situations or when an immediate stop is necessary.
+        Initiate the process to safely power down the robot. This command takes precedence over other commands, ensuring an orderly shutdown.
 
         Use this command with caution, as it results in a powered-down state of the robot. Ensure that there are no critical tasks or movements in progress before invoking this command to prevent unexpected behavior.
 
+        Returns:
+            dict: Response indicating the success or failure of the command.
+
         """
+
         return self._send_request(url="/robot/stop", method="POST")
 
     def exit(self):
-        """ Used to disconnect from the robot."""
+        """
+        Disconnect from the robot by closing the WebSocket connection.
+        """
         self._ws.close()

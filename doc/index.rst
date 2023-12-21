@@ -14,6 +14,7 @@ Welcome to the RoCS Python SDK!
 .. toctree::
    :maxdepth: 2
 
+   rocs_client; Module contents
    rocs_client.robot
    rocs_client.common
 
@@ -23,3 +24,5 @@ Portal
 
 * SDK release and usage examples  `RoCS client <https://pypi.org/project/rocs-client/>`_.
 * More information can be found on the `FFTAI website <https://fftai.github.io>`_.
+
+
