@@ -1,12 +1,11 @@
-import threading
-import unittest
-
 import math
+import threading
 import time
+import unittest
 
 from rocs_client import Motor
 
-motor = Motor(host="192.168.12.1")
+motor = Motor(host="192.168.137.210")
 
 arm_motor = motor.limits[0:17]
 clamping_jaw = motor.limits[17:19]
@@ -60,7 +59,7 @@ def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.
         try:
             result = motor.get_motor_pvc(no, orientation)
             current_position = result['data']['position']
-            if current_position is not None and current_position != 0:
+            if current_position is not None:
                 break
         except Exception as e:
             print(f'current_position err: {e}')
@@ -85,14 +84,14 @@ def enable_all():
     time.sleep(1)
 
 
-def disable_all():
+def disable_all(offset=1, interval=0.015):
     """Disable All Motors """
 
     def _disable_left():
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
             if item['orientation'] == 'left':
-                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
+                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset, interval)
 
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -156,7 +155,8 @@ class TestHumanMotor(unittest.TestCase):
         """
         enable_all()
         smooth_move_motor_with_differential('2', 'left', -20)
-        disable_all()
+        smooth_move_motor_with_differential('3', 'left', -40)
+        # disable_all()
 
     def test_enable_hand(self):
         """ Enabling hand """
