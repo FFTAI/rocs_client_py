@@ -54,4 +54,4 @@ For more details, refer to the documentation for each specific class within the 
 from . import common
 from .robot import Human, Car
 from .robot.car import Mod
-from .robot.human import Motor, ArmAction, HandAction
+from .motor.motor import Motor

@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    rocs_client.common
+   rocs_client.motor
    rocs_client.robot
 
 Module contents

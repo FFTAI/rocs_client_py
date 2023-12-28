@@ -38,7 +38,7 @@
     <script src="../search/"></script>
 <link rel="index" title="Index" href="../genindex/" />
 <link rel="search" title="Search" href="../search/" />
-<link rel="next" title="rocs_client.common package" href="../rocs_client.common/" />
+<link rel="next" title="rocs_client.motor package" href="../rocs_client.motor/" />
 <link rel="prev" title="Welcome to the RoCS Python SDK!" href="../" />
 
 </head>
@@ -89,7 +89,7 @@
       </div>
     
       <div class="pull-right">
-        <a class="btn btn-default next" href="../rocs_client.common/" title="Next chapter (rocs_client.common package)"><span class="btn-text">rocs_client.common package</span>&nbsp;<i class="fa fa-chevron-right ml-1em" aria-hidden="true"></i></a>
+        <a class="btn btn-default next" href="../rocs_client.motor/" title="Next chapter (rocs_client.motor package)"><span class="btn-text">rocs_client.motor package</span>&nbsp;<i class="fa fa-chevron-right ml-1em" aria-hidden="true"></i></a>
       </div>
     </div>
   
@@ -108,7 +108,7 @@
         <a href="../genindex/"><i class="fa fa-list mr-8"></i></a>
 
 
-        <a href="../rocs_client.common/"><i class="fa fa-chevron-right"></i></a>
+        <a href="../rocs_client.motor/"><i class="fa fa-chevron-right"></i></a>
 
       </div>
     </div>
@@ -180,32 +180,15 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_hand"><code class="docutils literal notranslate"><span class="pre">Human.disable_hand()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_hand"><code class="docutils literal notranslate"><span class="pre">Human.enable_hand()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_hand_position"><code class="docutils literal notranslate"><span class="pre">Human.get_hand_position()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -220,6 +203,33 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.motor/">rocs_client.motor package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.motor/#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.motor/#module-rocs_client.motor.motor">rocs_client.motor.motor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.disable_hand"><code class="docutils literal notranslate"><span class="pre">Motor.disable_hand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.disable_motor"><code class="docutils literal notranslate"><span class="pre">Motor.disable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.enable_hand"><code class="docutils literal notranslate"><span class="pre">Motor.enable_hand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.enable_motor"><code class="docutils literal notranslate"><span class="pre">Motor.enable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.get_hand_position"><code class="docutils literal notranslate"><span class="pre">Motor.get_hand_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Motor.get_motor_pvc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.limits"><code class="docutils literal notranslate"><span class="pre">Motor.limits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.move_motor"><code class="docutils literal notranslate"><span class="pre">Motor.move_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Motor.set_motor_pd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Motor.set_motor_pd_flag()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme"><code class="docutils literal notranslate"><span class="pre">MotorScheme</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme.angle"><code class="docutils literal notranslate"><span class="pre">MotorScheme.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme.no"><code class="docutils literal notranslate"><span class="pre">MotorScheme.no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme.orientation"><code class="docutils literal notranslate"><span class="pre">MotorScheme.orientation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.motor/#module-rocs_client.motor">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rocs_client.common/">rocs_client.common package</a><ul>
@@ -290,32 +300,15 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Human"><code class="docutils literal notranslate"><span class="pre">Human</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.motor_limits"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.disable_debug_state()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_hand"><code class="docutils literal notranslate"><span class="pre">Human.disable_hand()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.disable_motor"><code class="docutils literal notranslate"><span class="pre">Human.disable_motor()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_debug_state"><code class="docutils literal notranslate"><span class="pre">Human.enable_debug_state()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_hand"><code class="docutils literal notranslate"><span class="pre">Human.enable_hand()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.enable_motor"><code class="docutils literal notranslate"><span class="pre">Human.enable_motor()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_hand_position"><code class="docutils literal notranslate"><span class="pre">Human.get_hand_position()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_limit"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_limit()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_joint_states"><code class="docutils literal notranslate"><span class="pre">Human.get_joint_states()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Human.get_motor_pvc()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.head"><code class="docutils literal notranslate"><span class="pre">Human.head()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Human.motor_limits</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.move_motor"><code class="docutils literal notranslate"><span class="pre">Human.move_motor()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.reset"><code class="docutils literal notranslate"><span class="pre">Human.reset()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Human.set_motor_pd_flag()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.stand"><code class="docutils literal notranslate"><span class="pre">Human.stand()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.upper_body"><code class="docutils literal notranslate"><span class="pre">Human.upper_body()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Human.walk"><code class="docutils literal notranslate"><span class="pre">Human.walk()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.angle"><code class="docutils literal notranslate"><span class="pre">Motor.angle</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.no"><code class="docutils literal notranslate"><span class="pre">Motor.no</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.Motor.orientation"><code class="docutils literal notranslate"><span class="pre">Motor.orientation</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -330,6 +323,33 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.motor/">rocs_client.motor package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.motor/#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.motor/#module-rocs_client.motor.motor">rocs_client.motor.motor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor"><code class="docutils literal notranslate"><span class="pre">Motor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.disable_hand"><code class="docutils literal notranslate"><span class="pre">Motor.disable_hand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.disable_motor"><code class="docutils literal notranslate"><span class="pre">Motor.disable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.enable_hand"><code class="docutils literal notranslate"><span class="pre">Motor.enable_hand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.enable_motor"><code class="docutils literal notranslate"><span class="pre">Motor.enable_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.get_hand_position"><code class="docutils literal notranslate"><span class="pre">Motor.get_hand_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.get_motor_pvc"><code class="docutils literal notranslate"><span class="pre">Motor.get_motor_pvc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.limits"><code class="docutils literal notranslate"><span class="pre">Motor.limits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.move_motor"><code class="docutils literal notranslate"><span class="pre">Motor.move_motor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.set_motor_pd"><code class="docutils literal notranslate"><span class="pre">Motor.set_motor_pd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.Motor.set_motor_pd_flag"><code class="docutils literal notranslate"><span class="pre">Motor.set_motor_pd_flag()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme"><code class="docutils literal notranslate"><span class="pre">MotorScheme</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme.angle"><code class="docutils literal notranslate"><span class="pre">MotorScheme.angle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme.no"><code class="docutils literal notranslate"><span class="pre">MotorScheme.no</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../rocs_client.motor/#rocs_client.motor.motor.MotorScheme.orientation"><code class="docutils literal notranslate"><span class="pre">MotorScheme.orientation</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rocs_client.motor/#module-rocs_client.motor">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../rocs_client.common/">rocs_client.common package</a><ul>
@@ -567,17 +587,6 @@ to the robot and offers control functions along with status monitoring.</p>
 </ul>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.motor_limits">
-<span class="sig-name descname"><span class="pre">motor_limits</span></span><a class="headerlink" href="#rocs_client.robot.human.Human.motor_limits" title="Link to this definition">¶</a></dt>
-<dd><p>A list containing motor limits.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
 <p class="rubric">Example</p>
 <p># Creating an instance of the Human class</p>
 <p>human_robot = Human()</p>
@@ -595,26 +604,13 @@ Ensure that you have the necessary dependencies installed and a valid connection
 <dd class="field-odd"><p><ul class="simple">
 <li><p>code (int): Return code. 0 indicates success, -1 indicates failure.</p></li>
 <li><p>msg (str): Return message. “ok” indicates normal, failure returns an error message.</p></li>
-<li><p>data (dict): Data object containing specific details.</p></li>
 </ul>
 </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dict</p>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.disable_hand">
-<span class="sig-name descname"><span class="pre">disable_hand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_hand" title="Link to this definition">¶</a></dt>
-<dd><p>Disable the Hand for individual control.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.disable_motor">
-<span class="sig-name descname"><span class="pre">disable_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.disable_motor" title="Link to this definition">¶</a></dt>
-<dd><p>Disable the motor</p>
 </dd></dl>
 
 <dl class="py method">
@@ -678,11 +674,11 @@ Ensure that you have the necessary dependencies installed and a valid connection
 <div><ul class="simple">
 <li><p>name (str): Joint name.</p></li>
 <li><p>qa (float): Actual joint angle, unit: rad.</p></li>
-<li><p>qdota (float): Actual joint speed, unit: rad/s.</p></li>
+<li><p>qdota (float): Actual (measured) joint velocity, unit: rad/s.</p></li>
 <li><p>taua (float): Actual joint torque, unit: N.m.</p></li>
-<li><p>qc (float): Expected joint angle, unit: rad.</p></li>
-<li><p>qdotc (float): Expected joint speed, unit: rad/s.</p></li>
-<li><p>tauc (float): Expected joint torque, unit: N.m.</p></li>
+<li><p>qc (float): Commanded (desired) joint angle, unit: rad.</p></li>
+<li><p>qdotc (float): Commanded (desired) joint velocity, unit: rad/s。</p></li>
+<li><p>tauc (float): Commanded (desired) joint torques, unit: N.m.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -690,18 +686,18 @@ Ensure that you have the necessary dependencies installed and a valid connection
 <li><p>contactforce (dict): Contact force data (not used).</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>fxL (float): Left foot contact force.</p></li>
-<li><p>fyL (float): Left foot contact force.</p></li>
-<li><p>fzL (float): Left foot contact force.</p></li>
-<li><p>mxL (float): Left foot contact force.</p></li>
-<li><p>myL (float): Left foot contact force.</p></li>
-<li><p>mzL (float): Left foot contact force.</p></li>
-<li><p>fxR (float): Right foot contact force.</p></li>
-<li><p>fyR (float): Right foot contact force.</p></li>
-<li><p>fzR (float): Right foot contact force.</p></li>
-<li><p>mxR (float): Right foot contact force.</p></li>
-<li><p>myR (float): Right foot contact force.</p></li>
-<li><p>mzR (float): Right foot contact force.</p></li>
+<li><p>fxL (float): Force along the X-axis for the left foot.</p></li>
+<li><p>fyL (float): Force along the Y-axis for the left foot.</p></li>
+<li><p>fzL (float): Force along the Z-axis for the left foot.</p></li>
+<li><p>mxL (float): Moment (torque) around the X-axis for left foot.</p></li>
+<li><p>myL (float): Moment (torque) around the Y-axis for left foot.</p></li>
+<li><p>mzL (float): Moment (torque) around the Z-axis for left foot.</p></li>
+<li><p>fxR (float): Force along the X-axis for the right foot.</p></li>
+<li><p>fyR (float): Force along the Y-axis for the right foot.</p></li>
+<li><p>fzR (float): Force along the Z-axis for the right foot.</p></li>
+<li><p>mxR (float): Moment (torque) around the X-axis for right foot.</p></li>
+<li><p>myR (float): Moment (torque) around the Y-axis for right foot.</p></li>
+<li><p>mzR (float): Moment (torque) around the Z-axis for right foot.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -938,62 +934,6 @@ Ensure that you have the necessary dependencies installed and a valid connection
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.enable_hand">
-<span class="sig-name descname"><span class="pre">enable_hand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_hand" title="Link to this definition">¶</a></dt>
-<dd><p>Enable the Hand for individual control.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.enable_motor">
-<span class="sig-name descname"><span class="pre">enable_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.enable_motor" title="Link to this definition">¶</a></dt>
-<dd><p>Enable the motor for individual control.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>no</strong> (<em class="hover">str</em>) – The identifier or label for the motor.</p></li>
-<li><p><strong>orientation</strong> (<em class="hover">str</em>) – The orientation of the motor.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_hand_position">
-<span class="sig-name descname"><span class="pre">get_hand_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.get_hand_position" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieve the positions of hand</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><dl class="simple">
-<dt>Return data with the following fields:</dt><dd><ul class="simple">
-<li><p>code (int): Return code. 0 indicates success, -1 indicates failure.</p></li>
-<li><p>msg (str): Return message. “ok” indicates normal, failure returns an error message.</p></li>
-<li><p>data (dict): Data object containing specific data.</p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Dict</p>
-</dd>
-</dl>
-<p>Examples:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;no&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;85.00&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;velocity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0123&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;current&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.85674&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_joint_limit">
 <span class="sig-name descname"><span class="pre">get_joint_limit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rocs_client.robot.human.Human.get_joint_limit" title="Link to this definition">¶</a></dt>
 <dd><p>Get Joint Limit Information</p>
@@ -1140,7 +1080,7 @@ operational status.</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p><cite>function</cite> (str):Function name that invoked this interface.</p></li>
+<li><p><cite>function</cite> (str): name of the Function that invoked this interface.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -1182,84 +1122,37 @@ operational status.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.get_motor_pvc">
-<span class="sig-name descname"><span class="pre">get_motor_pvc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.get_motor_pvc" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieve the positions of motors 0 through 8</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>no</strong> (<em class="hover">str</em>) – The identifier or label for the motor.</p></li>
-<li><p><strong>orientation</strong> (<em class="hover">str</em>) – The orientation of the motor.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>Return data with the following fields:</dt><dd><ul class="simple">
-<li><p>code (int): Return code. 0 indicates success, -1 indicates failure.</p></li>
-<li><p>msg (str): Return message. “ok” indicates normal, failure returns an error message.</p></li>
-<li><p>data (dict): Data object containing specific data.</p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Dict</p>
-</dd>
-</dl>
-<p>Examples:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;no&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;85.00&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;velocity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0123&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;current&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.85674&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.head">
 <span class="sig-name descname"><span class="pre">head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.head" title="Link to this definition">¶</a></dt>
-<dd><p>Control the movement of the robot’s head. This request is sent via a long-lived connection.</p>
+<dd><p>Control the movement of the robot’s head via a long-lived connection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>roll</strong> (<em class="hover">float</em>) – specify the rotation around the x-axis. Negative values turn the head to the left, and
-positive values turn it to the right. Range: -17.1887 to 17.1887.</p></li>
-<li><p><strong>pitch</strong> (<em class="hover">float</em>) – specify the rotation around the y-axis. Positive values tilt the head forward, and negative
-values tilt it backward. Range: -17.1887 to 17.1887.</p></li>
-<li><p><strong>yaw</strong> (<em class="hover">float</em>) – specify the rotation around the z-axis. Negative values twist the head to the left,
+<li><p><strong>roll</strong> (<em class="hover">float</em>) – Rotation around the x-axis. Negative values turn the head to the left,
+and positive values turn it to the right. Range: -17.1887 to 17.1887.</p></li>
+<li><p><strong>pitch</strong> (<em class="hover">float</em>) – Rotation around the y-axis. Positive values tilt the head forward,
+and negative values tilt it backward. Range: -17.1887 to 17.1887.</p></li>
+<li><p><strong>yaw</strong> (<em class="hover">float</em>) – Rotation around the z-axis. Negative values twist the head to the left,
 and positive values twist it to the right. Range: -17.1887 to 17.1887.</p></li>
 </ul>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">motor_limits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
-<dd><p>This function is used to retrieve the motor limits.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.move_motor">
-<span class="sig-name descname"><span class="pre">move_motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.move_motor" title="Link to this definition">¶</a></dt>
-<dd><p>Simple instructions for moving the electric motor</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>no</strong> (<em class="hover">str</em>) – The identifier or label for the motor.</p></li>
-<li><p><strong>orientation</strong> (<em class="hover">str</em>) – The orientation of the motor.</p></li>
-<li><p><strong>angle</strong> (<em class="hover">float</em>) – The angle associated with the motor.</p></li>
-</ul>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong class="hover">Any exceptions raised during the execution.</strong> – </p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The request is sent via a long-lived connection.</p></li>
+<li><p>The roll, pitch, and yaw values are automatically adjusted to fit within the specified valid ranges if they go beyond the given thresholds.</p></li>
+</ul>
+<p class="rubric">Example</p>
+<p>To turn the robot’s head to the right (roll), tilt it backward (pitch), and twist it to the left (yaw):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Human</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">roll</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=-</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">yaw</span><span class="o">=-</span><span class="mf">7.0</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1277,36 +1170,6 @@ and positive values twist it to the right. Range: -17.1887 to 17.1887.</p></li>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.set_motor_pd">
-<span class="sig-name descname"><span class="pre">set_motor_pd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd" title="Link to this definition">¶</a></dt>
-<dd><p>setting PID param</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>no</strong> (<em class="hover">str</em>) – The identifier or label for the motor.</p></li>
-<li><p><strong>orientation</strong> (<em class="hover">str</em>) – The orientation of the motor.</p></li>
-<li><p><strong>p</strong> (<em class="hover">float</em>) – Proportional</p></li>
-<li><p><strong>d</strong> (<em class="hover">float</em>) – Derivative</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Human.set_motor_pd_flag">
-<span class="sig-name descname"><span class="pre">set_motor_pd_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.set_motor_pd_flag" title="Link to this definition">¶</a></dt>
-<dd><p>Enable Flag for setting PID</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>no</strong> (<em class="hover">str</em>) – The identifier or label for the motor.</p></li>
-<li><p><strong>orientation</strong> (<em class="hover">str</em>) – The orientation of the motor.</p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1337,23 +1200,24 @@ to bring it to a stop.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.upper_body">
 <span class="sig-name descname"><span class="pre">upper_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.ArmAction" title="rocs_client.robot.human.ArmAction"><span class="pre">ArmAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.HandAction" title="rocs_client.robot.human.HandAction"><span class="pre">HandAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.upper_body" title="Link to this definition">¶</a></dt>
-<dd><p>Execute predefined upper body actions by setting arm and hand movements.
-:param - arm_action: (str): Arm action. Options: RESET, LEFT_ARM_WAVE, TWO_ARMS_WAVE, ARMS_SWING, HELLO.
-:param - hand_action: (str): Hand action. Options: HALF_HANDSHAKE, THUMBS_UP, OPEN, SLIGHTLY_BENT, GRASP, TREMBLE,</p>
-<blockquote>
-<div><p>HANDSHAKE.</p>
-</div></blockquote>
+<dd><p>Execute predefined upper body actions by setting arm and hand movements.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Return code. 0 indicates success, -1 indicates failure.
-- msg (str): Return message. “ok” indicates normal, failure returns an error message.
-- data (dict): Data object containing specific details.</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm</strong> (<a class="reference internal" href="#rocs_client.robot.human.ArmAction" title="rocs_client.robot.human.ArmAction"><em class="hover">ArmAction</em></a>) – Arm action. Options: RESET, LEFT_ARM_WAVE, TWO_ARMS_WAVE, ARMS_SWING, HELLO.</p></li>
+<li><p><strong>hand</strong> (<a class="reference internal" href="#rocs_client.robot.human.HandAction" title="rocs_client.robot.human.HandAction"><em class="hover">HandAction</em></a>) – Hand action. Options: HALF_HANDSHAKE, THUMBS_UP, OPEN, SLIGHTLY_BENT, GRASP, TREMBLE, HANDSHAKE.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p>code (int)</p></li>
+<li><p>code (int): Return code. 0 indicates success, -1 indicates failure.</p></li>
+<li><p>msg (str): Return message. “ok” indicates normal, failure returns an error message.</p></li>
+<li><p>data (dict): Data object containing specific details.</p></li>
 </ul>
 </p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1361,7 +1225,7 @@ to bring it to a stop.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.walk">
 <span class="sig-name descname"><span class="pre">walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.walk" title="Link to this definition">¶</a></dt>
-<dd><p>Control the walking behavior of the robot. This request is sent via a long-lived connection.</p>
+<dd><p>Control the walking behavior of the robot via a long-lived connection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1371,47 +1235,24 @@ Positive values turn left, negative values turn right. Precision of 8 decimal pl
 Positive values move forward, negative values move backward. Precision of 8 decimal places.</p></li>
 </ul>
 </dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Motor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Motor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Motor" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class hover docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Motor Class</p>
-<p>Represents a motor with specific attributes.</p>
-<dl class="simple">
-<dt>Attribute:</dt><dd><ul class="simple">
-<li><p>no (str): The identifier or label for the motor.</p></li>
-<li><p>orientation (str): The orientation of the motor.</p></li>
-<li><p>angle (float, optional): The angle associated with the motor. Defaults to 0.</p></li>
-</ul>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong class="hover">Any exceptions raised during the execution.</strong> – </p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The request is sent via a long-lived connection.</p></li>
+<li><p>The provided angle and speed values are automatically adjusted to fit within the specified valid ranges if they go beyond the given thresholds.</p></li>
+</ul>
 <p class="rubric">Example</p>
-<p># Creating an instance of the Motor class</p>
-<p>motor_instance = Motor(no=”1”, orientation=”Vertical”, angle=45.0)</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Motor class is decorated with the &#64;dataclass decorator, which automatically generates
-special methods like __init__, __repr__, and __eq__ based on the class attributes.</p>
+<p>To make the robot turn left at a speed of 0.5 m/s:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Human</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
 </div>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Motor.angle">
-<span class="sig-name descname"><span class="pre">angle</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.angle" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Motor.no">
-<span class="sig-name descname"><span class="pre">no</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.no" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="rocs_client.robot.human.Motor.orientation">
-<span class="sig-name descname"><span class="pre">orientation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#rocs_client.robot.human.Motor.orientation" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -1536,11 +1377,17 @@ Ensure that the robot has sufficient clearance and is ready for the calibration 
 </section>
 <section id="module-rocs_client.robot">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rocs_client.robot" title="Link to this heading">¶</a></h2>
-<p>RoCS Client SDK - Robot Module</p>
-<p>The <cite>robot</cite> module in the RoCS (Robot Control System) Client SDK provides classes and functionality
-for interacting with humanoid robots. It includes components for controlling robot movements, accessing
+<p>RoCS Client SDK - Robot subpackage</p>
+<p>The <cite>robot</cite> subpackage in the RoCS (Robot Control System) Client SDK provides modules, classes and functionality
+for interacting with robots. It includes components for controlling robot movements, accessing
 sensory data, and managing robot actions.</p>
 <dl>
+<dt>Modules:</dt><dd><ul class="simple">
+<li><p>car: Module containing functionalities for car-like robots.</p></li>
+<li><p>human: Module containing functionalities for humanoid robots.</p></li>
+<li><p>robot_base: Module providing a base class and utilities for robot interaction.</p></li>
+</ul>
+</dd>
 <dt>Classes:</dt><dd><ul class="simple">
 <li><p>Human: Class representing a humanoid robot.</p></li>
 <li><p>Car: Class representing a robot with car-like functionalities.</p></li>
@@ -1548,12 +1395,11 @@ sensory data, and managing robot actions.</p>
 </ul>
 </dd>
 <dt>Enums:</dt><dd><ul class="simple">
-<li><p>Motor: Enum defining motor-related options.</p></li>
 <li><p>ArmAction: Enum defining actions related to robot arms.</p></li>
 <li><p>HandAction: Enum defining actions related to robot hands.</p></li>
 </ul>
 </dd>
-<dt>Usage:</dt><dd><p>from rocs_client.robot import Human, Car, Mod, Motor, ArmAction, HandAction</p>
+<dt>Usage:</dt><dd><p>from rocs_client import Human, Car, Mod, ArmAction, HandAction</p>
 <p># Creating an instance of the Human class
 human_robot = Human()</p>
 <p># Creating an instance of the Car class
@@ -1580,7 +1426,7 @@ hand_action_option = HandAction.SOME_ACTION</p>
   <div id="footer-row" class="row">
 
     <div class="col-md-12">
-        <span title="Built on 2023-12-11" class="pull-right">&copy; Copyright 2023, Fourier Software Department.
+        <span title="Built on 2023-12-13" class="pull-right">&copy; Copyright 2023, Fourier Software Department.
         Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6 and the
         <a href="https://pypi.org/project/sphinx-sizzle-theme/"
 

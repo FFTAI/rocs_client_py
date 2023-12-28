@@ -16,12 +16,11 @@ Classes:
     - Mod: Class representing the modular features of a car robot.
 
 Enums:
-    - Motor: Enum defining motor-related options.
     - ArmAction: Enum defining actions related to robot arms.
     - HandAction: Enum defining actions related to robot hands.
 
 Usage:
-    from rocs_client.robot import Human, Car, Mod, Motor, ArmAction, HandAction
+    from rocs_client import Human, Car, Mod, ArmAction, HandAction
 
     # Creating an instance of the Human class
     human_robot = Human()

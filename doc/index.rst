@@ -16,7 +16,9 @@ Welcome to the RoCS Python SDK!
 
    rocs_client; Module contents
    rocs_client.robot
+   rocs_client.motor
    rocs_client.common
+
 
 
 Portal

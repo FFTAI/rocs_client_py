@@ -91,89 +91,75 @@ human.stand()  # Stand up
 human.walk(0, 0.1)  # Move forward at a speed of 0.1
 ```
 
-### Single motor control (rocs_client>=1.3.0)
+### Single motor control (rocs_client>=1.3.3)
 
 ```python
 import math
 import threading
 import time
+import unittest
 
-from rocs_client import Human
+from rocs_client import Motor
 
-human = Human(host="192.168.9.17")  # Please replace host with the ip of your device
-motors = human.motor_limits[0:15]
+motor = Motor(host="192.168.12.1")
+
+arm_motor = motor.limits[0:17]
+clamping_jaw = motor.limits[17:19]
+dexterous_hand = motor.limits[19:31]
+
+print(f'arm_motor: {arm_motor}')
+print(f'clamping_jaw: {clamping_jaw}')
+print(f'dexterous_hand: {dexterous_hand}')
+
+motors = arm_motor + clamping_jaw
 
 
 def set_pds_flag():
-    for motor in motors:
-        human.set_motor_pd_flag(motor['no'], motor['orientation'])
-    human.exit()
+    """ Enable the switch/flag for setting pd parameters """
+    for item in motors:
+        motor.set_motor_pd_flag(item['no'], item['orientation'])
+    motor.exit()
 
 
 def set_pds():
-    for motor in motors:
-        human.set_motor_pd(motor['no'], motor['orientation'], 0.36, 0.042)
-    human.exit()
+    """ Set pd parameters """
+    for item in motors:
+        motor.set_motor_pd(item['no'], item['orientation'], 0.36, 0.042)
+    motor.exit()
 
 
-def enable_all():
-    for motor in motors:
-        human.enable_motor(motor['no'], motor['orientation'])
-    time.sleep(1)
-
-
-def _disable_left():
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] == 'left':
-            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
-
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] == 'left':
-            human.disable_motor(motor['no'], motor['orientation'])
-
-
-def _disable_right():
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] != 'left':
-            smooth_move_motor_example(motor['no'], motor['orientation'], 0, offset=1, wait_time=0.04)
-
-    for i in range((len(motors) - 1), -1, -1):
-        motor = motors[i]
-        if motor['orientation'] != 'left':
-            human.disable_motor(motor['no'], motor['orientation'])
-
-
-def disable_all():
-    time.sleep(2)
-    t_left = threading.Thread(target=_disable_left)
-    t_right = threading.Thread(target=_disable_right)
-    t_left.start(), t_right.start()
-    t_left.join(), t_right.join()
-    human.exit()
-
-
-def wait_target_done(no, orientation, target_angle, rel_tol=1):
-    while True:
-        p = human.get_motor_pvc(str(no), orientation)['data']['position']
-        if math.isclose(p, target_angle, rel_tol=rel_tol):
-            break
-
-
-def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=0.05, wait_time=0.004):
+def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.05, interval=0.004):
+    """
+    Use the difference to move the motor smoothly
+    Args:
+        no: Number of the motor to be operated
+        orientation: Orientation of the motor to be operated
+        target_angle: Angle of motion
+        offset: The Angle of each move
+        interval: Interval of difference
+    """
     if int(no) > 8:
         print('than 8 not support')
         return
-    current_position = 0
+
+    def wait_target_done(rel_tol=2):
+        while True:
+            try:
+                p = motor.get_motor_pvc(no, orientation)['data']['position']
+                if math.isclose(p, target_angle, rel_tol=rel_tol):
+                    break
+            except Exception as e:
+                print(f'wait_target_done err: {e}')
+
     while True:
         try:
-            current_position = (human.get_motor_pvc(no, orientation))['data']['position']
+            result = motor.get_motor_pvc(no, orientation)
+            current_position = result['data']['position']
             if current_position is not None and current_position != 0:
                 break
         except Exception as e:
-            pass
+            print(f'current_position err: {e}')
+
     target_position = target_angle
     cycle = abs(int((target_position - current_position) / offset))
 
@@ -182,51 +168,118 @@ def smooth_move_motor_example(no, orientation: str, target_angle: float, offset=
             current_position += offset
         else:
             current_position -= offset
-        human.move_motor(no, orientation, current_position)
-        time.sleep(wait_time)
-    wait_target_done(no, orientation, current_position)
+        motor.move_motor(no, orientation, current_position)
+        time.sleep(interval)
+    wait_target_done()
 
 
-"""
-This is the action of simple
-When you first single-control a motor, I strongly recommend that you must run this function for testing
+def enable_all():
+    """ Enable All Motors """
+    for item in motors:
+        motor.enable_motor(item['no'], item['orientation'])
+    time.sleep(1)
 
-If the motor's motion is linear and smooth, then you can try something slightly more complicated
-But if it freezes, you need to debug your P and D parameters.
-"""
-human.enable_motor('2', 'left')
-time.sleep(2)
-smooth_move_motor_example('2', 'left', -10)
-smooth_move_motor_example('2', 'left', -20)
-smooth_move_motor_example('2', 'left', -10)
-time.sleep(2)
-human.disable_motor('2', 'left')
+
+def disable_all():
+    """Disable All Motors """
+
+    def _disable_left():
+        for i in range((len(motors) - 1), -1, -1):
+            item = motors[i]
+            if item['orientation'] == 'left':
+                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
+
+        for i in range((len(motors) - 1), -1, -1):
+            item = motors[i]
+            if item['orientation'] == 'left':
+                motor.disable_motor(item['no'], item['orientation'])
+
+    def _disable_right():
+        for i in range((len(motors) - 1), -1, -1):
+            item = motors[i]
+            if item['orientation'] != 'left':
+                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
+
+        for i in range((len(motors) - 1), -1, -1):
+            item = motors[i]
+            if item['orientation'] != 'left':
+                motor.disable_motor(item['no'], item['orientation'])
+
+    time.sleep(2)
+
+    t_left = threading.Thread(target=_disable_left)
+    t_right = threading.Thread(target=_disable_right)
+    t_left.start(), t_right.start()
+    t_left.join(), t_right.join()
+    motor.exit()
+
+
+class TestHumanMotor(unittest.TestCase):
+
+    def test_set_pd_flag(self):
+        """ Enable the switch/flag for setting pd parameters """
+        set_pds_flag()
+
+    def test_set_pd(self):
+        """ Set pd parameters """
+        set_pds()
+
+    def test_get_pvc(self):
+        """ Obtain the specified motor information """
+        print(f"test_get_pvc {motor.get_motor_pvc('0', 'yaw')}")
+        motor.exit()
+
+    def test_action_simple(self):
+        """
+        This is the action of simple
+        When you first single-control a motor, I strongly recommend that you must run this function for testing
+
+        If the motor's motion is linear and smooth, then you can try something slightly more complicated
+        But if it freezes, you need to debug your P and D parameters.
+        """
+        enable_all()
+        smooth_move_motor_with_differential('2', 'left', -20)
+        disable_all()
 ```
 
-### Single Control Hand (rocs_client>=1.3.2)
+### Single Control Hand (rocs_client>=1.3.3)
 
 ```python
-from rocs_client import Human
+from rocs_client import Motor
 
-human = Human(host="192.168.137.210")
-
-
-def enable_hand():
-    human.enable_hand()
-    human.exit()
+motor = Motor(host="192.168.12.1")
 
 
-def disable_hand():
-    human.disable_hand()
-    human.exit()
+def test_enable_hand():
+    """Enabling hand"""
+    motor.enable_hand()
+    motor.exit()
 
 
-def test_get_hand_position(self):
-    human.move_motor('9', 'left', 100)
-    human.move_motor('10', 'left', 150)
-    human.move_motor('11', 'left', 200)
-    print(human.get_hand_position())
-    human.exit()
+def test_disable_hand():
+    """ Disabled hand """
+    motor.disable_hand()
+    motor.exit()
+
+
+def test_get_hand_position():
+    """ Obtain Hand Position"""
+    print(f'test_get_hand_position:  {motor.get_hand_position()}')
+
+
+test_enable_hand()
+
+angle = 500
+motor.move_motor('11', 'left', angle)
+motor.move_motor('12', 'left', angle)
+motor.move_motor('13', 'left', angle)
+motor.move_motor('14', 'left', angle)
+
+motor.move_motor('11', 'right', angle)
+motor.move_motor('12', 'right', angle)
+motor.move_motor('13', 'right', angle)
+motor.move_motor('14', 'right', angle)
+motor.exit()
 
 ```
 
