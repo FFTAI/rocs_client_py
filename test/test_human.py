@@ -80,14 +80,10 @@ class TestHuman(unittest.TestCase):
         self.human.exit()
 
     def test_upper_body_arm(self):
-        # 胳膊动作测试
-        # 1、左挥手
-        self.human.upper_body(arm=ArmAction.LEFT_ARM_WAVE)
+        self.human.upper_body(arm=ArmAction.HELLO)
         self.human.exit()
 
     def test_upper_body_hand(self):
-        # 手部动作测试
-        # 1、抖动手指头
         self.human.upper_body(hand=HandAction.TREMBLE)
         self.human.exit()
 

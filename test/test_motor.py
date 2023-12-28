@@ -7,9 +7,9 @@ from rocs_client import Motor
 
 motor = Motor(host="192.168.137.210")
 
-arm_motor = motor.limits[0:17]
-clamping_jaw = motor.limits[17:19]
-dexterous_hand = motor.limits[19:31]
+arm_motor = motor.limits[0:17] if len(motor.limits) > 18 else []
+clamping_jaw = motor.limits[17:19] if len(motor.limits) > 20 else []
+dexterous_hand = motor.limits[19:31] if len(motor.limits) > 32 else []
 
 print(f'arm_motor: {arm_motor}')
 print(f'clamping_jaw: {clamping_jaw}')
