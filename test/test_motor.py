@@ -141,9 +141,9 @@ class TestHumanMotor(unittest.TestCase):
         print(f"test_get_pvc {motor.get_motor_pvc('0', 'yaw')}")
         motor.exit()
 
-    def test_action_sample(self):
+    def test_action_simple(self):
         """
-        This is a sample action
+        This is a simple action.
 
         When initially controlling a motor individually, it is strongly recommended to run this function for testing.
 
