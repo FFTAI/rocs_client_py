@@ -34,16 +34,16 @@ def set_pds():
 
 def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.05, interval=0.004):
     """
-    Use the difference to move the motor smoothly
+    Use differential to move the motor smoothly
     Args:
         no: Number of the motor to be operated
         orientation: Orientation of the motor to be operated
         target_angle: Angle of motion
         offset: The Angle of each move
-        interval: Interval of difference
+        interval: Interval of differential
     """
     if int(no) > 8:
-        print('than 8 not support')
+        print('Motor number greater than 8 is not supported.')
         return
 
     def wait_target_done(rel_tol=2):
@@ -141,18 +141,26 @@ class TestHumanMotor(unittest.TestCase):
         print(f"test_get_pvc {motor.get_motor_pvc('0', 'yaw')}")
         motor.exit()
 
-    def test_action_simple(self):
+    def test_action_sample(self):
         """
-        This is the action of simple
-        When you first single-control a motor, I strongly recommend that you must run this function for testing
+        This is a sample action
 
-        If the motor's motion is linear and smooth, then you can try something slightly more complicated
-        But if it freezes, you need to debug your P and D parameters.
+        When initially controlling a motor individually, it is strongly recommended to run this function for testing.
 
-        If your arm movements are smooth, you can perform more instruction programming on this basis.
-        If you want multiple joints to move simultaneously, you can use `threading` approach for control,
-        and you can refer to more examples for specific details.
+        If the motor moves smoothly and predictably, explore slightly more complex actions.
+
+        However, if the motor becomes unresponsive or behaves unexpectedly, fine-tune the P and D parameters.
+
+        If the robotic arm's movements are smooth and stable, build more advanced programming on this foundation.
+
+        To coordinate multiple joints for simultaneous motion, consider using the `threading` approach for control.
+        Additional examples provide specific details.       
+        
+        
         """
+
+
+
         enable_all()
         smooth_move_motor_with_differential('2', 'left', -20)
         smooth_move_motor_with_differential('3', 'left', -40)
@@ -192,8 +200,8 @@ class TestHumanMotor(unittest.TestCase):
 
     def test_action_hug(self):
         """
-        In this example, I want the left arm and the right arm to move to the same position simultaneously,
-        so I started two threads to distribute the movement.
+        In this example, both the left arm and the right arm move to the same position simultaneously
+        using two threads to distribute the movement.
         """
         enable_all()
 
