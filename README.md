@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://fftai.github.io" target="_blank" rel="noopener noreferrer">
-        <img width="200" src="https://raw.githubusercontent.com/FFTAI/rocs_server/main/assets/ico.jpg" alt="logo">
+        <img width="200" src="https://github.com/FFTAI/rocs_client_py/blob/main/docs/_static/icon.svg" alt="logo">
     </a>
 </p>
 
