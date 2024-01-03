@@ -351,12 +351,12 @@ motor.exit()
 
 Addtional test cases can be found in [Test Cases](https://github.com/FFTAI/rocs_client_py/tree/main/test).
 
-## Releases
+## Release History
 
-| Version | Released By                 | Date    | New Feature                                                         |
-| ------- | --------------------------- | ------- | ------------------------------------------------------------------- |
-| 0.1     | Fourier Software Department | 2023.8  | 1. Project initiation``2. Confirm basic architecture                |
-| 0.2     | Fourier Software Department | 2023.9  | 1. Control module, system module``2. Specific coding                |
-| 1.1     | Fourier Software Department | 2023.10 | 1. Hand, head preset actions``2. Single joint control of upper body |
-| 1.2     | Fourier Software Department | 2023.11 | smooth movement example for single motor control                    |
-| 1.3     | Fourier Software Department | 2023.12 | Dexterous hand separate control                                     |
+| Version | Released By                 | Date    | New Feature                                                             |
+| ------- | --------------------------- | ------- | ----------------------------------------------------------------------- |
+| 0.1     | Fourier Software Department | 2023.8  | 1. Project initiation<br />2. Confirm basic architecture                |
+| 0.2     | Fourier Software Department | 2023.9  | 1. Control module, system module<br />2. Specific coding                |
+| 1.1     | Fourier Software Department | 2023.10 | 1. Hand, head preset actions<br />2. Single joint control of upper body |
+| 1.2     | Fourier Software Department | 2023.11 | Smooth movement example for single motor control                        |
+| 1.3     | Fourier Software Department | 2023.12 | Individual control of dexterous hand                                    |
