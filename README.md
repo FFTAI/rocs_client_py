@@ -58,7 +58,7 @@ human = Human(host='192.168.12.1')  # Replace the IP with actual IP of your devi
 
 ```
 
-!> RoCS supports three types of robots: dog, car and human. The above statement creates an instance of the `Human` class and assigns it to the variable `human`.  The `Human` class includes functionalities related to communication and interaction with the GR humanoid robot at the specified IP address.
+**Note**: RoCS supports three types of robots: dog, car and human. The above statement creates an instance of the `Human` class and assigns it to the variable `human`.  The `Human` class includes functionalities related to communication and interaction with the GR humanoid robot at the specified IP address.
 
 3. Control the robot.
 
@@ -94,7 +94,7 @@ Following are example code snippets showcasing the utilization of the Python Cli
 
 ### Code for Controlling Whole Robot (rocs_client>=1.0)
 
-!> The version of the RoCS Client should be version 1.0 or higher for this example. Run command `pip show rocs_client` in a terminal to check the version of the installed package.
+**Note**: The version of the RoCS Client should be version 1.0 or higher for this example. Run command `pip show rocs_client` in a terminal to check the version of the installed package.
 
 ```Python
 import time
