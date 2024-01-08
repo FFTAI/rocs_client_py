@@ -22,14 +22,14 @@ async def on_error(error: Exception):
 
 
 class TestHuman(unittest.TestCase):
-    human = Human(on_connected=on_connected, host="192.168.12.1", on_message=on_message, on_close=on_close,
+    human = Human(on_connected=on_connected, host="127.0.0.1", on_message=on_message, on_close=on_close,
                   on_error=on_error)
 
     def test_enable_debug_state(self):
-        res = self.human.enable_debug_state(10)
+        res = self.human.enable_debug_state(1)
         print(f'test_enable_debug_state: {res}')
-        time.sleep(2)
-        self.human.exit()
+        # time.sleep(2)
+        # self.human.exit()
 
     def test_disable_debug_state(self):
         res = self.human.disable_debug_state()
