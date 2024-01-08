@@ -81,7 +81,7 @@ class Human(RobotBase):
     """
     Human Class
 
-    The `Human` class implements the behavior of the GR-1 robot. It establishes a connection
+    The `Human` class implements the behavior of the GR robot. It establishes a connection
     to the robot and offers control functions along with status monitoring.
 
     Args:
@@ -99,7 +99,7 @@ class Human(RobotBase):
         human_robot = Human()
 
     Note:
-        The `Human` class inherits from `RobotBase` and extends its functionality to control the GR-1 robot.
+        The `Human` class inherits from `RobotBase` and extends its functionality to control the GR robot.
         Ensure that you have the necessary dependencies installed and a valid connection to your robot before using the SDK.
 
     """
@@ -221,7 +221,7 @@ class Human(RobotBase):
                             - `tauaMax` (float): Maximum joint torque, unit: N.M.
 
         Example:
-            .. code-block:: json
+                .. code-block:: json
 
                 {
                     "code": 0,
@@ -305,8 +305,6 @@ class Human(RobotBase):
                 - `function` (str): name of the Function that invoked this interface.
 
         Example:
-
-        .. code-block:: json
 
             {
                 "code": 0,
@@ -419,13 +417,14 @@ class Human(RobotBase):
                     "states": {
                         "basestate": {
                             "a": -0.00008816774229518624,
+                            "b": -0.0031777816310660227,
+                            "c": 0,
                             // ... additional parameters omitted ...
                             "z": 0
                         },
                         "contactforce": {
                             "fxL": 0,
-                            "fxR": 6,
-                            // ... additional parameters omitted ...
+                            // ... additional forces omitted ...
                             "mzR": 11
                         },
                         "fsmstatename": {
@@ -438,7 +437,7 @@ class Human(RobotBase):
                                 // ... additional parameters omitted ...
                                 "tauc": 0.00000421397498061693
                             },
-                            // ... additional parameters omitted ...
+                            // ... additional joint states omitted ...
                         ],
                         "stanceindex": {}
                     },

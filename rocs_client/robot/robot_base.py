@@ -1,6 +1,6 @@
 """RobotBase
 
-The `RobotBase` class is the base class for interacting with robots in the RoCS (Robot Control System) Client SDK.
+The `RobotBase` is the base class for interacting with robots in the RoCS (Robot Control System) Client SDK.
 
 Attribute:
     - _baseurl (str): The base URL for HTTP requests.

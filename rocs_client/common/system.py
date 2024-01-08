@@ -1,6 +1,6 @@
 class System:
     """
-    It is used to shut down, restart, and reset other system commands
+    This class provides functionality for shutting down, restarting, and executing other system-related commands.
     """
 
     @staticmethod

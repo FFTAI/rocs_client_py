@@ -3,31 +3,29 @@ import requests
 
 class Camera:
     """
-    Obtain the video stream status and video stream
+    Obtain the video stream status and access the video stream.
 
-    ``Attention! This is not necessary!
-    get you have a better solution to get the camera, this case only applies to the `Intel Real Sence D435` series``
+    Note: This functionality is specific to the `Intel RealSense D435` series. Consider alternative methods for camera access if you are not using this camera model. For other camera types or models, explore appropriate interfaces or libraries that suit your camera hardware and requirements.
 
     Args:
-        baseurl(str):
-            This address is the ip:port address of the robot host
+       baseurl(str):
+          The IP address and port of the robot host.
+
     """
 
     video_stream_status: bool = None
-    """ When `intel real sence D435` Camera is Opened! It it Ture."""
+    """ Indicates whether the `Intel RealSense D435` camera is open. It is set to `True` when the camera is open."""
 
     video_stream_url: str = None
-    """ When `intel real sence D435` Camera is Opened! You will be given an address to get the video stream."""
+    """ Provides the address to access the video stream when the `Intel RealSense D435` camera is open."""
 
     def __init__(self, baseurl: str):
         """
-        When Rocs gets the `intel real sence D435` Camera signal
-        You will be given an address to get the video stream,
-        You can access the video stream through http requests
+        Initializes the Camera object with the specified robot host address.
 
         Args:
             baseurl(str):
-                This address is the ip:port address of the robot host
+                the IP address and port of the robot host
         """
         self._baseurl = baseurl
         self.video_stream_status: bool = self._get_video_status()
@@ -36,7 +34,7 @@ class Camera:
 
     def _get_video_status(self) -> bool:
         """
-        Check the `intel real sence D435` Camera status
+        Checks the status of the `Intel RealSense D435` camera.
         """
         response = requests.get(f'{self._baseurl}/control/camera_status')
         if 'data' in response.json():

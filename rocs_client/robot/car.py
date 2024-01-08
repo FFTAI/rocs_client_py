@@ -6,7 +6,7 @@ from .robot_base import RobotBase
 
 class Mod(Enum):
     """
-    Arguments that apply to the `set_mode` Function
+    Enumeration of Modes for the `set_mode` Function.
     """
     MOD_4_WHEEL = "WHEEL_4"
     MOD_3_WHEEL = "WHEEL_3"
@@ -19,19 +19,23 @@ class Mod(Enum):
 
 class Car(RobotBase):
     """
-    When you need to connect a Car, you can create a Car() object!
-    This will connect to the control system in the background,
-    and provide the corresponding control function and status monitoring!
+    The `Car` class implements the behavior of car robots and facilitates communication with its control system. It provides
+    control functions and real-time status monitoring.
+
 
     Args:
 
-        ssl(bool): Indicates whether ssl authentication is enabled. Default False
-        host(str): indicates the network IP address of the car
-        port(int): specifies the PORT of the car control service
-        on_connected(callable): This listener is triggered when the car connection is successful
-        on_message(callable): This listener will be triggered when the car sends system status
-        on_close(callable): This listener will be triggered when the car connection is closed
-        on_error(callable): This listener will be triggered when a car error occurs
+        - ssl (bool, optional): Indicates whether SSL authentication is enabled. Defaults to False.
+        - host (str, optional): Specifies the network IP address of the car. Defaults to '127.0.0.1'.
+        - port (int, optional): Specifies the PORT of the car control service. Defaults to 8001.
+        - on_connected (Callable, optional): A callback function triggered upon successful car connection.
+          Defaults to None.
+        - on_message (Callable, optional): A callback function triggered when the car sends system status.
+          Defaults to None.
+        - on_close (Callable, optional): A callback function triggered when the car connection is closed.
+          Defaults to None.
+        - on_error (Callable, optional): A callback function triggered when a car-related error occurs.
+          Defaults to None.
     """
 
     def __init__(self, ssl: bool = False, host: str = '127.0.0.1', port: int = 8001, on_connected: Callable = None,
@@ -41,33 +45,35 @@ class Car(RobotBase):
 
     def set_mode(self, mod: Mod):
         """
-        set the car mode
+        Set the car mode.
 
-        the car will move in the corresponding mode, including 4 rounds, 3 rounds and 2 rounds
+        The car will move in the corresponding mode, which can be one of the following:
+           - 4-wheel mode
+           - 3-wheel mode
+           - 2-wheel mode
 
         Args:
-
-            mod(Mod): Mode object definition
+           mod (Mod): The mode object definition.
 
         Returns:
-
-            Dict:
-                `code` (int): statu code，0: Normal -1: Anomaly
-                `msg` (str): result msg
+           Dict: A dictionary containing the following keys:
+              - `code` (int): Status code, where 0 indicates normal and -1 indicates an anomaly.
+              - `msg` (str): Result message.
         """
+
         self._mod: Mod = mod
         return self._send_request(url='/robot/mode', method="POST", json={'mod_val': mod})
 
     def move(self, angle: float, speed: float):
         """
-        Control Car walk
+        Control the car's movement.
 
-        ``The request is sent by maintaining a long link``
+        The request is sent by maintaining a long-lived connection.
 
         Args:
 
-             angle(float): Angle Control direction. The value ranges from plus to minus 45 degrees. Left is positive, right is negative! (floating point 8 bits)
-             speed(float): Before and after the speed control, the value can be plus or minus 500. Forward is positive, backward is negative! (floating point 8 bits)
+             angle(float): Angle control for direction. The value ranges from -45 to +45 degrees, where left is positive and right is negative. Precision of 8 decimal places.
+             speed(float): Speed control for forward and backward movement. The value can be between -500 and +500, with positive values indicating forward and negative values indicating backward. Precision of 8 decimal places.
         """
         angle = self._cover_param(angle, 'angle', -45, 45)
         speed = self._cover_param(speed, 'speed', -500, 500)
