@@ -14,7 +14,6 @@ Welcome to the RoCS Python SDK!
 .. toctree::
    :maxdepth: 2
 
-   about; rocs_client
    rocs_client.robot
    rocs_client.motor
    rocs_client.common
