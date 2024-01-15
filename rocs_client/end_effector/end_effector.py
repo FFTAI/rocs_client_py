@@ -36,32 +36,36 @@ class EndEffector(RobotBase):
     def disable_state(self):
         return self._send_request(url='/robot/enable_terminal_state', method="GET")
 
-    async def control_left(self, param: EndEffectorScheme):
+    def control_left(self, param: EndEffectorScheme):
         data = {
-            "x": param.x,
-            "y": param.y,
-            "z": param.z,
-            "qx": param.qx,
-            "qy": param.qy,
-            "qz": param.qz,
-            "qw": param.qw,
-            "vx": param.vx,
-            "vy": param.vy,
-            "vz": param.vz
+            "param" : {
+                "x": param.x,
+                "y": param.y,
+                "z": param.z,
+                "qx": param.qx,
+                "qy": param.qy,
+                "qz": param.qz,
+                "qw": param.qw,
+                "vx": param.vx,
+                "vy": param.vy,
+                "vz": param.vz
+            }
         }
-        await self._send_websocket_msg({'command': 'left_hand_pr', 'data': data})
+        self._send_websocket_msg({'command': 'left_hand_pr', 'data': data})
 
-    async def control_right(self, param: EndEffectorScheme):
+    def control_right(self, param: EndEffectorScheme):
         data = {
-            "x": param.x,
-            "y": param.y,
-            "z": param.z,
-            "qx": param.qx,
-            "qy": param.qy,
-            "qz": param.qz,
-            "qw": param.qw,
-            "vx": param.vx,
-            "vy": param.vy,
-            "vz": param.vz
+            "param" : {
+                "x": param.x,
+                "y": param.y,
+                "z": param.z,
+                "qx": param.qx,
+                "qy": param.qy,
+                "qz": param.qz,
+                "qw": param.qw,
+                "vx": param.vx,
+                "vy": param.vy,
+                "vz": param.vz
+            }
         }
-        await self._send_websocket_msg({'command': 'right_hand_pr', 'data': data})
+        self._send_websocket_msg({'command': 'right_hand_pr', 'data': data})

@@ -55,3 +55,4 @@ from . import common
 from .robot import Human, Car
 from .robot.car import Mod
 from .motor.motor import Motor
+from .end_effector import EndEffector, EndEffectorScheme
