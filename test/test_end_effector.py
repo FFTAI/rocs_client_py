@@ -1,4 +1,5 @@
 import asyncio
+import time
 import unittest
 
 from rocs_client import EndEffector, EndEffectorScheme
@@ -26,6 +27,10 @@ class TestEndEffector(unittest.TestCase):
 
     def test_control_left(self):
         end_effector.control_left(EndEffectorScheme())
+        time.sleep(5)
+        end_effector.exit()
 
     def test_control_right(self):
-        end_effector.control_left(EndEffectorScheme())
+        end_effector.control_right(EndEffectorScheme())
+        time.sleep(5)
+        end_effector.exit()
