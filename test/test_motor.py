@@ -50,6 +50,7 @@ def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.
         while True:
             try:
                 p = motor.get_motor_pvc(no, orientation)['data']['position']
+                print(f'============={p}')
                 if math.isclose(p, target_angle, rel_tol=rel_tol):
                     break
             except Exception as e:
@@ -243,4 +244,13 @@ class TestHumanMotor(unittest.TestCase):
         t_move_3 = threading.Thread(target=move_3)
         t_move_3.start()
         t_move_3.join()
+        disable_all()
+
+    def test_move3(self):
+        enable_all()
+
+        for i in range(1, 5):
+            smooth_move_motor_with_differential('3', 'right', 10)
+            smooth_move_motor_with_differential('3', 'right', -10)
+
         disable_all()
