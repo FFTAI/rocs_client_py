@@ -13,3 +13,7 @@ cp index.rst ./source/
 
 sphinx-apidoc -o source ../
 make dirhtml
+
+rm -rf ../docs/*
+cp -r build/dirhtml/* ../docs/
+

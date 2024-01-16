@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>common subpackage &mdash; RoCS Python SDK  1.4 documentation</title>
+  <title>rocs_client.common package &mdash; RoCS Python SDK  1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -15,13 +15,13 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=dff800ed"></script>
+        <script src="../_static/documentation_options.js?v=94e0f085"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex/" />
     <link rel="search" title="Search" href="../search/" />
-    <link rel="prev" title="motor subpackage" href="../rocs_client.motor/" /> 
+    <link rel="prev" title="rocs_client.motor package" href="../rocs_client.motor/" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,11 +44,11 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../rocs_client.robot/">robot subpackage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rocs_client.motor/">motor subpackage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">common subpackage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.common">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.common.camera">camera module</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.robot/">rocs_client.robot package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.motor/">rocs_client.motor package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rocs_client.common package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.common.camera">rocs_client.common.camera module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rocs_client.common.camera.Camera"><code class="docutils literal notranslate"><span class="pre">Camera</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.common.camera.Camera.video_stream_status"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_status</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.common.camera.Camera.video_stream_url"><code class="docutils literal notranslate"><span class="pre">Camera.video_stream_url</span></code></a></li>
@@ -56,7 +56,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.common.system">system module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.common.system">rocs_client.common.system module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rocs_client.common.system.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.common.system.System.reboot"><code class="docutils literal notranslate"><span class="pre">System.reboot()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.common.system.System.shutdown"><code class="docutils literal notranslate"><span class="pre">System.shutdown()</span></code></a></li>
@@ -64,6 +64,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.common">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -82,7 +83,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">common subpackage</li>
+      <li class="breadcrumb-item active">rocs_client.common package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/rocs_client.common.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -92,21 +93,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="common-subpackage">
-<h1>common subpackage<a class="headerlink" href="#common-subpackage" title="Link to this heading"></a></h1>
-<section id="module-rocs_client.common">
-<span id="introduction"></span><h2>Introduction<a class="headerlink" href="#module-rocs_client.common" title="Link to this heading"></a></h2>
-<p>Contains common functionalities shared across different robot types</p>
-<dl class="simple">
-<dt>Modules:</dt><dd><ul class="simple">
-<li><p><cite>camera</cite>: Module for camera-related functionalities.</p></li>
-<li><p><cite>system</cite>: Module for system-related functionalities.</p></li>
-</ul>
-</dd>
-</dl>
+  <section id="rocs-client-common-package">
+<h1>rocs_client.common package<a class="headerlink" href="#rocs-client-common-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
 <section id="module-rocs_client.common.camera">
-<span id="camera-module"></span><h2>camera module<a class="headerlink" href="#module-rocs_client.common.camera" title="Link to this heading"></a></h2>
+<span id="rocs-client-common-camera-module"></span><h2>rocs_client.common.camera module<a class="headerlink" href="#module-rocs_client.common.camera" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.common.camera.Camera">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.common.camera.</span></span><span class="sig-name descname"><span class="pre">Camera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseurl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.common.camera.Camera" title="Link to this definition"></a></dt>
@@ -134,7 +127,7 @@
 
 </section>
 <section id="module-rocs_client.common.system">
-<span id="system-module"></span><h2>system module<a class="headerlink" href="#module-rocs_client.common.system" title="Link to this heading"></a></h2>
+<span id="rocs-client-common-system-module"></span><h2>rocs_client.common.system module<a class="headerlink" href="#module-rocs_client.common.system" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.common.system.System">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.common.system.</span></span><span class="sig-name descname"><span class="pre">System</span></span><a class="headerlink" href="#rocs_client.common.system.System" title="Link to this definition"></a></dt>
@@ -153,21 +146,35 @@
 </dd></dl>
 
 </section>
+<section id="module-rocs_client.common">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rocs_client.common" title="Link to this heading"></a></h2>
+<p>Contains common functionalities shared across different robot types</p>
+<dl class="simple">
+<dt>Modules:</dt><dd><ul class="simple">
+<li><p><cite>camera</cite>: Module for camera-related functionalities.</p></li>
+<li><p><cite>system</cite>: Module for system-related functionalities.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../rocs_client.motor/" class="btn btn-neutral float-left" title="motor subpackage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rocs_client.motor/" class="btn btn-neutral float-left" title="rocs_client.motor package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Fourier Software Department.</p>
+    <p>&#169; Copyright 2023, Fourier Software Department.</p>
   </div>
 
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

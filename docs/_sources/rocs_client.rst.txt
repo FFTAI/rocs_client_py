@@ -5,9 +5,10 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    rocs_client.common
+   rocs_client.end_effector
    rocs_client.motor
    rocs_client.robot
 

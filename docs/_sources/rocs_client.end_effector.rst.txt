@@ -1,0 +1,21 @@
+rocs\_client.end\_effector package
+==================================
+
+Submodules
+----------
+
+rocs\_client.end\_effector.end\_effector module
+-----------------------------------------------
+
+.. automodule:: rocs_client.end_effector.end_effector
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: rocs_client.end_effector
+   :members:
+   :undoc-members:
+   :show-inheritance:

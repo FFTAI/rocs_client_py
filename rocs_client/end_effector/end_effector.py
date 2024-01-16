@@ -31,14 +31,14 @@ class EndEffector(RobotBase):
         return self._send_request(url='/robot/end_effector/disable', method="GET")
 
     def enable_state(self, frequency: int = 1):
-        return self._send_request(url='/robot/enable_terminal_state', method="GET")
+        return self._send_request(url=f'/robot/enable_terminal_state?frequency={frequency}', method="GET")
 
     def disable_state(self):
         return self._send_request(url='/robot/enable_terminal_state', method="GET")
 
     def control_left(self, param: EndEffectorScheme):
         data = {
-            "param" : {
+            "param": {
                 "x": param.x,
                 "y": param.y,
                 "z": param.z,
@@ -55,7 +55,7 @@ class EndEffector(RobotBase):
 
     def control_right(self, param: EndEffectorScheme):
         data = {
-            "param" : {
+            "param": {
                 "x": param.x,
                 "y": param.y,
                 "z": param.z,

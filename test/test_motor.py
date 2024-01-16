@@ -156,16 +156,12 @@ class TestHumanMotor(unittest.TestCase):
 
         To coordinate multiple joints for simultaneous motion, consider using the `threading` approach for control.
         Additional examples provide specific details.       
-        
-        
         """
-
-
-
         enable_all()
         smooth_move_motor_with_differential('2', 'left', -20)
-        smooth_move_motor_with_differential('3', 'left', -40)
-        # disable_all()
+        smooth_move_motor_with_differential('2', 'left', -40)
+        time.sleep(5)
+        disable_all()
 
     def test_enable_hand(self):
         """ Enabling hand """
