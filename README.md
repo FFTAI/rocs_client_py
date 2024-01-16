@@ -347,6 +347,36 @@ motor.exit()
 
 ```
 
+### Code for End Effector Controlling (rocs_client>=1.3.4)
+
+```python
+import threading
+import time
+from rocs_client import EndEffector, EndEffectorScheme
+
+# Creating an instance of the EndEffector 
+end_effector = EndEffector(host="127.0.0.1")
+
+# Enable the end control service
+end_effector.enable()
+time.sleep(5)
+
+
+def left():
+    end_effector.control_left(EndEffectorScheme(x=1, y=1, z=1, qx=1, qy=1, qz=1, qw=1))
+
+
+def right():
+    end_effector.control_right(EndEffectorScheme(x=1, y=1, z=1, qx=1, qy=1, qz=1, qw=1))
+
+
+t_left = threading.Thread(target=left)
+t_right = threading.Thread(target=right)
+
+t_right.start()
+t_right.start()
+```
+
 ### Additional Test Cases
 
 Addtional test cases can be found in [Test Cases](https://github.com/FFTAI/rocs_client_py/tree/main/test).
