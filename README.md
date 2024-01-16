@@ -101,7 +101,7 @@ import time
 
 from rocs_client import Human
 
-from rocs_client.robot.human import ArmAction, HandAction, Motor
+from rocs_client.robot.human import ArmAction, HandAction
 
 # Connect to your robot using its IP address
 human = Human(host='192.168.9.17') # Replace '192.168.9.17' with your robot's actual IP
@@ -126,12 +126,6 @@ human.upper_body(arm=ArmAction.TWO_ARMS_WAVE)
 
 # Gesture: Tremble the fingers
 human.upper_body(hand=HandAction.TREMBLE)   
-
-# Move motor no.1 left and right by 10 degrees each
-human.move_joint(Motor(no='1', angle=10, orientation='left'), 
-
-                 Motor(no='1', angle=10, orientation='right')) 
-
 ```
 
 ### Code for Controlling Motors (rocs_client>=1.3.3)
@@ -379,7 +373,7 @@ t_right.start()
 
 ### Additional Test Cases
 
-Addtional test cases can be found in [Test Cases](https://github.com/FFTAI/rocs_client_py/tree/main/test).
+Additional test cases can be found in [Test Cases](https://github.com/FFTAI/rocs_client_py/tree/main/test).
 
 ## Release History
 
