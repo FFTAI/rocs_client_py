@@ -171,7 +171,7 @@ def set_pds():
     motor.exit()
 
 
-def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.05, interval=0.004):
+def smooth_motion_by_interpolation(no, orientation, target_angle, offset=0.05, interval=0.004):
     """
     Use differential to move the motor smoothly
     Args:
@@ -230,7 +230,7 @@ def disable_all(offset=1, interval=0.015):
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
             if item['orientation'] == 'left':
-                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset, interval)
+                smooth_motion_by_interpolation(item['no'], item['orientation'], 0, offset, interval)
 
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -241,7 +241,7 @@ def disable_all(offset=1, interval=0.015):
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
             if item['orientation'] != 'left':
-                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
+                smooth_motion_by_interpolation(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
 
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -301,8 +301,8 @@ class TestHumanMotor(unittest.TestCase):
 
 
         enable_all()
-        smooth_move_motor_with_differential('2', 'left', -20)
-        smooth_move_motor_with_differential('3', 'left', -40)
+        smooth_motion_by_interpolation('2', 'left', -20)
+        smooth_motion_by_interpolation('3', 'left', -40)
         # disable_all()
 ```
 

@@ -32,7 +32,7 @@ def set_pds():
     motor.exit()
 
 
-def smooth_move_motor_with_differential(no, orientation, target_angle, offset=0.05, interval=0.004):
+def smooth_motion_by_interpolation(no, orientation, target_angle, offset=0.05, interval=0.004):
     """
     Use differential to move the motor smoothly
     Args:
@@ -92,7 +92,7 @@ def disable_all(offset=1, interval=0.015):
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
             if item['orientation'] == 'left':
-                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset, interval)
+                smooth_motion_by_interpolation(item['no'], item['orientation'], 0, offset, interval)
 
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -103,7 +103,7 @@ def disable_all(offset=1, interval=0.015):
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
             if item['orientation'] != 'left':
-                smooth_move_motor_with_differential(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
+                smooth_motion_by_interpolation(item['no'], item['orientation'], 0, offset=1.5, interval=0.02)
 
         for i in range((len(motors) - 1), -1, -1):
             item = motors[i]
@@ -158,8 +158,8 @@ class TestHumanMotor(unittest.TestCase):
         Additional examples provide specific details.       
         """
         enable_all()
-        smooth_move_motor_with_differential('2', 'left', -20)
-        smooth_move_motor_with_differential('2', 'left', -40)
+        smooth_motion_by_interpolation('2', 'left', -20)
+        smooth_motion_by_interpolation('2', 'left', -40)
         time.sleep(5)
         disable_all()
 
@@ -203,16 +203,16 @@ class TestHumanMotor(unittest.TestCase):
         enable_all()
 
         def left():
-            smooth_move_motor_with_differential('1', 'left', 30, 0.3, 0.005)
-            smooth_move_motor_with_differential('2', 'left', -60, 0.3, 0.005)
-            smooth_move_motor_with_differential('4', 'left', 60, 0.3, 0.005)
-            smooth_move_motor_with_differential('1', 'left', 45, 0.3, 0.005)
+            smooth_motion_by_interpolation('1', 'left', 30, 0.3, 0.005)
+            smooth_motion_by_interpolation('2', 'left', -60, 0.3, 0.005)
+            smooth_motion_by_interpolation('4', 'left', 60, 0.3, 0.005)
+            smooth_motion_by_interpolation('1', 'left', 45, 0.3, 0.005)
 
         def right():
-            smooth_move_motor_with_differential('1', 'right', -30, 0.3, 0.005)
-            smooth_move_motor_with_differential('2', 'right', 60, 0.3, 0.005)
-            smooth_move_motor_with_differential('4', 'right', -60, 0.3, 0.005)
-            smooth_move_motor_with_differential('1', 'right', -45, 0.3, 0.005)
+            smooth_motion_by_interpolation('1', 'right', -30, 0.3, 0.005)
+            smooth_motion_by_interpolation('2', 'right', 60, 0.3, 0.005)
+            smooth_motion_by_interpolation('4', 'right', -60, 0.3, 0.005)
+            smooth_motion_by_interpolation('1', 'right', -45, 0.3, 0.005)
 
         left = threading.Thread(target=left)
         right = threading.Thread(target=right)
@@ -226,13 +226,13 @@ class TestHumanMotor(unittest.TestCase):
 
         def move_3():
             for i in range(0, 5):
-                smooth_move_motor_with_differential('3', 'right', -40, offset=0.3, interval=0.003)
-                smooth_move_motor_with_differential('3', 'right', 5, offset=0.3, interval=0.003)
+                smooth_motion_by_interpolation('3', 'right', -40, offset=0.3, interval=0.003)
+                smooth_motion_by_interpolation('3', 'right', 5, offset=0.3, interval=0.003)
 
-        joint_1 = threading.Thread(target=smooth_move_motor_with_differential, args=('1', 'right', -65, 0.4, 0.005))
-        joint_2 = threading.Thread(target=smooth_move_motor_with_differential, args=('2', 'right', 0, 0.4, 0.005))
-        joint_4 = threading.Thread(target=smooth_move_motor_with_differential, args=('4', 'right', -90, 0.4, 0.005))
-        joint_5 = threading.Thread(target=smooth_move_motor_with_differential, args=('5', 'right', 90, 0.4, 0.005))
+        joint_1 = threading.Thread(target=smooth_motion_by_interpolation, args=('1', 'right', -65, 0.4, 0.005))
+        joint_2 = threading.Thread(target=smooth_motion_by_interpolation, args=('2', 'right', 0, 0.4, 0.005))
+        joint_4 = threading.Thread(target=smooth_motion_by_interpolation, args=('4', 'right', -90, 0.4, 0.005))
+        joint_5 = threading.Thread(target=smooth_motion_by_interpolation, args=('5', 'right', 90, 0.4, 0.005))
         joint_1.start(), joint_2.start(), joint_4.start(), joint_5.start()
         joint_1.join(), joint_2.join(), joint_4.join(), joint_5.join()
         time.sleep(1)
@@ -246,7 +246,7 @@ class TestHumanMotor(unittest.TestCase):
         enable_all()
 
         for i in range(1, 5):
-            smooth_move_motor_with_differential('3', 'right', 10)
-            smooth_move_motor_with_differential('3', 'right', -10)
+            smooth_motion_by_interpolation('3', 'right', 10)
+            smooth_motion_by_interpolation('3', 'right', -10)
 
         disable_all()
