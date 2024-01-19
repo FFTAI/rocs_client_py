@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rocs_client.robot package &mdash; RoCS Python SDK  1.0 documentation</title>
+  <title>robot subpackage &mdash; RoCS Python SDK  1.4 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/my_theme.css?v=f474f2d8" />
@@ -16,14 +16,14 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=94e0f085"></script>
+        <script src="../_static/documentation_options.js?v=dff800ed"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex/" />
     <link rel="search" title="Search" href="../search/" />
-    <link rel="next" title="rocs_client.motor package" href="../rocs_client.motor/" />
-    <link rel="prev" title="Welcome to the RoCS Python SDK!" href="../" /> 
+    <link rel="next" title="motor subpackage" href="../rocs_client.motor/" />
+    <link rel="prev" title="RoCS Client SDK Python Reference Guide" href="../" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,9 +46,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">rocs_client.robot package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.car">rocs_client.robot.car module</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">robot subpackage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.car">car module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.car.Car"><code class="docutils literal notranslate"><span class="pre">Car</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.move"><code class="docutils literal notranslate"><span class="pre">Car.move()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.car.Car.set_mode"><code class="docutils literal notranslate"><span class="pre">Car.set_mode()</span></code></a></li>
@@ -62,7 +62,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.human">rocs_client.robot.human module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.human">human module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.human.ArmAction"><code class="docutils literal notranslate"><span class="pre">ArmAction</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.ARMS_SWING"><code class="docutils literal notranslate"><span class="pre">ArmAction.ARMS_SWING</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.human.ArmAction.HELLO"><code class="docutils literal notranslate"><span class="pre">ArmAction.HELLO</span></code></a></li>
@@ -94,7 +94,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.robot_base">rocs_client.robot.robot_base module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot.robot_base">base module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase"><code class="docutils literal notranslate"><span class="pre">RobotBase</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.exit"><code class="docutils literal notranslate"><span class="pre">RobotBase.exit()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase.start"><code class="docutils literal notranslate"><span class="pre">RobotBase.start()</span></code></a></li>
@@ -103,11 +103,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-rocs_client.robot">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../rocs_client.motor/">rocs_client.motor package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rocs_client.common/">rocs_client.common package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.motor/">motor subpackage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rocs_client.common/">common subpackage</a></li>
 </ul>
 
         </div>
@@ -124,7 +123,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">rocs_client.robot package</li>
+      <li class="breadcrumb-item active">robot subpackage</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -133,16 +132,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="rocs-client-robot-package">
-<h1>rocs_client.robot package<a class="headerlink" href="#rocs-client-robot-package" title="Link to this heading"></a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+  <section id="robot-subpackage">
+<h1>robot subpackage<a class="headerlink" href="#robot-subpackage" title="Link to this heading"></a></h1>
+<section id="module-rocs_client.robot">
+<span id="introduction"></span><h2>Introduction<a class="headerlink" href="#module-rocs_client.robot" title="Link to this heading"></a></h2>
+<p>RoCS Client SDK - Robot subpackage</p>
+<p>The <cite>robot</cite> subpackage in the RoCS (Robot Control System) Client SDK provides modules, classes and functionality
+for interacting with robots. It includes components for controlling robot movements, accessing
+sensory data, and managing robot actions.</p>
+<dl>
+<dt>Modules:</dt><dd><ul class="simple">
+<li><p>car: Module containing functionalities for car-like robots.</p></li>
+<li><p>human: Module containing functionalities for humanoid robots.</p></li>
+<li><p>robot_base: Module providing a base class and utilities for robot interaction.</p></li>
+</ul>
+</dd>
+<dt>Classes:</dt><dd><ul class="simple">
+<li><p>Human: Class representing a humanoid robot.</p></li>
+<li><p>Car: Class representing a robot with car-like functionalities.</p></li>
+<li><p>Mod: Class representing the modular features of a car robot.</p></li>
+</ul>
+</dd>
+<dt>Enums:</dt><dd><ul class="simple">
+<li><p>ArmAction: Enum defining actions related to robot arms.</p></li>
+<li><p>HandAction: Enum defining actions related to robot hands.</p></li>
+</ul>
+</dd>
+<dt>Usage:</dt><dd><p>from rocs_client import Human, Car, Mod, ArmAction, HandAction</p>
+<p># Creating an instance of the Human class
+human_robot = Human()</p>
+<p># Creating an instance of the Car class
+car_robot = Car()</p>
+<p># Creating an instance of the Mod class
+modular_robot = Mod()</p>
+<p># Accessing Motor enum options
+motor_option = Motor.SOME_OPTION</p>
+<p># Accessing ArmAction enum options
+arm_action_option = ArmAction.SOME_ACTION</p>
+<p># Accessing HandAction enum options
+hand_action_option = HandAction.SOME_ACTION</p>
+</dd>
+</dl>
 </section>
 <section id="module-rocs_client.robot.car">
-<span id="rocs-client-robot-car-module"></span><h2>rocs_client.robot.car module<a class="headerlink" href="#module-rocs_client.robot.car" title="Link to this heading"></a></h2>
+<span id="car-module"></span><h2>car module<a class="headerlink" href="#module-rocs_client.robot.car" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Car">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Car" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
 <p>The <cite>Car</cite> class implements the behavior of car robots and facilitates communication with its control system. It provides
 control functions and real-time status monitoring.</p>
@@ -214,7 +250,7 @@ Defaults to None.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.car.Mod">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Mod" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.car.</span></span><span class="sig-name descname"><span class="pre">Mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.car.Mod" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>Enumeration of Modes for the <cite>set_mode</cite> Function.</p>
 <dl class="py attribute">
@@ -236,10 +272,10 @@ Defaults to None.</p></li>
 
 </section>
 <section id="module-rocs_client.robot.human">
-<span id="rocs-client-robot-human-module"></span><h2>rocs_client.robot.human module<a class="headerlink" href="#module-rocs_client.robot.human" title="Link to this heading"></a></h2>
+<span id="human-module"></span><h2>human module<a class="headerlink" href="#module-rocs_client.robot.human" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.human.ArmAction">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">ArmAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.ArmAction" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">ArmAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.ArmAction" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>ArmAction Enum</p>
 <p>Enumerates different arm actions that can be performed with a robot’s arms.</p>
@@ -280,7 +316,7 @@ Defaults to None.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.human.HandAction">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">HandAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.HandAction" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">HandAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.HandAction" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>HandAction Enum</p>
 <p>Enumerates different hand actions that can be performed with a robot’s hand.</p>
@@ -339,7 +375,7 @@ Defaults to None.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Human</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.human.</span></span><span class="sig-name descname"><span class="pre">Human</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rocs_client.robot.robot_base.RobotBase" title="rocs_client.robot.robot_base.RobotBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotBase</span></code></a></p>
 <p>Human Class</p>
 <p>The <cite>Human</cite> class implements the behavior of the GR-1 robot. It establishes a connection
@@ -797,7 +833,7 @@ to bring it to a stop.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rocs_client.robot.human.Human.upper_body">
-<span class="sig-name descname"><span class="pre">upper_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.ArmAction" title="rocs_client.robot.human.ArmAction"><span class="pre">ArmAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.HandAction" title="rocs_client.robot.human.HandAction"><span class="pre">HandAction</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.upper_body" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">upper_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.ArmAction" title="rocs_client.robot.human.ArmAction"><span class="pre">ArmAction</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hand</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rocs_client.robot.human.HandAction" title="rocs_client.robot.human.HandAction"><span class="pre">HandAction</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.human.Human.upper_body" title="Link to this definition"></a></dt>
 <dd><p>Execute predefined upper body actions by setting arm and hand movements.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -856,7 +892,7 @@ Positive values move forward, negative values move backward. Precision of 8 deci
 
 </section>
 <section id="module-rocs_client.robot.robot_base">
-<span id="rocs-client-robot-robot-base-module"></span><h2>rocs_client.robot.robot_base module<a class="headerlink" href="#module-rocs_client.robot.robot_base" title="Link to this heading"></a></h2>
+<span id="base-module"></span><h2>base module<a class="headerlink" href="#module-rocs_client.robot.robot_base" title="Link to this heading"></a></h2>
 <p>RobotBase</p>
 <p>The <cite>RobotBase</cite> is the base class for interacting with robots in the RoCS (Robot Control System) Client SDK.</p>
 <dl>
@@ -946,7 +982,7 @@ Positive values move forward, negative values move backward. Precision of 8 deci
 </div>
 <dl class="py class">
 <dt class="sig sig-object py" id="rocs_client.robot.robot_base.RobotBase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.robot_base.</span></span><span class="sig-name descname"><span class="pre">RobotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rocs_client.robot.robot_base.</span></span><span class="sig-name descname"><span class="pre">RobotBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_close</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rocs_client.robot.robot_base.RobotBase" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Base class for Robot.</p>
 <p>When instantiated, it connects to the corresponding robot’s port via WebSocket.</p>
@@ -1009,65 +1045,22 @@ or movements in progress before invoking this command to prevent unexpected beha
 </dd></dl>
 
 </section>
-<section id="module-rocs_client.robot">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rocs_client.robot" title="Link to this heading"></a></h2>
-<p>RoCS Client SDK - Robot subpackage</p>
-<p>The <cite>robot</cite> subpackage in the RoCS (Robot Control System) Client SDK provides modules, classes and functionality
-for interacting with robots. It includes components for controlling robot movements, accessing
-sensory data, and managing robot actions.</p>
-<dl>
-<dt>Modules:</dt><dd><ul class="simple">
-<li><p>car: Module containing functionalities for car-like robots.</p></li>
-<li><p>human: Module containing functionalities for humanoid robots.</p></li>
-<li><p>robot_base: Module providing a base class and utilities for robot interaction.</p></li>
-</ul>
-</dd>
-<dt>Classes:</dt><dd><ul class="simple">
-<li><p>Human: Class representing a humanoid robot.</p></li>
-<li><p>Car: Class representing a robot with car-like functionalities.</p></li>
-<li><p>Mod: Class representing the modular features of a car robot.</p></li>
-</ul>
-</dd>
-<dt>Enums:</dt><dd><ul class="simple">
-<li><p>ArmAction: Enum defining actions related to robot arms.</p></li>
-<li><p>HandAction: Enum defining actions related to robot hands.</p></li>
-</ul>
-</dd>
-<dt>Usage:</dt><dd><p>from rocs_client import Human, Car, Mod, ArmAction, HandAction</p>
-<p># Creating an instance of the Human class
-human_robot = Human()</p>
-<p># Creating an instance of the Car class
-car_robot = Car()</p>
-<p># Creating an instance of the Mod class
-modular_robot = Mod()</p>
-<p># Accessing Motor enum options
-motor_option = Motor.SOME_OPTION</p>
-<p># Accessing ArmAction enum options
-arm_action_option = ArmAction.SOME_ACTION</p>
-<p># Accessing HandAction enum options
-hand_action_option = HandAction.SOME_ACTION</p>
-</dd>
-</dl>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../" class="btn btn-neutral float-left" title="Welcome to the RoCS Python SDK!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../rocs_client.motor/" class="btn btn-neutral float-right" title="rocs_client.motor package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../" class="btn btn-neutral float-left" title="RoCS Client SDK Python Reference Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rocs_client.motor/" class="btn btn-neutral float-right" title="motor subpackage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Fourier Software Department.</p>
+    <p>&#169; Copyright 2024, Fourier Software Department.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

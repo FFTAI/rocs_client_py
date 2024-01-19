@@ -1,10 +1,15 @@
-rocs\_client.robot package
+robot subpackage
 ==========================
 
-Submodules
-----------
+Introduction
+---------------
 
-rocs\_client.robot.car module
+.. automodule:: rocs_client.robot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+car module
 -----------------------------
 
 .. automodule:: rocs_client.robot.car
@@ -12,7 +17,7 @@ rocs\_client.robot.car module
    :undoc-members:
    :show-inheritance:
 
-rocs\_client.robot.human module
+human module
 -------------------------------
 
 .. automodule:: rocs_client.robot.human
@@ -20,7 +25,7 @@ rocs\_client.robot.human module
    :undoc-members:
    :show-inheritance:
 
-rocs\_client.robot.robot\_base module
+base module
 -------------------------------------
 
 .. automodule:: rocs_client.robot.robot_base
@@ -28,10 +33,4 @@ rocs\_client.robot.robot\_base module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
 
-.. automodule:: rocs_client.robot
-   :members:
-   :undoc-members:
-   :show-inheritance:
