@@ -116,9 +116,7 @@ class Human(RobotBase):
         Returns:
             None
         """
-
-        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET"):
-            print(chunk.decode("utf-8"))
+        return self._send_request_stream(url='/robot/sdk_ctrl/start', method="GET")
 
     def _control_svr_log_view(self):
         """View the SDK control server log and print the streaming log.
@@ -128,9 +126,7 @@ class Human(RobotBase):
         Returns:
             None
         """
-
-        for chunk in self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET"):
-            print(chunk.decode("utf-8"))
+        return self._send_request_stream(url='/robot/sdk_ctrl/log', method="GET")
 
     def _control_svr_close(self) -> Dict[str, Any]:
         """Close the SDK control server.

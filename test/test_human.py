@@ -22,7 +22,7 @@ async def on_error(error: Exception):
 
 
 class TestHuman(unittest.TestCase):
-    human = Human(on_connected=on_connected, host="192.168.12.1", on_message=on_message, on_close=on_close,
+    human = Human(on_connected=on_connected, host="127.0.0.1", on_message=on_message, on_close=on_close,
                   on_error=on_error)
 
     def test_enable_debug_state(self):
@@ -89,7 +89,12 @@ class TestHuman(unittest.TestCase):
         self.human.exit()
 
     def test_start_control_svr(self):
-        self.human._control_svr_start()
+        for chunk in self.human._control_svr_start():
+            print(chunk.decode('utf-8'))
+
+    def test_log_view_control_svr(self):
+        for chunk in self.human._control_svr_log_view():
+            print(chunk.decode('utf-8'))
 
     def test_close_control_svr(self):
         print('test_close_control_svr: ', self.human._control_svr_close())
@@ -98,6 +103,3 @@ class TestHuman(unittest.TestCase):
     def test_status_control_svr(self):
         print('test_status_control_svr: ', self.human._control_svr_status())
         self.human.exit()
-
-    def test_log_view_control_svr(self):
-        self.human._control_svr_log_view()
