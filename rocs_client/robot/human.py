@@ -17,6 +17,15 @@ class ArmAction(Enum):
         - LEFT_ARM_WAVE (str): Wave the left arm.
         - ARMS_SWING (str): Swing both arms.
         - HELLO (str): Wave hello with the arm.
+        - WAVING_LEFT_RIGHT (str): Wave the arms left and right.
+        - HIGH_FIVE (str): Perform a high-five gesture.
+        - DABBING (str): Perform a dabbing gesture.
+        - BOW (str): Perform a bow gesture.
+        - MANUAL_LONG_HORN (str): Perform a manual long horn gesture.
+        - MANUAL_OK (str): Perform a manual OK gesture.
+        - MANUAL_THUMB_UP_0 (str): Perform a manual thumbs-up gesture.
+        - MANUAL_THUMB_UP_1 (str): Perform another manual thumbs-up gesture.
+        - NVIDIA_DANCE (str): Perform the NVIDIA Dance routine.
 
     Example:
         # Using the ArmAction enumeration
@@ -34,6 +43,16 @@ class ArmAction(Enum):
     ARMS_SWING = "ARMS_SWING"
     # Wave hello
     HELLO = "HELLO"
+    # nvidia dance
+    WAVING_LEFT_RIGHT = "WAVING_LEFT_RIGHT"
+    HIGH_FIVE = "HIGH_FIVE"
+    DABBING = "DABBING"
+    BOW = "BOW"
+    MANUAL_LONG_HORN = "MANUAL_LONG_HORN"
+    MANUAL_OK = "MANUAL_OK"
+    MANUAL_THUMB_UP_0 = "MANUAL_THUMB_UP_0"
+    MANUAL_THUMB_UP_1 = "MANUAL_THUMB_UP_1"
+    NVIDIA_DANCE = "NVIDIA_DANCE"
 
     WAVING_LEFT_RIGHT = "WAVING_LEFT_RIGHT"
     HIGH_FIVE = "HIGH_FIVE"

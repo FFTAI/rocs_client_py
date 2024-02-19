@@ -84,6 +84,14 @@ class TestHuman(unittest.TestCase):
         self.human.upper_body(arm=ArmAction.HELLO)
         self.human.exit()
 
+    def test_upper_body_arm_waving_left_right(self):
+        self.human.upper_body(arm=ArmAction.WAVING_LEFT_RIGHT)
+        self.human.exit()
+
+    def test_upper_body_arm_nvidia_dance(self):
+        self.human.upper_body(arm=ArmAction.NVIDIA_DANCE)
+        self.human.exit()
+
     def test_upper_body_hand(self):
         self.human.upper_body(hand=HandAction.TREMBLE)
         self.human.exit()
