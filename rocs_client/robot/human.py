@@ -35,6 +35,16 @@ class ArmAction(Enum):
     # Wave hello
     HELLO = "HELLO"
 
+    WAVING_LEFT_RIGHT = "WAVING_LEFT_RIGHT"
+    HIGH_FIVE = "HIGH_FIVE"
+    DABBING = "DABBING"
+    BOW = "BOW"
+    MANUAL_LONG_HORN = "MANUAL_LONG_HORN"
+    MANUAL_OK = "MANUAL_OK"
+    MANUAL_THUMB_UP_0 = "MANUAL_THUMB_UP_0"
+    MANUAL_THUMB_UP_1 = "MANUAL_THUMB_UP_1"
+    NVIDIA_DANCE = "NVIDIA_DANCE"
+
 
 @dataclass
 class HandAction(Enum):
