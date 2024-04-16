@@ -97,6 +97,6 @@ class EndEffector(RobotBase):
                 "vy": param.vy,
                 "vz": param.vz
             },
-            "system": 1
+            "system": "0"
         }
         self._send_websocket_msg({'command': 'right_hand_pr', 'data': data})
