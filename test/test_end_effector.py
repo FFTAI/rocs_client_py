@@ -20,7 +20,7 @@ async def on_error(error: Exception):
     print("WebSocket error:", error)
 
 
-end_effector = EndEffector(host="127.0.0.1",
+end_effector = EndEffector(host="192.168.9.168",
                            on_connected=on_connected, on_message=on_message, on_close=on_close, on_error=on_error)
 
 

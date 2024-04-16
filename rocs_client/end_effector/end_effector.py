@@ -77,7 +77,8 @@ class EndEffector(RobotBase):
                 "vx": param.vx,
                 "vy": param.vy,
                 "vz": param.vz
-            }
+            },
+            "system": 1
         }
         self._send_websocket_msg({'command': 'left_hand_pr', 'data': data})
 
@@ -95,6 +96,7 @@ class EndEffector(RobotBase):
                 "vx": param.vx,
                 "vy": param.vy,
                 "vz": param.vz
-            }
+            },
+            "system": 1
         }
         self._send_websocket_msg({'command': 'right_hand_pr', 'data': data})
