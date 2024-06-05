@@ -22,7 +22,7 @@ async def on_error(error: Exception):
 
 
 class TestHuman(unittest.TestCase):
-    human = Human(on_connected=on_connected, host="192.168.12.1", on_message=on_message, on_close=on_close,
+    human = Human(on_connected=on_connected, host="127.0.0.1", on_message=on_message, on_close=on_close,
                   on_error=on_error)
 
     def test_enable_debug_state(self):
@@ -113,6 +113,6 @@ class TestHuman(unittest.TestCase):
         self.human.exit()
 
     def test_waist(self):
-        self.human.waist(0, 0, 0)
+        self.human.waist(0, 0, 30)
         time.sleep(5)
         self.human.exit()
