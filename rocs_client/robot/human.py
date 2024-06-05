@@ -551,6 +551,43 @@ class Human(RobotBase):
             }
         })
 
+    def waist(self, roll: float, pitch: float, yaw: float):
+        """
+        Control the movement of the robot's waist via a long-lived connection.
+
+        Args:
+            roll (float): Rotation around the x-axis. Negative values turn the head to the left,
+                         and positive values turn it to the right. Range: -17.1887 to 17.1887.
+            pitch (float): Rotation around the y-axis. Positive values tilt the head forward,
+                          and negative values tilt it backward. Range: -17.1887 to 17.1887.
+            yaw (float): Rotation around the z-axis. Negative values twist the head to the left,
+                        and positive values twist it to the right. Range: -17.1887 to 17.1887.
+
+        Returns:
+            None
+
+        Raises:
+            Any exceptions raised during the execution.
+
+        Notes:
+            - The request is sent via a long-lived connection.
+            - The roll, pitch, and yaw values are automatically adjusted to fit within the specified valid ranges if they go beyond the given thresholds.
+
+        Example:
+            To turn the robot's head to the right (roll), tilt it backward (pitch), and twist it to the left (yaw):
+
+            >>> Human.waist(roll=10.0, pitch=-5.0, yaw=-7.0)
+        """
+
+        self._send_websocket_msg({
+            'command': 'waist',
+            'data': {
+                'roll': self._cover_param(roll, "roll", -17.1887, 17.1887),
+                'pitch': self._cover_param(pitch, "pitch", -17.1887, 17.1887),
+                'yaw': self._cover_param(yaw, "yaw", -17.1887, 17.1887)
+            }
+        })
+
     def upper_body(self, arm: ArmAction = None, hand: HandAction = None):
         """
         Execute predefined upper body actions by setting arm and hand movements.

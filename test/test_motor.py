@@ -5,7 +5,7 @@ import unittest
 
 from rocs_client import Motor
 
-motor = Motor(host="192.168.137.210")
+motor = Motor(host="192.168.12.1")
 
 arm_motor = motor.limits[0:17] if len(motor.limits) > 18 else []
 clamping_jaw = motor.limits[17:19] if len(motor.limits) > 20 else []
@@ -15,7 +15,7 @@ print(f'arm_motor: {arm_motor}')
 print(f'clamping_jaw: {clamping_jaw}')
 print(f'dexterous_hand: {dexterous_hand}')
 
-motors = arm_motor + clamping_jaw
+motors = arm_motor + dexterous_hand
 
 
 def set_pds_flag():
@@ -246,7 +246,7 @@ class TestHumanMotor(unittest.TestCase):
         enable_all()
 
         for i in range(1, 5):
-            smooth_motion_by_interpolation('3', 'right', 10)
-            smooth_motion_by_interpolation('3', 'right', -10)
+            smooth_motion_by_interpolation('0', 'yaw', 30)
+            smooth_motion_by_interpolation('0', 'yaw', -30)
 
-        disable_all()
+        # disable_all()

@@ -22,7 +22,7 @@ async def on_error(error: Exception):
 
 
 class TestHuman(unittest.TestCase):
-    human = Human(on_connected=on_connected, host="127.0.0.1", on_message=on_message, on_close=on_close,
+    human = Human(on_connected=on_connected, host="192.168.12.1", on_message=on_message, on_close=on_close,
                   on_error=on_error)
 
     def test_enable_debug_state(self):
@@ -110,4 +110,9 @@ class TestHuman(unittest.TestCase):
 
     def test_status_control_svr(self):
         print('test_status_control_svr: ', self.human._control_svr_status())
+        self.human.exit()
+
+    def test_waist(self):
+        self.human.waist(0, 0, 0)
+        time.sleep(5)
         self.human.exit()
